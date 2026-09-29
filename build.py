@@ -1,0 +1,530 @@
+# -*- coding: utf-8 -*-
+"""내 연봉 10억 만들기 — 정적 페이지 빌드 스크립트.
+python3 build.py 실행 시 index.html 과 하위 폴더 index.html 을 전부 새로 씁니다.
+(부분 수정 금지 원칙: 매번 파일 전체를 다시 생성)"""
+import json, os, datetime
+
+UPDATED = "2026-09-29"
+SITE = "내 연봉 10억 만들기"
+
+CSS = r"""
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+"""
+
+HEAD = """<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>{title} — {site}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>{css}</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="{root}">← {site}</a><span>갱신 {updated}</span></div>
+"""
+
+FOOT = """
+<div class="foot">{site} · 갱신 {updated} · <a href="{root}sources/">출처·갱신 방법</a></div>
+</div>
+</body>
+</html>
+"""
+
+# ---------------------------------------------------------------- 데이터
+# 일정 데이터: 허브의 "오늘의 추천 일정"과 일정 페이지가 같이 씀
+# who: 루크 / 메이브님 / 디노 / 뿌요 / 지영 / 리나님(물류)
+EVENTS = [
+  # 9월 말
+  {"d":"2026-09-30","t":"뷰셀 2화 대본 제공 (화장품 10년 트렌드·성분·브랜드)","who":"루크→메이브님","p":"P0","cash":False},
+  {"d":"2026-09-30","t":"물류 업데이트/운영 책임자 지정 + 현안 이슈 보드 시작","who":"뿌요·루크","p":"P0","cash":False},
+  {"d":"2026-09-30","t":"잔디 이슈 채널 운영 규칙(이슈 템플릿·상태 태그)","who":"루크","p":"P1","cash":False},
+  # 10월 첫째 주
+  {"d":"2026-10-01","t":"3PL 수강생 재고 당근·외부 판매 — 첫 등록 (동의서·시트·비즈프로필)","who":"루크·루나","p":"P0","cash":True},
+  {"d":"2026-10-01","t":"키티티바이지영 상표권 출원 (KIPRIS 선행검색 → 출원, 30분)","who":"루크·지영","p":"P0","cash":False},
+  {"d":"2026-10-01","t":"물류 삭제/무효화 임시 규칙 + 핸드오버 체크리스트","who":"루크·뿌요","p":"P1","cash":False},
+  {"d":"2026-10-01","t":"지영 인스타 주간 운영 캘린더 시작","who":"지영","p":"P1","cash":False},
+  {"d":"2026-10-02","t":"뷰셀 2화 촬영 (공개 10/7)","who":"메이브님","p":"P0","cash":False},
+  {"d":"2026-10-02","t":"물류·전산 전체 프로세스 맵 + 병목 표시","who":"뿌요","p":"P1","cash":False},
+  {"d":"2026-10-03","t":"물류 중복·충돌 기능 정리 우선순위","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-04","t":"디노(미니쌤) 12주 빌드업안 전달·합의 (PDF 『미니쌤, 12주의 지도』)","who":"루크→디노","p":"P0","cash":True},
+  {"d":"2026-10-04","t":"물류 표준 운영 가이드 배포 / 피크일(월·화) 택배 우선 운영안","who":"루크·뿌요","p":"P1","cash":False},
+  {"d":"2026-10-05","t":"디노 12주 프로그램 1주차 시작 (AI 셀러 실무 교육 빌드업)","who":"디노","p":"P0","cash":True},
+  {"d":"2026-10-05","t":"리나님 시간 기록 시트 1~2주 시범 운영 (매일 퇴근 전 피드백)","who":"리나님·루크","p":"P1","cash":False},
+  {"d":"2026-10-05","t":"키티티 상담 사이트 원장님 확인 (사진 동의·한마디·비포애프터)","who":"지영","p":"P1","cash":False},
+  {"d":"2026-10-05","t":"영상공장 API 키 5개 발급 + 목소리 1~3분 녹음","who":"루크","p":"P1","cash":False},
+  {"d":"2026-10-06","t":"수강생 화장품법 소송 대응 지원 — 답변서 기한·변호사 연결 (익명)","who":"루크","p":"P0","cash":False},
+  {"d":"2026-10-06","t":"물류 CS 포인트 분석 + 사전 안내 스크립트 정비","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-07","t":"뷰셀 2화 공개 (수)","who":"메이브님","p":"P1","cash":False},
+  {"d":"2026-10-07","t":"물류 권한 재설계 + 감사 로그","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-07","t":"지영 예약·매출 간단 대시보드 완료 목표","who":"지영","p":"P2","cash":False},
+  {"d":"2026-10-08","t":"종혁 본부장 미팅 — 신규 강의 플랫폼 1:1:1 역할·수익 배분안 제시","who":"루크·메이브님","p":"P0","cash":True},
+  {"d":"2026-10-08","t":"지영 미팅 — 정부지원사업 후보 3개 + 사업계획서 초안 리뷰","who":"루크·지영","p":"P1","cash":False},
+  {"d":"2026-10-08","t":"사진 기반 입고/검수 자동화 플로우 설계","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-10","t":"물류 선반 추가·라벨링·박스 재배치","who":"뿌요","p":"P2","cash":False},
+  {"d":"2026-10-15","t":"미입고 자동 알림·반품 트리거 프로토타입","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-15","t":"지영 내년 조달(최소 1억) 월별 마일스톤 확정","who":"루크·지영","p":"P1","cash":False},
+  {"d":"2026-10-31","t":"10월 말 무료 라이브 — 날짜·시간·신청 링크 확인 필요 (록터뷰 영상에 링크)","who":"루크","p":"P0","cash":True},
+  {"d":"2026-11-30","t":"메이크업헬퍼 12주 테스트 9주차 판정 (11월 말)","who":"루크·최은봉","p":"P1","cash":True},
+  {"d":"2026-12-31","t":"루크 툴박스 구독 500명 목표 / 3PL 판매 실적 정리(내년 강의 증거)","who":"루크","p":"P1","cash":True},
+]
+
+def page(title, body, root="../"):
+    return HEAD.format(title=title, site=SITE, css=CSS, root=root, updated=UPDATED) + body + FOOT.format(site=SITE, updated=UPDATED, root=root)
+
+# ---------------------------------------------------------------- 허브
+INDEX = """
+<div class="hero">
+  <h1>내 연봉 10억 만들기</h1>
+  <div class="sub">루크(유믿음) · 우선순위 · 로드맵 · 매일 추천 일정</div>
+  <div class="goal">
+    <div><b>10억</b><span>12개월 귀속매출 목표</span></div>
+    <div><b>3,000~4,000만</b><span>강의와 무관한 신규 파이프라인 월 순수익 (2~3개월 내)</span></div>
+    <div><b>1~2명</b><span>원크루 전환 (3,300~3,900만)</span></div>
+  </div>
+</div>
+
+<h2>오늘의 추천 일정 <small id="today"></small></h2>
+<div class="card accent" id="todayBox">
+  <div class="empty">불러오는 중…</div>
+</div>
+<div class="card">
+  <h3>이번 주 리듬</h3>
+  <div class="week" id="week"></div>
+  <div class="note">월 파이프라인 점검 · 수 대본 검토 · 목 배치 촬영 · 금 발주·공지 · 토 컨설팅 자료 · 일 주간 정리. 하루는 6시간×4 슬롯으로 (9/29 메모).</div>
+</div>
+
+<h2>이번 주 최우선 5 <small>현금에 가깝고 선행 조건일수록 위</small></h2>
+<div class="card">
+  <ul class="list">
+    <li><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">3PL 수강생 재고 당근·외부 판매 첫 등록</div><div class="m">동의서(수수료 15~20%) → 재고 시트 판매 열 + 사진 → 당근 비즈프로필 → 30개 등록 · 통신판매업 신고 사업자 명의 필수 · 기한 10/1</div></li>
+    <li><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">신규 강의 플랫폼 3자 구도 확정 (메이브님)</div><div class="m">초이스토리 PD 화상 미팅 → 10/8 종혁 본부장 미팅에서 1:1:1 역할·배분 제시 · 250만×20명 = 5,000만, 광고 1,000만 제외 4,000만</div></li>
+    <li><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">디노(미니쌤) 12주 빌드업 합의 → 10/5 1주차 시작</div><div class="m">AI 셀러 실무 교육 · 1달 90 / 2달 200 / 3달 350만 기준 · 상품별 배분 비율 확정</div></li>
+    <li><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">원크루·툴박스 문의 대응 — 가격 안내 후 상담 통화</div><div class="m">원크루 정가 3,900만 / 수강생 출신 3,300만 · 일십백천 990만 · 툴박스 사전 신청 안내 문구 확정</div></li>
+    <li><span class="tag p0">P0</span><div class="t">10월 말 무료 라이브 날짜·신청 링크 확정</div><div class="m">록터뷰 2회차 영상 설명란·고정댓글에 링크 → 신규 리스트 확보 · <b>날짜 확인 필요</b></div></li>
+  </ul>
+</div>
+
+<h2>페이지</h2>
+<div class="grid nav">
+  <a href="roadmap/"><b>돈 버는 로드맵</b><span>수익 줄 · 3단계 · 원칙</span></a>
+  <a href="priority/"><b>우선순위</b><span>P0 → P3 · 보류 목록</span></a>
+  <a href="people/"><b>사람별 현황</b><span>메이브님·디노·뿌요·지영</span></a>
+  <a href="schedule/"><b>일정 도식</b><span>10월 타임라인 · 마일스톤</span></a>
+  <a href="sources/"><b>출처·갱신</b><span>기록 근거 · 업데이트 방법</span></a>
+</div>
+
+<script>
+const EVENTS = __EVENTS__;
+const P = {P0:'p0',P1:'p1',P2:'p2',P3:'p3'};
+function ymd(d){const z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate());}
+const now = new Date(); const today = ymd(now);
+const days=['일','월','화','수','목','금','토'];
+document.getElementById('today').textContent = today.replace(/-/g,'.')+' ('+days[now.getDay()]+')';
+const dayN = s=>Math.round((new Date(s+'T00:00:00')-new Date(today+'T00:00:00'))/86400000);
+const over = EVENTS.filter(e=>dayN(e.d)<0 && dayN(e.d)>=-14);
+const td = EVENTS.filter(e=>e.d===today);
+const up = EVENTS.filter(e=>dayN(e.d)>0 && dayN(e.d)<=3);
+function li(e,label){return '<li><span class="tag '+P[e.p]+'">'+e.p+'</span>'+(e.cash?'<span class="tag cash">현금</span>':'')+(label?'<span class="tag">'+label+'</span>':'')+'<div class="t">'+e.t+'</div><div class="m">'+e.who+' · '+e.d.slice(5).replace('-','/')+'</div></li>';}
+let html='';
+if(td.length) html+='<h3>오늘</h3><ul class="list">'+td.map(e=>li(e)).join('')+'</ul>';
+if(over.length) html+='<h3 style="margin-top:12px">지난 기한 (밀린 것부터)</h3><ul class="list">'+over.sort((a,b)=>a.d<b.d?-1:1).map(e=>li(e,'D'+dayN(e.d))).join('')+'</ul>';
+if(up.length) html+='<h3 style="margin-top:12px">다가오는 3일</h3><ul class="list">'+up.sort((a,b)=>a.d<b.d?-1:1).map(e=>li(e,'D+'+dayN(e.d))).join('')+'</ul>';
+if(!html) html='<div class="empty">오늘 잡힌 기한이 없습니다. 이번 주 최우선 5개 중 위에서부터.</div>';
+html += '<div class="note">추천 순서: 현금에 가까운 P0 → 기한 지난 것 → 오늘 기한 → 3일 내. 데이터는 노션 액션보드·플라우드 녹음·클로드 대화에서 정리(갱신일 기준).</div>';
+document.getElementById('todayBox').innerHTML = html;
+const rhythm=['주간 정리','파이프라인 점검','물류 피크 대응','대본 검토','배치 촬영','발주·공지','컨설팅 자료'];
+document.getElementById('week').innerHTML = days.map((d,i)=>'<div class="'+(i===now.getDay()?'on':'')+'"><b>'+d+'</b>'+rhythm[i]+'</div>').join('');
+</script>
+""".replace("__EVENTS__", json.dumps(EVENTS, ensure_ascii=False))
+
+# ---------------------------------------------------------------- 로드맵
+ROADMAP = """
+<h1>돈 버는 로드맵</h1>
+<p class="note">강의·컨설팅은 이미 뽑을 만큼 뽑았다고 보고 독립 유지, 그와 무관한 신규 파이프라인으로 2~3개월 내 월 순수익 3,000~4,000만을 만드는 것이 9월 중순의 결정입니다. 여기에 9/29 메이브님과 논의한 '신규 강의 플랫폼'이 더해졌습니다.</p>
+
+<h2>돈이 나오는 줄 <small>지금 → 3개월</small></h2>
+<div class="card wrapx">
+<table>
+<tr><th>줄</th><th>내용</th><th style="text-align:right">월 기대</th></tr>
+<tr><td>원크루</td><td>평생 컨설팅 · 정가 3,900만 / 수강생 출신 3,300만 · 추석 특강 100명 → 1~2명 전환</td><td class="num">3,300만+/건</td></tr>
+<tr><td>신규 강의 플랫폼</td><td>메이브님과 3인 구도(강사 / 기획·커뮤니티 / 모객). 250만×20명 = 5,000만, 광고 1,000만 제외 4,000만. 25명이면 각 1,300만</td><td class="num">1,300만+</td></tr>
+<tr><td>특강 + 컨설팅</td><td>진단 20만 / 4주 60~90만, 메이브님 수강생 포함, 슬롯 주5·동시5 (배분 사전 합의)</td><td class="num">500만+</td></tr>
+<tr><td>300만 툴킷 프로그램</td><td>자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만 · 1기 8명 목표</td><td class="num">2,400만/기</td></tr>
+<tr><td>구독 창립멤버</td><td>연 10만, 100명 한정, 스마트스토어 연간권 선판매</td><td class="num">1,000만</td></tr>
+<tr><td>루크 툴박스</td><td>월 19,900 / 연 199,000 · 12월 500명 → 3월 1,000명 → 6월 월 3,000만</td><td class="num">12월 1,000만</td></tr>
+<tr><td>AI 스튜디오 맞춤</td><td>지인 10명 영업 → 첫 3건 반값(75~100만) · 2주 안에 생존 판단</td><td class="num">225~300만</td></tr>
+<tr><td>3PL 재고 외부 판매</td><td>수강생 재고를 회사가 당근·번개장터·네이버에서 판매, 수수료 15~20%</td><td class="num">재고 회전×수수료</td></tr>
+<tr><td>키티티 컨설팅</td><td>월 고정 자문 + 매출 연동 (자문 계약서로 유료 전환)</td><td class="num">50~100만</td></tr>
+<tr><td>유튜브 멤버십</td><td>4,900원, 특강 풀버전·월 상품 브리핑 (파일 X)</td><td class="num">35~100만</td></tr>
+<tr><td>메이크업헬퍼 위탁</td><td>원크루 최은봉 대표 건 · 12주 테스트, 광고 상한 약 189만, 11월 말 판정</td><td class="num">판정 후</td></tr>
+</table>
+<div class="note">숫자는 모두 루크 본인 기록(9/14~9/29 노션·녹음) 기준의 계획값이며 실적이 아닙니다.</div>
+</div>
+
+<h2>3단계</h2>
+<div class="card">
+  <div class="steps">
+    <div><b>1단계</b>지금~10월<br>현금 회수</div>
+    <div><b>2단계</b>11~12월<br>구독·플랫폼 세우기</div>
+    <div><b>3단계</b>2027 1분기<br>확장·이전</div>
+  </div>
+  <ul class="list">
+    <li><div class="t">1단계 · 지금~10월 — 현금 회수</div><div class="m">원크루 1~2명 · 3PL 재고 판매 첫 등록 · 디노 12주 시작 · 툴박스 결제 심사 통과 후 사전 신청 → 창립멤버 · 10월 말 무료 라이브로 신규 리스트 · 10/8 본부장 미팅으로 플랫폼 3자 구도 확정</div></li>
+    <li><div class="t">2단계 · 11~12월 — 구독·플랫폼 세우기</div><div class="m">툴박스 500명 · 신규 강의 플랫폼 1기 모집 · 메이크업헬퍼 11월 말 판정 · 3PL 판매 실적 정리 · 300만 툴킷 1기</div></li>
+    <li><div class="t">3단계 · 2027 1분기 — 확장·이전</div><div class="m">회사 자체 강의(3PL 재고 판매와 연계) · 툴박스 1,000명 · 서울 이전 검토(현 사무실은 창고·물류 거점) · 키티티 샵 2월 오픈 · 지영 정부지원사업 3월 집중</div></li>
+  </ul>
+</div>
+
+<h2>신규 강의 플랫폼 <small>9/29 메이브님 회의</small></h2>
+<div class="card gold">
+  <dl class="kv">
+    <dt>구도</dt><dd>강사(플레이어) / 기획·커뮤니티 운영 / 모객 채널 — 3각. 커뮤니티 전담자 포함 1:1:1 배분</dd>
+    <dt>수치</dt><dd>1인 250만 · 20명 = 5,000만 − 광고 약 1,000만 = 4,000만. 3인이면 25명 모집 시 각 1,300만</dd>
+    <dt>후보</dt><dd>초이스토리 PD(인력 풀·채널 보유, 먼저 접촉) → 종혁 본부장(기획·판 키우기, 10/8 미팅)</dd>
+    <dt>반면교사</dt><dd>인베이더 실패: 큰돈 위주 광고 집행, 폐쇄적 채널 확장, 상담 인력 부재, 관료적 강사 검증</dd>
+    <dt>장기</dt><dd>내년 초 서울 이전(사무실·강의장), 현 사무실은 창고·물류 · 월 렌트 300~500만 넘으면 건물 매입 검토</dd>
+  </dl>
+</div>
+
+<h2>원칙 · 하지 않기로 한 것</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">하지 않는다</div><div class="m">사입 확장(사무실 전체가 이미 사입 중) · 브랜드↔셀러망 공급 플랫폼 · B2B 운영 대행 · 고단가 강의 프로그램 신설</div></li>
+    <li><div class="t">보류 (10월 정산 확인 전)</div><div class="m">새 사이트·앱 개발 · 새 강의 시리즈 기획 · 셀러 OS · 액션아이템 자동 수집 앱</div></li>
+    <li><div class="t">돈 원칙</div><div class="m">재고·개발 0원, 보유 현금은 런칭 광고에만 · 선매입 금지 · 수강생에겐 도구 기본판 무료(강의 후킹), 외부·맞춤·구독은 유료</div></li>
+    <li><div class="t">일 원칙</div><div class="m">루크는 녹화·협상·규칙 승인만, 운영은 사람과 자동화에 · 시스템 먼저, 사람 나중 · 정리해주는 선배 톤</div></li>
+  </ul>
+</div>
+"""
+
+# ---------------------------------------------------------------- 우선순위
+PRIORITY = """
+<h1>우선순위</h1>
+<p class="note">기준: 현금에 가깝고 다른 일의 선행 조건일수록 위. 기한은 노션 액션보드 기준. [결정]은 완료로, [보류]는 P3로.</p>
+
+<h2>P0 · 이번 주 <small>~10/5</small></h2>
+<div class="card red">
+  <ul class="list">
+    <li><span class="tag cash">현금</span><div class="t">3PL 수강생 재고 당근·외부 판매 — 2주 내 첫 등록</div><div class="m">기한 10/1 · 동의서 → 시트·사진 → 당근 비즈프로필 → 30개 등록 → 광고 10만 테스트</div></li>
+    <li><span class="tag cash">현금</span><div class="t">초이스토리 PD 화상 미팅 → 10/8 종혁 본부장 미팅 안 확정</div><div class="m">3자 협업 구조·커뮤니티 운영 역할·1:1:1 배분</div></li>
+    <li><span class="tag cash">현금</span><div class="t">디노 12주 빌드업안 전달·합의 (10/4) → 10/5 1주차</div><div class="m">상품별 배분 비율 확정 · 1주차 콘셉트 3안 중 선택</div></li>
+    <li><span class="tag cash">현금</span><div class="t">원크루 문의(오픈채팅) 가격 안내 + 상담 통화</div><div class="m">3,900만 / 3,300만 · 신한카드 네이버페이 60개월 '세팅 가능'으로 표현</div></li>
+    <li><span class="tag cash">현금</span><div class="t">툴박스 구독권 오픈일·가격·사전 신청 안내 문구</div><div class="m">토스페이먼츠 심사 전이라 사전 신청 형태</div></li>
+    <li><div class="t">10월 말 무료 라이브 날짜·시간·신청 링크</div><div class="m">록터뷰 2회차 영상에 링크 · 날짜 확인 필요</div></li>
+    <li><div class="t">뷰셀 유튜브 2화 — 대본 9/30 · 촬영 10/2 · 공개 10/7</div><div class="m">담당 메이브님 · 3화는 실제 상품 마진 계산</div></li>
+    <li><div class="t">물류 안정화 — 책임자 단일화(9/30), 삭제/무효화 임시 규칙(10/1), 프로세스 맵(10/2), 운영 가이드(10/4)</div><div class="m">입고 미처리 상태에서 운송장 출력되는 오류 긴급 대응</div></li>
+    <li><div class="t">키티티바이지영 상표권 출원 (10/1, 30분)</div><div class="m">등록 1년 이상 소요 → 2월 오픈 역산 마지노선</div></li>
+    <li><div class="t">수강생 화장품법 소송 초동 대응 지원 (10/6)</div><div class="m">답변서 기한·변호사 연결 · 대응 전자책 20쪽 완성됨</div></li>
+  </ul>
+</div>
+
+<h2>P1 · 이달 <small>~10/31</small></h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">300만 툴킷 프로그램 구성안 확정 (툴킷 3개 + 8주 + 파일 구독)</div></li>
+    <li><div class="t">AI 스튜디오 — 포트폴리오·가격표 랜딩 + 시연 쇼츠 3개 + 지인 10명 영업</div></li>
+    <li><div class="t">툴박스 공개용 문구·주소 채우기 (루크가 줄 것 6가지: 채널 주소·문의 주소·컨설팅 설명·상세 검토·연간가·사진)</div></li>
+    <li><div class="t">키티티 — 자문 계약서 · 교육상품 가격 확정 · 상담 사이트 원장님 확인 · 미용 단톡방 200명</div></li>
+    <li><div class="t">지영 — 인스타 캘린더(10/1) · 대시보드(10/7) · 10/8 미팅 · 조달 마일스톤(10/15)</div></li>
+    <li><div class="t">메이크업헬퍼 — 계약서 수정본·공급가 재협상 전달, 12주 테스트 착수</div></li>
+    <li><div class="t">리나님 시간 기록 시트 2주 시범 → 크롬 확장 설계</div></li>
+    <li><div class="t">영상공장 API 키 5개 + 목소리 녹음 → 첫 실제 영상</div></li>
+    <li><div class="t">인스타 크리에이터 계정 전환 + 마케팅 업체 채널 인계 (유튜브 편집자 권한·틱톡 신규 계정)</div></li>
+    <li><div class="t">디노 AI 영상(힉스필드) 학습 기록 → 무료 전자책 → 유료 전자책 파이프라인</div></li>
+  </ul>
+</div>
+
+<h2>P2 · 다음 달 말</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">사진 기반 입고/검수 자동화 (설계 10/8 → 프로토타입 10/15)</div></li>
+    <li><div class="t">물류 권한 재설계·감사 로그 · 선반·라벨링 · CS 스크립트</div></li>
+    <li><div class="t">개인 트레이드 채널 개설·운영 (9/29 액션)</div></li>
+    <li><div class="t">'하루를 4번 쓰는 법' 영상 — 6h×4 슬롯 7일 파일럿 후 대본·촬영</div></li>
+    <li><div class="t">서울 이전·건물 매입 대비 로드맵 (내년 초)</div></li>
+    <li><div class="t">전화 상담 AI — 100건 통화 녹음 분석 (내 목소리 엔진 연계)</div></li>
+  </ul>
+</div>
+
+<h2>P3 · 보류</h2>
+<div class="card">
+  <ul class="list">
+    <li><span class="tag p3">보류</span><div class="t">새 사이트·앱 개발, 새 강의 시리즈, 셀러 OS — 10월 정산 확인 전까지</div></li>
+    <li><span class="tag p3">보류</span><div class="t">개발자 채용 — 구독자 수 기준으로 판단, 우선 PWA</div></li>
+    <li><span class="tag p3">보류</span><div class="t">사업가·자기계발용 핸드폰 앱(동기부여) — 6개월 후 단독 구독 검토</div></li>
+    <li><span class="tag p3">보류</span><div class="t">깃허브 저장소 전부 Private 전환 (Pages 유지하려면 Pro 필요)</div></li>
+  </ul>
+</div>
+
+<h2>최근 [결정]</h2>
+<div class="card accent">
+  <ul class="list">
+    <li><span class="tag done">결정</span><div class="t">신규 파이프라인 = 1인 AI 소프트웨어 스튜디오 → 가격은 소액 대량, 툴박스 구독 하나로 통합</div></li>
+    <li><span class="tag done">결정</span><div class="t">보유 현금 배분 — 재고·개발 0, 런칭 광고에만</div></li>
+    <li><span class="tag done">결정</span><div class="t">영상공장은 배포용 데스크톱 앱(각자 자기 키)</div></li>
+    <li><span class="tag done">결정</span><div class="t">록터뷰 2회차는 시연형 · 뷰셀 2화 주제 변경(트렌드·성분·브랜드)</div></li>
+    <li><span class="tag done">결정</span><div class="t">메이크업헬퍼 12주 5단계·손절선 (누적 광고적자 50만 정지)</div></li>
+    <li><span class="tag done">결정</span><div class="t">메이브님: GPT 해지 → 클로드·캔바 유료 (9/29)</div></li>
+  </ul>
+</div>
+"""
+
+# ---------------------------------------------------------------- 사람별
+PEOPLE = """
+<h1>사람별 현황</h1>
+<p class="note">같이 돈을 만드는 사람 순. 관계·현재 상태·돈 흐름·다음 할 일만 적었습니다. 개인사는 뺐습니다.</p>
+
+<h2>메이브님 · 뷰셀 (신정현)</h2>
+<div class="card accent">
+  <dl class="kv">
+    <dt>관계</dt><dd>협력 계약(직원 아님), 같은 사무실. 현재 매출을 만들어주는 핵심 인력. 스토어 물류는 수희</dd>
+    <dt>돈 흐름</dt><dd>강사 런칭(인베이더) 실효 수취율 GMV의 20% · 메이브님 수강생이 루크 수강생보다 훨씬 많이 유입 중 → 컨설팅 판매 배분 사전 합의 필요</dd>
+    <dt>지금</dt><dd>9/29 신규 강의 플랫폼 회의: 3자 구도(강사/기획·커뮤니티/모객), 1:1:1 배분, 인베이더 반면교사, 내년 초 서울 이전 논의 · 뷰셀 유튜브 2화 진행(촬영 10/2, 공개 10/7)</dd>
+    <dt>다음</dt><dd>초이스토리 PD 화상 미팅 → 10/8 종혁 본부장 미팅 · 캔바 재결제·클로드 유료 전환 · 가격관리 프로그램 스크롤 버그</dd>
+  </dl>
+</div>
+
+<h2>디노 · 미니쌤 (김수민)</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>관계</dt><dd>협력 계약, 같은 사무실. 첫 런칭 부진 후 반사입 모델로 전환한 사례. 30대 중후반</dd>
+    <dt>지금</dt><dd>9월 초 관계·계약 재정리 논의 → 9/28 멘토링에서 긍정적 변화 확인. 독립적인 신규 수익 모델 원함: <b>3개월 내 월 300만</b></dd>
+    <dt>플랜</dt><dd>『미니쌤, 12주의 지도』— AI 셀러 실무 교육 (파일럿 2.9만 → 키트 2.9만/원데이 4.9만 → 실무반 39만, 대행 15만/건) · 1달 90 / 2달 200 / 3달 350만 · 10/5 1주차</dd>
+    <dt>병행</dt><dd>힉스필드 등 AI 영상 학습을 인스타 '공부 N일차'로 기록 → 무료 전자책 → 유료 전자책 · 디노 전용 AI 서비스·프로그램 판매 사이트(루크가 구축)</dd>
+    <dt>다음</dt><dd>린 MVP 테스트(7~10일 주기, 광고 10만) 반복 · 아이템 100개 리스트 · 시간 기록</dd>
+  </dl>
+</div>
+
+<h2>뿌요 (최근영)</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>관계</dt><dd>디노 쪽 스태프이자 물류·코칭 담당. 물류 업데이트/운영 책임자 후보(9/30 지정)</dd>
+    <dt>돈 흐름</dt><dd>발주(시간당 2만, 월 150만 수준) + 코칭/컨설팅(일 최대 12건) → 월 450만대 구조 목표. 발주는 금요일부터</dd>
+    <dt>포지션</dt><dd>직함 '교육실장'으로 통일, 병원 상담실장급 톤앤매너 · 컨설팅 40분 표준 + 20분 정비</dd>
+    <dt>다음</dt><dd>연휴 이후 컨설팅 오픈 안내 · 프로세스 맵(10/2) · 피크일 운영안·금요일 사전 공지(10/4) · 선반·라벨링(10/10) · 3기 종료 후 이미지 메이킹 지원(루크)</dd>
+  </dl>
+</div>
+
+<h2>윤지영 · 키티티바이지영</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>관계</dt><dd>성신여대 인근 메이크업샵 컨설팅. 유료 자문(월 고정 + 매출 연동)으로 전환 예정</dd>
+    <dt>지금</dt><dd>1인샵 월 450~1,100만 매출 · 웨딩 중심 프리미엄 토탈샵 확장 계획(헤어·메이크업·에스테틱) · 초기 고정비 약 1.1억, 부족분 약 5,000만 조달 방안 미정 · 정부지원사업으로 내년 최소 1억 조달 목표(2027-03~)</dd>
+    <dt>만든 것</dt><dd>모바일 상담 사이트 v1 · 네이버 플레이스 카드뉴스 5종 · 블로그 타이퍼(키워드 전략 재검토: '데일리메이크업' 등 시술명 중심)</dd>
+    <dt>다음</dt><dd>상표권 출원(10/1) · 인스타 주간 캘린더(10/1) · 상담 사이트 원장 확인(10/5) · 대시보드(10/7) · 10/8 미팅(지원사업 후보 3개·사업계획서 초안) · 조달 마일스톤(10/15) · 샵 2월 오픈</dd>
+  </dl>
+</div>
+
+<h2>그 외</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">루나</div><div class="m">콘텐츠 제작·발행 총괄. 3PL 재고 사진 촬영 담당. 가장 레버리지 큰 팀원</div></li>
+    <li><div class="t">리나님 (물류)</div><div class="m">시간 기록 시트 2주 시범(9/29~10/12) → 크롬 확장 설계</div></li>
+    <li><div class="t">박태경 대표 (원크루)</div><div class="m">3회차 컨설팅 진행 중 · 100문100답 세션 내 공동 작성 · 결정 규칙표·손절 규칙표</div></li>
+    <li><div class="t">최은봉 대표 (원크루) — 메이크업헬퍼</div><div class="m">위탁판매 계약서 수정본·공급가 재협상 · 12주 테스트 설계서 · 당근 1순위, 토스 2순위</div></li>
+    <li><div class="t">종혁 본부장 / 초이스토리 PD</div><div class="m">신규 강의 플랫폼 협업 후보. PD 먼저, 본부장 10/8</div></li>
+  </ul>
+</div>
+"""
+
+# ---------------------------------------------------------------- 일정
+def timeline_html():
+    out = []
+    for e in EVENTS:
+        cls = "big" if e["cash"] else ""
+        d = datetime.date.fromisoformat(e["d"])
+        wd = "월화수목금토일"[d.weekday()]
+        out.append(f'<li class="{cls}"><div class="d">{e["d"][5:].replace("-","/")} ({wd}) · {e["who"]} · {e["p"]}</div><div class="t">{e["t"]}</div></li>')
+    return "\n".join(out)
+
+SCHEDULE = f"""
+<h1>일정 도식</h1>
+<p class="note">확정·기한이 있는 것만. 금색 점은 현금에 직접 닿는 일. 날짜가 없는 일은 <a href="../priority/">우선순위</a>에.</p>
+
+<h2>하루 슬롯 <small>6시간 × 4</small></h2>
+<div class="card">
+  <div class="slots">
+    <div><b>슬롯 1</b>딥워크<br>개발·대본</div>
+    <div><b>슬롯 2</b>사람<br>컨설팅·미팅</div>
+    <div><b>슬롯 3</b>실행<br>운영·촬영·발주</div>
+    <div><b>슬롯 4</b>정리<br>기록·다음날</div>
+  </div>
+  <div class="note">한 슬롯 = 한 산출물. 고인지 작업은 앞 슬롯, 소통·실행은 뒤 슬롯. 슬롯 사이에 종료-준비-시작 리추얼(9/29 메모). 7일 파일럿 후 영상으로.</div>
+</div>
+
+<h2>10월 타임라인</h2>
+<div class="card">
+  <ul class="tl">
+    {timeline_html()}
+  </ul>
+</div>
+
+<h2>마일스톤</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">10/8 · 신규 강의 플랫폼 3자 구도 결정</div><div class="bar"><i style="width:30%"></i></div><div class="m">PD 접촉 → 본부장 미팅 → 배분안 합의</div></li>
+    <li><div class="t">10월 말 · 무료 라이브 → 신규 리스트</div><div class="bar"><i style="width:20%"></i></div><div class="m">록터뷰 2회차 촬영 완료, 날짜 미정</div></li>
+    <li><div class="t">11월 말 · 메이크업헬퍼 9주차 판정</div><div class="bar"><i style="width:15%"></i></div><div class="m">계약서·설계서 완료, 공급가 재협상 중</div></li>
+    <li><div class="t">12월 · 툴박스 500명</div><div class="bar"><i style="width:10%"></i></div><div class="m">사이트 구축 완료, 결제 심사·공개 문구 남음</div></li>
+    <li><div class="t">2027 2월 · 키티티 샵 오픈</div><div class="bar"><i style="width:25%"></i></div><div class="m">상표권 출원 10/1이 마지노선</div></li>
+    <li><div class="t">2027 1분기 · 서울 이전 검토 · 회사 자체 강의</div><div class="bar"><i style="width:5%"></i></div><div class="m">플랫폼 안정화가 전제</div></li>
+  </ul>
+  <div class="note">진행 막대는 기록 기준의 대략적 감각값입니다(측정치 아님).</div>
+</div>
+"""
+
+# ---------------------------------------------------------------- 출처
+SOURCES = """
+<h1>출처 · 갱신 방법</h1>
+
+<h2>이 페이지의 근거</h2>
+<div class="card src">
+  <p>모든 숫자·날짜·이름은 루크 본인의 기록에서 가져왔습니다. 외부 검색으로 확인한 사실은 없으며, 계획값은 실적이 아닙니다.</p>
+  <h3>플라우드 녹음 (요약 노트)</h3>
+  <ul>
+    <li>09-29 메이븐 — 신규 강의 플랫폼 사업 구상 및 전략 수립 회의</li>
+    <li>09-29 하루를 4번 쓰는 법 (작업 슬롯 메모)</li>
+    <li>09-28 회의 — AI 영상 제작 전략·신규 사이트·자동 등록 오류·소싱 재교육</li>
+    <li>09-28 주간 회의 — 업무 프로세스 효율화 및 물류 시스템 안정화</li>
+    <li>09-28 디노(김수민) 멘토링 · 09-07 관계 정리 상담 (개인사 제외)</li>
+    <li>09-26 상담: 지영 — 정부지원사업 · 09-09 지영 확장 미팅/갈매 · 09-04 지영 뷰티 사업 현금흐름 회의</li>
+    <li>09-17 [뿌요] 사업 운영 최적화 노트 · 09-11 상담: 최근영(뿌요)</li>
+  </ul>
+  <h3>클로드 대화</h3>
+  <ul>
+    <li>1년 내 10억 수익 달성을 위한 사업 전략 컨설팅 (7월)</li>
+    <li>온라인 부업 수익 모델 전략 상담 (8/29) · 9월 수익 전략 (9/15, 9/17)</li>
+    <li>추석 특강 후 원크루 전환 전략 (9/17~26) · 오픈채팅 문의 답변 다듬기 (9/26)</li>
+    <li>디노 인스타+AI 사업 빌드업 (9/28) · 뷰셀 10분 대본 빌드업 (9/29)</li>
+  </ul>
+  <h3>노션 '루크 액션보드'</h3>
+  <ul><li>9/14~9/29 항목의 할 일·기한·상태·[결정]</li></ul>
+  <h3>프로젝트 기록</h3>
+  <ul><li>내 연봉 10억 만들기 프로젝트의 overview · principles · ways-of-working · luke-toolbox · 3pl-service</li></ul>
+</div>
+
+<h2>갱신 방법</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">수동</div><div class="m">클로드에게 "10억 페이지 갱신"이라고 하면 노션·플라우드·최근 대화를 다시 읽고 파일 전체를 새로 써서 push합니다. 링크는 ?v=숫자를 올려서 공유.</div></li>
+    <li><div class="t">자동 (선택)</div><div class="m">매일 아침 스케줄 작업으로 같은 절차를 돌리면 '오늘의 추천 일정'이 매일 새 데이터로 바뀝니다. 설정 여부는 루크가 결정.</div></li>
+    <li><div class="t">구조</div><div class="m">build.py 하나가 모든 index.html을 생성. CSS·JS 인라인, 외부는 구글 폰트만. 검색엔진 noindex.</div></li>
+  </ul>
+</div>
+
+<h2>주의</h2>
+<div class="card gold">
+  <p style="font-size:14px">협력자 이름과 계획 금액이 들어 있으니 링크는 팀 내부에만 공유하세요. 수강생 소송 건은 이름을 뺐고, 건강·개인 관계 기록은 넣지 않았습니다.</p>
+</div>
+"""
+
+def write(path, html):
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+
+def main():
+    base = os.path.dirname(os.path.abspath(__file__))
+    write(os.path.join(base, "index.html"), page("홈", INDEX, root="./"))
+    write(os.path.join(base, "roadmap", "index.html"), page("돈 버는 로드맵", ROADMAP))
+    write(os.path.join(base, "priority", "index.html"), page("우선순위", PRIORITY))
+    write(os.path.join(base, "people", "index.html"), page("사람별 현황", PEOPLE))
+    write(os.path.join(base, "schedule", "index.html"), page("일정 도식", SCHEDULE))
+    write(os.path.join(base, "sources", "index.html"), page("출처·갱신 방법", SOURCES))
+    print("built", UPDATED)
+
+if __name__ == "__main__":
+    main()
