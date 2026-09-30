@@ -86,6 +86,16 @@ td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;
 .steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
 .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
 .bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 .foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
 .src{font-size:12px;color:var(--muted)}
 .src ul{padding-left:16px;margin:6px 0}
@@ -167,7 +177,48 @@ td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;
   <div class="note">진행 막대는 기록 기준의 대략적 감각값입니다(측정치 아님).</div>
 </div>
 
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
 <div class="foot">내 연봉 10억 만들기 · 갱신 2026-09-30 · <a href="../sources/">출처·갱신 방법</a></div>
 </div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list li').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
 </body>
 </html>
