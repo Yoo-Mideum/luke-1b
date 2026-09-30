@@ -113,6 +113,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <body>
 <div class="wrap">
 <div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-09-30</span></div>
+<script>window.LUKE_ROOT="../";</script>
 
 <h1>돈 버는 로드맵</h1>
 <p class="note">강의·컨설팅은 이미 뽑을 만큼 뽑았다고 보고 독립 유지, 그와 무관한 신규 파이프라인으로 2~3개월 내 월 순수익 3,000~4,000만을 만드는 것이 9월 중순의 결정입니다. 여기에 9/29 메이브님과 논의한 '신규 강의 플랫폼'이 더해졌습니다.</p>
@@ -187,18 +188,19 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   function wire(li){
     if(li.dataset.wired) return; li.dataset.wired='1';
     const t=li.querySelector('.t'); if(!t) return;
-    const id=li.dataset.id||slug(t.textContent);
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
     li.dataset.id=id; li.classList.add('chk');
     const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
     const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
     if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
     li.appendChild(cb); li.appendChild(body);
     const apply=()=>{li.classList.toggle('done',cb.checked)};
     apply();
-    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
   }
   function render(){
-    document.querySelectorAll('ul.list li').forEach(wire);
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
     document.querySelectorAll('.donebox').forEach(box=>{
       const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
       box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';

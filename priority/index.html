@@ -113,15 +113,17 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <body>
 <div class="wrap">
 <div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-09-30</span></div>
+<script>window.LUKE_ROOT="../";</script>
 
 <h1>우선순위</h1>
 <p class="note">기준: 현금에 가깝고 다른 일의 선행 조건일수록 위. 기한은 노션 액션보드 기준. [결정]은 완료로, [보류]는 P3로.</p>
 
 <h2>P0 · 이번 주 <small>~10/5</small></h2>
 <div class="card red">
-  <ul class="list">
+  <ul class="list tasks">
+    <li data-g="developer-accounts"><span class="tag cash">선행 조건</span><div class="t">개발자 계정 3종 등록 — Apple Developer / Google Play / Microsoft Store</div><div class="m">기한 10/2 · 앱 배포(툴박스 PWA→앱, 영상공장, 블로그타이퍼) 전부의 앞단. 루크가 "제일 높은 등급"으로 지정(9/30)</div></li>
+    <li data-g="platform-pd-meeting"><span class="tag cash">현금</span><div class="t">신규 강의 플랫폼 3자 구도 — 초이스토리 PD 미팅(모객) → 10/8 종혁 본부장(락인)</div><div class="m"><a href="../platform/">전략 페이지</a> · 나머지 우선순위는 이 둘의 결과에 따라 달라짐(루크 9/30)</div></li>
     <li><span class="tag cash">현금</span><div class="t">3PL 수강생 재고 당근·외부 판매 — 2주 내 첫 등록</div><div class="m">기한 10/1 · 동의서 → 시트·사진 → 당근 비즈프로필 → 30개 등록 → 광고 10만 테스트</div></li>
-    <li><span class="tag cash">현금</span><div class="t">초이스토리 PD 화상 미팅 → 10/8 종혁 본부장 미팅 안 확정</div><div class="m">3자 협업 구조·커뮤니티 운영 역할·1:1:1 배분</div></li>
     <li><span class="tag cash">현금</span><div class="t">디노 12주 빌드업안 전달·합의 (10/4) → 10/5 1주차</div><div class="m">상품별 배분 비율 확정 · 1주차 콘셉트 3안 중 선택</div></li>
     <li><span class="tag cash">현금</span><div class="t">원크루 문의(오픈채팅) 가격 안내 + 상담 통화</div><div class="m">3,900만 / 3,300만 · 신한카드 네이버페이 60개월 '세팅 가능'으로 표현</div></li>
     <li><span class="tag cash">현금</span><div class="t">툴박스 구독권 오픈일·가격·사전 신청 안내 문구</div><div class="m">토스페이먼츠 심사 전이라 사전 신청 형태</div></li>
@@ -135,7 +137,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 
 <h2>P1 · 이달 <small>~10/31</small></h2>
 <div class="card gold">
-  <ul class="list">
+  <ul class="list tasks">
     <li><div class="t">300만 툴킷 프로그램 구성안 확정 (툴킷 3개 + 8주 + 파일 구독)</div></li>
     <li><div class="t">AI 스튜디오 — 포트폴리오·가격표 랜딩 + 시연 쇼츠 3개 + 지인 10명 영업</div></li>
     <li><div class="t">툴박스 공개용 문구·주소 채우기 (루크가 줄 것 6가지: 채널 주소·문의 주소·컨설팅 설명·상세 검토·연간가·사진)</div></li>
@@ -151,7 +153,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 
 <h2>P2 · 다음 달 말</h2>
 <div class="card">
-  <ul class="list">
+  <ul class="list tasks">
     <li><div class="t">사진 기반 입고/검수 자동화 (설계 10/8 → 프로토타입 10/15)</div></li>
     <li><div class="t">물류 권한 재설계·감사 로그 · 선반·라벨링 · CS 스크립트</div></li>
     <li><div class="t">개인 트레이드 채널 개설·운영 (9/29 액션)</div></li>
@@ -199,18 +201,19 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   function wire(li){
     if(li.dataset.wired) return; li.dataset.wired='1';
     const t=li.querySelector('.t'); if(!t) return;
-    const id=li.dataset.id||slug(t.textContent);
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
     li.dataset.id=id; li.classList.add('chk');
     const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
     const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
     if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
     li.appendChild(cb); li.appendChild(body);
     const apply=()=>{li.classList.toggle('done',cb.checked)};
     apply();
-    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
   }
   function render(){
-    document.querySelectorAll('ul.list li').forEach(wire);
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
     document.querySelectorAll('.donebox').forEach(box=>{
       const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
       box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
