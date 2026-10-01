@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>정부지원사업 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-01</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>정부지원사업</h1>
+<p class="note">루크 본인은 나이(만 39세 초과)·법인 대표권 때문에 창업 지원 대부분이 해당 없음. 이 페이지는 <b>키티티(윤지영 원장)·메이브님·디노·뿌요</b>가 받을 수 있는 것을 정리한 것. 2026-10-01 기준, 공고 원문에서 확인한 것만 [확인], 언론·정리글은 [2차], 못 찾은 것은 "확인 필요". 경쟁률은 공식 수치가 없으면 추정이라고 표시.</p>
+
+<h2>먼저 알아야 할 규칙 <small>창업의 법적 정의</small></h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">업력은 '최초 개업일' 기준</div><div class="m">개인사업자는 사업자등록증 개업연월일. 기존 사업을 계속하면서 새 사업자를 또 내면 새 사업자는 '창업'으로 안 쳐준다(시행령 제2조 2호) [확인]</div></li>
+    <li><div class="t">폐업 후 같은 업종 재창업은 1년 지나야 창업</div><div class="m">2026년 9월 시행 개정으로 3년 → 1년으로 단축 [2차: 아시아투데이·아시아경제 2026-08-25]. 중기부 보도자료 원문 확인 필요</div></li>
+    <li><div class="t">제외 사유를 7년 안에 해소하면 해소한 날부터 창업 인정</div><div class="m">2026-01-01 시행 개정 [확인: 중기부 공지]</div></li>
+    <li><div class="t">같은 해 창업사업화 사업 2개 동시 수행 불가, 누적 3회 선정 시 제외</div><div class="m">국세·지방세 체납, 채무불이행도 제외 [확인: 초창패 2026 공고]</div></li>
+  </ul>
+  <div class="src">법령: <a href="https://www.law.go.kr" target="_blank">law.go.kr</a> 중소기업창업 지원법 시행령 제2조 · 해설 <a href="https://cert.k-startup.go.kr/usr/info/policyInfo.do?tempValue=0102" target="_blank">창업기업확인시스템</a> · 개정 공지 <a href="https://www.mss.go.kr/site/smba/ex/bbs/View.do?cbIdx=86&bcIdx=1064087&parentSeq=1064087" target="_blank">mss.go.kr</a></div>
+</div>
+
+<h2>윤지영 원장 — 2026년에 지원할 수 있었던 것</h2>
+<p class="note">전제: 1998년생(만 28세) 여성 · 서울 성북구 1인 메이크업샵(개인사업자, 업력 3년 이내, 오프라인 매출) · 대학원생 · 인스타 1,000+ · 2027년 2월 웨딩 중심 토탈샵 오픈 예정. <b>개업연월일 확인이 선행 과제</b> — 2027년 1~3월 공고 기준일에 3년을 넘으면 초기 트랙에서 빠진다.</p>
+
+<div class="card">
+  <h3>① 청년창업사관학교 16기 (중기부·중진공) <span class="tag p0">사업화자금</span></h3>
+  <dl class="kv">
+    <dt>자격</dt><dd>만 39세 이하 대표, 창업 3년 이내(기본과정) · 예비창업자 포함 [확인]</dd>
+    <dt>지원</dt><dd>최대 1억(총사업비 70% 이내, 평균 0.7억) + 사무공간·코칭·판로 [확인] · 자부담 30% [2차]</dd>
+    <dt>과제</dt><dd>서류 → 발표심사 → 협약 → 1년 입교 과정 [확인]</dd>
+    <dt>2026 접수</dt><dd>1/30 ~ 2/13 · 기본 650 + 심화 300명 [2차: 아시아경제]</dd>
+    <dt>경쟁률</dt><dd><b>5.5:1</b> (2025년 15기, 850명 모집·4,671명 지원, 중진공 발표) [확인]</dd>
+    <dt>맞는 이유</dt><dd>나이·업력 충족. 토탈샵 확장 자금으로 가장 큼. 단 '혁신성' 평가라 레슨 VOD·웨딩 패키지 등 서비스 모델로 포장 필요</dd>
+    <dt>링크</dt><dd><a href="https://www.k-startup.go.kr/web/contents/bizpbanc-ongoing.do?pbancClssCd=PBC010&schM=view&pbancSn=176107" target="_blank">K-Startup 공고</a> · <a href="https://start.kosmes.or.kr/yh_mbi011_001.do" target="_blank">사업소개</a> · 경쟁률 <a href="https://www.asiae.co.kr/article/2025032620465864400" target="_blank">아시아경제</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>② 초기창업패키지 일반형 (중기부·창업진흥원) <span class="tag p0">사업화자금</span></h3>
+  <dl class="kv">
+    <dt>자격</dt><dd>2023-01-23 ~ 2026-01-22 개업 · 나이 제한 없음 [확인]</dd>
+    <dt>지원</dt><dd>평균 5천만, 최대 1억, 10개월 · <b>수도권 자부담 현금 30%</b> [확인: 공고 제2026-38호]</dd>
+    <dt>과제</dt><dd>서류(2배수) → 심층인터뷰 → 발표. 평가 = 문제인식·실현가능성·성장전략·팀(PSST) [확인]</dd>
+    <dt>2026 접수</dt><dd>1/23 ~ 2/13 · 400개사 내외 [확인]</dd>
+    <dt>경쟁률</dt><dd>공식 수치 없음 · 추정 5~8:1 (청창사와 지원자 풀 겹치고 나이 제한 없음)</dd>
+    <dt>링크</dt><dd><a href="https://www.kised.or.kr/menu.es?mid=a10205020000" target="_blank">창업진흥원</a> · <a href="https://www.k-startup.go.kr" target="_blank">K-Startup</a></dd>
+  </dl>
+</div>
+
+<div class="card accent">
+  <h3>③ 소상공인 도약 지원사업 (舊 강한소상공인 + 로컬크리에이터) <span class="tag p0">2027 1순위</span></h3>
+  <dl class="kv">
+    <dt>자격</dt><dd>정상 영업 중인 소상공인 · 업력·나이 무관 · 유형: 로컬기업 육성(초기) / 강한소상공인(성장) [확인]</dd>
+    <dt>지원</dt><dd>1단계 300만 → 로컬 최대 5,000만 / 강한소상공인 최대 1억 · 자부담 20% 이상 [확인: 공고 전문]</dd>
+    <dt>과제</dt><dd>서류 → 성장지원 1,000개사 → 권역 오디션 540개사 → 전국 오디션 [확인]</dd>
+    <dt>2026 접수</dt><dd>4/1 ~ 5/6 (연장) [확인] · 가점: 신사업창업사관학교 수료 2점 등</dd>
+    <dt>경쟁률</dt><dd>공식 수치 없음 · 추정 4~6:1 (성장지원 단계)</dd>
+    <dt>맞는 이유</dt><dd>'라이프스타일·뷰티' 소상공인이 정확히 타깃. 오프라인 매출 있는 점포가 유리. 1인샵 → 웨딩 토탈샵 확장이 '성장' 서사 그대로</dd>
+    <dt>링크</dt><dd><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120120" target="_blank">기업마당 공고</a> · 접수 소상공인24</dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>④ 소상공인 스마트상점 기술보급 (소진공)</h3>
+  <dl class="kv">
+    <dt>자격</dt><dd>정상 영업 점포 · 미용업은 제외 업종 아님 [확인: 공고문]</dd>
+    <dt>지원</dt><dd>구입형 700만 한도(국비 70%) / 보편형 500만(50%) / 렌탈 연 350만 / S/W 연 30만(100%) [확인]</dd>
+    <dt>2026 접수</dt><dd>3/13 ~ 4/1 · 서면평가 [확인] · 경쟁률 확인 필요(추정 2~3:1)</dd>
+    <dt>맞는 이유</dt><dd>새 매장 예약·키오스크·CRM 설비 시점과 맞물림</dd>
+    <dt>링크</dt><dd><a href="https://www.sbiz.or.kr/smst/main.do" target="_blank">sbiz.or.kr 스마트상점</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>⑤ 소상공인 온라인판로 지원 (판판대로) · ⑥ 서울시 소상공인 온라인 판로개척</h3>
+  <dl class="kv">
+    <dt>⑤</dt><dd>상세페이지·콘텐츠 제작, 라이브커머스 제작·운영, SNS 마케팅 메뉴판 신청 · 2차 접수 5/27~6/10 [확인] · 금액·자부담 메뉴별 확인 필요 · <a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000122456" target="_blank">공고</a> · <a href="https://www.fanfandaero.kr" target="_blank">판판대로</a></dd>
+    <dt>⑥</dt><dd>서울 소재 소상공인 약 300개사, 진단→전략→판로 개설 · 접수 ~5/25 [확인] · <a href="https://news.seoul.go.kr/economy/archives/572407" target="_blank">서울시 공고</a></dd>
+    <dt>맞는 이유</dt><dd>레슨 VOD·전자책을 온라인 상품화할 때 콘텐츠 제작비·라이브커머스가 바로 연결</dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>⑦ 여성창업경진대회 제27회 (여성기업종합지원센터) <span class="tag p1">상금·가점</span></h3>
+  <dl class="kv">
+    <dt>자격</dt><dd>창업 7년 미만 여성 창업팀 + 예비 · 분야에 <b>K-뷰티</b> 명시 [확인]</dd>
+    <dt>지원</dt><dd>44팀 포상 총 1.1억 · 3년 미만 상위 13팀 '도전! K-스타트업' 예선 진출 [확인]</dd>
+    <dt>2026 접수</dt><dd>3/23 ~ 4/16 [확인]</dd>
+    <dt>경쟁률</dt><dd><b>39:1</b> (1,712팀 지원 / 44팀 포상, 센터 발표) [확인: 아시아경제 2026-04-28]</dd>
+    <dt>링크</dt><dd><a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000120559" target="_blank">공고</a> · <a href="https://www.wbiz.or.kr" target="_blank">wbiz.or.kr</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>⑧ 학생 창업유망팀 300+ (교육부) · ⑨ 창업중심대학 · ⑩ 성북구 창업챌린지</h3>
+  <dl class="kv">
+    <dt>⑧</dt><dd>구성원 전원 학생(대학원생 포함 여부 확인 필요) · 멘토링·시제품·교육부장관 인증서(타 사업 가점) · 접수 4/2~4/27 [확인] · <a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000121096" target="_blank">공고</a> · <a href="https://u300.kr" target="_blank">u300.kr</a></dd>
+    <dt>⑨</dt><dd>예비~7년 이내, 지역기반 평균 5천·최대 1억, 청년 60% 우선, 기창업자 자부담 30% [2차] · 접수 3/3~3/23 [확인] · 서울 권역 담당 대학 확인 필요 · 추정 5:1</dd>
+    <dt>⑩</dt><dd>성북구 3년 이내 창업자, 5개사 × 약 600만 + 성신여대 등 6개 대학 창업지원단 인큐베이팅 · 접수 ~4/6 [2차: 서울신문] · ICT 접목 우대 · <a href="https://go.seoul.co.kr/news/newsView.php?id=20260324500168" target="_blank">기사</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>⑪ 서울뷰티위크 비즈니스 밋업 피칭 · ⑫ SBA 크리에이티브포스(뷰티) · ⑬ 서울창업허브</h3>
+  <dl class="kv">
+    <dt>⑪</dt><dd>예비~7년 이내 뷰티·웰니스·플랫폼, 9팀, 총 상금 2,000만(대상 1,000만), 접수 5/26~6/26 [확인] · 제품·테크 중심이라 VOD 플랫폼 모델로 접근해야 가능성 · <a href="https://news.seoul.go.kr/economy/archives/572984" target="_blank">공고</a></dd>
+    <dt>⑫</dt><dd>서울 1인 창작자, 뷰티 트랙은 채널 6개월·K-뷰티 콘텐츠 10개 이상(2024 기준), 완주 시 제작비 500만 [2차] · 2026 공고 확인 필요 · <a href="https://creativeforce.sba.kr" target="_blank">creativeforce.sba.kr</a></dd>
+    <dt>⑬</dt><dd>공덕 입주(7년 이내, 4/6~4/20), AI 솔로창업단(1인 창업자, 6/29~7/15) [2차] · 투자형 스타트업 지향이라 지금 모델과는 거리 · <a href="https://www.startup-plus.kr" target="_blank">startup-plus.kr</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>⑭ 대출 — 보조금보다 현실적인 '보증금·인테리어' 재원</h3>
+  <dl class="kv">
+    <dt>서울시 창업기업자금</dt><dd>서울신용보증재단 창구, 최대 1억, 이차보전 1.8%(4년), 상시 접수 [2차: 복지로 요약] · <a href="https://www.seoul.go.kr/news/news_notice.do?nttNo=465395" target="_blank">서울시 공고</a> · <a href="https://www.seoulshinbo.co.kr" target="_blank">서울신보</a></dd>
+    <dt>청년고용연계자금</dt><dd>만 39세 이하 대표, 한도 7천만, 기준금리(가산 없음), 거치 2년+상환 3년, 미용업 가능 [확인: 공고 제2025-656호] · 분기별 접수 · <a href="https://www.bizinfo.go.kr/web/lay1/bbs/S1T122C128/AS/74/view.do?pblancId=PBLN_000000000117021" target="_blank">공고</a> · <a href="https://ols.semas.or.kr" target="_blank">소진공 OLS</a></dd>
+    <dt>청년전용창업자금</dt><dd>중진공, 만 39세 이하·업력 3년 미만, 한도 1억, 연 2.5% 고정 [2차] · 2026 공고 원문 확인 필요 · <a href="https://www.gov.kr/portal/service/serviceInfo/142000000099" target="_blank">정부24</a></dd>
+  </dl>
+</div>
+
+<div class="card">
+  <h3>2026년에 자격이 안 됐던 것</h3>
+  <p style="font-size:14px;margin:0">예비창업패키지(사업자 미보유자만, 3/6~3/24) · 신사업창업사관학교(예비창업자 대상) · 생애최초 청년창업(만 29세 이하 예비창업자)</p>
+</div>
+
+<h2>윤지영 원장 — 2027년 도전 리스트</h2>
+<div class="card red">
+  <p style="font-size:14px;margin:0 0 8px"><b>2027년 2월 새 샵 오픈이 업력에 미치는 영향:</b> 기존 사업자를 유지한 채 새 사업자를 추가해도, 폐업하고 동종 사업자를 새로 내도 업력은 <b>최초 개업일 기준</b>. 가장 단순한 길은 <b>같은 사업자에 사업장 이전 + 업종 추가(헤어·에스테틱)</b> — 지원사업상 불이익 없음.</p>
+</div>
+<div class="card wrapx">
+<table>
+<tr><th>사업</th><th>2027 자격</th><th>공고 시기</th><th>금액</th></tr>
+<tr><td><b>소상공인 도약 지원</b></td><td>유지(업력 무관) — 1순위</td><td>4월</td><td class="num">~1억</td></tr>
+<tr><td>청년창업사관학교 17기</td><td>만 29세 · 업력 3년 이내면 기본, 넘으면 심화(7년)</td><td>1월 말~2월</td><td class="num">~1억</td></tr>
+<tr><td>초기창업패키지</td><td>업력 3년 이내일 때만</td><td>1월 말~2월</td><td class="num">~1억</td></tr>
+<tr><td>창업중심대학</td><td>유지(7년 이내)</td><td>3월</td><td class="num">~1억</td></tr>
+<tr><td>스마트상점 기술보급</td><td>유지 — 새 매장 설비와 맞물림</td><td>3월</td><td class="num">~700만</td></tr>
+<tr><td>온라인판로(판판대로)</td><td>유지</td><td>3~4월 / 5~6월</td><td class="num">메뉴별</td></tr>
+<tr><td>서울시 온라인 판로개척</td><td>유지</td><td>4~5월</td><td class="num">확인 필요</td></tr>
+<tr><td>여성창업경진대회</td><td>유지(7년 미만)</td><td>3월 중순~4월</td><td class="num">상금</td></tr>
+<tr><td>서울뷰티위크 피칭</td><td>유지(7년 이내)</td><td>5~6월</td><td class="num">~1,000만</td></tr>
+<tr><td>학생 창업유망팀 300+</td><td>대학원 재학 중이면</td><td>4월</td><td class="num">인증·멘토링</td></tr>
+<tr><td>성북구 창업챌린지</td><td>성북구 내 유지 시</td><td>3~4월</td><td class="num">~600만</td></tr>
+<tr><td>서울신보 창업자금 / 청년고용연계 / 청년전용창업</td><td>유지(청년전용은 업력 3년 미만)</td><td>연중·분기</td><td class="num">7천만~1억</td></tr>
+</table>
+<div class="note">같은 해에 중앙정부 창업사업화(청창사·초창패·창업중심대학) 2개 동시 수행 불가 → 하나 고르고, 소상공인 도약·스마트상점·판로는 별도 축이라 병행 가능(확인 필요).</div>
+</div>
+
+<h2>2027년 일정 역산 <small>지금부터</small></h2>
+<div class="card">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="d">10월</div><div class="t">개업연월일 확인 · 사업자 하나로 갈지 결정 · 매출 증빙 정리(월별 카드·현금영수증)</div></li>
+    <li><div class="d">11월</div><div class="t">PSST 사업계획서 초안 — 문제(웨딩 준비 동선 분산) / 해결(토탈샵+레슨 VOD) / 성장(교육·전자책·플랫폼) / 팀</div></li>
+    <li><div class="d">12월</div><div class="t">K-Startup 회원가입·기업정보 등록, 세금 체납 0 확인, 인스타 콘텐츠 10개 이상 정리(크리에이티브포스용)</div></li>
+    <li class="big"><div class="d">1월 말~2월</div><div class="t">청창사 17기 또는 초창패 중 하나 접수 (둘 다 넣고 한 곳만 수행 가능)</div></li>
+    <li><div class="d">3월</div><div class="t">스마트상점 · 창업중심대학 · 여성창업경진대회 · 성북구 챌린지</div></li>
+    <li class="big"><div class="d">4월</div><div class="t">소상공인 도약 지원 (1순위) · 학생 창업유망팀 300+</div></li>
+    <li><div class="d">5~6월</div><div class="t">온라인판로 2차 · 서울시 판로개척 · 서울뷰티위크 피칭</div></li>
+  </ol>
+</div>
+
+<h2>디노 — 9년 사업자 폐업하고 1년 사업자만 두면?</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">지금(두 사업자 병행) 상태로는 1년 사업자가 '창업'이 아니다</div><div class="m">기존 사업을 계속하면서 새로 낸 사업 → 시행령 제2조 2호. 청창사·초창패 신청 불가(또는 9년 기준) [확인]</div></li>
+    <li><div class="t">9년 사업자를 폐업하면 → 폐업일(해소일)부터 1년 사업자가 창업기업으로 인정</div><div class="m">2026-01-01 개정 "제외 사유 해소 시 해소일부터 창업 인정" [확인]. 단 업력 기산점이 1년 사업자 개업일인지 해소일인지는 공고 FAQ 확인 필요</div></li>
+    <li><div class="t">두 사업자가 같은 업종(온라인 판매)이면 '폐업 후 동종 계속' 논점 추가</div><div class="m">1년 사업자의 업종코드가 9년 사업자와 다른지 먼저 확인. 같으면 폐업 후 1년 경과 기준이 걸릴 수 있음(확인 필요)</div></li>
+    <li><div class="t">폐업 후 가능 후보</div><div class="m">청년창업사관학교(만 39세 이하면) · 초기창업패키지(3년 이내) · 창업중심대학(7년 이내) · 소상공인 도약·온라인판로(소상공인이면 폐업 무관) · 재도전성공패키지는 '재창업이 폐업보다 먼저'라 자격 해석 불확실 → 주관기관 문의</div></li>
+    <li><div class="t">폐업 전 체크</div><div class="m">9년 사업자의 창업사업화 선정 이력(누적 3회 제한) · 세금 체납 0 · 폐업 시점이 2027년 1~2월 공고 기준일 <b>이전</b></div></li>
+  </ul>
+  <div class="src">재도전성공패키지 2026(폐업 후 재창업 7년 이내, 최대 1억, 접수 2/11~3/4) · 희망리턴패키지 재창업 성장형(폐업 후 재창업 1년 이내, 최대 2,000만) <a href="https://www.bizinfo.go.kr/sii/siia/selectSIIA200Detail.do?pblancId=PBLN_000000000117934" target="_blank">공고</a> · 서울형 다시서기 <a href="https://news.seoul.go.kr/economy/archives/573571" target="_blank">서울시</a></div>
+</div>
+
+<h2>메이브님 · 뿌요 — 바로 볼 것</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>메이브님</dt><dd>업력·나이 확인 필요. 3년 이내면 청창사(39세 이하)·초창패, 3~7년이면 창업도약패키지·창업중심대학. 소상공인 도약 지원은 업력 무관. 뷰셀 유튜브가 있으니 콘텐츠 제작비 쪽(온라인판로·크리에이티브포스)도 해당</dd>
+    <dt>뿌요</dt><dd>사업자 유무·나이 확인 필요. 예비창업자면 예비창업패키지(3월)·신사업창업사관학교·생애최초 청년창업(만 29세 이하). 사업자 있으면 위 윤지영 표와 동일 기준</dd>
+    <dt>루크</dt><dd>해당 없음(만 39세 초과 + 법인 대표). 힐링디어스 법인 설립일 기준 3년 이내면 초창패, 7년 이내면 디딤돌 R&D(소명서·효율 계산기 등 프로그램을 기술개발 과제로) 가능성만 남음 — 설립일 확인 필요</dd>
+  </dl>
+</div>
+
+<h2>공통 준비물</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">PSST 사업계획서</div><div class="m">문제인식 · 실현가능성 · 성장전략 · 팀. K-Startup 공고 첨부 양식, 온라인 접수만 [확인]</div></li>
+    <li><div class="t">자기부담금</div><div class="m">초창패 수도권 현금 30% · 청창사 30% · 창업중심대학 기창업 30% · 소상공인 도약 20% · 스마트상점 30~50% · 예비창업자는 100% 지원 가능 · VAT는 미지원 [2차]</div></li>
+    <li><div class="t">가점 만들기</div><div class="m">여성창업경진대회 수상, 학생창업유망팀 인증서, 신사업창업사관학교 수료(도약 지원 2점) — 2026년 안에 하나라도 따두면 2027 본게임에 가점</div></li>
+    <li><div class="t">공통 제외</div><div class="m">세금 체납 · 채무불이행 · 창업사업화 3회 이상 · 동일연도 중복 수행 · 환수금 미반환</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">원문 접근 실패로 '확인 필요'로 남긴 것: K-Startup 공고 본문(빈 페이지), law.go.kr 조문, 중진공·소진공 사이트, 2026 신사업창업사관학교 공고, 서울시 육성자금 첨부. 세부 요건은 매년 바뀌니 2027년 공고는 반드시 원문으로. 조사: 2026-10-01 클로드 웹 리서치.</div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-01 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
