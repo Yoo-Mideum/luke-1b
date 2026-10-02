@@ -4,7 +4,7 @@ python3 build.py 실행 시 index.html 과 하위 폴더 index.html 을 전부 �
 (부분 수정 금지 원칙: 매번 파일 전체를 다시 생성)"""
 import json, os, datetime
 
-UPDATED = "2026-10-02"
+UPDATED = "2026-10-03"
 SITE = "내 연봉 10억 만들기"
 
 CSS = r"""
@@ -266,7 +266,7 @@ EVENTS = [
   {"d":"2026-09-27","t":"블로그타이퍼 윈도우 클로드 코드로 이사 (깃허브 clone·데이터 복사·네이버 재로그인)","who":"루크","p":"P0","n":"https://app.notion.com/p/3e60cf8fea0481cca61cf923c28b9e54","cash":False},
   {"d":"2026-09-27","t":"셀수다 자동등록 설치파일 '바이러스 발견됨' 오탐 해결","who":"루크","p":"P0","n":"https://app.notion.com/p/3e10cf8fea04819d9453e64479413781","cash":False},
   {"d":"2026-09-27","t":"프로그램 시연 쇼츠·릴스 3개 촬영 (AI 스튜디오)","who":"루크","p":"P0","n":"https://app.notion.com/p/3db0cf8fea04815ea4afefeddb51d9e6","cash":False},
-  {"d":"2026-09-28","t":"10월 말 무료 라이브 날짜·시간·신청 링크 확정 — 날짜 확인 필요 [설명서]","who":"루크","p":"P0","g":"free-live","n":"https://app.notion.com/p/3e90cf8fea048171ac6bd0e23e1c5669","cash":False},
+  {"d":"2026-09-28","t":"10월 말 무료 라이브 날짜·시간·신청 링크 확정 — 10/2 인터뷰 녹음에선 10/25(일) 19:00로 언급, 확정·링크 확인 필요 [설명서]","who":"루크","p":"P0","g":"free-live","n":"https://app.notion.com/p/3e90cf8fea048171ac6bd0e23e1c5669","cash":False},
   {"d":"2026-09-28","t":"록터뷰 2회차 인터뷰 촬영 (사입 자동 소싱·자동 등록·상품 찾는 법)","who":"루크","p":"P0","n":"https://app.notion.com/p/3e90cf8fea048107ba1dff3afb73cedd","cash":False},
   {"d":"2026-09-30","t":"수강생 컨설팅 후속 — 소장 대응 결정·리셀 정리·브랜드 재점검 (익명)","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea0481b1af7ac611bcbe1835","cash":True},
   {"d":"2026-09-30","t":"지인 10명 직접 영업 → 첫 3건 반값 계약 (AI 스튜디오)","who":"루크","p":"P0","n":"https://app.notion.com/p/3db0cf8fea0481fbb205f0c4d7e7c998","cash":True},
@@ -322,24 +322,30 @@ EVENTS = [
   {"d":"2026-10-02","t":"개발자 계정 3종 등록 — Apple Developer($99/년) · Google Play($25 1회) · Microsoft Store(무료) [설명서]","who":"루크","p":"P0","g":"developer-accounts","n":"https://app.notion.com/p/3eb0cf8fea0481d8bbb4e0cbd5746fd9","cash":True},
   {"d":"2026-10-02","t":"박태경 대표님 사입 재고 관리 스프레드시트 제작·공유","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea0481029429c45d9b6bfe47","cash":True},
   {"d":"2026-10-02","t":"뷰셀 2화 촬영 (공개 10/7)","who":"메이브님","p":"P0","n":"https://app.notion.com/p/3ea0cf8fea04810db76ac350033501af","cash":False},
+  {"d":"2026-10-02","t":"힐링디어스(주) 본점 주소 확보 + 본점이전 등기·사업자등록 정정 (진행 중)","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea0481a7b0c0cfc85f4b3475","cash":False},
   {"d":"2026-10-02","t":"물류·전산 전체 프로세스 맵 + 병목 표시","who":"뿌요","p":"P1","cash":False},
+  {"d":"2026-10-03","t":"평생컨설팅 문의(뷰셀 수강생·쿠팡 영구정지) 답변 + 진단 상담 잡기 — 10/2 답장 발송, 회신 오면 일정 확정","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea0481839c31e0155118809c","cash":True},
   {"d":"2026-10-03","t":"물류 중복·충돌 기능 정리 우선순위","who":"루크","p":"P2","cash":False},
   {"d":"2026-10-04","t":"디노(미니쌤) 12주 빌드업안 전달·합의 (PDF 『미니쌤, 12주의 지도』) [설명서]","who":"루크→디노","p":"P0","g":"dino-12weeks","n":"https://app.notion.com/p/3e90cf8fea048120bd88de7b8953d9dc","cash":True},
   {"d":"2026-10-04","t":"키티티 AI 스타일 미리보기(/try) 구축 — 무료 1회·워터마크·유료 원본 다운로드","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea04812b8f86e2d58503588d","cash":True},
   {"d":"2026-10-04","t":"키티티 '연봉 10억 만들기' 페이지 배포 — 저장소 kititi-1b 생성·권한 후 push","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea04814187b8c258b3a2d38e","cash":True},
   {"d":"2026-10-04","t":"박태경 대표님 상품·가격 관리 체크리스트 제공 (주말 비판매 상품 솎아내기 등)","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea0481449491c4a611a60d57","cash":True},
   {"d":"2026-10-04","t":"키티티바이지영 상표 출원 (지영 명의, 특허로 전자출원) — 진행 중","who":"루크","p":"P0","n":"https://app.notion.com/p/3ec0cf8fea0481919532d4927c656358","cash":True},
+  {"d":"2026-10-04","t":"상품소싱 시트 마진 공식에 매입 배송비 반영 + 백설 와플믹스 10kg 역마진 재확인","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea04813d9f8aedfc7e183098","cash":True},
   {"d":"2026-10-04","t":"최저가 찾기 소싱 프로그램 새 버전 공개","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea04817fa0caf144b0c513ee","cash":False},
   {"d":"2026-10-04","t":"'내 연봉 10억 만들기' 대시보드 페이지 배포 (이 페이지 — 배포됨, 노션은 아직 '진행 중')","who":"루크","p":"P0","n":"https://app.notion.com/p/3ea0cf8fea048131b2d4dc645e92ac57","cash":False},
+  {"d":"2026-10-04","t":"마진메이커 크롬 확장 프로그램 설치·서버 배포 (진행 중)","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea0481b18770d4c9279c70a1","cash":False},
   {"d":"2026-10-04","t":"물류 표준 운영 가이드 배포 / 피크일(월·화) 택배 우선 운영안","who":"루크·뿌요","p":"P1","cash":False},
   {"d":"2026-10-05","t":"초이스토리 PD 화상 미팅 — 강의 플랫폼 모객 축 제안 (3자 구도) [설명서]","who":"루크·메이브님","p":"P0","g":"platform-pd-meeting","n":"https://app.notion.com/p/3eb0cf8fea04818c9bf6fda871eb645b","cash":True},
   {"d":"2026-10-05","t":"디노 12주 프로그램 1주차 시작 (AI 셀러 실무 교육 빌드업)","who":"디노","p":"P0","n":"https://app.notion.com/p/3e90cf8fea048120bd88de7b8953d9dc","cash":True},
   {"d":"2026-10-05","t":"리나님 시간 기록 시트 1~2주 시범 운영 (매일 퇴근 전 피드백)","who":"리나님·루크","p":"P0","n":"https://app.notion.com/p/3e90cf8fea0481f386b9d5f0d96feb05","cash":False},
   {"d":"2026-10-05","t":"키티티 상담 사이트 원장님 확인 (사진 동의·한마디·비포애프터)","who":"루크·지영","p":"P0","n":"https://app.notion.com/p/3e90cf8fea0481d2aa25e18cf01f6b09","cash":False},
   {"d":"2026-10-05","t":"영상공장 API 키 5개 발급 + 목소리 1~3분 녹음","who":"루크","p":"P0","n":"https://app.notion.com/p/3e90cf8fea048106ab46ee6d7425f2c8","cash":False},
+  {"d":"2026-10-05","t":"다음 주 평일 저녁 팀 회식 장소 확정·예약","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea0481a08c7ac705e54340e1","cash":False},
   {"d":"2026-10-05","t":"박태경 대표님 고객 안내용 템플릿 메시지 3종 초안 (발송·지연·취소)","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea04812c84d8d9344b5cfec6","cash":True},
   {"d":"2026-10-05","t":"현재 사무실 임대료·관리비 정산 완료 (기한 추정 · 확인 필요)","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea0481c2a29df44aa8ee126e","cash":False},
   {"d":"2026-10-06","t":"수강생 화장품법 소송 대응 지원 — 답변서 기한·변호사 연결 (익명) [설명서]","who":"루크","p":"P0","g":"lawsuit-support","n":"https://app.notion.com/p/3ea0cf8fea048198857ef162cf15ad7a","cash":True},
+  {"d":"2026-10-06","t":"10/6 12:00 소싱 멘토링 실습 진행 — 수강생 소싱 10개 점검 (10/2 멘토링 후속 · 일시 확인 필요)","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea048154a15bddc7596e1165","cash":True},
   {"d":"2026-10-06","t":"배수진(돈 걸고 목표달성 앱) 프로토타입 검토","who":"루크","p":"P1","n":"https://app.notion.com/p/3ea0cf8fea0481af8112d35bc3c0e23b","cash":True},
   {"d":"2026-10-06","t":"박태경 대표님 빠른 거절·통보 기준 문서화 (예: 2시간 내 판단 룰)","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea0481989321faefe3f4f605","cash":True},
   {"d":"2026-10-06","t":"물류 CS 포인트 분석 + 사전 안내 스크립트 정비","who":"루크","p":"P2","cash":False},
@@ -356,13 +362,20 @@ EVENTS = [
   {"d":"2026-10-08","t":"최은봉 대표님 미팅 14:00 — 당근 광고 중간 결과 화면 리뷰 (노션은 10/8, 녹음은 '수요일'=10/7 · 날짜 확인 필요)","who":"루크","p":"P0","n":"https://app.notion.com/p/3eb0cf8fea04814c922bc0af3fa5ab4f","cash":True},
   {"d":"2026-10-08","t":"키티티 사이트 웨딩 메인 전환 + 첫 화면 사진 30초 자동 교체","who":"루크","p":"P0","n":"https://app.notion.com/p/3ec0cf8fea0481698468f35e62d2e19b","cash":False},
   {"d":"2026-10-08","t":"윤지영 원장 — 개업연월일 확인 + 2027 정부지원 역산 일정 공유 (10/8 미팅)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ec0cf8fea0481c28e33d9b47b5e0817","cash":True},
+  {"d":"2026-10-08","t":"배송비 포함 총액 계산 시트 템플릿 배포 (10/2 멘토링 수강생용)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea0481a4837dc07d4eeaa7a7","cash":True},
   {"d":"2026-10-08","t":"지영 미팅 — 정부지원사업 후보 3개 + 사업계획서 초안 리뷰","who":"루크·지영","p":"P1","cash":False},
   {"d":"2026-10-08","t":"정부지원사업 맞춰 보기 사이트 「되는 지원사업 찾기」 구축 (클로드 코드)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ec0cf8fea048151a8acff9e6bbd0442","cash":False},
   {"d":"2026-10-08","t":"사진 기반 입고/검수 자동화 플로우 설계","who":"루크","p":"P2","cash":False},
+  {"d":"2026-10-09","t":"소싱 선별 기준표 작성 — 카탈로그 최저가순·총액 확인·리뷰 10개 이상·수량/용량 오류 점검","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea0481759627c752b5187600","cash":True},
+  {"d":"2026-10-09","t":"키티티 원장님께 /admin 노트 사용법 전달 + 시술 방향 검토·피드백 받기 (습도·채광·장소·이동시간)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea04810b808df66fdd4ed562","cash":False},
+  {"d":"2026-10-09","t":"키티티 /guide 내용 원장님 피드백 받기 (상담 12항목·데일리/촬영 기준·O/X 표·계절 색)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea0481839ab5c4f4a80c7caf","cash":False},
+  {"d":"2026-10-10","t":"멘토루크 블로그 — 블로그 프로그램을 개인 브랜딩(케어 이야기 중심)으로 독립 분기 1차 전환 (진행 중)","who":"루크","p":"P0","n":"https://app.notion.com/p/3ed0cf8fea0481bc8287dc9e35045f45","cash":False},
   {"d":"2026-10-10","t":"박태경 대표님 겨울 시즌 상품 추천 리스트 + 광고 예산 재배분 가이드 송부","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea0481b6bb58d7ba75a7c299","cash":True},
+  {"d":"2026-10-10","t":"최저가 미스매치 재검증 체크리스트(10/10) + 용량·구성 실질 단가 환산 규칙 문서화(10/11)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea0481289522d32db9f9c962","cash":True},
   {"d":"2026-10-10","t":"뿌요 짠테크 유튜브 2화 '겨자씨: 생애 첫 적금 100일 100만 원' 촬영·편집 (대본 완성)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ea0cf8fea048156bcacce118e9d3edd","cash":False},
   {"d":"2026-10-10","t":"물류 선반 추가·라벨링·박스 재배치","who":"뿌요","p":"P2","cash":False},
   {"d":"2026-10-11","t":"키티티 무료강의 ①② 제작 + 셀프메이크업 무료 PDF + 저가 VOD 5강 촬영","who":"루크","p":"P1","n":"https://app.notion.com/p/3dd0cf8fea04813c88c1e7123b988adc","cash":False},
+  {"d":"2026-10-12","t":"소액 테스트 프로토콜 문서화 — 초기 발주·리뷰 기준·가격 허용 범위·손절 조건","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea048178a51dcac4eccc0be0","cash":True},
   {"d":"2026-10-15","t":"블로그·인스타 자동화 프로그램 → '오프라인샵 팩'으로 정리 + 면책 화면 추가","who":"루크","p":"P1","n":"https://app.notion.com/p/3db0cf8fea0481d18720f2201f82b3b3","cash":True},
   {"d":"2026-10-15","t":"지영 내년 조달(최소 1억) 월별 마일스톤 확정","who":"루크·지영","p":"P1","cash":False},
   {"d":"2026-10-15","t":"미입고 자동 알림·반품 트리거 프로토타입","who":"루크","p":"P2","cash":False},
@@ -370,9 +383,12 @@ EVENTS = [
   {"d":"2026-10-16","t":"미니쌤 채널 공지 3회 (2·4·8주차: 10/12주, 10/26주, 11/23주) — 카톡·카페·유튜브","who":"루크","p":"P1","n":"https://app.notion.com/p/3e90cf8fea0481dc8e86ef413c4e23c8","cash":False},
   {"d":"2026-10-18","t":"키티티 무료강의 라이브 → 저가 VOD 판매 오픈 + 개인 레슨 네이버 예약 등록","who":"루크","p":"P1","n":"https://app.notion.com/p/3dd0cf8fea0481dc8934dc0c61d42b94","cash":True},
   {"d":"2026-10-20","t":"당근 2주 결과 판정 — 지속/수정/이동 답장 (최은봉 대표님)","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea0481eabc25d08c7f5019f3","cash":True},
+  {"d":"2026-10-24","t":"무료 라이브 특강 참석자 선물 준비 — 소싱처 전자책 + 자동 등록 프로그램 7일 이용권 (기한 추정 · 확인 필요)","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea0481ab9090e503641c10b6","cash":False},
+  {"d":"2026-10-25","t":"무료 라이브 특강 19:00 — 10/2 인터뷰 녹음에서 언급한 일시 (확정·신청 링크 확인 필요)","who":"루크","p":"P1","n":"https://app.notion.com/p/3e90cf8fea048171ac6bd0e23e1c5669","cash":False},
   {"d":"2026-10-31","t":"일십백천 수강생 수경 브랜드 10월 재시동 지원 — 보조 품목 규칙 사전조사, 다음 컨설팅 일정 확정","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea048138a1e5d67100f3785c","cash":True},
   {"d":"2026-10-31","t":"최은봉 대표님용 성과 기반 파일럿 제안서·착수금 템플릿 초안 지원","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea04819aab6fcd94e751e645","cash":True},
   {"d":"2026-10-31","t":"키티티 창업 VOD 패키지 촬영·얼리버드 오픈 + 컨설팅·오프라인 클래스 모집","who":"루크","p":"P1","n":"https://app.notion.com/p/3dd0cf8fea04816d9296fe49272eb87c","cash":True},
+  {"d":"2026-10-31","t":"교육회사(셀러들의 수다)+3PL 법인 — 신규 설립 vs 힐링디어스 변경 결정","who":"루크","p":"P1","n":"https://app.notion.com/p/3ed0cf8fea048121be35ee82635e54a4","cash":True},
   {"d":"2026-10-31","t":"뷰셀 회차 주제 후보 22개 — 순서 확정과 확인 필요 수치 검증","who":"루크","p":"P1","n":"https://app.notion.com/p/3eb0cf8fea0481e084eac0131859e2ca","cash":False},
   {"d":"2026-10-31","t":"설치 가이드·원격 지원 체계 마련 (AI 스튜디오)","who":"루나","p":"P1","n":"https://app.notion.com/p/3db0cf8fea048160983ee84dfa106f34","cash":False},
   {"d":"2026-10-31","t":"런칭 광고 테스트 3회 (총 350만) — 300만 툴킷 프로그램","who":"루크","p":"P1","n":"https://app.notion.com/p/3db0cf8fea04811b920ed934eddfadd5","cash":False},
@@ -431,12 +447,12 @@ INDEX = """
 <h2>이번 주 최우선 <small>현금에 가깝고 선행 조건일수록 위</small></h2>
 <div class="card">
   <ul class="list tasks">
-    <li data-g="developer-accounts"><span class="tag p0">P0</span><span class="tag cash">선행 조건</span><div class="t">개발자 계정 3종 등록 (Apple · Google Play · Microsoft)</div><div class="m">툴박스·영상공장·블로그타이퍼를 폰·맥·윈도우로 배포하는 모든 일의 앞단. Apple은 승인에 며칠 걸림 · 기한 10/2</div></li>
+    <li data-g="developer-accounts"><span class="tag p0">P0</span><span class="tag cash">선행 조건</span><div class="t">개발자 계정 3종 등록 (Apple · Google Play · Microsoft)</div><div class="m">툴박스·영상공장·블로그타이퍼를 폰·맥·윈도우로 배포하는 모든 일의 앞단. Apple은 승인에 며칠 걸림 · 기한 10/2 지남(노션 미완료)</div></li>
     <li data-g="platform-pd-meeting"><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">신규 강의 플랫폼 3자 구도 — PD 미팅(기한 10/5) → 10/8 본부장 미팅</div><div class="m">플레이어·강사교육 = 루크·메이브님 / 락인(챌린지 영상·네이버 카페·광고) = 종혁 본부장 / 모객 = 초이스토리 PD · <a href="platform/">전략 페이지</a></div></li>
     <li data-g="3pl-resale"><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">3PL 수강생 재고 당근·외부 판매 첫 등록</div><div class="m">동의서(수수료 15~20%) → 재고 시트 판매 열 + 사진 → 당근 비즈프로필 → 30개 등록 · 통신판매업 신고 사업자 명의 필수 · 기한 10/1 지남(노션 미완료)</div></li>
     <li data-g="dino-12weeks"><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">디노(미니쌤) 12주 빌드업 합의 → 10/5 1주차 시작</div><div class="m">AI 셀러 실무 교육 · 1달 90 / 2달 200 / 3달 350만 기준 · 상품별 배분 비율 확정</div></li>
-    <li data-g="onecrew-inquiry"><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">원크루·툴박스 문의 대응 — 가격 안내 후 상담 통화</div><div class="m">원크루 정가 3,900만 / 수강생 출신 3,300만 · 일십백천 990만 · 툴박스 사전 신청 안내 문구 확정</div></li>
-    <li data-g="free-live"><span class="tag p0">P0</span><div class="t">10월 말 무료 라이브 날짜·신청 링크 확정</div><div class="m">록터뷰 2회차 영상 설명란·고정댓글에 링크 → 신규 리스트 확보 · <b>날짜 확인 필요</b></div></li>
+    <li data-g="onecrew-inquiry"><span class="tag p0">P0</span><span class="tag cash">현금</span><div class="t">원크루·툴박스 문의 대응 — 가격 안내 후 상담 통화</div><div class="m">원크루 정가 3,900만 / 수강생 출신 3,300만 · 일십백천 990만 · 툴박스 사전 신청 안내 문구 확정 · 10/2 평생컨설팅 문의(뷰셀 수강생)에 답장 발송 → 회신 오면 진단 상담 일정 확정(기한 10/3)</div></li>
+    <li data-g="free-live"><span class="tag p0">P0</span><div class="t">10월 말 무료 라이브 날짜·신청 링크 확정</div><div class="m">록터뷰 2회차 영상 설명란·고정댓글에 링크 → 신규 리스트 확보 · 10/2 인터뷰 녹음에서 <b>10/25(일) 19:00</b>로 언급 — 확정 여부·신청 링크 <b>확인 필요</b></div></li>
   </ul>
 </div>
 
@@ -548,22 +564,24 @@ ROADMAP = """
 # ---------------------------------------------------------------- 우선순위
 PRIORITY = """
 <h1>우선순위</h1>
-<p class="note">기준: 현금에 가깝고 다른 일의 선행 조건일수록 위. 기한은 노션 액션보드 기준. [결정]은 완료로, [보류]는 P3로. <span class="tag">새 항목</span>은 최근 7일(9/25~) 안에 노션에 생긴 미완료 항목입니다.</p>
+<p class="note">기준: 현금에 가깝고 다른 일의 선행 조건일수록 위. 기한은 노션 액션보드 기준. [결정]은 완료로, [보류]는 P3로. <span class="tag">새 항목</span>은 최근 7일(9/26~) 안에 노션에 생긴 미완료 항목입니다.</p>
 
 <h2>P0 · 이번 주 <small>~10/5</small></h2>
 <div class="card red">
   <ul class="list tasks">
-    <li data-g="developer-accounts"><span class="tag cash">선행 조건</span><div class="t">개발자 계정 3종 등록 — Apple Developer / Google Play / Microsoft Store</div><div class="m">기한 10/2 · 앱 배포(툴박스 PWA→앱, 영상공장, 블로그타이퍼) 전부의 앞단. 루크가 "제일 높은 등급"으로 지정(9/30)</div></li>
+    <li data-g="developer-accounts"><span class="tag cash">선행 조건</span><div class="t">개발자 계정 3종 등록 — Apple Developer / Google Play / Microsoft Store</div><div class="m">기한 10/2 지남(노션 미완료) · 앱 배포(툴박스 PWA→앱, 영상공장, 블로그타이퍼) 전부의 앞단. 루크가 "제일 높은 등급"으로 지정(9/30)</div></li>
     <li data-g="platform-pd-meeting"><span class="tag cash">현금</span><div class="t">신규 강의 플랫폼 3자 구도 — 초이스토리 PD 미팅(모객, 기한 10/5) → 10/8 종혁 본부장(락인)</div><div class="m"><a href="../platform/">전략 페이지</a> · 나머지 우선순위는 이 둘의 결과에 따라 달라짐(루크 9/30)</div></li>
     <li><span class="tag cash">현금</span><div class="t">3PL 수강생 재고 당근·외부 판매 — 2주 내 첫 등록</div><div class="m">기한 10/1 지남(노션 미완료) · 동의서 → 시트·사진 → 당근 비즈프로필 → 30개 등록 → 광고 10만 테스트</div></li>
     <li><span class="tag cash">현금</span><div class="t">디노 12주 빌드업안 전달·합의 (10/4) → 10/5 1주차</div><div class="m">상품별 배분 비율 확정 · 1주차 콘셉트 3안 중 선택</div></li>
     <li><span class="tag cash">현금</span><div class="t">원크루 문의(오픈채팅) 가격 안내 + 상담 통화</div><div class="m">3,900만 / 3,300만 · 신한카드 네이버페이 60개월 '세팅 가능'으로 표현</div></li>
     <li><span class="tag cash">현금</span><div class="t">툴박스 구독권 오픈일·가격·사전 신청 안내 문구</div><div class="m">토스페이먼츠 심사 전이라 사전 신청 형태</div></li>
-    <li><div class="t">10월 말 무료 라이브 날짜·시간·신청 링크</div><div class="m">록터뷰 2회차 영상에 링크 · 날짜 확인 필요</div></li>
+    <li><div class="t">10월 말 무료 라이브 날짜·시간·신청 링크</div><div class="m">록터뷰 2회차 영상에 링크 · 10/2 인터뷰 녹음에서 10/25(일) 19:00로 언급 — 확정 여부·신청 링크 확인 필요</div></li>
     <li><div class="t">뷰셀 유튜브 2화 — 대본 9/30 · 촬영 10/2 · 공개 10/7</div><div class="m">담당 메이브님 · 3화는 실제 상품 마진 계산</div></li>
     <li><div class="t">물류 안정화 — 책임자 단일화(9/30), 삭제/무효화 임시 규칙(10/1), 프로세스 맵(10/2), 운영 가이드(10/4)</div><div class="m">입고 미처리 상태에서 운송장 출력되는 오류 긴급 대응</div></li>
     <li data-n="https://app.notion.com/p/3ec0cf8fea0481919532d4927c656358"><span class="tag cash">현금</span><div class="t">키티티바이지영 상표권 출원 — 지영 명의, 특허로 전자출원 (진행 중)</div><div class="m">원래 기한 10/1 지남 → 10/1 노션에 새 항목(기한 10/4) · 등록 1년 이상 소요 → 2월 오픈 역산 마지노선</div></li>
     <li><div class="t">수강생 화장품법 소송 초동 대응 지원 (10/6)</div><div class="m">답변서 기한·변호사 연결 · 대응 전자책 20쪽 완성됨 · 9/30 컨설팅에서 대응 선택지 논의(결정은 수강생 몫)</div></li>
+    <li data-n="https://app.notion.com/p/3df0cf8fea0481d1ae56f9c71eb42aac"><div class="t">유형 검사(사업적성) 오픈 — 카카오 키 연결하고 단톡방 공유 시작</div><div class="m">진행 중 · 기한 없음</div></li>
+    <li data-n="https://app.notion.com/p/3e60cf8fea0481cca61cf923c28b9e54"><div class="t">블로그타이퍼 윈도우 클로드 코드로 이사</div><div class="m">기한 9/27 지남 · 진행 중</div></li>
 __NEW_P0__
   </ul>
 </div>
@@ -581,6 +599,7 @@ __NEW_P0__
     <li><div class="t">영상공장 API 키 5개 + 목소리 녹음 → 첫 실제 영상</div></li>
     <li><div class="t">인스타 크리에이터 계정 전환 + 마케팅 업체 채널 인계 (유튜브 편집자 권한·틱톡 신규 계정)</div></li>
     <li><div class="t">디노 AI 영상(힉스필드) 학습 기록 → 무료 전자책 → 유료 전자책 파이프라인</div></li>
+    <li data-n="https://app.notion.com/p/3e60cf8fea0481cda4d6fe91c714f354"><div class="t">툴박스 — 수강생 명단 자동 인증 · 상품 판매 시작 전 확인</div><div class="m">진행 중 · 기한 없음</div></li>
 __NEW_P1__
   </ul>
 </div>
@@ -612,17 +631,17 @@ __NEW_P3__
 <h2>최근 [결정] <small>노션 완료 항목 중 최신 6개</small></h2>
 <div class="card accent">
   <ul class="list">
+    <li><span class="tag done">결정</span><div class="t">마진메이커 — 자동 계산 + 영역지정 OCR + 사이트별 규칙 서버 학습 방식 (10/2)</div></li>
     <li><span class="tag done">결정</span><div class="t">브랜드명 '헤메네일' 확정 (서비스명 헤메네일 얼마) (10/1)</div></li>
     <li><span class="tag done">결정</span><div class="t">키티티 사이트 운영·결제는 루크(리오나퀸즈) 토스 가맹으로, 원장 정산은 루크가 (10/1)</div></li>
     <li><span class="tag done">결정</span><div class="t">키티티 AI 미리보기 가격 — 원본 1장 2,900원 / 5회 체험권 6,900원, 무료는 기기당 1회 (9/30)</div></li>
     <li><span class="tag done">결정</span><div class="t">강의 플랫폼 3자 역할 = 모객(초이스토리 PD) / 락인·커뮤니티(종혁 본부장) / 플레이어·강사교육(루크·메이브님), 배분 1:1:1 (9/30)</div></li>
     <li><span class="tag done">결정</span><div class="t">10억 대시보드 완료 반영 = 페이지 체크 + '완료 목록 복사→클로드' + 노션 완료 상태 → 매일 06:40 자동 갱신 (9/30)</div></li>
-    <li><span class="tag done">결정</span><div class="t">영상공장 마무리 문구는 저장·보내기·열린 질문·프로필 링크 (댓글 키워드 유도 금지) (9/30)</div></li>
   </ul>
 </div>
 """
 
-# 최근 7일(9/25~) 안에 노션 액션보드에 새로 생긴 미완료 항목 — 우선순위 페이지 각 P 구간 끝에 붙는다.
+# 최근 7일(9/26~) 안에 노션 액션보드에 새로 생긴 미완료 항목 — 우선순위 페이지 각 P 구간 끝에 붙는다.
 # (할 일, 메모, 노션 url 또는 "", 현금 여부). 기존 줄에 이미 있는 항목은 넣지 않음.
 _N = "https://app.notion.com/p/"
 NEW_ITEMS = {
@@ -635,10 +654,16 @@ NEW_ITEMS = {
   ("키티티 '연봉 10억 만들기' 페이지 배포 (저장소 kititi-1b)", "기한 10/4 · 진행 중", _N+"3eb0cf8fea04814187b8c258b3a2d38e", True),
   ("최저가 찾기 소싱 프로그램 새 버전 공개", "기한 10/4 · 진행 중", _N+"3eb0cf8fea04817fa0caf144b0c513ee", False),
   ("영상공장 윈도우 PC 설치·첫 영상 테스트", "기한 9/30 · 진행 중 · API 키 5개·목소리 녹음은 10/5", _N+"3e90cf8fea04815da58cc6d8030ca735", False),
-  ("셀수다 v2026.9.26 설치 + '카탈로그 수집기' 확장 설치 / 블로그타이퍼 윈도우 이사", "둘 다 기한 9/27 지남", _N+"3e70cf8fea048151a2b9cb0abd28ebc4", False),
-  ("유형 검사(사업적성) 오픈 — 카카오 키 연결하고 단톡방 공유 시작", "진행 중 · 기한 없음", _N+"3df0cf8fea0481d1ae56f9c71eb42aac", False),
+  ("셀수다 v2026.9.26 설치 + '카탈로그 수집기' 확장 설치", "기한 9/27 지남", _N+"3e70cf8fea048151a2b9cb0abd28ebc4", False),
   ("록터뷰 2회차 인터뷰 촬영", "기한 9/28 · 노션 '진행 중' — 촬영이 끝났으면 완료 처리 필요", _N+"3e90cf8fea048107ba1dff3afb73cedd", False),
   ("키티티 사이트 웨딩 메인 전환 + 첫 화면 사진 30초 자동 교체", "기한 10/8 · 진행 중 (10/1 등록)", _N+"3ec0cf8fea0481698468f35e62d2e19b", False),
+  ("평생컨설팅 문의(뷰셀 수강생·쿠팡 영구정지) 답변 + 진단 상담 잡기", "기한 10/3 · 진행 중 · 10/2 답장 발송, 회신 오면 일정 확정 · 메이브님 수강생이라 배분 사전 합의 필요 (10/2 등록)", _N+"3ed0cf8fea0481839c31e0155118809c", True),
+  ("10/6 12:00 소싱 멘토링 실습 진행 — 수강생 소싱 10개 점검", "플라우드 10/2 멘토링 Action Item · 일시는 노트 기재값 — 확인 필요 (10/3 등록)", _N+"3ed0cf8fea048154a15bddc7596e1165", True),
+  ("상품소싱 시트 마진 공식에 매입 배송비 반영 + 백설 와플믹스 10kg 역마진 재확인", "기한 10/4 (10/2 등록)", _N+"3ed0cf8fea04813d9f8aedfc7e183098", True),
+  ("마진메이커 크롬 확장 프로그램 설치·서버 배포", "기한 10/4 · 진행 중 · v1 완성, 설치가이드 1~4단계 남음 (10/2 등록)", _N+"3ed0cf8fea0481b18770d4c9279c70a1", False),
+  ("힐링디어스(주) 본점 주소 확보 + 본점이전 등기·사업자등록 정정", "기한 10/2 지남 · 진행 중 (10/2 등록)", _N+"3ed0cf8fea0481a7b0c0cfc85f4b3475", False),
+  ("멘토루크 블로그 — 블로그 프로그램을 개인 브랜딩(케어 이야기 중심)으로 독립 분기 1차 전환", "기한 10/10 · 진행 중 (10/3 등록)", _N+"3ed0cf8fea0481bc8287dc9e35045f45", False),
+  ("다음 주 평일 저녁 팀 회식 장소 확정·예약", "기한 10/5 (10/2 등록)", _N+"3ed0cf8fea0481a08c7ac705e54340e1", False),
  ],
  "P1": [
   ("박태경 대표님 — 안내 템플릿 3종(10/5) · 빠른 거절·통보 기준(10/6) · 4회차 자료 재공유(10/7) · 자동 알림 조사(10/7) · 겨울 시즌 리스트·광고 가이드(10/10)", "플라우드 9/30 세션 할 일 목록에서 새로 등록", _N+"3eb0cf8fea04812c84d8d9344b5cfec6", True),
@@ -655,7 +680,11 @@ NEW_ITEMS = {
   ("헤메네일 — 카카오맵 JS키 발급", "노션 '시작 전'이지만 '지도 카카오맵 교체 완료' 기록이 있음 — 상태 확인 필요", _N+"3eb0cf8fea0481018177fa6ad737cd9c", False),
   ("윤지영 원장 — 개업연월일 확인 + 2027 정부지원 역산 일정 공유", "기한 10/8 미팅 · <a href=\"../grants/\">정부지원사업 페이지</a> (10/1 등록)", _N+"3ec0cf8fea0481c28e33d9b47b5e0817", True),
   ("정부지원사업 맞춰 보기 사이트 「되는 지원사업 찾기」 구축 (클로드 코드)", "기한 10/8 · 진행 중 (10/1 등록)", _N+"3ec0cf8fea048151a8acff9e6bbd0442", False),
-  ("툴박스 — 수강생 명단 자동 인증 · 상품 판매 시작 전 확인", "진행 중 · 기한 없음", _N+"3e60cf8fea0481cda4d6fe91c714f354", False),
+  ("10/2 소싱 멘토링 후속 문서 — 총액 계산 시트 템플릿(10/8) · 선별 기준표(10/9) · 미스매치 재검증 체크리스트·실질 단가 환산 규칙(10/10~11) · 소액 테스트 프로토콜(10/12)", "플라우드 10/2 멘토링 Action Item 중 루크 담당 · 기한은 노트 기재값 (10/3 노션 등록 4건)", _N+"3ed0cf8fea0481a4837dc07d4eeaa7a7", True),
+  ("교육회사(셀러들의 수다)+3PL 법인 — 신규 설립 vs 힐링디어스 변경 결정", "기한 10/31 (10/2 등록)", _N+"3ed0cf8fea048121be35ee82635e54a4", True),
+  ("키티티 원장님 — /admin 노트 사용법 전달·시술 방향 피드백 + /guide 내용 피드백 받기", "둘 다 기한 10/9 (10/2 등록 2건)", _N+"3ed0cf8fea04810b808df66fdd4ed562", False),
+  ("무료 라이브 특강 참석자 선물 준비 — 소싱처 전자책 + 자동 등록 프로그램 7일 이용권", "10/2 인터뷰 녹음에서 약속 · 기한 10/24는 추정 — 확인 필요 (10/3 등록)", _N+"3ed0cf8fea0481ab9090e503641c10b6", False),
+  ("API 캐시 자동 충전 설정 — 잔액 8,000원 미만이면 8,000원 충전", "플라우드 10/2 멘토링 Action Item · 기한 없음 (10/3 등록)", _N+"3ed0cf8fea0481b19467f1586979d14c", False),
  ],
  "P2": [
   ("배민(B마트·배민스토어) 화장품 판매 채널 입점 가능성 확인", "기한 10/31", _N+"3eb0cf8fea0481069327e3ef0da7a08d", True),
@@ -793,7 +822,7 @@ SCHEDULE = f"""
 <div class="card">
   <ul class="list">
     <li><div class="t">10/8 · 신규 강의 플랫폼 3자 구도 결정</div><div class="bar"><i style="width:30%"></i></div><div class="m">PD 접촉 → 본부장 미팅 → 배분안 합의</div></li>
-    <li><div class="t">10월 말 · 무료 라이브 → 신규 리스트</div><div class="bar"><i style="width:20%"></i></div><div class="m">록터뷰 2회차 촬영 완료, 날짜 미정</div></li>
+    <li><div class="t">10월 말 · 무료 라이브 → 신규 리스트</div><div class="bar"><i style="width:20%"></i></div><div class="m">록터뷰 2회차 촬영 완료 · 10/2 인터뷰 녹음에서 10/25(일) 19:00로 언급 — 확정·신청 링크 확인 필요</div></li>
     <li><div class="t">11월 말 · 메이크업헬퍼 9주차 판정</div><div class="bar"><i style="width:15%"></i></div><div class="m">계약 체결 완료(9/30 녹음) · 10/1 당근 광고 테스트 시작 예정이었음(시작 여부 확인 필요) · 10/20 2주 판정</div></li>
     <li><div class="t">12월 · 툴박스 500명</div><div class="bar"><i style="width:10%"></i></div><div class="m">사이트 구축 완료, 결제 심사·공개 문구 남음</div></li>
     <li><div class="t">2027 2월 · 키티티 샵 오픈</div><div class="bar"><i style="width:25%"></i></div><div class="m">상표권 출원 10/1이 마지노선이었음 — 지영 명의 전자출원 '진행 중'(노션 기한 10/4)</div></li>
@@ -1047,7 +1076,7 @@ GUIDES = [
   ],
   "done":"문의자마다 '1차 답변 → 통화 → 후속' 3단계가 노션에 남아 있음.",
   "src":["노션 '오픈채팅 문의자 가격 안내' (9/26)","9/26 오픈채팅 문의 답변 다듬기 대화"]},
- {"slug":"free-live","title":"10월 말 무료 라이브 확정","p":"P0","due":"확인 필요","why":"록터뷰 2회차 영상에 신청 링크가 들어가야 신규 리스트가 생긴다. 날짜가 없으면 영상 설명란도 못 쓴다.",
+ {"slug":"free-live","title":"10월 말 무료 라이브 확정","p":"P0","due":"10/25(일) 19:00 언급 · 확인 필요","why":"록터뷰 2회차 영상에 신청 링크가 들어가야 신규 리스트가 생긴다. 날짜가 없으면 영상 설명란도 못 쓴다.",
   "prep":["10월 마지막 주 저녁 중 비는 날 2개","네이버 폼 또는 기존 신청 폼 템플릿(추석 특강 때 naver.me 링크 방식)"],
   "steps":[
    ("날짜·시간 확정","10월 마지막 주 평일 저녁 1회(예비 1회). 캘린더에 박기."),
@@ -1056,7 +1085,7 @@ GUIDES = [
    ("흐름 유지","라이브 당일 무료 → 7일 다시보기 → 이후 유튜브 멤버십 전용."),
   ],
   "done":"날짜·폼 링크가 노션에 있고 록터뷰 영상 설명란에 들어감.",
-  "src":["노션 '10월 말 무료 라이브 날짜·시간·신청 링크 확정' (9/28)"]},
+  "src":["노션 '10월 말 무료 라이브 날짜·시간·신청 링크 확정' (9/28)","플라우드 10/2 인터뷰 녹음 2건 — 10월 25일 저녁 7시 무료 라이브 특강, 참석자에게 자동 등록 프로그램 7일 이용권·소싱처 전자책 (확정 여부 확인 필요)"]},
  {"slug":"logistics-stabilize","title":"물류 안정화 — 책임자 단일화·이슈 보드·임시 규칙","p":"P0","due":"9/30~10/4","why":"입고 미처리 상태에서 운송장이 나가는 오류는 CS 폭탄. 책임자가 둘이면 아무도 안 고친다.",
   "prep":["9/28 주간 회의 노트","잔디 개인 채널"],
   "steps":[
@@ -1329,6 +1358,7 @@ SOURCES = """
   <p>모든 숫자·날짜·이름은 루크 본인의 기록에서 가져왔습니다. 외부 검색으로 확인한 사실은 없으며, 계획값은 실적이 아닙니다.</p>
   <h3>플라우드 녹음 (요약 노트)</h3>
   <ul>
+    <li>10-02 멘토링: 상품 소싱 및 온라인 판매 전략 — 루크 담당 Action Item 6건을 노션에 새로 등록 · 10-02 인터뷰 3건(온라인 셀러 멘토루크 · 스마트스토어 소자본 창업 · 강의·사업·성장 방식) — Action Item 없음, 무료 라이브 특강 일시(10/25 19:00)와 참석자 선물 언급만 반영</li>
     <li>09-30 박태경 원크루(2건) · 최은봉 대표님 · 정○○ 대표님 원크루 · 수강생 소장 대응 상담 — 컨설팅 Action Item 중 루크 담당분만 반영 (건강·개인사 제외)</li>
     <li>09-29 메이븐 — 신규 강의 플랫폼 사업 구상 및 전략 수립 회의</li>
     <li>09-29 하루를 4번 쓰는 법 (작업 슬롯 메모)</li>
@@ -1348,9 +1378,10 @@ SOURCES = """
     <li>디노 인스타+AI 사업 빌드업 (9/28) · 뷰셀 10분 대본 빌드업 (9/29)</li>
   </ul>
   <h3>노션 '루크 액션보드'</h3>
-  <ul><li>전체 항목의 할 일·기한·상태·[결정] (10/2 06:40 조회). 미완료·기한 있는 항목은 일정에, 최근 7일 새 항목은 우선순위에 반영. 목표가 '사업 외 개인'인 항목은 넣지 않음(상표권 제외)</li>
+  <ul><li>전체 항목의 할 일·기한·상태·[결정] (10/3 06:40 조회). 미완료·기한 있는 항목은 일정에, 최근 7일 새 항목은 우선순위에 반영. 목표가 '사업 외 개인'인 항목은 넣지 않음(상표권 제외)</li>
   <li>10/1 새로 만든 항목 9건: 박태경 대표님 지원 5건(플라우드 9/30), 사무실 임대료 정산·서울 이전 로드맵·트레이드 채널·'하루를 4번 쓰는 법' 영상(플라우드 9/29). 뒤 4건의 기한은 추정이라 '확인 필요'로 표시</li>
-  <li>10/2 갱신: 일정에 있던 항목 중 완료로 바뀐 것 없음 · 10/1에 노션에 새로 생긴 기한 항목 7건을 일정에 추가(상표 출원·키티티 사이트·지원사업 3건·전자책·수파베이스) · 최근 [결정]에 10/1 결정 2건 반영 · 플라우드는 10/1~10/2 새 녹음이 없어 노션에 새로 만든 항목 0건 (9/30 녹음의 루크 담당 Action Item은 이미 액션보드에 있음)</li></ul>
+  <li>10/2 갱신: 일정에 있던 항목 중 완료로 바뀐 것 없음 · 10/1에 노션에 새로 생긴 기한 항목 7건을 일정에 추가(상표 출원·키티티 사이트·지원사업 3건·전자책·수파베이스) · 최근 [결정]에 10/1 결정 2건 반영 · 플라우드는 10/1~10/2 새 녹음이 없어 노션에 새로 만든 항목 0건 (9/30 녹음의 루크 담당 Action Item은 이미 액션보드에 있음)</li>
+  <li>10/3 갱신: 일정에 있던 항목 중 완료로 바뀐 것 없음 · 10/2에 노션에 새로 생긴 기한 항목 9건을 일정에 추가(평생컨설팅 문의·상품소싱 시트·마진메이커·힐링디어스 본점·회식·키티티 피드백 2건·멘토루크 블로그·법인 결정) · 플라우드 10/2 녹음 4건에서 노션 새 항목 7건(소싱 멘토링 6건 + 무료 라이브 선물 준비 1건), 기한은 노트 기재값·추정이라 '확인 필요' · 최근 [결정]에 10/2 마진메이커 결정 반영 · 7일이 지난 진행 중 항목 3건은 '새 항목' 표시를 뗌</li></ul>
   <h3>프로젝트 기록</h3>
   <ul><li>내 연봉 10억 만들기 프로젝트의 overview · principles · ways-of-working · luke-toolbox · 3pl-service</li></ul>
 </div>
