@@ -1,0 +1,28 @@
+[
+  {
+    "id": "2026-10-01-grants-page",
+    "date": "2026-10-01",
+    "project": "10억 대시보드",
+    "title": "정부지원사업 페이지 배포",
+    "status": "완료",
+    "summary": "윤지영 2026 해당 14건·2027 리스트·디노 폐업 시나리오 정리",
+    "next": "윤지영 개업연월일 확인(10/8)",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/grants/",
+    "chat_url": "",
+    "source": "claude",
+    "detail": "<p>경쟁률은 공식 수치(청창사 5.5:1, 여성창업경진대회 39:1)만 확정, 나머지 추정 표시. 2027 1순위 = 소상공인 도약 지원.</p>"
+  },
+  {
+    "id": "2026-09-30-platform-guides",
+    "date": "2026-09-30",
+    "project": "10억 대시보드",
+    "title": "강의 플랫폼 전략 + 할 일 설명서 11개",
+    "status": "완료",
+    "summary": "유입(PD)·락인(본부장)·플레이어(루크·메이브님) 3자 구도, 설명서별 왜·준비물·순서·끝난 기준",
+    "next": "PD 미팅 → 10/8 본부장 미팅",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/platform/",
+    "chat_url": "",
+    "source": "claude",
+    "detail": ""
+  }
+]

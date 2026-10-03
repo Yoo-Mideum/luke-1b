@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
-<title>10/8 종혁 본부장 미팅 (락인 축 제안) — 내 연봉 10억 만들기</title>
+<title>보고 프로토콜 — 다른 채팅·코드가 상황판에 보고하는 법 — 내 연봉 10억 만들기</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
@@ -116,17 +116,17 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <script>window.LUKE_ROOT="../../";</script>
 
 <div class="top" style="margin-top:-8px"><a href="../">← 설명서 목록</a><span></span></div>
-<h1>10/8 종혁 본부장 미팅 (락인 축 제안)</h1>
-<p><span class="tag p0">P0</span><span class="tag">기한 10/8</span></p>
-<div class="card accent"><h3>왜 지금</h3><p style="margin:0;font-size:14px">락인·커뮤니티 축을 맡길 사람. 챌린지 영상·네이버 카페·광고 운영을 같이 설계할 파트너.</p></div>
+<h1>보고 프로토콜 — 다른 채팅·코드가 상황판에 보고하는 법</h1>
+<p><span class="tag p1">P1</span><span class="tag">기한 상시</span></p>
+<div class="card accent"><h3>왜 지금</h3><p style="margin:0;font-size:14px">흩어진 채팅의 결과를 한 곳(상황판)에서 보려면, 모든 채팅이 같은 형식으로 reports/index.json에 한 줄을 남겨야 한다.</p></div>
 <h2>준비물</h2>
-<div class="card"><ul style="margin:0;padding-left:18px;font-size:14px"><li>PD 미팅 결과</li><li>1:1:1 배분안 + 광고비 선차감 원칙 문서 1장</li><li>인베이더 실패 분석 3줄(큰돈 광고·폐쇄적 채널·상담 인력 부재)</li></ul></div>
+<div class="card"><ul style="margin:0;padding-left:18px;font-size:14px"><li>저장소 Yoo-Mideum/luke-1b 쓰기 권한 (클로드 채팅은 GitHub 커넥터, 클로드 코드는 add_repo)</li><li>아래 '공통 지시문'을 해당 채팅에 붙여넣기</li></ul></div>
 <h2>순서</h2>
-<div class="card"><ol class="tl" style="margin-top:6px"><li><div class="t">1. 역할 제안</div><div class="d">챌린지 형식 영상 운영 + 네이버 카페 운영으로 수강생 락인 + 광고 운영을 루크와 같이. 책임 지표: 카페 활동률·재등록률·환불률.</div></li><li><div class="t">2. 배분 제안</div><div class="d">커뮤니티 전담 포함 1:1:1. 본부장이 사람을 붙이면 그 비용은 락인 축 몫에서.</div></li><li><div class="t">3. 소유권 원칙</div><div class="d">카페·채널·수강생 DB는 회사 명의. 콘텐츠 2차 활용권 명시. 기간 2~3년.</div></li><li><div class="t">4. 광고 운영 원칙 합의</div><div class="d">광고 상한(1기 1,000만), 주간 숫자 리뷰, 신청당 비용 기준선 — '작은 수의 싸움'을 같이 하자는 프레임.</div></li><li><div class="t">5. 마무리</div><div class="d">10월 중 3자 문서 1장 작성 일정 잡기. 녹음.</div></li></ol></div>
+<div class="card"><ol class="tl" style="margin-top:6px"><li><div class="t">1. 언제</div><div class="d">루크가 준 명령 하나가 최종 완료됐을 때, 또는 루크 결정이 필요해 막혔을 때. 중간 진행은 노션만.</div></li><li><div class="t">2. 무엇을</div><div class="d">reports/index.json 배열 맨 앞에 객체 1개 추가: id(날짜-슬러그) · date · project(노션 '프로젝트'와 같은 이름) · title · status(완료/진행 중/막힘/보류) · summary(한 줄) · next(다음 할 일 한 줄) · deploy_url(결과물 링크, 없으면 빈 문자열) · chat_url(이 채팅/세션 링크, 모르면 빈 문자열) · source(claude 또는 claude-code) · detail(선택, 짧은 HTML)</div></li><li><div class="t">3. 어떻게</div><div class="d">기존 index.json을 읽고(get_file_contents) → 객체 추가 → 전체를 다시 올림(push_files 또는 git push). 커밋 메시지 '보고: <project> — <title>'. 다른 파일은 건드리지 않음.</div></li><li><div class="t">4. 채팅 답변은</div><div class="d">세 줄: 완료/막힘 한 줄 · 결과물 링크 · '상황판 보고 완료'. 긴 설명은 detail에 넣고 채팅엔 안 씀.</div></li><li><div class="t">5. 링크 규칙</div><div class="d">클로드 코드 원격 세션은 세션 URL(claude.ai/code/session_…)을 chat_url에. 클로드 채팅은 자기 URL을 모를 수 있음 → 루크가 주소창 링크를 주면 넣고, 아니면 빈 값. 로컬 터미널 세션은 링크 불가 — 프로젝트 폴더 경로를 detail에.</div></li></ol></div>
 <h2>끝난 기준</h2>
-<div class="card gold"><p style="margin:0;font-size:14px">본부장의 참여 의사 + 배분·소유권에 대한 반응이 기록되고, 3자 문서 작성 날짜가 잡힘.</p></div>
-<div class="card"><ul class="list"><li data-g="platform-director-meeting"><div class="t">10/8 종혁 본부장 미팅 (락인 축 제안)</div><div class="m">여기서 체크하면 허브에서도 완료로 보입니다</div></li></ul></div>
-<div class="src"><b>근거</b><ul><li>9/29 메이븐 회의 녹음 — 10/8 미팅 예정, 1:1:1</li><li>9/30 루크 구두 — 본부장 = 챌린지 영상·카페·광고</li></ul></div>
+<div class="card gold"><p style="margin:0;font-size:14px">상황판(status/)에 카드가 보이고, 다음 날 06:40 갱신 때 노션에 같은 항목이 생김.</p></div>
+<div class="card"><ul class="list"><li data-g="report-protocol"><div class="t">보고 프로토콜 — 다른 채팅·코드가 상황판에 보고하는 법</div><div class="m">여기서 체크하면 허브에서도 완료로 보입니다</div></li></ul></div>
+<div class="src"><b>근거</b><ul><li>이 저장소 reports/index.json · status/index.html</li></ul></div>
 
 <div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
 <div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>

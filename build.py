@@ -4,7 +4,7 @@ python3 build.py 실행 시 index.html 과 하위 폴더 index.html 을 전부 �
 (부분 수정 금지 원칙: 매번 파일 전체를 다시 생성)"""
 import json, os, datetime
 
-UPDATED = "2026-10-03"
+UPDATED = "2026-10-04"
 SITE = "내 연봉 10억 만들기"
 
 CSS = r"""
@@ -465,6 +465,7 @@ INDEX = """
   <a href="philosophy/"><b>삼각 파이프라인</b><span>원크루 · 일십백천 · 불씨 이론</span></a>
   <a href="platform/"><b>강의 플랫폼 전략</b><span>유입 · 락인 · 플레이어 3자 구도</span></a>
   <a href="guides/"><b>할 일 설명서</b><span>항목별 어떻게 하는지 단계별</span></a>
+  <a href="status/"><b>상황판</b><span>모든 채팅·코드의 완료·진행 보고</span></a>
   <a href="grants/"><b>정부지원사업</b><span>키티티·메이브님·디노·뿌요 2026 → 2027</span></a>
   <a href="sources/"><b>출처·갱신</b><span>기록 근거 · 업데이트 방법</span></a>
 </div>
@@ -1011,6 +1012,17 @@ PLATFORM = """
 
 # ---------------------------------------------------------------- 할 일 설명서
 GUIDES = [
+ {"slug":"report-protocol","title":"보고 프로토콜 — 다른 채팅·코드가 상황판에 보고하는 법","p":"P1","due":"상시","why":"흩어진 채팅의 결과를 한 곳(상황판)에서 보려면, 모든 채팅이 같은 형식으로 reports/index.json에 한 줄을 남겨야 한다.",
+  "prep":["저장소 Yoo-Mideum/luke-1b 쓰기 권한 (클로드 채팅은 GitHub 커넥터, 클로드 코드는 add_repo)","아래 '공통 지시문'을 해당 채팅에 붙여넣기"],
+  "steps":[
+   ("언제","루크가 준 명령 하나가 최종 완료됐을 때, 또는 루크 결정이 필요해 막혔을 때. 중간 진행은 노션만."),
+   ("무엇을","reports/index.json 배열 맨 앞에 객체 1개 추가: id(날짜-슬러그) · date · project(노션 '프로젝트'와 같은 이름) · title · status(완료/진행 중/막힘/보류) · summary(한 줄) · next(다음 할 일 한 줄) · deploy_url(결과물 링크, 없으면 빈 문자열) · chat_url(이 채팅/세션 링크, 모르면 빈 문자열) · source(claude 또는 claude-code) · detail(선택, 짧은 HTML)"),
+   ("어떻게","기존 index.json을 읽고(get_file_contents) → 객체 추가 → 전체를 다시 올림(push_files 또는 git push). 커밋 메시지 '보고: <project> — <title>'. 다른 파일은 건드리지 않음."),
+   ("채팅 답변은","세 줄: 완료/막힘 한 줄 · 결과물 링크 · '상황판 보고 완료'. 긴 설명은 detail에 넣고 채팅엔 안 씀."),
+   ("링크 규칙","클로드 코드 원격 세션은 세션 URL(claude.ai/code/session_…)을 chat_url에. 클로드 채팅은 자기 URL을 모를 수 있음 → 루크가 주소창 링크를 주면 넣고, 아니면 빈 값. 로컬 터미널 세션은 링크 불가 — 프로젝트 폴더 경로를 detail에."),
+  ],
+  "done":"상황판(status/)에 카드가 보이고, 다음 날 06:40 갱신 때 노션에 같은 항목이 생김.",
+  "src":["이 저장소 reports/index.json · status/index.html"]},
  {"slug":"developer-accounts","title":"개발자 계정 3종 등록","p":"P0","due":"10/2","why":"툴박스·영상공장·블로그타이퍼를 아이폰·갤럭시·맥·윈도우로 배포하려면 스토어 계정이 먼저다. Apple은 심사에 며칠 걸리므로 가장 먼저 시작.",
   "prep":["힐링디어스(주) 사업자등록증 · 대표자 신분증 · 법인카드 또는 개인 신용카드","회사 이메일(개인 지메일 X) · 2단계 인증 가능한 폰","법인으로 등록하려면 D-U-N-S 번호 (Apple 필수) — 없으면 개인 명의로 먼저 시작해도 됨"],
   "steps":[
@@ -1349,6 +1361,45 @@ GRANTS = """
 <div class="src" style="margin-top:14px">원문 접근 실패로 '확인 필요'로 남긴 것: K-Startup 공고 본문(빈 페이지), law.go.kr 조문, 중진공·소진공 사이트, 2026 신사업창업사관학교 공고, 서울시 육성자금 첨부. 세부 요건은 매년 바뀌니 2027년 공고는 반드시 원문으로. 조사: 2026-10-01 클로드 웹 리서치.</div>
 """
 
+
+# ---------------------------------------------------------------- 상황판
+STATUS = """
+<h1>상황판</h1>
+<p class="note">다른 클로드 채팅·클로드 코드가 작업을 끝내면 <code>reports/index.json</code>에 한 줄 보고를 남기고, 이 페이지가 그걸 읽어 보여줍니다. 매일 06:40 갱신 때 노션에도 옮겨집니다. 보고 규칙은 <a href="../guides/report-protocol/">보고 프로토콜</a>.</p>
+<div class="card" style="padding:10px 12px">
+  <div class="btnrow" style="margin:0" id="filters"></div>
+</div>
+<div id="statusBody"><div class="card"><div class="empty">불러오는 중…</div></div></div>
+<script>
+(async function(){
+  const root=(window.LUKE_ROOT||'../');
+  let data=[];
+  try{ const r=await fetch(root+'reports/index.json?t='+Date.now()); data=await r.json(); }catch(e){ document.getElementById('statusBody').innerHTML='<div class="card"><div class="empty">reports/index.json 을 읽지 못했습니다.</div></div>'; return; }
+  data.sort((a,b)=>a.date<b.date?1:-1);
+  const q=new URLSearchParams(location.search); let proj=q.get('p')||'전체'; const rid=q.get('r');
+  const projects=['전체',...Array.from(new Set(data.map(d=>d.project))).sort()];
+  const F=document.getElementById('filters');
+  F.innerHTML=projects.map(p=>'<button class="btn '+(p===proj?'pri':'')+'" data-p="'+p+'">'+p+'</button>').join('');
+  F.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;proj=b.dataset.p;history.replaceState(null,'','?p='+encodeURIComponent(proj));F.querySelectorAll('button').forEach(x=>x.classList.toggle('pri',x.dataset.p===proj));render();});
+  const S={'진행 중':'p1','완료':'done','보류':'p3','막힘':'p0'};
+  const esc=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function links(d){let h='';if(d.deploy_url)h+='<a class="btn" href="'+esc(d.deploy_url)+'" target="_blank">결과물 열기</a>';if(d.chat_url)h+='<a class="btn" href="'+esc(d.chat_url)+'" target="_blank">'+(d.source==='claude-code'?'클로드 코드 세션':'클로드 채팅')+' 열기</a>';if(d.notion_url)h+='<a class="btn" href="'+esc(d.notion_url)+'" target="_blank">노션</a>';return h?'<div class="btnrow">'+h+'</div>':'';}
+  function card(d,open){return '<div class="card'+(d.status==='막힘'?' red':'')+'" id="r-'+esc(d.id)+'"><div><span class="tag '+(S[d.status]||'')+'">'+esc(d.status)+'</span><span class="tag">'+esc(d.project)+'</span><span class="tag">'+esc(d.date.slice(5).replace('-','/'))+'</span><span class="tag">'+(d.source==='claude-code'?'코드':'채팅')+'</span></div><h3 style="margin-top:6px">'+esc(d.title)+'</h3><p style="font-size:14px;margin:4px 0">'+esc(d.summary)+'</p>'+(d.next?'<div class="m" style="font-size:13px;color:var(--muted)">다음: '+esc(d.next)+'</div>':'')+(d.detail?'<details'+(open?' open':'')+' style="margin-top:8px"><summary style="font-size:13px;color:var(--muted);cursor:pointer">자세히</summary><div style="font-size:14px;margin-top:6px">'+d.detail+'</div></details>':'')+links(d)+'</div>';}
+  function render(){
+    const rows=data.filter(d=>proj==='전체'||d.project===proj);
+    const groups=[['막힘','막힘 — 루크 결정 필요'],['진행 중','진행 중'],['완료','완료 (최근 30건)'],['보류','보류']];
+    let h='';
+    const byProj={}; rows.forEach(d=>{(byProj[d.project]=byProj[d.project]||{}); byProj[d.project][d.status]=(byProj[d.project][d.status]||0)+1;});
+    if(proj==='전체'){h+='<h2>프로젝트별 <small>'+rows.length+'건</small></h2><div class="card wrapx"><table><tr><th>프로젝트</th><th>진행 중</th><th>완료</th><th>막힘</th><th>마지막 보고</th></tr>'+Object.keys(byProj).sort().map(p=>{const last=rows.find(d=>d.project===p);return '<tr><td><a href="?p='+encodeURIComponent(p)+'">'+esc(p)+'</a></td><td class="num">'+(byProj[p]['진행 중']||0)+'</td><td class="num">'+(byProj[p]['완료']||0)+'</td><td class="num" style="color:var(--red)">'+(byProj[p]['막힘']||0)+'</td><td>'+esc(last.date.slice(5).replace('-','/'))+'</td></tr>';}).join('')+'</table></div>';}
+    for(const [st,label] of groups){let g=rows.filter(d=>d.status===st); if(st==='완료')g=g.slice(0,30); if(!g.length)continue; h+='<h2>'+label+' <small>'+g.length+'</small></h2>'+g.map(d=>card(d,d.id===rid)).join('');}
+    document.getElementById('statusBody').innerHTML=h||'<div class="card"><div class="empty">보고가 없습니다.</div></div>';
+    if(rid){const el=document.getElementById('r-'+rid); if(el) el.scrollIntoView();}
+  }
+  render();
+})();
+</script>
+"""
+
 # ---------------------------------------------------------------- 출처
 SOURCES = """
 <h1>출처 · 갱신 방법</h1>
@@ -1418,6 +1469,7 @@ def main():
     write(os.path.join(base, "platform", "index.html"), page("강의 플랫폼 전략", PLATFORM))
     write(os.path.join(base, "guides", "index.html"), page("할 일 설명서", guide_index_html()))
     write(os.path.join(base, "grants", "index.html"), page("정부지원사업", GRANTS))
+    write(os.path.join(base, "status", "index.html"), page("상황판", STATUS))
     for g in GUIDES:
         write(os.path.join(base, "guides", g["slug"], "index.html"), page(g["title"], guide_page_html(g), root="../../"))
     write(os.path.join(base, "sources", "index.html"), page("출처·갱신 방법", SOURCES))
