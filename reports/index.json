@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-site-maison",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "청담 웨딩하우스급 사이트 v4 + 광고 이미지 컷 + 후기 분리",
+    "status": "완료",
+    "summary": "웨딩 메인 모바일 사이트: 메종 팔레트·웨딩 전용 페이지·AI 미리보기(분석 리포트)·손님 후기 310개·설명 페이지",
+    "next": "원장님 피드백(/guide·/admin 노트) + 실제 웨딩 화보 사진 받기, 판매 전 토스 실키·통신판매업 번호·Vercel Pro",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site (디자인 기준 DESIGN.md)</p><p>페이지: / · /wedding(신부·혼주) · /try(AI 미리보기, 무료1회·원본 2,900/6,900원, 1회 원가 약 95원) · /guide(퍼스널컬러·상담준비·데일리vs촬영 O/X) · /admin(원장 노트)</p><p>색: 아이보리 #F6F2EB·에스프레소 #1C1916·샴페인 #B39A6E (60/30/10). Weave 광고 컷 6장(66크레딧, IMAGE CUT 표시). 네이버 리뷰 311개는 원장 동의로 키티티만 예외 수집.</p>"
+  },
+  {
     "id": "2026-10-01-grants-page",
     "date": "2026-10-01",
     "project": "10억 대시보드",
