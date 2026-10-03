@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-hemenail-wizard-admin",
+    "date": "2026-10-04",
+    "project": "헤메네일",
+    "title": "첫 방문 맞춤 추천(오늘의 추천 분석) + 관리자 통계 배포",
+    "status": "완료",
+    "summary": "첫 화면 모달(업종→기준→오늘의 추천: 목적·나이·성별·목적별 예산 + 위치·시간·날씨 분석 → 1곳+이유), 익명 이용 기록, /admin 통계, 밝은 바탕 고정",
+    "next": "루크: /admin 먼저 로그인(본인 방문 통계 제외) → 모달 직접 써보고 피드백",
+    "deploy_url": "https://hemenail-site.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/hemenail-site</code> (커밋 c2fa17b). 관리자 <a href='https://hemenail-site.vercel.app/admin'>/admin</a>, 모달 다시 열기 <a href='https://hemenail-site.vercel.app/?wiz=1'>?wiz=1</a>.</p><ul><li><b>모달</b>: 기준 5개 중 '오늘의 추천'이 가운데+강조. 예산은 목적별 추천 구간이 가운데(헤어 데이트 3~5만, 메이크업 촬영 12~18만)</li><li><b>결과</b>: 위치·시간·날씨(Open-Meteo 무료)·트렌드 4칸 분석, 이유 7줄 중 강조 3개는 아이콘 3종</li><li><b>통계</b>: KPI 8·한눈에 보기·일/시간/요일 차트·손님 흐름·인기/결과 0건 검색어·많이 본/추천 매장·지역·메뉴·기기·유입·추천 선택 분포·신고 리뷰 처리. 테스트 기록 삭제해 0건에서 시작</li></ul><p>한계: 가격 데이터가 헤어 위주라 네일·메이크업 가격/가성비는 추천순 안내. 리뷰 0건이라 퀄리티는 업력·규모로 대신(화면 표기). 트렌드는 기록 3건 전까지 계절 제안.</p>"
+  },
+  {
     "id": "2026-10-04-realistic-photos",
     "date": "2026-10-04",
     "project": "루크 툴박스",
