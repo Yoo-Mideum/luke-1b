@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-mentoluke-blog-multi",
+    "date": "2026-10-04",
+    "project": "멘토루크 블로그",
+    "title": "자동 설치·매일 07:30 자동 작업·내 이름 키워드 2개·블로그 3개 함께 운영",
+    "status": "완료",
+    "summary": "앱을 응용 프로그램에 설치하고 매일 07:30 자동 작업 등록(설치판으로 실제 1회 확인). 키워드 멘토루크·유믿음 반영. 네이버 아이디 3개로 주제 다른 블로그 3개를 한 프로그램에서 전환·운영.",
+    "next": "루크: 2·3번 블로그 이름·주제·방향 정하기 → 블로그마다 네이버 로그인 → 케어 기록 2~3건 동의",
+    "deploy_url": "https://github.com/Yoo-Mideum/mentoluke-blog",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>[클로드 작업]/mentoluke-blog</code>, 앱 <code>/Applications/멘토루크 블로그.app</code>, 데이터 <code>~/MentoLukeBlog</code> (블로그 2·3은 <code>~/MentoLukeBlog/blogs/b2·b3</code>).</p><ul><li>매일 07:30 LaunchAgent <code>com.mentoluke.blog.autoscrape</code>: 플라우드 새 녹음·나 연구·백업 → 나머지 블로그 차례로. 첫 실행에서 플라우드 1건 받음, 로그인 필요한 통계·댓글은 로그인 전이라 건너뜀</li><li>내 이름 월간 검색: 유믿음 50 · 멘토루크 10 → 홈 리포트·시선 검색·시장·AI 지시문에 반영</li><li>블로그 3개: 블로그마다 설정·네이버 로그인·브랜드·케어 기록·글 기록·통계가 따로, API 키·녹음·분석·비용은 같이. 상단 '블로그: ○○ ▾' 로 전환, 설정 '내 블로그' 에서 추가</li><li>지키는 선: 블로그마다 주제 다르게, 같은 글 돌려 올리기 금지, 블로그당 하루 1편 (절대 규칙의 '다계정 금지' 를 본인 아이디 3개까지로 변경)</li><li>고친 버그: 설치판 자가 점검이 앱을 다시 띄워 10분 멈추던 것 → 정상</li></ul>"
+  },
+  {
     "id": "2026-10-04-hemenail-persona-fix",
     "date": "2026-10-04",
     "project": "헤메네일",
