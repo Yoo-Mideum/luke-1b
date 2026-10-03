@@ -1,5 +1,31 @@
 [
   {
+    "id": "2026-10-04-realistic-photos",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "사이트 사진 14장 현실 자연광 사진으로 교체",
+    "status": "완료",
+    "summary": "블랙·골드 연출 제거, 손님이 쓰는 장면 위주 생활 사진 14장(1600×1200 이상), 흐린 인포그래픽 PNG 2장 삭제",
+    "next": "루크 확인 후 마음에 안 드는 장만 재생성(8크레딧/장)",
+    "deploy_url": "https://luke-toolbox.vercel.app/courses/onecrew",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>GPT Image 2.5(Weave) Flare ×14 = 112크레딧, 잔여 676. 폴더 ~/Desktop/luke-toolbox — public/images/pages·onecrew-open·ilsip-launch·onecrew-together·reviews/hero. 기준은 메모리 feedback-realistic-photos 에 저장.</p>"
+  },
+  {
+    "id": "2026-10-04-onecrew-rewrite",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "원크루 보완 — 상담 학습 반영·쉬운 글·자리매김·값 문의→무료 1:1",
+    "status": "완료",
+    "summary": "홍혜선 대표 상담(10/3) 녹취 학습: 파이프 셋(유통·지식·브랜딩)·상담에서만 열리는 것 7·모시는 기준 4·상담 전 세 줄·수익 구간 벽·가치 사다리 5칸, 원크루 글 전체 쉬운 말로 재작성, 강의 1개 200~250만원 기준",
+    "next": "루크가 어색한 문장 짚어 주면 그 문장만 수정",
+    "deploy_url": "https://luke-toolbox.vercel.app/courses/onecrew",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>자리매김: 원크루=파이프라인 3개+무제한 컨설팅, 일십백천=나만의 사업 브랜드+수익화 완성. 값은 무료 1:1 상담 뒤 맞는 분에게만 — FAQ·비교표·작은 카드·상담봇·과정 페이지 하단 바 통일. 파일 src/lib/programsIntro.ts, src/app/courses/[slug]/page.tsx, src/components/ValueLadder.tsx·ConsultBar.tsx.</p>"
+  },
+  {
     "id": "2026-10-04-mentoluke-blog-app",
     "date": "2026-10-04",
     "project": "멘토루크 블로그",
