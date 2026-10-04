@@ -122,12 +122,12 @@ table.pt tr.sum td{font-weight:700;border-bottom:0}
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><a href="../../">← 내 연봉 10억 만들기</a><span>2026-10-04 · 보고서 v5</span></div>
+  <div class="top"><a href="../../">← 내 연봉 10억 만들기</a><span>2026-10-04 · 보고서 v6</span></div>
 
   <header class="hero">
     <div class="eyebrow">키티티 AI 뷰티 플랫폼 · 초기창업패키지 전략</div>
     <h1>지영이 초창패를 받을 수 있나</h1>
-    <p class="sub">결론: <b>신청 가능 (2024년 2월 중순 개업 확인).</b> 단, 2027년 공고가 2월 중순 전에 나와야 합니다. 원래 판단 기준: 2027년 공고일 기준 업력 3년 이내면 신청 가능하고, 업종·나이 조건은 걸리지 않습니다. 2026년 공고(1월 23일)를 기준으로 하면 대략 2024년 1월 말 이후 개업이어야 합니다.</p>
+    <p class="sub">결론: <b>2027년 공고가 1월에 나오면 가능, 2월 중순 이후면 불가.</b> 개업이 2024년 2월 중순이라 공고일이 갈림길입니다(최근 3년 공고일: 1/30, 2/17, 1/23). 판단 기준: 2027년 공고일 기준 업력 3년 이내면 신청 가능하고, 업종·나이 조건은 걸리지 않습니다. 2026년 공고(1월 23일)를 기준으로 하면 대략 2024년 1월 말 이후 개업이어야 합니다.</p>
     <div class="goal">
       <div><b>업종 통과</b><span>미용업은 창업 제외 업종이 아님</span></div>
       <div><b class="num">약 1,430만원</b><span>1억 신청 시 현금 자부담 최소(서울 추정)</span></div>
@@ -183,13 +183,40 @@ table.pt tr.sum td{font-weight:700;border-bottom:0}
     </figure>
   </div>
 
-  <div class="card accent" style="margin-top:12px">
-    <h3>확인됨: 개업 2024년 2월 중순 → A 갈래 (조건부)</h3>
-    <p style="font-size:14px;margin:0 0 8px">업력 3년은 공고일부터 거꾸로 셉니다. 2024년 2월 중순 개업이면 <b>2027년 공고가 2027년 2월 중순 전에 나와야</b> 신청할 수 있습니다. 2026년 일반형 공고는 1월 23일, 딥테크형은 1월 6일이었으니 같은 흐름이면 약 3주 여유로 들어갑니다.</p>
-    <ul style="margin:0;padding-left:18px;font-size:14px">
-      <li><b>2027년이 처음이자 마지막 기회입니다.</b> 2028년 공고 때는 업력 3년을 넘습니다.</li>
-      <li>사업자등록증의 정확한 날짜(며칠)를 받아두고, 2027년 공고가 뜨는 날 바로 계산합니다.</li>
-      <li>공고가 2월 중순 이후로 밀리는 경우만 플랜 C(창업도약패키지·소상공인 도약 지원)로 갑니다. 청년창업사관학교도 3년 이내 조건이라 같은 날짜 문제가 있습니다.</li>
+  <div class="card gold" style="margin-top:12px">
+    <h3>개업 2024년 2월 중순 → 공고일에 따라 되거나 안 됩니다</h3>
+    <p style="font-size:14px;margin:0 0 10px">업력은 <b>모집공고일 기준 3년 이내</b>로 셉니다. 최근 3년 초기창업패키지(일반형) 공고일은 이랬습니다.</p>
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 200" role="img" aria-label="최근 3년 초창패 공고일과 접수기간: 2024년 1월 30일 공고 2월 22일 마감, 2025년 2월 17일 공고 2월 24일부터 3월 11일 접수, 2026년 1월 23일 공고 2월 13일 마감. 지영 개업 3년 경계는 2월 중순">
+        <!-- x = 120 + (day-of-year from Jan 1)*6 ; Jan1=0 ; Mar15 = 73 -->
+        <g stroke="var(--line)"><line x1="120" y1="20" x2="120" y2="160"/><line x1="306" y1="20" x2="306" y2="160"/><line x1="474" y1="20" x2="474" y2="160"/></g>
+        <g font-size="11" fill="var(--muted)" text-anchor="middle"><text x="120" y="176">1월 1일</text><text x="306" y="176">2월 1일</text><text x="474" y="176">3월 1일</text></g>
+        <!-- danger zone mid-Feb onward: Feb 14 = day 44 -> x=384 -->
+        <rect x="384" y="20" width="200" height="140" fill="var(--red-soft)" opacity=".7"/>
+        <text x="390" y="34" font-size="11" font-weight="700" fill="var(--red)">이때 공고가 나면 지영은 3년 초과</text>
+        <g font-size="13" font-weight="700" fill="var(--ink)" text-anchor="end"><text x="110" y="64">2024</text><text x="110" y="104">2025</text><text x="110" y="144">2026</text></g>
+        <!-- 2024: notice Jan30 (d29) x=294 ; close Feb22 (d52) x=432 -->
+        <rect x="294" y="52" width="138" height="16" rx="4" fill="var(--accent)" opacity=".35"/>
+        <circle cx="294" cy="60" r="6" fill="var(--accent)"/>
+        <text x="440" y="65" font-size="11.5" fill="var(--ink)">1/30 공고 · 2/22 마감</text>
+        <!-- 2025: notice Feb17 (d47) x=402 ; apply Feb24(d54) x=444 to Mar11(d69) x=534 -->
+        <rect x="444" y="92" width="90" height="16" rx="4" fill="var(--red)" opacity=".35"/>
+        <circle cx="402" cy="100" r="6" fill="var(--red)"/>
+        <text x="300" y="105" font-size="11.5" fill="var(--ink)" text-anchor="end">2/17 공고 · 2/24~3/11 접수</text>
+        <!-- 2026: notice Jan23 (d22) x=252 ; close Feb13 (d43) x=378 -->
+        <rect x="252" y="132" width="126" height="16" rx="4" fill="var(--accent)" opacity=".35"/>
+        <circle cx="252" cy="140" r="6" fill="var(--accent)"/>
+        <text x="386" y="145" font-size="11.5" fill="var(--ink)">1/23 공고 · 2/13 마감</text>
+      </svg>
+      </div>
+      <figcaption>점이 공고일, 막대가 접수 기간입니다. 접수는 공고 후 약 3주(2025년만 공고 1주 뒤 시작해 2주)였습니다.</figcaption>
+    </figure>
+    <ul style="margin:8px 0 0;padding-left:18px;font-size:14px">
+      <li>2024년·2026년처럼 1월에 공고가 나오면 신청 가능합니다.</li>
+      <li><b>2025년처럼 2월 17일에 나오면 안 됩니다.</b> 2월 중순 개업이면 며칠 차이로 3년을 넘깁니다.</li>
+      <li>그래서 사업자등록증의 <b>정확한 날짜(며칠)</b>가 가장 중요한 숫자입니다. 개업일 + 3년 날짜를 노션에 박아두고, 2027년 공고가 그 전에 나오는지만 보면 됩니다.</li>
+      <li>2027년이 처음이자 마지막 초창패 기회입니다. 공고가 늦어 막히면 같은 증거로 창업도약패키지·소상공인 도약 지원으로 갑니다. 청년창업사관학교도 같은 3년 조건이라 같은 날짜 문제가 있습니다.</li>
     </ul>
   </div>
 
@@ -378,6 +405,8 @@ table.pt tr.sum td{font-weight:700;border-bottom:0}
     <li><a href="https://www.nepla.ai/law/%EC%A4%91%EC%86%8C%EA%B8%B0%EC%97%85%EC%B0%BD%EC%97%85%20%EC%A7%80%EC%9B%90%EB%B2%95%20%EC%8B%9C%ED%96%89%EB%A0%B9/20260901" target="_blank" rel="noopener">중소기업창업 지원법 시행령 — 제2조 창업 범위, 제4조 제외 업종</a></li>
     <li><a href="https://hemenail-site.vercel.app" target="_blank" rel="noopener">헤메네일 얼마 — 서울 미용실·네일샵·메이크업샵 28,455곳 (2026년 9월 데이터)</a></li>
     <li><a href="https://kititi-by-jiyoung.vercel.app" target="_blank" rel="noopener">키티티 바이 지영 홈페이지 — AI 미리 보기·상담 메시지·예약</a></li>
+    <li><a href="https://www.venturesquare.net/announcement/957832" target="_blank" rel="noopener">2025년도 초기창업패키지 모집공고 — 2025.2.17 공고, 2.24~3.11 접수</a></li>
+    <li><a href="https://newsseoul.co.kr/news/view/1065601214434567" target="_blank" rel="noopener">2024년 예비·초기·도약 창업패키지 모집 — 2024.1.30 공고, 초기 2.22 마감</a></li>
     <li><a href="../../grants/">정부지원사업 페이지 — 지영 지원 가능 사업 목록</a></li>
     <li><a href="../ai-beauty-platform-plan/">보고서 — 키티티 뷰티 진단 플랫폼 설계 v4</a></li>
   </ol>
