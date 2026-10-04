@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-entrance-gm",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "입구 첫 화면 — 젠틀몬스터 느낌으로 새로 만듦",
+    "status": "완료",
+    "summary": "루크 요청(첫 화면이 강렬하게, 젠틀몬스터 같은 느낌)대로 흑백 갤러리 톤으로 바꿈. 콘크리트 공간에 햇빛이 드는 새 자연광 사진을 화면 가득 깔고, 화면 폭을 꽉 채우는 ONE CREW 워드마크를 얹음. 아래로 '강의가 아닙니다' 한 문장, 모시는 기준 4가지, 상담 안내(값 없음)",
+    "next": "소개(/about)에 공방 원크루 글 옮기기 + 로그인·가입 화면, 그 뒤 입구에 '소개'·'회원 로그인' 버튼 붙이기. 첫 회원 명단은 루크가 나중에",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 d84aa7b)</p><ul><li>새 사진 1장 Weave GPT Image 2.5 (8크레딧)</li><li>Vercel이 커밋 작성자가 팀원이 아니라고 배포를 막아서, 저장소 작성자를 공방과 같은 계정으로 맞춤</li><li>PC·휴대폰 폭 캡처 확인, 가로 넘침 없음</li></ul>"
+  },
+  {
     "id": "2026-10-05-kititi-tab-random-light-wedding",
     "date": "2026-10-05",
     "project": "키티티 상담 사이트",
