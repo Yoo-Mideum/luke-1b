@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-onecrew-member-special",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "원크루 회원 1명 추석 특강 열기 + 원크루 운영 사이트 할 일 등록",
+    "status": "완료",
+    "summary": "원크루 회원(정○녀)에게 추석 특강 열람을 열고, '원크루 운영 사이트 따로 만들기'를 다음 채팅 때 먼저 꺼낼 할 일로 등록",
+    "next": "다음 채팅: 원크루 운영 사이트 기획 — 원크루 표시 하나로 전 자료 열람",
+    "deploy_url": "https://giantstoolbox.com/admin/students",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>profiles.joined_special=true, 메모 '원크루 회원 — 관리자가 추석 특강 열어 줌'. 지금은 원크루 회원을 한 명씩 수동으로 여는 구조라, 운영 사이트 만들 때 원크루 표시로 묶을 예정. 폴더 ~/Desktop/luke-toolbox.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-breathing",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
