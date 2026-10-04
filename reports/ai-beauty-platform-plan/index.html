@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>키티티 뷰티 진단 플랫폼 설계</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* layout: luke-1b 사이트 규격 그대로 — 600px 단일 컬럼 보고서, 카드 + 인라인 SVG 인포그래픽 */
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --hero-a:#0f6e56; --hero-b:#134e3f; --on-hero:#ffffff;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+  --f-display:"Gowun Dodum","Noto Sans KR",sans-serif;
+  --f-body:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+  --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+  --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+  --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.6;font-size:16px}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 64px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:32px 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+h2 small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--f-body)}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%);color:var(--on-hero);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:var(--on-hero)}
+.hero .eyebrow{font-size:12px;letter-spacing:.08em;opacity:.85}
+.hero .sub{opacity:.92;margin-top:8px;font-size:14px}
+.hero .goal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+@media (max-width:480px){.hero .goal{grid-template-columns:1fr}}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px}
+.hero .goal b{display:block;font-size:18px;font-family:var(--f-display)}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.stack{display:grid;gap:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.thesis{font-family:var(--f-display);font-size:20px;line-height:1.45}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);white-space:nowrap;font-weight:500}
+.tag.ok{background:var(--accent-soft);color:var(--accent)}
+.tag.no{background:var(--red-soft);color:var(--red)}
+.tag.mid{background:var(--gold-soft);color:var(--gold)}
+.case{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.case:first-child{border-top:0;padding-top:0}
+.case:last-child{padding-bottom:0}
+.case .t{font-weight:700}
+.case .m{font-size:14px;color:var(--muted);grid-column:2}
+.case .so{font-size:14px;grid-column:2}
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.svgwrap{overflow-x:auto}
+.model{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.rank{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.model.r2 .rank{color:var(--gold)}
+.model.r3 .rank{color:var(--muted)}
+.model ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.model li{margin:2px 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px;counter-reset:s}
+@media (max-width:480px){.steps{grid-template-columns:1fr 1fr}}
+.steps div{background:var(--accent-soft);border-radius:10px;padding:10px 8px;font-size:12px}
+.steps div b{display:block;font-size:14px;font-family:var(--f-display);margin-bottom:2px}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:14px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:10px 12px;border-radius:6px}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li:last-child{padding-bottom:0}
+ul.list .m{font-size:13px;color:var(--muted)}
+.src{font-size:13px;padding-left:18px;margin:0}
+.src li{margin:4px 0;word-break:break-word}
+.num{font-variant-numeric:tabular-nums}
+svg text{font-family:var(--f-body)}
+</style>
+<style>
+table.pt{width:100%;border-collapse:collapse;font-size:14px}
+table.pt th,table.pt td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+table.pt th{color:var(--muted);font-weight:500;font-size:12px;white-space:nowrap}
+table.pt td.k{font-weight:700;white-space:nowrap;font-family:var(--f-display)}
+table.pt td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.pt tr.sum td{font-weight:700;border-bottom:0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.stage{display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.stage .when{font-size:12px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:480px){.cols{grid-template-columns:1fr}}
+.cols .card{min-width:0}
+.cols h3{font-size:15px}
+.cols p,.cols li{font-size:14px}
+.cols ul{margin:0;padding-left:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="../../">← 내 연봉 10억 만들기</a><span>2026-10-04 · 보고서</span></div>
+
+  <header class="hero">
+    <div class="eyebrow">키티티 AI 뷰티 플랫폼 · 사업 구조 보완안</div>
+    <h1>진단에서 배송까지 한 줄로</h1>
+    <p class="sub">진단 유입 → 세부 진단 → 원장 진단 → 시술 → 맞춤 추천 화장품. 이 흐름을 심사에서 "하나의 사업"으로 읽히게 묶고, 단계별 현실 수익을 계산했습니다.</p>
+    <div class="goal">
+      <div><b>하나의 플랫폼</b><span>사이트·인스타·3PL을 한 구조의 부품으로</span></div>
+      <div><b class="num">월 2,910만</b><span>3단계(샵 50곳) 플랫폼 총이익 추정</span></div>
+      <div><b>키티티 = 실증</b><span>1호 매장 숫자가 모든 단계의 근거</span></div>
+    </div>
+  </header>
+
+  <h2>보완 핵심 4가지</h2>
+  <div class="card accent">
+    <ul style="margin:0;padding-left:18px">
+      <li><b>결제 관문을 줄이기</b> — 결제가 다섯 번이면 고객이 단계마다 빠집니다. 앞 단계 결제를 다음 단계에서 차감해 "예약금"처럼 느끼게 만듭니다.</li>
+      <li><b>사업을 하나로 보이게</b> — 헤메네일(고객), 헤메인(샵), 인스타(유입), 3PL(배송)을 따로 나열하면 산만해 보입니다. "고객과 샵을 잇는 진단 플랫폼"의 양쪽 날개로 설명합니다.</li>
+      <li><b>해자를 데이터로</b> — 얼굴 분석 기술은 누구나 삽니다. 남이 못 가진 건 <b>진단 → 실제 시술 결과</b>가 짝지어진 데이터와 배송 인프라입니다.</li>
+      <li><b>계획서에서 뺄 것</b> — 3PL 과정 판매(교육)는 별도 매출로 두고, '맞춤형화장품' 용어는 쓰지 않습니다(아래 설명).</li>
+    </ul>
+  </div>
+
+  <h2>고객 여정과 결제 설계 <small>차감으로 이탈 막기</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 430" role="img" aria-label="고객 여정 5단계와 각 단계 결제 금액, 앞 단계 결제를 다음 단계에서 차감하는 구조">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+          <marker id="ag" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--gold)"/></marker>
+        </defs>
+        <!-- step boxes x=20 w=330 ; price chips x=370 -->
+        <g>
+          <rect x="20" y="10" width="330" height="62" rx="12" fill="var(--blue-soft)" stroke="var(--blue)"/>
+          <rect x="20" y="96" width="330" height="62" rx="12" fill="var(--card)" stroke="var(--line)"/>
+          <rect x="20" y="182" width="330" height="62" rx="12" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+          <rect x="20" y="268" width="330" height="62" rx="12" fill="var(--accent)"/>
+          <rect x="20" y="354" width="330" height="62" rx="12" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        </g>
+        <g font-size="14" font-weight="700" fill="var(--ink)">
+          <text x="38" y="37">① AI 간편 진단</text>
+          <text x="38" y="123">② 사이트 세부 진단 리포트</text>
+          <text x="38" y="209">③ 원장 확정 진단 (매장)</text>
+          <text x="38" y="295" fill="var(--card)">④ 헤어·메이크업 시술</text>
+          <text x="38" y="381">⑤ 진단 맞춤 추천 화장품</text>
+        </g>
+        <g font-size="12" fill="var(--muted)">
+          <text x="38" y="56">인스타·헤메네일에서 유입 · 연락처 수집</text>
+          <text x="38" y="142">톤·얼굴형 상세 리포트 + 추천 스타일</text>
+          <text x="38" y="228">드레이핑 확인 · 시술 플랜 확정</text>
+          <text x="38" y="314" fill="var(--card)" opacity=".9">핵심 매출 · 패키지 업셀</text>
+          <text x="38" y="400">매장 픽업 / 재구매는 스마트스토어·3PL 배송</text>
+        </g>
+        <g font-size="14" font-weight="700" text-anchor="middle" class="num">
+          <rect x="372" y="25" width="96" height="32" rx="16" fill="var(--line)"/><text x="420" y="46" fill="var(--ink)">무료</text>
+          <rect x="372" y="111" width="96" height="32" rx="16" fill="var(--blue-soft)"/><text x="420" y="132" fill="var(--blue)">9,900원</text>
+          <rect x="372" y="197" width="96" height="32" rx="16" fill="var(--accent-soft)"/><text x="420" y="218" fill="var(--accent)">5만원</text>
+          <rect x="372" y="283" width="96" height="32" rx="16" fill="var(--accent)"/><text x="420" y="304" fill="var(--card)">15만원~</text>
+          <rect x="372" y="369" width="96" height="32" rx="16" fill="var(--gold-soft)"/><text x="420" y="390" fill="var(--gold)">3만원~</text>
+        </g>
+        <!-- deduction arcs -->
+        <g fill="none" stroke="var(--gold)" stroke-width="1.6" stroke-dasharray="4 3">
+          <path d="M470,127 C540,140 540,200 472,212" marker-end="url(#ag)"/>
+          <path d="M470,213 C540,226 540,286 472,298" marker-end="url(#ag)"/>
+        </g>
+        <g font-size="11.5" fill="var(--gold)" font-weight="700">
+          <text x="508" y="165">전액</text><text x="508" y="180">차감</text>
+          <text x="508" y="251">2만원</text><text x="508" y="266">차감</text>
+        </g>
+        <!-- flow arrows -->
+        <g stroke="var(--muted)" stroke-width="1.4" marker-end="url(#ar)">
+          <line x1="185" y1="73" x2="185" y2="93"/><line x1="185" y1="159" x2="185" y2="179"/>
+          <line x1="185" y1="245" x2="185" y2="265"/><line x1="185" y1="331" x2="185" y2="351"/>
+        </g>
+      </svg>
+      </div>
+      <figcaption>세부 진단비는 원장 진단 때 전액, 원장 진단비 일부는 시술 때 차감(금액은 제안값). 고객은 "돈을 더 쓰는 것"이 아니라 "예약을 이어가는 것"으로 느낍니다.</figcaption>
+    </figure>
+    <div class="warn" style="margin-top:12px"><b>'맞춤형화장품'이라고 쓰지 마세요.</b> 법에서 맞춤형화장품은 매장에서 내용물이나 원료를 혼합해 파는 방식이고, 판매장마다 국가자격 조제관리사를 둬야 합니다. 이 사업은 완제품 추천 판매이므로 "진단 맞춤 추천"으로 표기합니다. 세부 기준은 식약처 확인 필요.</div>
+  </div>
+
+  <h2>하나의 플랫폼으로 묶기 <small>양면 구조</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 400" role="img" aria-label="고객 쪽 인스타와 헤메네일 가격비교, 샵 쪽 헤메인 모집과 SaaS, 가운데 진단 엔진, 아래 3PL 배송과 데이터 순환 구조">
+        <defs>
+          <marker id="am" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+          <marker id="aa" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--accent)"/></marker>
+        </defs>
+        <text x="95" y="20" text-anchor="middle" font-size="12" fill="var(--muted)" font-weight="700">고객 쪽</text>
+        <text x="505" y="20" text-anchor="middle" font-size="12" fill="var(--muted)" font-weight="700">샵 쪽</text>
+        <!-- customer side -->
+        <rect x="15" y="32" width="160" height="58" rx="10" fill="var(--blue-soft)" stroke="var(--blue)"/>
+        <text x="95" y="57" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">인스타그램</text>
+        <text x="95" y="76" text-anchor="middle" font-size="11.5" fill="var(--muted)">변신 콘텐츠 · 진단 링크</text>
+        <rect x="15" y="108" width="160" height="58" rx="10" fill="var(--blue-soft)" stroke="var(--blue)"/>
+        <text x="95" y="133" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">헤메네일 가격비교</text>
+        <text x="95" y="152" text-anchor="middle" font-size="11.5" fill="var(--muted)">검색 유입 · 샵 비교</text>
+        <!-- shop side -->
+        <rect x="425" y="32" width="160" height="58" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="505" y="57" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">헤메인</text>
+        <text x="505" y="76" text-anchor="middle" font-size="11.5" fill="var(--muted)">원장 커뮤니티 · 샵 모집</text>
+        <rect x="425" y="108" width="160" height="58" rx="10" fill="var(--gold-soft)" stroke="var(--gold)"/>
+        <text x="505" y="133" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">파트너샵 SaaS</text>
+        <text x="505" y="152" text-anchor="middle" font-size="11.5" fill="var(--muted)">진단 퍼널 · 예약 · 추천</text>
+        <!-- core -->
+        <rect x="200" y="62" width="200" height="86" rx="14" fill="var(--accent)"/>
+        <text x="300" y="96" text-anchor="middle" font-size="15" font-weight="700" fill="var(--card)">AI 진단 엔진</text>
+        <text x="300" y="117" text-anchor="middle" font-size="11.5" fill="var(--card)">얼굴형 · 퍼스널컬러</text>
+        <text x="300" y="134" text-anchor="middle" font-size="11.5" fill="var(--card)">1호 매장: 키티티바이지영</text>
+        <!-- arrows in -->
+        <g stroke="var(--muted)" stroke-width="1.4" fill="none" marker-end="url(#am)">
+          <line x1="176" y1="61" x2="198" y2="88"/><line x1="176" y1="137" x2="198" y2="122"/>
+          <line x1="424" y1="61" x2="402" y2="88"/><line x1="424" y1="137" x2="402" y2="122"/>
+        </g>
+        <!-- below: shops booking -->
+        <rect x="200" y="186" width="200" height="56" rx="10" fill="var(--accent-soft)" stroke="var(--accent)"/>
+        <text x="300" y="210" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">진단 → 매장 예약·시술</text>
+        <text x="300" y="228" text-anchor="middle" font-size="11.5" fill="var(--muted)">키티티 + 파트너샵</text>
+        <rect x="200" y="272" width="200" height="56" rx="10" fill="var(--card)" stroke="var(--line)"/>
+        <text x="300" y="296" text-anchor="middle" font-size="13.5" font-weight="700" fill="var(--ink)">추천 화장품 · 3PL 배송</text>
+        <text x="300" y="314" text-anchor="middle" font-size="11.5" fill="var(--muted)">루크 보유 물류 인프라</text>
+        <g stroke="var(--muted)" stroke-width="1.4" marker-end="url(#am)">
+          <line x1="300" y1="149" x2="300" y2="183"/><line x1="300" y1="243" x2="300" y2="269"/>
+        </g>
+        <!-- data loop -->
+        <path d="M402,300 C520,300 560,220 520,170 C505,160 470,150 404,132" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#aa)"/>
+        <text x="472" y="250" font-size="12" font-weight="700" fill="var(--accent)">진단↔시술 결과</text>
+        <text x="472" y="266" font-size="12" font-weight="700" fill="var(--accent)">데이터가 쌓일수록</text>
+        <text x="472" y="282" font-size="12" font-weight="700" fill="var(--accent)">추천이 정확해짐</text>
+        <text x="300" y="365" text-anchor="middle" font-size="12.5" fill="var(--muted)">고객이 늘면 샵이 오고, 샵이 늘면 진단 데이터와 배송 물량이 커집니다.</text>
+      </svg>
+      </div>
+      <figcaption>심사에서 하는 말: "고객 유입 채널(인스타·헤메네일)과 샵 공급 채널(헤메인)을 이미 보유한 상태에서, 그 사이를 AI 진단으로 연결하고 물류로 마무리한다."</figcaption>
+    </figure>
+  </div>
+
+  <h2>심사 문장으로 옮기기 <small>PSST 구조</small></h2>
+  <div class="card">
+    <div class="svgwrap">
+    <table class="pt">
+      <thead><tr><th>항목</th><th>여기에 쓸 내용</th></tr></thead>
+      <tbody>
+        <tr><td class="k">문제인식</td><td>고객은 시술 실패가 두렵고, 1인샵은 상담 시간이 길고 신규 유입·객단가가 정체됩니다. 진단 서비스와 시술이 서로 다른 가게에 나뉘어 있습니다.</td></tr>
+        <tr><td class="k">실현가능성</td><td>키티티 매장에서 이미 돌아가는 퍼널 숫자(방문 → 세부 진단 → 원장 진단 → 시술 전환율)를 제시합니다. 신청 전에 최소 2~3개월치 실측이 필요합니다.</td></tr>
+        <tr><td class="k">성장전략</td><td>1호 매장 실증 → 헤메인으로 파트너샵 10곳 → 50곳. 매출원은 진단 결제, SaaS 구독, 추천 화장품 커머스(3PL), 가격비교 상단 노출.</td></tr>
+        <tr><td class="k">팀구성</td><td>현장 전문가(원장), 개발·커머스·물류(루크), 마케팅. 각자가 이미 운영 중인 자산을 근거로 씁니다.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">PSST(문제인식·실현가능성·성장전략·팀구성)는 2026년 예비창업패키지 기준 확인. 초기창업패키지 양식 세부 목차·분량은 공고 별첨1 사업계획서 양식에서 확인 필요.</p>
+  </div>
+
+  <h2>단계별 현실 수익 <small>월 매출, 가정 기반</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 220" role="img" aria-label="단계별 월 매출 누적 막대: 1단계 370만원, 2단계 1,567만원, 3단계 6,655만원">
+        <!-- scale: x = 150 + 만원*0.05714 (0~7000만) -->
+        <g stroke="var(--line)"><line x1="150" y1="14" x2="150" y2="176"/><line x1="264.3" y1="14" x2="264.3" y2="176"/><line x1="378.6" y1="14" x2="378.6" y2="176"/><line x1="492.9" y1="14" x2="492.9" y2="176"/></g>
+        <g font-size="11" fill="var(--muted)" text-anchor="middle" class="num"><text x="150" y="194">0</text><text x="264.3" y="194">2,000만</text><text x="378.6" y="194">4,000만</text><text x="492.9" y="194">6,000만</text></g>
+        <g font-size="13" font-weight="700" fill="var(--ink)" text-anchor="end"><text x="140" y="44">1단계</text><text x="140" y="100">2단계</text><text x="140" y="156">3단계</text></g>
+        <g font-size="10.5" fill="var(--muted)" text-anchor="end"><text x="140" y="58">키티티 1곳</text><text x="140" y="114">파트너 10곳</text><text x="140" y="170">파트너 50곳</text></g>
+        <!-- stage 1 -->
+        <rect x="150" y="30" width="7.4" height="30" fill="var(--blue)"/><rect x="157.4" y="30" width="8.6" height="30" fill="var(--accent)"/><rect x="166" y="30" width="5.1" height="30" fill="var(--gold)"/>
+        <!-- stage 2 -->
+        <rect x="150" y="86" width="18.7" height="30" fill="var(--blue)"/><rect x="168.7" y="86" width="8.6" height="30" fill="var(--accent)"/><rect x="177.3" y="86" width="56.6" height="30" fill="var(--gold)"/><rect x="233.9" y="86" width="5.7" height="30" fill="var(--muted)"/>
+        <!-- stage 3 -->
+        <rect x="150" y="142" width="64" height="30" fill="var(--blue)"/><rect x="214" y="142" width="8.6" height="30" fill="var(--accent)"/><rect x="222.6" y="142" width="262.3" height="30" fill="var(--gold)"/><rect x="484.9" y="142" width="28.3" height="30" fill="var(--muted)"/><rect x="513.2" y="142" width="17.1" height="30" fill="var(--red)"/>
+        <g font-size="13" font-weight="700" fill="var(--ink)" class="num"><text x="180" y="50">370만</text><text x="248" y="106">1,567만</text><text x="538" y="162">6,655만</text></g>
+      </svg>
+      </div>
+      <div class="legend"><span><i style="background:var(--blue)"></i>진단 결제</span><span><i style="background:var(--accent)"></i>키티티 시술</span><span><i style="background:var(--gold)"></i>추천 화장품(거래액)</span><span><i style="background:var(--muted)"></i>SaaS 구독</span><span><i style="background:var(--red)"></i>가격비교 상단 노출</span></div>
+      <figcaption>규모가 커질수록 매출은 화장품 커머스에서 커집니다. 그래서 3PL이 이 사업의 뒷단 핵심입니다. 단, 거래액은 이익이 아니므로 아래 표의 총이익으로 판단하세요.</figcaption>
+    </figure>
+  </div>
+
+  <div class="stack" style="margin-top:12px">
+    <div class="card">
+      <h3>1단계 · 키티티 실증 <small style="color:var(--muted);font-weight:400">지금 ~ 2026년 말</small></h3>
+      <div class="svgwrap">
+      <table class="pt">
+        <thead><tr><th>매출원</th><th>가정</th><th style="text-align:right">월</th></tr></thead>
+        <tbody>
+          <tr><td>세부 진단</td><td>AI 진단 방문 1,000명 × 5% × 9,900원</td><td class="n">49.5만</td></tr>
+          <tr><td>원장 진단</td><td>세부 진단자 40%(20명) × 5만원, 9,900원 차감 후</td><td class="n">80.2만</td></tr>
+          <tr><td>시술</td><td>원장 진단자 50%(10명) × 15만원</td><td class="n">150만</td></tr>
+          <tr><td>추천 화장품</td><td>30건 × 3만원 (거래액)</td><td class="n">90만</td></tr>
+          <tr class="sum"><td>합계</td><td>신규 퍼널로 늘어나는 매출</td><td class="n">약 370만</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">돈보다 <b>전환율 숫자</b>를 얻는 단계입니다. 이 표의 5%·40%·50%가 실측으로 바뀌면 2~3단계 숫자를 그 값으로 다시 계산합니다.</p>
+    </div>
+
+    <div class="card">
+      <h3>2단계 · 파트너샵 10곳 <small style="color:var(--muted);font-weight:400">2027년 상반기 · 초창패 협약 기간</small></h3>
+      <div class="svgwrap">
+      <table class="pt">
+        <thead><tr><th>매출원</th><th>가정</th><th style="text-align:right">월 매출</th><th style="text-align:right">총이익</th></tr></thead>
+        <tbody>
+          <tr><td>SaaS 구독</td><td>10곳 × 9.9만원</td><td class="n">99만</td><td class="n">99만</td></tr>
+          <tr><td>세부 진단</td><td>샵당 20건 × 9,900원 (송객 수수료 성격)</td><td class="n">198만</td><td class="n">198만</td></tr>
+          <tr><td>추천 화장품</td><td>샵당 30건 × 3만원, 총이익률 25%</td><td class="n">900만</td><td class="n">225만</td></tr>
+          <tr class="sum"><td>플랫폼 합계</td><td>키티티 직영 제외</td><td class="n">1,197만</td><td class="n">522만</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">SaaS 9.9만원은 공비서 프로(월 2.5만원)보다 4배 비쌉니다. 예약 관리가 아니라 "신규 고객을 데려오는 퍼널"이라는 차이로만 정당화되므로, 파트너샵에 송객 실적을 보여줘야 유지됩니다.</p>
+    </div>
+
+    <div class="card">
+      <h3>3단계 · 파트너샵 50곳 <small style="color:var(--muted);font-weight:400">2027년 하반기 ~</small></h3>
+      <div class="svgwrap">
+      <table class="pt">
+        <thead><tr><th>매출원</th><th>가정</th><th style="text-align:right">월 매출</th><th style="text-align:right">총이익</th></tr></thead>
+        <tbody>
+          <tr><td>SaaS 구독</td><td>50곳 × 9.9만원</td><td class="n">495만</td><td class="n">495만</td></tr>
+          <tr><td>세부 진단</td><td>샵당 20건 × 9,900원</td><td class="n">990만</td><td class="n">990만</td></tr>
+          <tr><td>추천 화장품</td><td>샵당 30건 × 3만원, 총이익률 25%</td><td class="n">4,500만</td><td class="n">1,125만</td></tr>
+          <tr><td>가격비교 노출</td><td>헤메네일 상단 노출 100곳 × 3만원</td><td class="n">300만</td><td class="n">300만</td></tr>
+          <tr class="sum"><td>플랫폼 합계</td><td>키티티 직영 제외</td><td class="n">6,285만</td><td class="n">2,910만</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="note">총이익에서 서버·AI 사용료·광고·인건비가 빠지기 전 숫자입니다. 월 3,000만원 순수익 구조로 가려면 이 단계 + 키티티 직영 + 3PL 교육 매출이 함께 있어야 합니다.</p>
+    </div>
+  </div>
+
+  <h2>계획서 밖에 둘 것과 정해야 할 것</h2>
+  <div class="cols">
+    <div class="card">
+      <h3>3PL 과정 판매는 별도 매출로</h3>
+      <p>교육 상품은 "AI 뷰티 플랫폼"과 결이 달라 계획서에 넣으면 아이템이 흐려집니다. 계획서에는 <b>3PL = 화장품 배송 인프라</b>로만 쓰고, 과정 판매는 루크 교육 사업 매출로 따로 관리합니다. 과정 단가·판매량은 실제 데이터로 채울 것(확인 필요).</p>
+    </div>
+    <div class="card red">
+      <h3>신청 주체 결정 필요</h3>
+      <p>헤메네일·헤메인·3PL은 루크 쪽 자산인데, 신청은 키티티로 하려는 상황입니다. 심사는 "이 회사가 이 자산을 가지고 실행하는가"를 봅니다. 자산 소유·계약 관계를 어떻게 정리할지 먼저 정해야 합니다.</p>
+    </div>
+  </div>
+  <div class="warn" style="margin-top:12px"><b>얼굴 사진 처리</b> — 사진은 기기 안에서 분석하고 서버에 저장하지 않는 방식을 기본으로 하고, 저장이 필요하면 별도 동의를 받습니다. 개인정보 처리방침에 명시합니다.</div>
+
+  <h2>다음 할 일</h2>
+  <div class="card">
+    <ul class="list">
+      <li><div><div>신청 주체와 자산 소유 구조 결정 (키티티 vs 힐링디어스)</div><div class="m">모든 계획서 문장의 전제. 기한 10/11</div></div><span class="tag no">P0</span></li>
+      <li><div><div>키티티 퍼널 실측 시작 (세부 진단 9,900원 차감 구조)</div><div class="m">기존 검증 실험과 합침. 2~3개월치 전환율 확보</div></div><span class="tag no">P0</span></li>
+      <li><div><div>헤메인에서 파트너 의향 샵 10곳 사전 모집 (LOI)</div><div class="m">"이미 샵이 대기 중" = 성장전략 근거. 기한 10/31</div></div><span class="tag mid">P1</span></li>
+      <li><div><div>헤메네일 → 진단 링크 연결, 인스타 진단 콘텐츠 시작</div><div class="m">유입 숫자도 계획서 근거가 됨</div></div><span class="tag mid">P1</span></li>
+    </ul>
+  </div>
+
+  <h2>출처</h2>
+  <ol class="src">
+    <li><a href="https://news.tf.co.kr/read/economy/1780731.htm" target="_blank" rel="noopener">더팩트 — 맞춤형 화장품 제도 도입 (정의·조제관리사 배치)</a></li>
+    <li><a href="https://www.nextunicorn.kr/insight/ffd0ecce61892889" target="_blank" rel="noopener">넥스트유니콘 — 2026 예비창업패키지 PSST 작성</a></li>
+    <li><a href="https://www.smarttoday.co.kr/ko-kr/articles/55132" target="_blank" rel="noopener">공비서 요금제 개편 기사</a></li>
+    <li><a href="../ai-beauty-bizmodel/">이전 보고서 — AI 뷰티 사업모델 검증</a></li>
+  </ol>
+  <p class="note">수익표의 전환율·건수·단가는 모두 가정값입니다. 1단계 실측 후 교체하세요.</p>
+</div>
+</body>
+</html>

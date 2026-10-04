@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-ai-beauty-platform-plan",
+    "date": "2026-10-04",
+    "project": "키티티 AI 뷰티 플랫폼",
+    "title": "뷰티 진단 플랫폼 구조 보완 + 단계별 수익",
+    "status": "막힘",
+    "summary": "5단계 결제를 차감 구조로 잇고, 인스타·헤메네일(고객)·헤메인(샵)·3PL(배송)을 양면 플랫폼으로 묶음. 3단계(샵 50곳) 플랫폼 총이익 월 2,910만 추정(가정)",
+    "next": "[막힘] 루크 결정 필요: 초창패 신청 주체·자산 소유 구조(키티티 vs 힐링디어스)",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/reports/ai-beauty-platform-plan/?v=1",
+    "chat_url": "https://claude.ai/code/session_017uEra1DWnwG4LqEZ7d7aWJ",
+    "source": "claude-code",
+    "detail": "<p>단계별 월 매출: 1단계 키티티 370만 → 2단계 파트너 10곳 1,197만(총이익 522만) → 3단계 50곳 6,285만(총이익 2,910만). 전환율·단가 모두 가정, 1단계 실측 후 교체. 3PL 과정 판매는 계획서 밖 별도 매출. '맞춤형화장품' 용어 금지(혼합 판매 시 조제관리사 필요).</p>"
+  },
+  {
     "id": "2026-10-04-mentoluke-blog-accounts",
     "date": "2026-10-04",
     "project": "멘토루크 블로그",
