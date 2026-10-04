@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-scroll-fix",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "클릭 시 화면이 내려가던 오류 2건 수정",
+    "status": "완료",
+    "summary": "AI 미리보기 재방문 시 결과로 자동 스크롤되던 것과, 시술 탭 고정이 풀려 탭 바꿀 때 중간부터 보이던 것 수정",
+    "next": "실제 휴대폰에서 루크 확인",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · try.js showResult(false), style.css .app overflow-x:clip, app.js 탭 전환 시 패널 시작으로. 모든 클릭 요소 자동 테스트로 확인(남은 이동은 링크·가이드 탭 등 의도된 것).</p>"
+  },
+  {
     "id": "2026-10-05-kititi-intro",
     "date": "2026-10-05",
     "project": "키티티 상담 사이트",
