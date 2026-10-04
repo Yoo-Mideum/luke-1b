@@ -3,14 +3,14 @@
     "id": "2026-10-04-ai-beauty-platform-plan",
     "date": "2026-10-04",
     "project": "키티티 AI 뷰티 플랫폼",
-    "title": "뷰티 진단 플랫폼 구조 보완 + 단계별 수익",
+    "title": "뷰티 진단 플랫폼 구조 보완 + 단계별 수익 (v2: 시술 중심)",
     "status": "막힘",
-    "summary": "5단계 결제를 차감 구조로 잇고, 인스타·헤메네일(고객)·헤메인(샵)·3PL(배송)을 양면 플랫폼으로 묶음. 3단계(샵 50곳) 플랫폼 총이익 월 2,910만 추정(가정)",
+    "summary": "문제 = 샵의 고객 유치, 가치 = 시술. 파트너샵은 월 17.8만원 쓰고 신규 매출 92만(약 5배, 가정). 플랫폼 매출 10곳 297만 → 50곳 1,785만 → 100곳 3,270만. 화장품은 확장 옵션",
     "next": "[막힘] 루크 결정 필요: 초창패 신청 주체·자산 소유 구조(키티티 vs 힐링디어스)",
-    "deploy_url": "https://yoo-mideum.github.io/luke-1b/reports/ai-beauty-platform-plan/?v=1",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/reports/ai-beauty-platform-plan/?v=2",
     "chat_url": "https://claude.ai/code/session_017uEra1DWnwG4LqEZ7d7aWJ",
     "source": "claude-code",
-    "detail": "<p>단계별 월 매출: 1단계 키티티 370만 → 2단계 파트너 10곳 1,197만(총이익 522만) → 3단계 50곳 6,285만(총이익 2,910만). 전환율·단가 모두 가정, 1단계 실측 후 교체. 3PL 과정 판매는 계획서 밖 별도 매출. '맞춤형화장품' 용어 금지(혼합 판매 시 조제관리사 필요).</p>"
+    "detail": "<p>v2: 커머스를 기본 수익에서 제외(옵션 예시 20곳 참여 시 총이익 450만, 가정). 병목은 유입 — 100곳이면 AI 진단 방문 월 4만 명 필요, 샵 모집 속도를 유입에 맞춤. 여전히 막힘: 초창패 신청 주체·자산 소유 구조 결정.</p>"
   },
   {
     "id": "2026-10-04-mentoluke-blog-accounts",
