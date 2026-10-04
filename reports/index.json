@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-brief",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "원크루 비공개 사이트 — 새 채팅용 지시서 완성",
+    "status": "완료",
+    "summary": "crew.giantstoolbox.com 하위 주소 + 쿠키 공유로 공방·원크루·일십백천 한 번 로그인, memberships 표, 입구·소개만 공개, 8단계 계획",
+    "next": "루크: 새 채팅에서 지시서로 시작 (첫 질문: 주소 crew.giantstoolbox.com 확정)",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>지시서 파일: ~/Desktop/[클로드 작업]/원크루-사이트-프롬프트.md. 별도 도메인은 로그인 공유가 안 돼서 하위 주소로 설계. DDL은 Supabase SQL Editor(크롬)로.</p>"
+  },
+  {
     "id": "2026-10-04-onecrew-member-special",
     "date": "2026-10-04",
     "project": "루크 툴박스",
