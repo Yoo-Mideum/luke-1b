@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-october-cardnews",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "카드뉴스 — 10월에 잘 팔릴 상품 23가지 (18장) 게시",
+    "status": "완료",
+    "summary": "루크가 고른 23개 상품군을 실사 사진+짧은 글 카드 18장으로 만들어 사이트에 올리고 새 자료 알림창을 켬",
+    "next": "인스타 캐러셀로도 올리기(18장, 20장 제한 안)",
+    "deploy_url": "https://giantstoolbox.com/cards/october-2026",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>사진 17장 GPT Image 2.5(136크레딧, 잔여 540) + 한글은 코드로 얹음(scripts/render-cards.mts). 캔바 초안은 폐기. 근거 2026년 기사 7건. 폴더 ~/Desktop/luke-toolbox.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-domain",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
