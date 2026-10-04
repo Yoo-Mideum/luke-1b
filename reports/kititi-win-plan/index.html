@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>키티티 승부수와 수익 확장</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* layout: luke-1b 사이트 규격 그대로 — 600px 단일 컬럼 보고서, 카드 + 인라인 SVG 인포그래픽 */
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --hero-a:#0f6e56; --hero-b:#134e3f; --on-hero:#ffffff;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+  --f-display:"Gowun Dodum","Noto Sans KR",sans-serif;
+  --f-body:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+  --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+  --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+  --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.6;font-size:16px}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 64px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:32px 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+h2 small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--f-body)}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%);color:var(--on-hero);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:var(--on-hero)}
+.hero .eyebrow{font-size:12px;letter-spacing:.08em;opacity:.85}
+.hero .sub{opacity:.92;margin-top:8px;font-size:14px}
+.hero .goal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+@media (max-width:480px){.hero .goal{grid-template-columns:1fr}}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px}
+.hero .goal b{display:block;font-size:18px;font-family:var(--f-display)}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.stack{display:grid;gap:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.thesis{font-family:var(--f-display);font-size:20px;line-height:1.45}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);white-space:nowrap;font-weight:500}
+.tag.ok{background:var(--accent-soft);color:var(--accent)}
+.tag.no{background:var(--red-soft);color:var(--red)}
+.tag.mid{background:var(--gold-soft);color:var(--gold)}
+.case{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.case:first-child{border-top:0;padding-top:0}
+.case:last-child{padding-bottom:0}
+.case .t{font-weight:700}
+.case .m{font-size:14px;color:var(--muted);grid-column:2}
+.case .so{font-size:14px;grid-column:2}
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.svgwrap{overflow-x:auto}
+.model{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.rank{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.model.r2 .rank{color:var(--gold)}
+.model.r3 .rank{color:var(--muted)}
+.model ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.model li{margin:2px 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px;counter-reset:s}
+@media (max-width:480px){.steps{grid-template-columns:1fr 1fr}}
+.steps div{background:var(--accent-soft);border-radius:10px;padding:10px 8px;font-size:12px}
+.steps div b{display:block;font-size:14px;font-family:var(--f-display);margin-bottom:2px}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:14px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:10px 12px;border-radius:6px}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li:last-child{padding-bottom:0}
+ul.list .m{font-size:13px;color:var(--muted)}
+.src{font-size:13px;padding-left:18px;margin:0}
+.src li{margin:4px 0;word-break:break-word}
+.num{font-variant-numeric:tabular-nums}
+svg text{font-family:var(--f-body)}
+</style>
+<style>
+table.pt{width:100%;border-collapse:collapse;font-size:14px}
+table.pt th,table.pt td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+table.pt th{color:var(--muted);font-weight:500;font-size:12px;white-space:nowrap}
+table.pt td.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+table.pt tr.sum td{font-weight:700;border-bottom:0}
+.pitch{font-family:var(--f-display);font-size:19px;line-height:1.5}
+.qa{padding:10px 0;border-top:1px solid var(--line)}
+.qa:first-child{border-top:0;padding-top:0}
+.qa:last-child{padding-bottom:0}
+.qa b{display:block;font-size:14px}
+.qa p{font-size:14px;color:var(--muted);margin:2px 0 0}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12px;color:var(--muted);margin-top:8px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="../../">← 내 연봉 10억 만들기</a><span>2026-10-04 · 보고서</span></div>
+
+  <header class="hero">
+    <div class="eyebrow">키티티 AI 뷰티 플랫폼 · 종합 정리</div>
+    <h1>초창패 승부수와 매장 수익 확장</h1>
+    <p class="sub">지금까지의 보고서를 하나로 묶었습니다. 앞부분은 심사에서 이기는 방법, 뒷부분은 매장이 실제로 돈을 늘리는 순서입니다.</p>
+    <div class="goal">
+      <div><b>한 문장 승부</b><span>AI가 진단하고, 자격 원장이 확정한다</span></div>
+      <div><b>숫자 3개</b><span>실측 전환율 · 파트너 의향 · 28,455곳</span></div>
+      <div><b>수익 6층</b><span>시술 위에 진단·교육·플랫폼을 쌓기</span></div>
+    </div>
+  </header>
+
+  <h2>1부 · 초창패에서 이기는 법</h2>
+
+  <div class="card accent">
+    <p style="font-size:12px;color:var(--muted);margin:0 0 6px">심사위원에게 처음 하는 한 문장</p>
+    <p class="pitch" style="margin:0">"AI가 1차로 얼굴형·퍼스널컬러를 진단하고, 퍼스널컬러컨설턴트 1급 원장이 확정 진단해, 1인 뷰티샵에 시술할 손님을 데려오는 플랫폼입니다."</p>
+  </div>
+
+  <h2>심사위원의 첫 의심과 우리의 답</h2>
+  <div class="card">
+    <div class="qa"><b>"미용실이 무슨 기술 창업이냐?"</b><p>매장은 실증 현장이고, 아이템은 진단 → 예약 → 시술을 잇는 플랫폼입니다. 진단 결과와 실제 시술 결과가 짝지어진 데이터는 얼굴 분석 API만 사는 회사는 가질 수 없습니다.</p></div>
+    <div class="qa"><b>"AI 진단은 이미 흔하지 않나?"</b><p>맞습니다. 그래서 AI 단독이 아니라 자격 보유 원장의 확정 진단으로 정확도를 보증하고, 진단을 예약까지 연결하는 것이 차별점입니다.</p></div>
+    <div class="qa"><b>"실제로 쓰는 사람이 있나?"</b><p>키티티 홈페이지에 AI 미리 보기가 이미 작동 중입니다. 10~12월 실측 숫자(진단 수 → 상담 → 예약 → 시술)를 그대로 보여줍니다.</p></div>
+    <div class="qa"><b>"다른 샵이 돈을 낼까?"</b><p>헤메인으로 받은 파트너 의향서 10곳과, 샵 한 곳이 구독료 9.9만원으로 월 신규 매출 약 129만원을 얻는 계산(가정)을 보여줍니다.</p></div>
+    <div class="qa"><b>"시장은 얼마나 큰가?"</b><p>서울에만 미용실·네일샵·메이크업샵 28,455곳(헤메네일, 2026년 9월). 월 3,000만원 구조에 필요한 건 그중 130곳, 0.46%입니다.</p></div>
+  </div>
+
+  <h2>1월까지 만들어야 할 증거 3개</h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 210" role="img" aria-label="1월 공고 전까지 만들 증거 세 가지: 실측 전환율, 파트너 의향서 10곳, 대표자 자격과 시장 데이터">
+        <g>
+          <rect x="10" y="14" width="180" height="150" rx="14" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+          <rect x="210" y="14" width="180" height="150" rx="14" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1.5"/>
+          <rect x="410" y="14" width="180" height="150" rx="14" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="1.5"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="100" y="52" font-size="30" font-weight="700" fill="var(--accent)" class="num">3개월</text>
+          <text x="100" y="82" font-size="13" font-weight="700" fill="var(--ink)">실측 전환율</text>
+          <text x="100" y="106" font-size="11.5" fill="var(--muted)">AI 미리 보기 → 상담</text>
+          <text x="100" y="124" font-size="11.5" fill="var(--muted)">→ 예약 → 시술</text>
+          <text x="100" y="146" font-size="11.5" fill="var(--muted)">10~12월 키티티</text>
+          <text x="300" y="52" font-size="30" font-weight="700" fill="var(--gold)" class="num">10곳</text>
+          <text x="300" y="82" font-size="13" font-weight="700" fill="var(--ink)">파트너 의향서</text>
+          <text x="300" y="106" font-size="11.5" fill="var(--muted)">헤메인으로 모집</text>
+          <text x="300" y="124" font-size="11.5" fill="var(--muted)">헤어 6 + 메이크업 4</text>
+          <text x="300" y="146" font-size="11.5" fill="var(--muted)">가격 반응까지 기록</text>
+          <text x="500" y="52" font-size="30" font-weight="700" fill="var(--blue)" class="num">1급</text>
+          <text x="500" y="82" font-size="13" font-weight="700" fill="var(--ink)">자격 + 시장 데이터</text>
+          <text x="500" y="106" font-size="11.5" fill="var(--muted)">퍼스널컬러 1급·수상 2회</text>
+          <text x="500" y="124" font-size="11.5" fill="var(--muted)">서울 28,455곳 DB</text>
+          <text x="500" y="146" font-size="11.5" fill="var(--muted)">이미 확보</text>
+        </g>
+        <text x="300" y="196" text-anchor="middle" font-size="12.5" fill="var(--muted)">셋째는 이미 있고, 첫째와 둘째는 지금 시작해야 1월에 숫자가 됩니다.</text>
+      </svg>
+      </div>
+    </figure>
+  </div>
+
+  <h2>사업비 쓰는 계획 <small>정부지원 1억 기준 제안</small></h2>
+  <div class="card">
+    <div class="svgwrap">
+    <table class="pt">
+      <thead><tr><th>용도</th><th>내용</th><th style="text-align:right">금액</th></tr></thead>
+      <tbody>
+        <tr><td>외주용역</td><td>진단 엔진 고도화, 파트너샵 홈페이지 템플릿, 원장용 대시보드</td><td class="n">4,000만</td></tr>
+        <tr><td>광고·마케팅</td><td>인스타·헤메네일 진단 유입, 파트너 모집 광고</td><td class="n">2,500만</td></tr>
+        <tr><td>인건비</td><td>콘텐츠·파트너 온보딩 담당 1명 (협약 10개월)</td><td class="n">2,000만</td></tr>
+        <tr><td>지식재산</td><td>상표(진행 중) + 진단→예약 차감 구조 등 BM 출원 검토</td><td class="n">500만</td></tr>
+        <tr><td>장비·시제품</td><td>매장 진단용 태블릿·조명, 마케팅 키트 제작</td><td class="n">1,000만</td></tr>
+        <tr class="sum"><td>합계</td><td>현금 자부담 약 1,430만원 별도</td><td class="n">1억</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note">배분은 제안값입니다. 실제 비목 이름·한도, 대표자 인건비 가능 여부, 협력사(힐링디어스)에 외주비를 줄 수 있는 조건은 2027년 공고문으로 확인해야 합니다. 심사에서는 "지원금으로 무엇을 완성하는가"가 명확할수록 점수가 납니다.</p>
+  </div>
+
+  <h2>일정 <small>2027년 공고는 2026년처럼 1월 말로 가정</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 190" role="img" aria-label="일정: 10월 사업자등록증 확인과 실측 시작, 11~12월 의향서와 계획서, 1~2월 신청, 2월 토탈샵 오픈, 3월 발표, 4월 협약">
+        <!-- months Oct..Apr, x = 40 + i*86 -->
+        <line x1="40" y1="70" x2="556" y2="70" stroke="var(--line)" stroke-width="3"/>
+        <g font-size="12" font-weight="700" fill="var(--ink)" text-anchor="middle">
+          <text x="40" y="52">10월</text><text x="126" y="52">11월</text><text x="212" y="52">12월</text><text x="298" y="52">1월</text><text x="384" y="52">2월</text><text x="470" y="52">3월</text><text x="556" y="52">4월</text>
+        </g>
+        <g><circle cx="40" cy="70" r="7" fill="var(--red)"/><circle cx="126" cy="70" r="6" fill="var(--gold)"/><circle cx="212" cy="70" r="6" fill="var(--gold)"/><circle cx="298" cy="70" r="8" fill="var(--accent)"/><circle cx="384" cy="70" r="7" fill="var(--blue)"/><circle cx="470" cy="70" r="6" fill="var(--accent)"/><circle cx="556" cy="70" r="7" fill="var(--accent)"/></g>
+        <g font-size="11.5" fill="var(--ink)" text-anchor="middle">
+          <text x="40" y="98">등록증 확인</text><text x="40" y="114">실측 시작</text>
+          <text x="126" y="98">의향서 모집</text><text x="126" y="114">협력 계약</text>
+          <text x="212" y="98">PSST 초안</text><text x="212" y="114">3개월 숫자</text>
+          <text x="298" y="98" font-weight="700">공고·신청</text><text x="298" y="114">주관기관 선택</text>
+          <text x="384" y="98">토탈샵 오픈</text><text x="384" y="114">사업장 이전</text>
+          <text x="470" y="98">발표평가</text><text x="470" y="114">시연 준비</text>
+          <text x="556" y="98">협약</text><text x="556" y="114">사업비 집행</text>
+        </g>
+        <rect x="330" y="134" width="108" height="40" rx="8" fill="var(--red-soft)"/>
+        <text x="384" y="152" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--red)">일이 겹치는 구간</text>
+        <text x="384" y="167" text-anchor="middle" font-size="11" fill="var(--red)">신청 + 오픈 + 발표</text>
+      </svg>
+      </div>
+      <figcaption>2월에 토탈샵 오픈과 서류·발표 준비가 겹칩니다. 계획서는 12월 안에 끝내고, 신청서 주소는 신청 시점의 사업장 기준으로 씁니다. 2026년 협약은 4월~2027년 1월이었습니다.</figcaption>
+    </figure>
+  </div>
+  <div class="warn">개업일이 경계선(2024년 1월 말 전후)이면 초창패가 막힐 수 있습니다. 사업자등록증 확인 전까지는 같은 증거로 창업도약패키지·소상공인 도약 지원도 같이 준비합니다. 증거 3개는 어느 사업에 내도 그대로 쓰입니다.</div>
+
+  <h2>2부 · 매장이 실제로 돈을 늘리는 순서</h2>
+
+  <div class="card">
+    <h3>지금 위치</h3>
+    <p style="font-size:14px;margin:0">1인샵 월 매출은 최대 1,100만원(순익 950만원), 최저 450만원(순익 300만원)이었고, 가격을 올린 뒤에도 광고 없이 매출이 유지됐습니다(9/8 미팅 기록). 리뷰 359건, 성신여대 인근 최고가 샵입니다. 문제는 원장 한 명의 손이 매출의 천장이라는 점입니다.</p>
+  </div>
+
+  <h2>수익 6층 <small>아래에서 위로 쌓기</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 380" role="img" aria-label="수익 6층: 1층 원장 시술, 2층 진단 상품, 3층 토탈샵 교차 판매, 4층 교육, 5층 플랫폼, 6층 정부지원">
+        <g>
+          <rect x="60" y="318" width="480" height="50" rx="8" fill="var(--accent)"/>
+          <rect x="85" y="260" width="430" height="50" rx="8" fill="var(--accent-soft)" stroke="var(--accent)"/>
+          <rect x="110" y="202" width="380" height="50" rx="8" fill="var(--gold-soft)" stroke="var(--gold)"/>
+          <rect x="135" y="144" width="330" height="50" rx="8" fill="var(--blue-soft)" stroke="var(--blue)"/>
+          <rect x="160" y="86" width="280" height="50" rx="8" fill="var(--card)" stroke="var(--accent)" stroke-width="2"/>
+          <rect x="185" y="28" width="230" height="50" rx="8" fill="var(--card)" stroke="var(--muted)" stroke-dasharray="5 4"/>
+        </g>
+        <g text-anchor="middle">
+          <text x="300" y="340" font-size="13.5" font-weight="700" fill="var(--card)">1층 원장 시술 · 웨딩·혼주 비중 높이기</text>
+          <text x="300" y="357" font-size="11.5" fill="var(--card)">지금 월 450~1,100만</text>
+          <text x="300" y="282" font-size="13.5" font-weight="700" fill="var(--ink)">2층 진단 상품 · 원장 확정 진단 5만원</text>
+          <text x="300" y="299" font-size="11.5" fill="var(--muted)">AI 퍼널 신규 매출 월 약 280만 (가정)</text>
+          <text x="300" y="224" font-size="13.5" font-weight="700" fill="var(--ink)">3층 토탈샵 교차 판매 · 헤어·네일·피부</text>
+          <text x="300" y="241" font-size="11.5" fill="var(--muted)">2027년 2월~ · 회원권 100만원 구상</text>
+          <text x="300" y="166" font-size="13.5" font-weight="700" fill="var(--ink)">4층 교육 · 1인샵 오픈 강좌·VOD·전자책</text>
+          <text x="300" y="183" font-size="11.5" fill="var(--muted)">목표 월 300~500만</text>
+          <text x="300" y="108" font-size="13.5" font-weight="700" fill="var(--accent)">5층 플랫폼 · 파트너샵 구독</text>
+          <text x="300" y="125" font-size="11.5" fill="var(--muted)">10곳 208만 → 130곳 3,000만 (가정)</text>
+          <text x="300" y="50" font-size="13" font-weight="700" fill="var(--muted)">6층 정부지원 · 최대 1억 (1회)</text>
+          <text x="300" y="67" font-size="11" fill="var(--muted)">매출이 아니라 5층을 만드는 돈</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>아래층이 버텨야 위층이 섭니다. 2층 진단 상품은 1층 손님을 늘리는 동시에 5층 플랫폼의 실증 데이터가 됩니다.</figcaption>
+    </figure>
+  </div>
+
+  <h2>층별로 할 일</h2>
+  <div class="stack">
+    <div class="card">
+      <h3>1층 · 원장 시술 단가와 비중</h3>
+      <p style="font-size:14px;margin:0">데일리 11만원보다 웨딩 촬영 30만·본식 40만·혼주 17만 비중을 늘리는 것이 같은 시간에 매출을 올리는 가장 빠른 길입니다. AI 진단 결과 페이지의 다음 단계 제안을 웨딩·이벤트 패키지로 연결합니다.</p>
+    </div>
+    <div class="card">
+      <h3>2층 · 진단을 상품으로</h3>
+      <p style="font-size:14px;margin:0">퍼스널컬러 1급 원장의 확정 진단 5만원(세부 진단 9,900원 차감). 서울 퍼스널컬러 진단 시장 평균이 6만원대라 가격 저항이 낮고, 진단받은 손님의 절반이 시술로 이어진다고 가정하면 월 약 280만원이 새로 생깁니다. 외국인 관광객용 영문 예약은 확장 옵션입니다.</p>
+    </div>
+    <div class="card">
+      <h3>3층 · 토탈샵 교차 판매</h3>
+      <p style="font-size:14px;margin:0">한 손님이 메이크업 → 헤어 → 네일 → 피부로 넘어가게 만드는 구조입니다. 진단 결과에 "이 톤이면 이 컬러" 추천을 헤어 염색·네일 컬러까지 이어주면 같은 진단 데이터로 교차 판매가 됩니다. 토탈샵 손익은 기존 토탈샵 사업계획서 수치를 따릅니다.</p>
+    </div>
+    <div class="card">
+      <h3>4층 · 교육</h3>
+      <p style="font-size:14px;margin:0">강사·최고지도자상 이력이 근거입니다. 1인샵 오픈 강좌·VOD는 그대로 5층 파트너 원장 교육(마케팅 키트 사용법)과 내용이 겹치므로, 한 번 만들어 두 군데에 씁니다.</p>
+    </div>
+    <div class="card">
+      <h3>5층 · 플랫폼</h3>
+      <p style="font-size:14px;margin:0">키티티 홈페이지를 템플릿으로 만들어 파트너샵에 셋업비 39만원 + 월 9.9만원으로 대신 구축해 줍니다(제안값). 협약 기간 목표 10곳, 월 3,000만원 구조는 130곳입니다. 헤메네일은 보조 송객, 헤메인은 샵 모집 창구입니다.</p>
+    </div>
+  </div>
+
+  <h2>이번 주에 할 일</h2>
+  <div class="card">
+    <ul class="list">
+      <li><div><div>지영 사업자등록증 사진 받기</div><div class="m">초창패냐 플랜 C냐가 여기서 갈림</div></div><span class="tag no">P0</span></li>
+      <li><div><div>홈페이지 AI 미리 보기·상담·예약 수 기록 시작</div><div class="m">증거 1번</div></div><span class="tag no">P0</span></li>
+      <li><div><div>진단 결과 페이지에 웨딩·이벤트 패키지 연결</div><div class="m">1층 단가와 2층 진단을 한 번에</div></div><span class="tag mid">P1</span></li>
+      <li><div><div>헤메인 파트너 의향서 양식 만들기</div><div class="m">증거 2번, 10월 말까지 3곳부터</div></div><span class="tag mid">P1</span></li>
+    </ul>
+  </div>
+
+  <h2>근거가 된 보고서</h2>
+  <ol class="src">
+    <li><a href="../kititi-grant-strategy/">지영 초기창업패키지 자격 검토 + 신청 전략 (v4)</a></li>
+    <li><a href="../ai-beauty-platform-plan/">키티티 뷰티 진단 플랫폼 설계 (v4)</a></li>
+    <li><a href="../ai-beauty-bizmodel/">AI 뷰티 사업모델 검증</a></li>
+    <li><a href="https://hemenail-site.vercel.app" target="_blank" rel="noopener">헤메네일 얼마 — 서울 28,455곳</a></li>
+    <li><a href="https://kititi-by-jiyoung.vercel.app" target="_blank" rel="noopener">키티티 바이 지영 홈페이지</a></li>
+  </ol>
+  <p class="note">매출 실적은 9/8 확장 미팅 기록, 가격표는 2026년 9월 네이버 플레이스 기준입니다. 진단·플랫폼 수익은 모두 가정값이며 실측 후 교체합니다.</p>
+</div>
+</body>
+</html>
