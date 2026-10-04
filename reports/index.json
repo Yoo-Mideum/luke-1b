@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-concierge-places",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "컨시어지 질문을 '오늘 어디에 가세요?' 장소·목적 선택으로 변경",
+    "status": "완료",
+    "summary": "접속 3초 뒤 장소·목적 12개(기타 직접 입력 포함) 중 고르면 맞는 시술로 안내, 못 찾으면 상담 양식에 메모 자동 입력",
+    "next": "원장님과 장소 목록·매칭 검토",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · app.js PLACES/RULES</p><p>테스트: 하객→데일리(안내 문구), 기타 '아이 학예회'→연주, '회사 워크숍 발표'→상담 시트+메모, 자녀 결혼식→/wedding.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-concierge-3s",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
