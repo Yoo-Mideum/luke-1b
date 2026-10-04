@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-domain-giantstoolbox",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "giantstoolbox.com 도메인 구매 — 버셀 결제수단 필요",
+    "status": "막힘",
+    "summary": "루크가 giantstoolbox.com 선택, 버셀에서 $11.25 구매 시도했으나 payment-failed (팀에 카드 없음)",
+    "next": "루크: 버셀 Billing 에 카드 등록 → 클로드가 재구매 + luke-toolbox 연결",
+    "deploy_url": "https://vercel.com/luke-42e1/~/settings/billing",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>주문 01M42APMWF9XNFMXCBEN757KDP failed(payment-failed). 등록자: 유믿음·리오나퀸즈·남양주, 자동갱신 켬. 폴더 ~/Desktop/luke-toolbox.</p>"
+  },
+  {
     "id": "2026-10-04-auto-message-todo",
     "date": "2026-10-04",
     "project": "루크 툴박스",
