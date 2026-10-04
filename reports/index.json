@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-domain",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "도메인 kititibyjiyoung.com 구매 — 루크 직접 결제 필요",
+    "status": "막힘",
+    "summary": "구매 가능·$11.25/년 확인했지만 Vercel이 에이전트 대리 구매를 막아 루크가 터미널에서 직접 구매해야 함",
+    "next": "루크가 vercel domains buy kititibyjiyoung.com 실행 → 클로드가 사이트 연결",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site. kititi.com은 이미 사용 중. 후보: kititibyjiyoung.com $11.25(선택), kititi.wedding $28.13, kititi.co $29.99, kititi.beauty 첫해 $1.99.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-concierge-icons",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
