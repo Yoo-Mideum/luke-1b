@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI 뷰티 수익모델 검증</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* layout: luke-1b 사이트 규격 그대로 — 600px 단일 컬럼 보고서, 카드 + 인라인 SVG 인포그래픽 */
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --hero-a:#0f6e56; --hero-b:#134e3f; --on-hero:#ffffff;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+  --f-display:"Gowun Dodum","Noto Sans KR",sans-serif;
+  --f-body:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+  --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+  --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+  --hero-a:#145c48; --hero-b:#0d3329; --on-hero:#f2fbf7;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.6;font-size:16px}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 64px}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;margin:0;text-wrap:balance}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:32px 0 12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+h2 small{font-size:13px;color:var(--muted);font-weight:400;font-family:var(--f-body)}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 100%);color:var(--on-hero);border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:var(--on-hero)}
+.hero .eyebrow{font-size:12px;letter-spacing:.08em;opacity:.85}
+.hero .sub{opacity:.92;margin-top:8px;font-size:14px}
+.hero .goal{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+@media (max-width:480px){.hero .goal{grid-template-columns:1fr}}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px}
+.hero .goal b{display:block;font-size:18px;font-family:var(--f-display)}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.stack{display:grid;gap:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.thesis{font-family:var(--f-display);font-size:20px;line-height:1.45}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);white-space:nowrap;font-weight:500}
+.tag.ok{background:var(--accent-soft);color:var(--accent)}
+.tag.no{background:var(--red-soft);color:var(--red)}
+.tag.mid{background:var(--gold-soft);color:var(--gold)}
+.case{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;padding:12px 0;border-top:1px solid var(--line)}
+.case:first-child{border-top:0;padding-top:0}
+.case:last-child{padding-bottom:0}
+.case .t{font-weight:700}
+.case .m{font-size:14px;color:var(--muted);grid-column:2}
+.case .so{font-size:14px;grid-column:2}
+.fig{margin:0}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+.svgwrap{overflow-x:auto}
+.model{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.rank{font-family:var(--f-display);font-size:28px;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.model.r2 .rank{color:var(--gold)}
+.model.r3 .rank{color:var(--muted)}
+.model ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+.model li{margin:2px 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:4px 0 12px;counter-reset:s}
+@media (max-width:480px){.steps{grid-template-columns:1fr 1fr}}
+.steps div{background:var(--accent-soft);border-radius:10px;padding:10px 8px;font-size:12px}
+.steps div b{display:block;font-size:14px;font-family:var(--f-display);margin-bottom:2px}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:14px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:10px 12px;border-radius:6px}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:8px;align-items:start}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li:last-child{padding-bottom:0}
+ul.list .m{font-size:13px;color:var(--muted)}
+.src{font-size:13px;padding-left:18px;margin:0}
+.src li{margin:4px 0;word-break:break-word}
+.num{font-variant-numeric:tabular-nums}
+svg text{font-family:var(--f-body)}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top"><a href="../../">← 내 연봉 10억 만들기</a><span>2026-10-04 · 보고서</span></div>
+
+  <header class="hero">
+    <div class="eyebrow">키티티 AI 뷰티 플랫폼 · 사업모델 검증</div>
+    <h1>AI 뷰티, 돈은 어디서 나오나</h1>
+    <p class="sub">공개된 실적·가격 자료로 "AI 진단 서비스가 실제로 돈이 되는가"를 검토했습니다.</p>
+    <div class="goal">
+      <div><b>AI = 영업사원</b><span>상품이 아니라 고객을 데려오는 장치</span></div>
+      <div><b class="num">4~6만원</b><span>사람들이 이미 내는 오프라인 진단 단가</span></div>
+      <div><b class="num">3%</b><span>개발 착수 전 넘어야 할 예약금 전환율</span></div>
+    </div>
+  </header>
+
+  <h2>결론</h2>
+  <div class="card accent">
+    <p class="thesis">AI 기술 자체는 팔리지 않습니다. 돈은 AI가 데려온 고객이 키티티 매장에서 결제하는 진단·시술에서 나옵니다.</p>
+    <p class="note" style="margin:0">그래서 AI는 무료로 열고, 유료는 원장이 직접 하는 확정 진단과 헤어·메이크업 시술에 둡니다.</p>
+  </div>
+
+  <h2>사례 검증 <small>된다 / 안 된다</small></h2>
+  <div class="card">
+    <div class="case">
+      <span class="tag no">해자 아님</span><div class="t">얼굴형·헤어 시뮬레이션 기술은 이미 흔하다</div>
+      <div class="m">업계 1위 Perfect Corp(유캠)가 한국어로 미용실용 AI 헤어 시뮬레이션 API를 팔고, 연동은 당일 테스트도 가능하다고 홍보합니다. 소비자 앱은 주 5.99달러·연 49.99달러 수준입니다.</div>
+      <div class="so">→ "웹으로 얼굴 분석"만으로는 차별점이 안 됩니다.</div>
+    </div>
+    <div class="case">
+      <span class="tag no">고전</span><div class="t">글로벌 1위도 B2B(기업 판매)는 정체</div>
+      <div class="m">Perfect Corp는 매출 성장을 B2C 앱 구독이 이끌고 있고, B2B는 단기 전망을 보수적으로 잡았습니다. 고객사들이 가상 착용 기술 도입에 느리다는 분석도 있습니다.</div>
+      <div class="so">→ 뷰티 B2B SaaS는 대기업도 팔기 어려운 시장입니다.</div>
+    </div>
+    <div class="case">
+      <span class="tag mid">단가 낮음</span><div class="t">국내 뷰티샵 SaaS는 월 2만원대</div>
+      <div class="m">업계 1위 공비서: 스탠다드 월 16,500원, 프로 월 25,000원.</div>
+      <div class="so">→ 이전 답변의 "샵당 월 50~100만원 SaaS"는 근거가 없어 철회합니다.</div>
+    </div>
+    <div class="case">
+      <span class="tag ok">돈 됨</span><div class="t">오프라인 퍼스널컬러 진단은 이미 유료 시장</div>
+      <div class="m">평균 61,000원, 크몽 거래 기준 최저 4만·최고 15만원. 서울 방문 외국인에게는 필수 코스로 꼽히고, 진단 직후 염색 업셀까지 일어납니다.</div>
+      <div class="so">→ 키티티는 진단과 시술(헤어+메이크업)을 한 자리에서 할 수 있는 곳입니다.</div>
+    </div>
+  </div>
+
+  <h2>고객 한 명·한 곳이 실제로 내는 돈</h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 270" role="img" aria-label="공비서 월 16,500원과 25,000원, 퍼스널컬러 진단 최저 4만원, 평균 6만 1천원, 최고 15만원 비교 막대그래프">
+        <!-- scale: x = 170 + value/150000*380 -->
+        <g stroke="var(--line)" stroke-width="1">
+          <line x1="170" y1="14" x2="170" y2="232"/>
+          <line x1="296.7" y1="14" x2="296.7" y2="232"/>
+          <line x1="423.3" y1="14" x2="423.3" y2="232"/>
+          <line x1="550" y1="14" x2="550" y2="232"/>
+        </g>
+        <g font-size="11" fill="var(--muted)" text-anchor="middle">
+          <text x="170" y="250">0</text>
+          <text x="296.7" y="250">5만</text>
+          <text x="423.3" y="250">10만</text>
+          <text x="550" y="250">15만원</text>
+        </g>
+        <g font-size="13" fill="var(--ink)" text-anchor="end">
+          <text x="160" y="38">공비서 스탠다드</text>
+          <text x="160" y="80">공비서 프로</text>
+          <text x="160" y="122">퍼스널컬러 최저</text>
+          <text x="160" y="164">퍼스널컬러 평균</text>
+          <text x="160" y="206">퍼스널컬러 최고</text>
+        </g>
+        <g font-size="10.5" fill="var(--muted)" text-anchor="end">
+          <text x="160" y="52">샵 1곳 · 매월</text>
+          <text x="160" y="94">샵 1곳 · 매월</text>
+          <text x="160" y="136">고객 1명 · 1회</text>
+          <text x="160" y="178">고객 1명 · 1회</text>
+          <text x="160" y="220">고객 1명 · 1회</text>
+        </g>
+        <rect x="170" y="26" width="41.8" height="22" rx="4" fill="var(--gold)"/>
+        <rect x="170" y="68" width="63.3" height="22" rx="4" fill="var(--gold)"/>
+        <rect x="170" y="110" width="101.3" height="22" rx="4" fill="var(--accent)" opacity=".55"/>
+        <rect x="170" y="152" width="154.5" height="22" rx="4" fill="var(--accent)"/>
+        <rect x="170" y="194" width="380" height="22" rx="4" fill="var(--accent)" opacity=".55"/>
+        <g font-size="12.5" fill="var(--ink)" font-weight="700" class="num">
+          <text x="218" y="42">16,500</text>
+          <text x="239" y="84">25,000</text>
+          <text x="277" y="126">40,000</text>
+          <text x="330.5" y="168">61,000</text>
+        </g>
+        <text x="542" y="210" font-size="12.5" font-weight="700" fill="var(--card)" text-anchor="end">150,000</text>
+      </svg>
+      </div>
+      <figcaption>샵 대상 SaaS는 한 달에 2만원대, 고객 대상 진단은 한 번에 4~15만원. 같은 기술이라도 누구에게 파느냐가 매출을 정합니다.</figcaption>
+    </figure>
+  </div>
+
+  <h2>글로벌 1위의 매출은 어디서 컸나</h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 220" role="img" aria-label="Perfect Corp AI·AR 클라우드 및 구독 매출, 2024년 2분기 1,290만 달러에서 2025년 2분기 1,490만 달러로 15.6% 증가">
+        <!-- scale: height = value/16*150, baseline y=180 -->
+        <line x1="60" y1="180" x2="560" y2="180" stroke="var(--line)" stroke-width="1"/>
+        <rect x="110" y="59.1" width="110" height="120.9" rx="6" fill="var(--muted)" opacity=".45"/>
+        <rect x="260" y="40.3" width="110" height="139.7" rx="6" fill="var(--accent)"/>
+        <g text-anchor="middle" font-size="15" font-weight="700" fill="var(--ink)">
+          <text x="165" y="50">$12.9M</text>
+          <text x="315" y="31">$14.9M</text>
+        </g>
+        <g text-anchor="middle" font-size="12" fill="var(--muted)">
+          <text x="165" y="200">2024년 2분기</text>
+          <text x="315" y="200">2025년 2분기</text>
+        </g>
+        <g font-size="12.5" fill="var(--ink)">
+          <text x="400" y="74" font-weight="700" fill="var(--accent)">+15.6%</text>
+          <text x="400" y="98">성장 동력:</text>
+          <text x="400" y="118">B2C 앱 구독</text>
+          <text x="400" y="146" fill="var(--muted)">B2B(기업 판매):</text>
+          <text x="400" y="166" fill="var(--muted)">보수적 전망</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>AI·AR 클라우드 및 구독 매출(분기). 가장 큰 회사도 성장은 소비자 쪽에서 나왔습니다.</figcaption>
+    </figure>
+  </div>
+
+  <h2>추천 구조 <small>AI가 데려오고, 매장이 번다</small></h2>
+  <div class="card">
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 300" role="img" aria-label="수익 흐름: 웹 AI 진단 무료, 원장 확정 진단 4~6만원, 헤어·메이크업 시술 패키지, 진단 맞춤 제품 판매">
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="var(--muted)"/></marker>
+        </defs>
+        <!-- funnel bands, width shrinks with stage -->
+        <rect x="20" y="14" width="400" height="54" rx="10" fill="var(--blue-soft)" stroke="var(--blue)" stroke-width="1"/>
+        <rect x="50" y="84" width="340" height="54" rx="10" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1.5"/>
+        <rect x="80" y="154" width="280" height="54" rx="10" fill="var(--accent)" stroke="var(--accent)" stroke-width="1"/>
+        <rect x="110" y="224" width="220" height="54" rx="10" fill="var(--gold-soft)" stroke="var(--gold)" stroke-width="1"/>
+        <g text-anchor="middle">
+          <text x="220" y="38" font-size="14" font-weight="700" fill="var(--ink)">웹 AI 얼굴형·퍼스널컬러 진단</text>
+          <text x="220" y="57" font-size="12" fill="var(--muted)">무료 · 카톡/연락처 수집</text>
+          <text x="220" y="108" font-size="14" font-weight="700" fill="var(--ink)">원장 확정 진단 (오프라인)</text>
+          <text x="220" y="127" font-size="12" fill="var(--accent)" font-weight="700">4~6만원</text>
+          <text x="220" y="178" font-size="14" font-weight="700" fill="var(--card)">헤어·메이크업 시술 패키지</text>
+          <text x="220" y="197" font-size="12" fill="var(--card)">핵심 매출 · 업셀</text>
+          <text x="220" y="248" font-size="14" font-weight="700" fill="var(--ink)">진단 맞춤 제품</text>
+          <text x="220" y="267" font-size="12" fill="var(--muted)">스마트스토어 커머스</text>
+        </g>
+        <!-- side labels -->
+        <g font-size="12" fill="var(--muted)">
+          <line x1="430" y1="41" x2="458" y2="41" stroke="var(--line)"/>
+          <text x="464" y="37">AI의 역할</text>
+          <text x="464" y="53">고객 데려오기</text>
+          <line x1="400" y1="111" x2="458" y2="111" stroke="var(--line)"/>
+          <text x="464" y="107">첫 결제</text>
+          <text x="464" y="123">시장가 검증됨</text>
+          <line x1="370" y1="181" x2="458" y2="181" stroke="var(--line)"/>
+          <text x="464" y="177">키티티만의 강점</text>
+          <text x="464" y="193">진단+시술 한 자리</text>
+          <line x1="340" y1="251" x2="458" y2="251" stroke="var(--line)"/>
+          <text x="464" y="247">루크 기존 역량</text>
+          <text x="464" y="263">위탁·커머스</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>위로 갈수록 사람이 많고, 아래로 갈수록 한 명당 매출이 큽니다. 개발비는 맨 윗단에만 듭니다.</figcaption>
+    </figure>
+  </div>
+
+  <h2>사업모델 우선순위</h2>
+  <div class="stack">
+    <div class="card model r1">
+      <div class="rank num">1</div>
+      <div>
+        <h3>AI 무료 진단 → 유료 확정 진단 → 시술 업셀</h3>
+        <p style="margin:0;font-size:14px">키티티 직영. 퍼스널컬러 전문샵은 진단만, 미용실은 진단을 못 합니다. 그 사이가 빈자리입니다.</p>
+        <ul>
+          <li>확장: 외국인 관광객용 영문 예약 페이지</li>
+          <li>초기창업패키지 사업계획서의 핵심 트랙션 근거</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card model r2">
+      <div class="rank num">2</div>
+      <div>
+        <h3>진단 결과 기반 제품 판매</h3>
+        <p style="margin:0;font-size:14px">결과 페이지에 "내 톤에 맞는 립 3종" 연결. AI 추가 개발 없이 기존 스마트스토어 역량으로 바로 가능합니다.</p>
+      </div>
+    </div>
+    <div class="card model r3">
+      <div class="rank num">3</div>
+      <div>
+        <h3>원장 대상: 도구 + 운영 교육 패키지</h3>
+        <p style="margin:0;font-size:14px">월 2만원 SaaS로는 남지 않습니다. 강의 모델처럼 "AI 상담 퍼널 + 운영 교육"으로 묶어야 단가가 나옵니다. 1순위가 숫자로 증명된 뒤에 착수합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>개발 전 검증 실험 <small>2~3주 · 거의 무비용</small></h2>
+  <div class="card">
+    <div class="steps">
+      <div><b>랜딩</b>퀴즈 구조로 설문형 진단 페이지</div>
+      <div><b>버튼</b>확정 진단 5만원 · 예약금 1만원</div>
+      <div><b>유입</b>인스타·당근·성신여대 커뮤니티</div>
+      <div><b>판정</b>300명 중 10명 결제</div>
+    </div>
+    <figure class="fig">
+      <div class="svgwrap">
+      <svg viewBox="0 0 600 120" role="img" aria-label="통과선: 방문 300명 중 예약금 결제 10명, 전환율 3%">
+        <!-- scale: 0%~6% over x 40..560 -->
+        <rect x="40" y="40" width="520" height="22" rx="11" fill="var(--line)"/>
+        <rect x="40" y="40" width="260" height="22" rx="11" fill="var(--red-soft)"/>
+        <rect x="300" y="40" width="260" height="22" rx="11" fill="var(--accent-soft)"/>
+        <line x1="300" y1="28" x2="300" y2="74" stroke="var(--ink)" stroke-width="2"/>
+        <text x="300" y="20" text-anchor="middle" font-size="13" font-weight="700" fill="var(--ink)">통과선 3% (300명 중 10명)</text>
+        <text x="170" y="56" text-anchor="middle" font-size="12" fill="var(--red)" font-weight="700">미달 → 가격·문구 수정 후 재실험</text>
+        <text x="430" y="56" text-anchor="middle" font-size="12" fill="var(--accent)" font-weight="700">통과 → 시뮬레이션 개발 착수</text>
+        <g font-size="11" fill="var(--muted)" text-anchor="middle" class="num">
+          <text x="40" y="92">0%</text><text x="300" y="92">3%</text><text x="560" y="92">6%</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>"만들었다"보다 "돈 낸 사람이 있다"가 심사에서 더 강합니다. 이 숫자가 그대로 사업계획서 근거가 됩니다.</figcaption>
+    </figure>
+  </div>
+
+  <h2>함께 짚을 리스크</h2>
+  <div class="stack">
+    <div class="warn"><b>월 300만원 유지비</b> — 1인샵 고정비로는 무겁습니다. 키티티 매출이 받쳐주지 못하면 계약이 오래 못 갑니다. 일부를 예약 건당·매출 % 성과연동으로 바꾸는 안을 검토하세요.</div>
+    <div class="warn"><b>초기창업패키지 지급 제한</b> — 대표자와 관계있는 업체에 사업비로 외주비를 지급하는 데 제한이 있을 수 있습니다. 확정된 사실이 아니므로 공고문에서 확인이 필요합니다.</div>
+    <div class="card red"><b>정정</b> — 이전 답변의 "SaaS 월 50~100만원·월 1,500~2,500만원" 추정은 근거가 없어 철회합니다. 또 '헤메샵'을 메이크업헬퍼로 잘못 읽었습니다. 이 보고서는 헤어메이크업샵 기준입니다.</div>
+  </div>
+
+  <h2>다음 할 일</h2>
+  <div class="card">
+    <ul class="list">
+      <li><div><div>검증 실험 랜딩 + 예약금 버튼 띄우기</div><div class="m">통과선 3%. 기한 10/11</div></div><span class="tag no">P0</span></li>
+      <li><div><div>개발비·유지비 구조 재검토, 초창패 지급 조항 확인</div><div class="m">성과연동 대안 포함. 기한 10/31</div></div><span class="tag mid">P1</span></li>
+      <li><div><div>실험 통과 시 시뮬레이션(M3) 스펙 확정</div><div class="m">통과 여부에 따라 결정</div></div><span class="tag">대기</span></li>
+    </ul>
+  </div>
+
+  <h2>출처</h2>
+  <ol class="src">
+    <li><a href="https://www.perfectcorp.com/ko/business/products/virtual-hairstyles" target="_blank" rel="noopener">Perfect Corp — AI 헤어스타일 시뮬레이션 (기업용)</a></li>
+    <li><a href="https://thedeadpixelssociety.com/perfect-corp-reports-unaudited-financial-results-for-the-three-months-and-the-six-months-ended-june-30-2025/" target="_blank" rel="noopener">Perfect Corp 2025년 2분기 실적</a></li>
+    <li><a href="https://s27.q4cdn.com/906368049/files/News/2025/Zacks_SCR_Research_07312025_PERF_Thompson.pdf" target="_blank" rel="noopener">Zacks SCR 리서치 (2025.07)</a></li>
+    <li><a href="https://apps.apple.com/us/app/hair-salon-ai-%ED%97%A4%EC%96%B4-%EC%BB%AC%EB%9F%AC-%ED%8E%B8%EC%A7%91-%EB%B7%B0%ED%8B%B0-%ED%95%84%ED%84%B0/id6747818169?l=ko" target="_blank" rel="noopener">Hair Salon AI 앱 가격 (App Store)</a></li>
+    <li><a href="https://www.smarttoday.co.kr/ko-kr/articles/55132" target="_blank" rel="noopener">공비서 요금제 개편 기사</a></li>
+    <li><a href="https://miso.kr/blog/%ED%8D%BC%EC%8A%A4%EB%84%90%EC%BB%AC%EB%9F%AC-%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A9%94%EC%9D%B4%ED%82%B9-%EB%B9%84%EC%9A%A9" target="_blank" rel="noopener">미소 — 퍼스널컬러 이미지메이킹 비용</a></li>
+    <li><a href="https://kmong.com/prices/%ED%97%A4%EC%96%B4-%EB%A9%94%EC%9D%B4%ED%81%AC%EC%97%85-%EC%BB%A8%EC%84%A4%ED%8C%85" target="_blank" rel="noopener">크몽 — 헤어·메이크업·퍼스널컬러 컨설팅 비용</a></li>
+    <li><a href="https://www.haniseoul.com/ko/travels/korea/personal-color-analysis-seoul-english-guide" target="_blank" rel="noopener">HaniSeoul — 2026 서울 퍼스널 컬러 진단 가이드</a></li>
+  </ol>
+</div>
+</body>
+</html>

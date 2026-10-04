@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-ai-beauty-bizmodel",
+    "date": "2026-10-04",
+    "project": "키티티 AI 뷰티 플랫폼",
+    "title": "AI 뷰티 사업모델 검증 보고서",
+    "status": "완료",
+    "summary": "AI는 상품이 아니라 영업사원 — 무료 AI 진단 → 유료 확정 진단(4~6만) → 시술 업셀이 1순위, 샵 대상 SaaS는 월 2만원대라 후순위",
+    "next": "검증 실험 랜딩+예약금 버튼 (통과선 300명 중 10명, 10/11)",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/reports/ai-beauty-bizmodel/",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>근거: Perfect Corp 2Q25 AI·AR 구독매출 $14.9M(+15.6%) 성장은 B2C, B2B 보수적 · 공비서 월 16,500/25,000원 · 퍼스널컬러 진단 평균 61,000원(4~15만). 이전 'SaaS 월 50~100만' 추정 철회. 리스크: 월 300만 유지비, 초창패 관계사 지급 제한 공고문 확인.</p>"
+  },
+  {
     "id": "2026-10-04-mentoluke-blog-plan",
     "date": "2026-10-04",
     "project": "멘토루크 블로그",
