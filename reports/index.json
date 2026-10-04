@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-concierge-icons",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "컨시어지 질문 '어떤 특별한 이벤트가 있나요?' + 박스 아이콘",
+    "status": "완료",
+    "summary": "질문 문구 변경, 12개 박스에 샴페인색 얇은 선 아이콘 추가, 한 화면에 들어오게 정리",
+    "next": "실제 휴대폰에서 루크 확인",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · app.js ICON(SVG). 이모지 대신 선 아이콘을 써서 메종 톤 유지.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-concierge-modal",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
