@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-concierge",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "10초 컨시어지 질문 + 섹션 배경 톤 구분",
+    "status": "완료",
+    "summary": "메뉴에서 10초 머물면 '어떤 날을 준비하세요?' 시트가 떠서 고르면 그 시술(웨딩은 /wedding)로 안내, 섹션마다 배경 톤 분리",
+    "next": "실사용 반응 보고 대기 시간(10초) 조정",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site (app.js 컨시어지 블록, style.css tone-*)</p><p>세션당 1회, 탭을 먼저 고른 사람에겐 안 뜸. 테스트: 5초 안 뜸 → 11초 뜸 → 데일리 클릭 시 데일리 탭 → 재방문 안 뜸. 원장 소개는 다크 배경.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-win-plan",
     "date": "2026-10-04",
     "project": "키티티 AI 뷰티 플랫폼",
