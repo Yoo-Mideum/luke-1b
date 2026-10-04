@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-naver-view-skill",
+    "date": "2026-10-05",
+    "project": "네이버 화면 보기 스킬",
+    "title": "네이버 화면 보기 스킬 조사 → 없어서 직접 제작(naver-view)",
+    "status": "완료",
+    "summary": "깃허브 네이버 MCP·스킬은 전부 API/HTML 긁기라 실제 화면을 못 봄. Claude in Chrome·WebFetch 는 naver.com 전체를 안전 필터로 차단(분류 오류로 보고된 열린 이슈). 진짜 Chrome 으로 캡처하는 읽기 전용 스킬을 만들어 메인·검색·블로그(PC·모바일) 검증.",
+    "next": "쇼핑·플레이스는 네이버가 자동 접근 차단(418·429) — 필요하면 루크 로그인 크롬 연결(Playwright 확장) 검토. 멘토루크 파인더의 쇼핑 API 종료 대응은 별도 작업.",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/.claude/skills/naver-view (see.py + SKILL.md), 캡처 저장 ~/.naver-view/shots/</p><p>실측: www.naver.com·search.naver.com·blog.naver.com·m.blog ✅ / search.shopping 418 · m.place 429 ❌(차단 시 즉시 중단, 우회 안 함) / pay·order·nid 는 일부러 안 엶</p><p>조사: k-skill(7.7k★)·naver-search-mcp 등은 API·HTML 기반. 쇼핑 검색 API 2026-07-31 종료, 2026-09-07 약관부터 검색 결과 AI 입력 금지. 차단 이슈 https://github.com/anthropics/claude-code/issues/95539</p>"
+  },
+  {
     "id": "2026-10-05-tools-purchase-review",
     "date": "2026-10-05",
     "project": "루크 툴박스",
