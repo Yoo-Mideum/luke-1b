@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-gallery-reviews-legal",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "사진만 보기·후기 전체 읽기·개인정보처리방침 + 법률 점검",
+    "status": "완료",
+    "summary": "시술 사진이 접속마다 랜덤으로 바뀌고, 사진만 모아 보는 페이지(정렬·필터)와 후기 310개 전체 읽기 페이지를 만듦. 개인정보처리방침과 AI 결과물 표시를 넣고 법률 점검표(LEGAL.md)를 정리",
+    "next": "원장님 사이트 사용 동의서 받기 · 'IMAGE CUT' 문구를 'AI 연출 이미지'로 바꿀지 루크 결정 · 판매 전 통신판매업 신고번호·Vercel Pro·토스 실키",
+    "deploy_url": "https://kititibyjiyoung.com/gallery",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>새 페이지: <a href='https://kititibyjiyoung.com/gallery'>/gallery</a>, <a href='https://kititibyjiyoung.com/reviews'>/reviews</a>, <a href='https://kititibyjiyoung.com/privacy'>/privacy</a>. 점검표 <code>kititi-site/LEGAL.md</code>.</p>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-step3",
     "date": "2026-10-05",
     "project": "원크루 사이트",
