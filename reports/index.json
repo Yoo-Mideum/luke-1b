@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-hero-random",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "메인 첫 화면 사진 — 접속마다 무작위 + 6초마다 교체",
+    "status": "완료",
+    "summary": "인트로 뒤 메인 첫 화면 사진이 접속할 때마다 다른 순서로 나오고, 30초 → 6초마다 바뀜. 매주 새로 만드는 연출 사진도 섞여 들어가고 같은 사진은 겹치지 않음",
+    "next": "원장님 사이트 사용 동의서 받기",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>실제 사이트에서 두 번 접속해 10장씩 확인 — 순서 서로 다름, 중복 0.</p>"
+  },
+  {
     "id": "2026-10-05-kititi-ai-label",
     "date": "2026-10-05",
     "project": "키티티 상담 사이트",
