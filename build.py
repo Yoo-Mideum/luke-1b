@@ -61,6 +61,11 @@ a{color:var(--accent);text-decoration:none}
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
 .lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
 @media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -1071,172 +1076,215 @@ PLATFORM = """
 """
 
 # ---------------------------------------------------------------- 사업 유니버스 지도
-UNIVERSE = """
+UNI_REGIONS = [
+ {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","x":14,"y":24,
+  "desc":"사람이 나를 알게 되는 입구. 이 구역이 꺼지면 나머지 구역의 신규 유입이 멈춥니다. 대신 상품·유통의 후기와 실적이 이 구역의 소재가 됩니다.",
+  "nodes":[
+   {"id":"yt","n":"유튜브 1만","full":"유튜브 멘토루크","st":"on","d":"구독자 약 1만 명. 주 1개 공개 강의 업로드 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) 개설 예정."},
+   {"id":"cafe","n":"네이버 카페","full":"네이버 카페","st":"on","d":"선판매·공지 라인. 신규 강의 플랫폼에서는 이 역할을 '락인 축'이 맡는 구조로 설계 중."},
+   {"id":"kakao","n":"카톡 1천","full":"카카오톡 커뮤니티","st":"on","d":"약 1,000명. 특강 공지와 선판매가 여기서 돕니다."},
+   {"id":"vcell","n":"뷰셀 채널","full":"뷰셀 채널 (메이브님)","st":"on","d":"화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정."},
+   {"id":"live","n":"무료 라이브","full":"10월 말 무료 라이브","st":"build","d":"록터뷰 2회차 영상 설명란·고정댓글에 신청 링크를 넣어 신규 리스트를 만드는 자리. 10/2 녹음에서 10/25(일) 19:00로 언급 — 확정 여부와 신청 링크는 확인 필요.",
+    "href":"../guides/free-live/","hl":"설명서"},
+  ]},
+ {"id":"kn","no":"②","name":"지식·교육","sub":"신뢰 → 매출","color":"#e3b04b","x":190,"y":24,
+  "desc":"신뢰를 돈으로 바꾸고, 검색·추천으로 새 사람을 데려오는 줄. 금액은 모두 계획값이며 실적이 아닙니다.",
+  "nodes":[
+   {"id":"onecrew","n":"원크루","full":"원크루 (ONE CREW)","st":"on","d":"평생 파트너십 컨설팅. 정가 3,900만 / 루크 수강생 출신 3,300만. 한 사람의 삼각 파이프라인을 같이 설계하고 세우는 것이 목표.","href":"../philosophy/","hl":"삼각 파이프라인"},
+   {"id":"ilsip","n":"일십백천","full":"일십백천","st":"on","d":"990만. 삼각형 중 '브랜딩' 한 축에 집중하는 브랜드 인큐베이팅. 약 400개 영상 강의 + 1:1. 수료자가 원크루로 올라오는 사다리.","href":"../philosophy/","hl":"삼각 파이프라인"},
+   {"id":"plat","n":"강의 플랫폼","full":"신규 강의 플랫폼","st":"build","d":"메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 약 1,000만 제외 4,000만. 3인이면 25명에 각 1,300만. 10/5 PD 미팅 → 10/8 종혁 본부장 미팅.","href":"../platform/","hl":"전략 페이지"},
+   {"id":"toolkit","n":"300만 툴킷","full":"300만 툴킷 프로그램","st":"idea","d":"자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만. 1기 8명 목표."},
+   {"id":"dino","n":"디노 12주","full":"디노(미니쌤) 12주 빌드업","st":"build","d":"AI 셀러 실무 교육 라인. 1달 90 / 2달 200 / 3달 350만 기준, 상품별 배분 비율 확정 필요. 10/5 1주차 시작.","href":"../guides/dino-12weeks/","hl":"설명서"},
+   {"id":"kititi","n":"키티티 컨설팅","full":"키티티바이지영 컨설팅","st":"on","d":"윤지영 원장(성신여대 인근 메이크업 샵)의 브랜딩·확장 자문. 상표 출원 진행 중, 2월 샵 오픈 목표, 상담 사이트 운영. 월 고정 자문 + 매출 연동으로 유료 전환이 과제.","href":"../grants/","hl":"정부지원사업 정리"},
+  ]},
+ {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","x":190,"y":549,
+  "desc":"신뢰가 없어도 상품 자체로 유입이 생기는 줄. 채널이 쉬어도 돈이 끊기지 않게 받쳐주는 자리입니다.",
+  "nodes":[
+   {"id":"3pl","n":"3PL 물류","full":"3PL 물류 대행","st":"on","d":"수강생 재고 보관·출고 대행. 뿌요가 운영. 입고 미처리 상태에서 운송장이 나가는 오류를 잡는 안정화가 진행 중.","href":"../guides/logistics-stabilize/","hl":"설명서"},
+   {"id":"resale","n":"재고 판매","full":"수강생 재고 외부 판매","st":"build","d":"창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매하고 수수료 15~20%. 동의서 → 재고 시트 → 당근 비즈프로필 → 30개 등록 순서.","href":"../guides/3pl-resale/","hl":"설명서"},
+   {"id":"store","n":"창고형 매장","full":"오프라인 창고형 매장","st":"idea","d":"창고 재고를 오프라인에서 직접 파는 구조. 3PL 창고와 재고 외부 판매가 이어지는 다음 칸입니다. 위치·평수·운영 인력·취급 품목은 아직 정해진 기록이 없어 확인 필요 — 알려주시면 이 칸을 채웁니다."},
+   {"id":"toolbox","n":"루크 툴박스","full":"루크 툴박스","st":"build","d":"월 19,900 / 연 199,000 소액 대량 구독. 12월 500명 → 3월 1,000명 → 6월 월 3,000만 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.","href":"../guides/developer-accounts/","hl":"개발자 계정 설명서"},
+   {"id":"consign","n":"위탁판매","full":"위탁판매 (메이크업헬퍼)","st":"build","d":"원크루 최은봉 대표 건. 12주 테스트, 광고 상한 약 189만, 11월 말 판정."},
+  ]},
+ {"id":"base","no":"④","name":"기반·자금","sub":"받치는 땅","color":"#b79cff","x":14,"y":599,
+  "desc":"세 줄을 떠받치는 바닥. 돈을 버는 줄은 아니지만 여기가 흔들리면 위의 셋이 같이 흔들립니다.",
+  "nodes":[
+   {"id":"grant","n":"정부지원사업","full":"정부지원사업","st":"build","d":"루크 본인은 해당 없고 지영 원장·메이브님·디노·뿌요가 대상. 2026년 해당분 정리와 2027년 도전 리스트(지원금·자격·과제·경쟁률)를 따로 모아 뒀습니다.","href":"../grants/","hl":"정부지원사업 페이지"},
+   {"id":"corp","n":"힐링디어스(주)","full":"힐링디어스(주)","st":"on","d":"법인. 본점 주소 확보 후 본점이전 등기와 사업자등록 정정이 진행 중."},
+   {"id":"seoul","n":"서울 이전·건물","full":"서울 이전 · 건물 매입","st":"idea","d":"내년 초 사무실·강의장을 서울로, 현 사무실은 창고·물류 거점으로. 월 렌트가 300~500만을 넘어가면 자체 건물 매입을 검토(9/29 메이브님 회의)."},
+  ]},
+]
+
+def uni_svg():
+    W, H = 360, 760
+    BW = 156
+    out = []
+    out.append('<svg viewBox="0 0 %d %d" xmlns:xlink="http://www.w3.org/1999/xlink" id="uniMap" role="img" aria-label="사업 유니버스 지도 — 네 구역과 그 사이를 도는 흐름" style="font-family:\'Noto Sans KR\',sans-serif">' % (W, H))
+    out.append('<defs><radialGradient id="uCore" cx="50%" cy="40%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#ffe9b8"/><stop offset="100%" stop-color="#e3b04b"/></radialGradient>')
+    out.append('<path id="uRing" d="M180,240 A120,150 0 1,1 180,540 A120,150 0 1,1 180,240"/></defs>')
+    stars = [(26,250,1.4,0),(334,268,1.1,.7),(48,330,1.5,1.4),(318,440,1.2,2.1),(300,330,1.3,.4),(58,460,1.1,1.9),(180,742,1.3,1.1),(22,296,1.2,2.6),(344,350,1.4,.9),(120,268,1.1,3.1),(240,500,1.3,1.6),(130,512,1.1,2.3)]
+    out.append('<g fill="#cfe9ff">')
+    for cx,cy,r,d in stars:
+        out.append('<circle class="lu-star" cx="%s" cy="%s" r="%s" style="animation-delay:%ss"/>' % (cx,cy,r,d))
+    out.append('</g>')
+    out.append('<use xlink:href="#uRing" href="#uRing" class="lu-flow" fill="none" stroke="#9fe6cd" stroke-width="2" stroke-linecap="round"/>')
+    out.append('<g fill="none" stroke="#ffe9b8" stroke-width="1.5" opacity=".75" class="lu-spoke">'
+               '<line x1="180" y1="352" x2="180" y2="248"/><line x1="180" y1="428" x2="180" y2="532"/>'
+               '<line x1="142" y1="390" x2="68" y2="390"/><line x1="218" y1="390" x2="292" y2="390"/></g>')
+    out.append('<g stroke="#7fa8bd" stroke-width="1" opacity=".5">'
+               '<line x1="168" y1="205" x2="98" y2="286"/><line x1="192" y1="232" x2="262" y2="286"/>'
+               '<line x1="192" y1="556" x2="262" y2="494"/><line x1="168" y1="606" x2="98" y2="494"/></g>')
+    for i,(dur,beg) in enumerate([(14,"0s"),(14,"-4.6s"),(14,"-9.2s")]):
+        out.append('<circle r="%s" fill="#fff" opacity="%s"><animateMotion dur="%ss" begin="%s" repeatCount="indefinite"><mpath xlink:href="#uRing" href="#uRing"/></animateMotion></circle>' % (3 if i==0 else 2.3, .95 if i==0 else .7, dur, beg))
+    out.append('<g id="uniRegions">')
+    for R in UNI_REGIONS:
+        x, y = R["x"], R["y"]
+        h = 50 + len(R["nodes"])*25 + 12
+        c = R["color"]
+        out.append('<g id="r-%s" class="uni-reg">' % R["id"])
+        out.append('<rect x="%d" y="%d" width="%d" height="%d" rx="20" fill="#0c1a20" fill-opacity=".92" stroke="%s" stroke-width="2"/>' % (x,y,BW,h,c))
+        out.append('<text x="%d" y="%d" fill="%s" font-size="12.5" font-weight="700">%s %s</text>' % (x+14, y+26, c, R["no"], R["name"]))
+        out.append('<text x="%d" y="%d" fill="#7f8f99" font-size="9.5">%s</text>' % (x+14, y+41, R["sub"]))
+        out.append('<rect class="uni-hit" data-r="%s" x="%d" y="%d" width="%d" height="34" fill="transparent"><title>%s 구역</title></rect>' % (R["id"], x, y, BW, R["name"]))
+        for j,N in enumerate(R["nodes"]):
+            ry = y + 58 + j*25
+            if N["st"] == "on":
+                dot = '<circle cx="%d" cy="%d" r="4.6" fill="%s" class="lu-node" style="animation-delay:-%ss"/>' % (x+16, ry-4, c, round(j*.6,1))
+            elif N["st"] == "build":
+                dot = '<circle cx="%d" cy="%d" r="4.4" fill="none" stroke="%s" stroke-width="2" class="lu-node" style="animation-delay:-%ss"/>' % (x+16, ry-4, c, round(j*.6,1))
+            else:
+                dot = '<circle cx="%d" cy="%d" r="4.4" fill="none" stroke="%s" stroke-width="1.6" stroke-dasharray="2 2.4"/>' % (x+16, ry-4, c)
+            out.append('<g id="n-%s" class="uni-nd">%s<text class="lu-lab" x="%d" y="%d" fill="#e8eef2" font-size="10.5">%s</text>'
+                       '<rect class="uni-hit" data-n="%s" x="%d" y="%d" width="%d" height="24" fill="transparent"><title>%s</title></rect></g>'
+                       % (N["id"], dot, x+28, ry, N["n"], N["id"], x+6, ry-16, BW-12, N["full"]))
+        out.append('</g>')
+    out.append('</g>')
+    out.append('<g id="r-core"><circle class="lu-halo" cx="180" cy="390" r="52" fill="#e3b04b"/>'
+               '<circle cx="180" cy="390" r="38" fill="url(#uCore)"/>'
+               '<text x="180" y="387" text-anchor="middle" fill="#3d2a06" font-size="15" font-weight="700">루크</text>'
+               '<text x="180" y="404" text-anchor="middle" fill="#6b4c11" font-size="10">ONE CREW</text>'
+               '<circle class="uni-hit" data-r="core" cx="180" cy="390" r="44" fill="transparent"><title>루크 — 전체 보기</title></circle></g>')
+    out.append('</svg>')
+    return "\n".join(out)
+
+def universe_html():
+    data = {"regions":[{"id":R["id"],"no":R["no"],"name":R["name"],"sub":R["sub"],"color":R["color"],"desc":R["desc"],
+                        "nodes":[{"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"d":N["d"],
+                                  "href":N.get("href",""),"hl":N.get("hl","")} for N in R["nodes"]]} for R in UNI_REGIONS]}
+    body = """
 <h1>사업 유니버스</h1>
-<p class="note">지금 돌아가고 있는 것과 세우는 중인 것을 하나의 지도로. 가운데가 루크, 바깥 세 구역이 <a href="../philosophy/">삼각 파이프라인</a>의 세 줄입니다. 선 위를 도는 점은 손님과 돈이 구역 사이를 도는 흐름입니다. <b>여기에 더 넣을 것을 말해주면 그대로 그려 넣습니다.</b></p>
+<p class="note">지금 돌아가는 것과 세우는 중인 것을 한 장의 지도로. <b>구역 이름이나 별을 누르면</b> 그 자리의 내용이 지도 아래에 열립니다. 가운데 루크를 누르면 전체로 돌아옵니다. 빈 칸(확인 필요)은 알려주시면 그대로 채워 넣습니다.</p>
 
-<div class="sky">
-<svg viewBox="0 0 360 672" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="사업 유니버스 지도 — 가운데 루크, 세 구역(채널·브랜딩 / 지식·교육 / 상품·유통)과 그 사이를 도는 흐름" style="font-family:'Noto Sans KR',sans-serif">
-  <defs>
-    <radialGradient id="uCore" cx="50%" cy="40%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#ffe9b8"/><stop offset="100%" stop-color="#e3b04b"/></radialGradient>
-    <path id="e1" d="M169,154 Q116,312 99,471"/>
-    <path id="e2" d="M191,154 Q244,312 261,471"/>
-    <path id="e3" d="M138,520 Q180,568 222,520"/>
-    <path id="s1" d="M180,294 L180,157"/>
-    <path id="s2" d="M164,362 L112,474"/>
-    <path id="s3" d="M196,362 L248,474"/>
-  </defs>
-
-  <g fill="#cfe9ff">
-    <circle class="lu-star" cx="26" cy="36" r="1.4" style="animation-delay:0s"/>
-    <circle class="lu-star" cx="334" cy="92" r="1.1" style="animation-delay:.7s"/>
-    <circle class="lu-star" cx="48" cy="248" r="1.5" style="animation-delay:1.4s"/>
-    <circle class="lu-star" cx="320" cy="236" r="1.2" style="animation-delay:2.1s"/>
-    <circle class="lu-star" cx="300" cy="338" r="1.4" style="animation-delay:.4s"/>
-    <circle class="lu-star" cx="58" cy="344" r="1.1" style="animation-delay:1.9s"/>
-    <circle class="lu-star" cx="180" cy="596" r="1.3" style="animation-delay:1.1s"/>
-    <circle class="lu-star" cx="22" cy="492" r="1.2" style="animation-delay:2.6s"/>
-    <circle class="lu-star" cx="344" cy="486" r="1.4" style="animation-delay:.9s"/>
-    <circle class="lu-star" cx="120" cy="206" r="1.1" style="animation-delay:3.1s"/>
-    <circle class="lu-star" cx="240" cy="200" r="1.3" style="animation-delay:1.6s"/>
-    <circle class="lu-star" cx="200" cy="658" r="1.1" style="animation-delay:2.3s"/>
-  </g>
-
-  <g stroke="#7fa8bd" stroke-width="1" opacity=".45">
-    <line x1="180" y1="105" x2="72" y2="52"/><line x1="180" y1="105" x2="288" y2="52"/>
-    <line x1="180" y1="105" x2="46" y2="140"/><line x1="180" y1="105" x2="314" y2="140"/>
-    <line x1="88" y1="520" x2="30" y2="430"/><line x1="88" y1="520" x2="24" y2="600"/>
-    <line x1="88" y1="520" x2="110" y2="624"/><line x1="88" y1="520" x2="138" y2="458"/>
-    <line x1="272" y1="520" x2="330" y2="430"/><line x1="272" y1="520" x2="336" y2="600"/>
-    <line x1="272" y1="520" x2="250" y2="624"/><line x1="272" y1="520" x2="222" y2="458"/>
-  </g>
-
-  <g fill="none" stroke-linecap="round">
-    <use xlink:href="#e1" href="#e1" class="lu-flow" stroke="#9fe6cd" stroke-width="2"/>
-    <use xlink:href="#e2" href="#e2" class="lu-flow" stroke="#9fe6cd" stroke-width="2" style="animation-delay:-1s"/>
-    <use xlink:href="#e3" href="#e3" class="lu-flow" stroke="#9fe6cd" stroke-width="2" style="animation-delay:-2s"/>
-    <use xlink:href="#s1" href="#s1" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
-    <use xlink:href="#s2" href="#s2" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
-    <use xlink:href="#s3" href="#s3" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
-  </g>
-
-  <g fill="#ffffff">
-    <circle r="2.8"><animateMotion dur="7s" repeatCount="indefinite"><mpath xlink:href="#e1" href="#e1"/></animateMotion></circle>
-    <circle r="2.2" opacity=".75"><animateMotion dur="7s" begin="-3.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e1" href="#e1"/></animateMotion></circle>
-    <circle r="2.8"><animateMotion dur="7s" begin="-2s" repeatCount="indefinite"><mpath xlink:href="#e2" href="#e2"/></animateMotion></circle>
-    <circle r="2.2" opacity=".75"><animateMotion dur="7s" begin="-5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e2" href="#e2"/></animateMotion></circle>
-    <circle r="2.8"><animateMotion dur="5s" begin="-1s" repeatCount="indefinite"><mpath xlink:href="#e3" href="#e3"/></animateMotion></circle>
-    <circle r="2.2" opacity=".75"><animateMotion dur="5s" begin="-3s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e3" href="#e3"/></animateMotion></circle>
-    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" repeatCount="indefinite"><mpath xlink:href="#s1" href="#s1"/></animateMotion></circle>
-    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" begin="-1.5s" repeatCount="indefinite"><mpath xlink:href="#s2" href="#s2"/></animateMotion></circle>
-    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" begin="-3s" repeatCount="indefinite"><mpath xlink:href="#s3" href="#s3"/></animateMotion></circle>
-  </g>
-
-  <g>
-    <circle cx="180" cy="105" r="54" fill="#0c1a20" stroke="#4fd1a5" stroke-width="2"/>
-    <text x="180" y="100" text-anchor="middle" fill="#9fe6cd" font-size="12.5" font-weight="700">① 채널·브랜딩</text>
-    <text x="180" y="118" text-anchor="middle" fill="#6f9a90" font-size="10">신뢰 → 유입</text>
-    <circle cx="88" cy="520" r="54" fill="#0c1a20" stroke="#e3b04b" stroke-width="2"/>
-    <text x="88" y="515" text-anchor="middle" fill="#f0cd84" font-size="12.5" font-weight="700">② 지식·교육</text>
-    <text x="88" y="533" text-anchor="middle" fill="#9d8757" font-size="10">신뢰 → 매출</text>
-    <circle cx="272" cy="520" r="54" fill="#0c1a20" stroke="#8fb0ff" stroke-width="2"/>
-    <text x="272" y="515" text-anchor="middle" fill="#b9ccff" font-size="12.5" font-weight="700">③ 상품·유통</text>
-    <text x="272" y="533" text-anchor="middle" fill="#8694b5" font-size="10">반복 → 회전</text>
-  </g>
-
-  <g>
-    <circle class="lu-halo" cx="180" cy="330" r="50" fill="#e3b04b"/>
-    <circle cx="180" cy="330" r="36" fill="url(#uCore)"/>
-    <text x="180" y="327" text-anchor="middle" fill="#3d2a06" font-size="15" font-weight="700">루크</text>
-    <text x="180" y="344" text-anchor="middle" fill="#6b4c11" font-size="10">ONE CREW</text>
-  </g>
-
-  <g fill="#e8eef2" font-size="11" text-anchor="middle">
-    <circle class="lu-node" cx="72" cy="52" r="4.5" fill="#4fd1a5"/><text class="lu-lab" x="72" y="38">유튜브 1만</text>
-    <circle class="lu-node" cx="288" cy="52" r="4.5" fill="#4fd1a5" style="animation-delay:-.6s"/><text class="lu-lab" x="288" y="38">네이버 카페</text>
-    <circle class="lu-node" cx="46" cy="140" r="4.5" fill="#4fd1a5" style="animation-delay:-1.2s"/><text class="lu-lab" x="46" y="161">카톡 1천</text>
-    <circle class="lu-node" cx="314" cy="140" r="4.5" fill="#4fd1a5" style="animation-delay:-1.8s"/><text class="lu-lab" x="314" y="161">뷰셀 채널</text>
-    <circle class="lu-node" cx="30" cy="430" r="4.5" fill="#e3b04b" style="animation-delay:-.3s"/><text class="lu-lab" x="34" y="418">원크루</text>
-    <circle class="lu-node" cx="24" cy="600" r="4.5" fill="#e3b04b" style="animation-delay:-.9s"/><text class="lu-lab" x="30" y="620">일십백천</text>
-    <circle class="lu-node" cx="110" cy="624" r="4.5" fill="#e3b04b" style="animation-delay:-1.5s"/><text class="lu-lab" x="110" y="643">300만 툴킷</text>
-    <circle class="lu-node" cx="138" cy="458" r="4.5" fill="#e3b04b" style="animation-delay:-2.1s"/><text class="lu-lab" x="136" y="446">강의 플랫폼</text>
-    <circle class="lu-node" cx="330" cy="430" r="4.5" fill="#8fb0ff" style="animation-delay:-.5s"/><text class="lu-lab" x="326" y="418">3PL 물류</text>
-    <circle class="lu-node" cx="336" cy="600" r="4.5" fill="#8fb0ff" style="animation-delay:-1.1s"/><text class="lu-lab" x="330" y="620">루크 툴박스</text>
-    <circle class="lu-node" cx="250" cy="624" r="4.5" fill="#8fb0ff" style="animation-delay:-1.7s"/><text class="lu-lab" x="250" y="643">재고 판매</text>
-    <circle class="lu-node" cx="222" cy="458" r="4.5" fill="#8fb0ff" style="animation-delay:-2.3s"/><text class="lu-lab" x="226" y="446">위탁판매</text>
-  </g>
-</svg>
-</div>
+<div class="sky">__SVG__</div>
 <div class="legend">
   <span><i style="background:#4fd1a5"></i>채널·브랜딩</span>
   <span><i style="background:#e3b04b"></i>지식·교육</span>
   <span><i style="background:#8fb0ff"></i>상품·유통</span>
-  <span>흰 점 = 손님·돈의 흐름 · 노란 점 = 루크의 시간</span>
+  <span><i style="background:#b79cff"></i>기반·자금</span>
+</div>
+<div class="legend" style="margin-top:-8px">
+  <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
+  <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
+  <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
 </div>
 
-<h2>① 채널·브랜딩 <small>신뢰를 만드는 입구</small></h2>
-<div class="card accent">
-  <ul class="list">
-    <li><div class="t">유튜브 멘토루크 · 약 1만 명</div><div class="m">주 1개 공개 강의 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) · 10월 말 무료 라이브로 신규 리스트 확보 예정</div></li>
-    <li><div class="t">카카오톡 커뮤니티 약 1,000명 · 네이버 카페</div><div class="m">선판매·공지 라인. 신규 강의 플랫폼에서는 이 자리를 '락인 축'이 맡는 구조로 설계 중</div></li>
-    <li><div class="t">뷰셀 채널 (메이브님)</div><div class="m">화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정</div></li>
-  </ul>
-  <div class="note">이 구역이 꺼지면 ②·③의 신규 유입이 멈춥니다. 대신 ③의 후기·실적이 이 구역의 소재가 됩니다.</div>
-</div>
+<div class="card" id="uniPanel"></div>
 
-<h2>② 지식·교육 <small>신뢰를 돈으로 바꾸는 줄</small></h2>
-<div class="card gold">
-  <ul class="list">
-    <li><div class="t">원크루 (ONE CREW) — 정가 3,900만 / 수강생 출신 3,300만</div><div class="m">평생 파트너십 컨설팅. 한 사람의 삼각 파이프라인을 같이 세우는 것이 목표 · <a href="../philosophy/">설명서</a></div></li>
-    <li><div class="t">일십백천 — 990만</div><div class="m">삼각형 중 '브랜딩' 한 축에 집중하는 브랜드 인큐베이팅. 수료자가 원크루로 올라오는 사다리</div></li>
-    <li><div class="t">신규 강의 플랫폼 — 세우는 중</div><div class="m">메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 1,000만 제외 4,000만 · <a href="../platform/">전략</a></div></li>
-    <li><div class="t">300만 툴킷 프로그램 — 기획</div><div class="m">자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만, 1기 8명 목표</div></li>
-  </ul>
-  <div class="note">계획값이며 실적이 아닙니다(9/14~9/29 노션·녹음 기준).</div>
-</div>
-
-<h2>③ 상품·유통 <small>신뢰 없이도 도는 반복 매출</small></h2>
-<div class="card blue">
-  <ul class="list">
-    <li><div class="t">루크 툴박스 — 월 19,900 / 연 199,000</div><div class="m">소액 대량 구독. 12월 500명 → 3월 1,000명 목표 · 개발자 계정 3종 등록이 배포의 앞단</div></li>
-    <li><div class="t">3PL 물류 대행 + 수강생 재고 외부 판매</div><div class="m">창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매, 수수료 15~20%</div></li>
-    <li><div class="t">위탁판매 (메이크업헬퍼)</div><div class="m">원크루 최은봉 대표 건 · 12주 테스트, 11월 말 판정</div></li>
-  </ul>
-  <div class="note">이 구역의 고객은 강의를 안 들어도 들어옵니다. 그래서 ①이 쉬어도 돈이 끊기지 않습니다.</div>
-</div>
-
-<h2>궤도를 같이 도는 사람</h2>
+<h2>이 지도 보는 법</h2>
 <div class="card">
   <ul class="list">
-    <li><div class="t">메이브님 (신정현 · 뷰셀)</div><div class="m">②·① — 신규 강의 플랫폼 공동 플레이어, 뷰셀 채널</div></li>
-    <li><div class="t">디노 (김수민 · 미니쌤)</div><div class="m">② — 12주 빌드업으로 AI 셀러 실무 교육 독립 라인 (10/5 1주차 시작)</div></li>
-    <li><div class="t">뿌요 (최근영)</div><div class="m">③ — 물류·운영. 교육실장 라인으로 상담까지</div></li>
-    <li><div class="t">지영 원장 (키티티바이지영)</div><div class="m">① 브랜딩 컨설팅 사례 · 2월 샵 오픈 · 정부지원사업 <a href="../grants/">정리</a></div></li>
-    <li><div class="t">종혁 본부장 · 초이스토리 PD <span class="tag">제안 전</span></div><div class="m">신규 강의 플랫폼의 락인 축 / 모객 축 후보</div></li>
+    <li><div class="t">가운데 — 루크</div><div class="m">네 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다</div></li>
+    <li><div class="t">도는 선 — 손님과 돈</div><div class="m">영상 보던 사람이 강의를 듣고, 수강생이 3PL에 재고를 맡기고, 그 재고가 팔린 실적이 다시 영상 소재가 됩니다. 한 바퀴가 돌아야 구조입니다</div></li>
+    <li><div class="t">별 모양 — 단계</div><div class="m">채움은 지금 돈이 나오는 것, 테두리는 세우는 중, 점선은 아직 구상. 점선을 테두리로 옮기는 것이 이번 분기 일입니다</div></li>
+    <li><div class="t">④ 기반·자금</div><div class="m">돈을 버는 줄은 아니지만 법인·지원금·공간이 흔들리면 위의 셋이 같이 흔들립니다</div></li>
   </ul>
 </div>
 
 <h2>아직 비어 있는 자리</h2>
 <div class="card gold">
-  <p style="margin:0 0 8px">지도에 더 넣을 것을 말해주면 그대로 그려 넣습니다. 예를 들어 —</p>
+  <p style="margin:0 0 8px">말씀해주시면 그대로 지도에 넣습니다 — 지금 확인이 필요한 칸은 이렇습니다.</p>
   <ul class="list">
-    <li><div class="t">새 구역이나 새 별</div><div class="m">아직 지도에 없는 사업·채널·상품. 이름과 한 줄 설명만 주면 됨</div></li>
-    <li><div class="t">선 (어디서 어디로 손님이 가는지)</div><div class="m">"툴박스 쓰던 사람이 원크루로 온다" 같은 실제 경로</div></li>
-    <li><div class="t">단계 표시</div><div class="m">돌아감 / 세우는 중 / 구상만 — 별 색이나 모양으로 구분</div></li>
-    <li><div class="t">시간축</div><div class="m">2026 → 2027에 어떤 별이 커지는지. 연도별로 지도를 바꿔 보여줄 수 있음</div></li>
+    <li><div class="t">오프라인 창고형 매장</div><div class="m">위치·평수·취급 품목·운영 인력·여는 시점. 3PL 재고를 쓰는 건지, 별도 매입인지</div></li>
+    <li><div class="t">10월 말 무료 라이브</div><div class="m">10/25(일) 19:00이 확정인지, 신청 링크</div></li>
+    <li><div class="t">새 별 / 새 구역</div><div class="m">지도에 없는 사업·채널·상품. 이름과 한 줄이면 충분</div></li>
+    <li><div class="t">실제 손님 이동 경로</div><div class="m">"툴박스 쓰던 사람이 원크루로 온다" 같은 실제 경로를 선으로 그립니다</div></li>
   </ul>
 </div>
 
-<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a>(수익 줄·금액) · <a href="../philosophy/">삼각 파이프라인</a>(세 줄 구조) · <a href="../platform/">강의 플랫폼 전략</a> · 9/14~9/29 노션 액션보드·플라우드 녹음. 금액은 모두 계획값입니다.</div>
+<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 9/14~10/4 노션 액션보드·플라우드 녹음. 금액은 모두 계획값이며 실적이 아닙니다. 오프라인 창고형 매장은 루크 구두 언급(10/5)만 있고 세부는 확인 필요.</div>
 
 <script>
-try{
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    var s=document.querySelector('.sky svg'); if(s && s.pauseAnimations) s.pauseAnimations();
+const UNI = __DATA__;
+const ST = {on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
+const panel = document.getElementById('uniPanel');
+const svg = document.getElementById('uniMap');
+const regs = {}; UNI.regions.forEach(r=>regs[r.id]=r);
+function dim(rid){
+  UNI.regions.forEach(r=>{
+    const g = document.getElementById('r-'+r.id);
+    if(g) g.style.opacity = (!rid||rid==='core'||rid===r.id) ? '1' : '.32';
+  });
+  document.querySelectorAll('.uni-nd').forEach(n=>n.classList.remove('sel'));
+}
+function home(){
+  dim(null);
+  let h = '<h3>네 구역 전체</h3><p class="note" style="margin-top:0">지도에서 구역 이름이나 별을 누르면 여기에 내용이 열립니다.</p><ul class="list">';
+  UNI.regions.forEach(r=>{
+    const on=r.nodes.filter(n=>n.st==='on').length, bd=r.nodes.filter(n=>n.st==='build').length, id=r.nodes.filter(n=>n.st==='idea').length;
+    h += '<li><div class="t"><a href="#" data-go="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+r.nodes.map(n=>n.n).join(' · ')+'<br>돌아감 '+on+' · 세우는 중 '+bd+' · 구상 '+id+'</div></li>';
+  });
+  panel.innerHTML = h+'</ul>';
+}
+function showReg(rid){
+  const r = regs[rid]; if(!r) return home();
+  dim(rid);
+  let h = '<h3 style="color:'+r.color+'">'+r.no+' '+r.name+' <small style="color:var(--muted);font-weight:400">'+r.sub+'</small></h3>';
+  h += '<p class="note" style="margin-top:0">'+r.desc+'</p><ul class="list">';
+  r.nodes.forEach(n=>{
+    h += '<li><span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><div class="t"><a href="#" data-go="'+rid+':'+n.id+'">'+n.full+'</a></div><div class="m">'+n.d+'</div>'+(n.href?'<div class="m"><a href="'+n.href+'">'+n.hl+' →</a></div>':'')+'</li>';
+  });
+  h += '</ul><p class="note"><a href="#" data-go="home">← 전체 보기</a></p>';
+  panel.innerHTML = h;
+}
+function showNode(rid,nid){
+  const r = regs[rid]; if(!r) return home();
+  const n = r.nodes.filter(x=>x.id===nid)[0]; if(!n) return showReg(rid);
+  dim(rid);
+  const g = document.getElementById('n-'+nid); if(g) g.classList.add('sel');
+  let h = '<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+r.no+' '+r.name+'</span>';
+  h += '<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
+  if(n.href) h += '<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
+  const sib = r.nodes.filter(x=>x.id!==nid).map(x=>'<a href="#" data-go="'+rid+':'+x.id+'">'+x.n+'</a>').join(' · ');
+  h += '<div class="note">같은 구역: '+sib+'</div><p class="note"><a href="#" data-go="'+rid+'">← '+r.name+'</a> · <a href="#" data-go="home">전체 보기</a></p>';
+  panel.innerHTML = h;
+}
+function go(key){
+  if(!key||key==='home'||key==='core') return home();
+  if(key.indexOf(':')>0){const p=key.split(':');return showNode(p[0],p[1]);}
+  return showReg(key);
+}
+svg.addEventListener('click',function(e){
+  const hit = e.target.closest ? e.target.closest('.uni-hit') : null;
+  if(!hit) return;
+  const r = hit.getAttribute('data-r');
+  if(r) return go(r);
+  const nid = hit.getAttribute('data-n');
+  if(nid){
+    for(const R of UNI.regions){ if(R.nodes.some(x=>x.id===nid)) return showNode(R.id,nid); }
   }
+});
+panel.addEventListener('click',function(e){
+  const a = e.target.closest ? e.target.closest('[data-go]') : null;
+  if(!a) return; e.preventDefault(); go(a.getAttribute('data-go'));
+  panel.scrollIntoView({block:'nearest'});
+});
+home();
+try{
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches && svg.pauseAnimations) svg.pauseAnimations();
 }catch(e){}
 </script>
 """
+    return body.replace("__SVG__", uni_svg()).replace("__DATA__", json.dumps(data, ensure_ascii=False))
 
 # ---------------------------------------------------------------- 할 일 설명서
 GUIDES = [
@@ -1699,7 +1747,7 @@ def main():
     write(os.path.join(base, "priority", "index.html"), page("우선순위", PRIORITY))
     write(os.path.join(base, "people", "index.html"), page("사람별 현황", PEOPLE))
     write(os.path.join(base, "schedule", "index.html"), page("일정 도식", SCHEDULE))
-    write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", UNIVERSE))
+    write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
     write(os.path.join(base, "platform", "index.html"), page("강의 플랫폼 전략", PLATFORM))
     write(os.path.join(base, "guides", "index.html"), page("할 일 설명서", guide_index_html()))
