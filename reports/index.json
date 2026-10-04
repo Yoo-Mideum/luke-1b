@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-tools-purchase-review",
+    "date": "2026-10-05",
+    "project": "루크 툴박스",
+    "title": "원크루 페이지 1단계 개선 + 자동화 도구 구매 검토 회의",
+    "status": "막힘",
+    "summary": "원크루 페이지 1단계 배포(결과·붙는 사람 위로, 참고 구역 접기, 상담 버튼 통일, 팝업·빈 사진칸 숨김). 도구 구매 검토: 도구가 눈에 안 보임 1.6/5, 99만원 이상 구매 의향 2명(조건부).",
+    "next": "루크: 사진·영상 자료, 환불 기준·설치 대수·윈도우/맥·네이버 계정 처리 방식 결정. 클로드: 도구 1단계(준비 중 표시 정리, 로그인 전 상세) 바로 가능.",
+    "deploy_url": "https://giantstoolbox.com/courses/onecrew",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>원크루 개선 커밋 7b67f74. 페이지 길이 PC 23,465→15,262px.</p><p>도구 검토 보고서: https://claude.ai/artifact/Utb7WSGv7vC2he2AkzE88J</p><p>폴더: ~/Desktop/luke-toolbox</p>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-gate",
     "date": "2026-10-05",
     "project": "원크루 사이트",
