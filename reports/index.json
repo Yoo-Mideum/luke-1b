@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-gate",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "입구를 '대문'으로 — 검토 회의 결과 반영·배포",
+    "status": "완료",
+    "summary": "루크 방향: 첫 페이지는 대문이라 팔지 않고 '합류하려면 대체 어떻게 해야 하지?' 느낌만. 첫 화면 큰 버튼과 휴대폰 고정 버튼은 빼고, 새 사진(PC·휴대폰 따로)·결과를 말하는 제목·강사 한 줄·회원 소식·손 사진을 넣음. 합류하는 길은 맨 아래 '들어오는 문은 하나입니다' 한 곳에만",
+    "next": "소개(/about)에 공방 원크루 글 옮기기 + 로그인·가입 화면",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 ac3b85d)</p><ul><li>ONE CREW 큰 글씨는 사진 아래 띠로 (새 사진 위에 얹으면 사람을 가림)</li><li>머리글 오른쪽 '합류 안내' → 맨 아래로 이동</li><li>회의 보고서에 루크 결정 추가: https://claude.ai/artifact/8T1CTszYi5LwHBzfnJqu3M</li><li>PC·휴대폰 폭 확인, 가로 넘침 없음</li></ul>"
+  },
+  {
     "id": "2026-10-05-onecrew-persona-review",
     "date": "2026-10-05",
     "project": "루크 툴박스",
