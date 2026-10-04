@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-members-door",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "대문을 '회원이 들어가는 문'으로 다시 만듦",
+    "status": "완료",
+    "summary": "루크 설명: 이 사이트는 원크루 회원이 쓰는 곳이고, 대문은 가입 홍보가 아니라 '원크루가 되면 들어갈 수 있구나'를 보여 주는 문. 대문에는 회원 로그인, 잠긴 방 4개(내 자리·상담 기록·자료실·강의와 전자책), 가끔 여는 자료 자리만 둠. 합류 이야기는 소개(/about)로 옮기고, 공방 계정으로 들어오는 로그인과 회원 전용 /crew 첫 판을 만듦",
+    "next": "첫 공개 자료 정하기(루크) → crew_members 표 + 회원 넣기/빼기 관리자 화면(4단계)",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 eff37d6)</p><ul><li>/ 대문 · /about 소개 · /login 로그인 · /crew 회원만(관리자 통과, 회원 표는 아직 없음)</li><li>공개 자료 목록: src/lib/openMaterials.ts (지금 비어 있음)</li><li>PC·휴대폰 확인, 휴대폰은 사진 속 사람을 가리지 않게 소개 링크를 머리글에만</li></ul>"
+  },
+  {
     "id": "2026-10-05-kititi-grants-2027",
     "date": "2026-10-05",
     "project": "키티티 AI 뷰티 플랫폼",
