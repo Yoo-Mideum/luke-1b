@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-tab-random-light-wedding",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "시술 탭 사진 무작위 + 웨딩 탭 배경을 연한 샴페인으로",
+    "status": "완료",
+    "summary": "시술 탭 사진이 접속마다 다른 순서로 나옴(손님 사진은 뒤쪽). 웨딩 탭만 검정으로 확 바뀌던 배경을 연한 샴페인 톤으로 바꿔 다른 탭과 자연스럽게 이어지면서도 웨딩만의 느낌은 남김",
+    "next": "원장님 사이트 사용 동의서 받기",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>실제 사이트에서 두 번 접속해 웨딩·면접 탭 사진 순서가 서로 다른 것 확인, 웨딩 탭 화면 캡처로 글자 대비 확인.</p>"
+  },
+  {
     "id": "2026-10-05-kititi-hero-random",
     "date": "2026-10-05",
     "project": "키티티 상담 사이트",
