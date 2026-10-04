@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-domain-live",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "도메인 kititibyjiyoung.com 구매·연결 완료",
+    "status": "완료",
+    "summary": "루크 결제 후 사이트 연결, www와 옛 vercel.app 주소는 새 주소로 자동 이동",
+    "next": "인스타 프로필·네이버 플레이스·블로그 링크를 새 주소로 교체",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · Vercel 레지스트라, 자동갱신 $11.25/년, 만료 2027-10-04. 메인·/wedding·/try·/guide·API 모두 200 확인.</p>"
+  },
+  {
     "id": "2026-10-04-october-cardnews",
     "date": "2026-10-04",
     "project": "루크 툴박스",
