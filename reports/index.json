@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-concierge-modal",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "컨시어지 질문을 가운데 모달 + 네모 박스 선택지로",
+    "status": "완료",
+    "summary": "하단 시트를 아이보리 가운데 모달(샴페인 이중 테두리)로 바꾸고 선택지 12개를 2열 네모 박스로",
+    "next": "실제 휴대폰에서 루크 확인",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · style.css '컨시어지 v2' 블록. 웨딩 2개 박스는 연샴페인 강조, 기타는 점선 박스+직접 입력.</p>"
+  },
+  {
     "id": "mlb-20261004-guide",
     "date": "2026-10-04",
     "project": "멘토루크 블로그",
