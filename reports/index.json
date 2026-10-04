@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-grants-2027",
+    "date": "2026-10-05",
+    "project": "키티티 AI 뷰티 플랫폼",
+    "title": "키티티 2027 정부지원사업 리스트 (2026 지원금 기준)",
+    "status": "진행 중",
+    "summary": "초창패(최대 1억)·도약(최대 2억)은 공고일에 따라 둘 중 하나 해당. 병행 가능: 소상공인 도약 지원(300만+최대 1억)·스마트상점(500만)·서울 디지털(300만)·AI바우처(2억)·데이터바우처(4,500만). 보험: 모두의 창업",
+    "next": "12월 2027 통합공고로 일정 확정, 초창패·도약 겸용 사업계획서 12월 완성",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/reports/kititi-grants-2027/?v=1",
+    "chat_url": "https://claude.ai/code/session_017uEra1DWnwG4LqEZ7d7aWJ",
+    "source": "claude-code",
+    "detail": "<p>제외: 청창사(2027 0원), 예비창업패키지·신사업창업사관학교(예비 대상), K-화장품 크리에이터 챌린지(화장품 수출 브랜드). 대기: 지역창업패키지·경력창업(2027 신설), LIPS.</p>"
+  },
+  {
     "id": "2026-10-05-naver-view-skill",
     "date": "2026-10-05",
     "project": "네이버 화면 보기 스킬",
