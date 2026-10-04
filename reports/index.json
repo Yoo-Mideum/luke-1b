@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-ai-label",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "연출 사진 표시를 'AI 연출 이미지'로 교체",
+    "status": "완료",
+    "summary": "AI로 만든 광고 사진 표시를 'IMAGE CUT'에서 'AI 연출 이미지'로 바꿈. 법에서 요구하는 '알아볼 수 있는' 최소 크기로만 키웠고, 첫 인트로 화면에도 작게 넣음",
+    "next": "원장님 사이트 사용 동의서 받기 · 판매 전 통신판매업 신고번호",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>메인·시술 탭·/wedding·/gallery·인트로·개인정보처리방침 문구 모두 교체. 근거: 공정위 추천·보증 심사지침(2026-06-01 시행).</p>"
+  },
+  {
     "id": "2026-10-05-hemenail-owner-legal-auto",
     "date": "2026-10-05",
     "project": "헤메네일",
