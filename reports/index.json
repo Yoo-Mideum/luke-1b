@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-breathing",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "전체 여백·은은한 음영 조정 (촘촘함 해소)",
+    "status": "완료",
+    "summary": "선으로만 나누던 블록을 여백·옅은 그림자·미세 그라데이션 카드로 바꿔 메인·웨딩·AI·가이드 전 페이지 정리",
+    "next": "실제 휴대폰에서 루크 확인",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · style.css 'v5 숨쉬기' 블록, try.css·guide.html·wedding.html 각 v5 블록, DESIGN.md 규칙 갱신.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-domain-live",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
