@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-concierge-3s",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "컨시어지 질문을 접속 3초 뒤로 변경",
+    "status": "완료",
+    "summary": "메뉴 10초 체류 → 접속 3초 뒤 한 번 묻기로 변경(세션당 1회, 딥링크 접속은 생략)",
+    "next": "실사용 반응 확인",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · app.js 컨시어지 블록. 테스트: 2초 안 뜸 → 3.6초 뜸 → 촬영 선택 시 촬영 탭 → 새로고침 안 뜸.</p>"
+  },
+  {
     "id": "2026-10-04-kititi-concierge",
     "date": "2026-10-04",
     "project": "키티티 상담 사이트",
