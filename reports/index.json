@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-hemenail-link-audit",
+    "date": "2026-10-04",
+    "project": "헤메네일",
+    "title": "지도 연결 전수 점검 — 28,455곳",
+    "status": "완료",
+    "summary": "카카오맵 매장 페이지로 바로 연결 약 75%, 나머지(지도 앱에 상호 없는 작은 가게)는 좌표 핀·네이버 주소 검색으로 위치 100% 표시. 공유 링크 50/50, 네이버 표본 8/8",
+    "next": "루크 결정: 전화 버튼 없는 62%에 카카오 공식 API 전화번호를 상세 열 때만 표시할지 / 가격 최신화 단계",
+    "deploy_url": "https://claude.ai/artifact/4khzfbFWStTB7yMqgrfTLX",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>사이트 <a href='https://hemenail-site.vercel.app'>hemenail-site</a> · 폴더 <code>~/Desktop/[클로드 작업]/hemenail-site</code> (커밋 a8b06f4) · 점검 도구 <code>tools/link-check.mjs</code></p><ul><li><b>전수</b>: 빠른 점검 66.5%(카카오가 고속 조회 일부를 결과 없음 처리) → 못 찾은 곳 300곳 천천히 재확인 시 27% 연결 → 실제 약 75%</li><li><b>보강</b>: 표기 차이(샾/샵·스투디오/스튜디오·쌀롱/살롱), 지점명·핵심 이름, 같은 건물 비슷한 이름, 이름 같으면 300m, 이름 다르면 미용 분류일 때만(엉뚱한 가게 방지)</li><li><b>못 찾는 곳</b>: 좌표 핀 + 네이버 주소 검색 + 안내문. 약점은 영문만 상호(10%)·한영혼합(47%)</li><li><b>그 외</b>: 좌표 정확(중앙값 2m), 공유 링크 25개 구 50곳 모두 열림, 전화번호 있는 매장 38%뿐</li><li>카카오 키워드 검색 무료 일 10만 건 — 전수 점검은 하루 1회 이하</li></ul>"
+  },
+  {
     "id": "2026-10-04-ai-beauty-platform-plan",
     "date": "2026-10-04",
     "project": "키티티 AI 뷰티 플랫폼",
