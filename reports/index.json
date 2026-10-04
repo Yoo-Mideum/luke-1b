@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-auto-message-todo",
+    "date": "2026-10-04",
+    "project": "루크 툴박스",
+    "title": "자동 메시지(알림톡·문자) 연동 — 할 일 등록",
+    "status": "보류",
+    "summary": "솔라피로 알림톡 13원·SMS 18원, 고정비 0원, 월 약 1~2.4만원 예상. 루크가 채널·솔라피 가입하면 연결 시작",
+    "next": "루크: 카카오톡 채널+비즈니스 인증, 솔라피 가입+발신번호 등록, API 키 전달",
+    "deploy_url": "https://app.notion.com/p/3ef0cf8fea0481dfa1b6d552232ecaa9",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>자동 메시지 후보: 가입 환영 · 수강생 확인 완료 · 상담 접수 · 챌린지 리마인더(기록 안 한 사람만). 광고는 브랜드메시지 100원+수신동의+(광고)+야간 금지. 폴더 ~/Desktop/luke-toolbox (현재는 관리자 '나에게 보내기'만 있음).</p>"
+  },
+  {
     "id": "2026-10-04-hemenail-closed-signal",
     "date": "2026-10-04",
     "project": "헤메네일",
