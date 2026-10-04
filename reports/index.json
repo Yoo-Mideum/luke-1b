@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-naver-view-chat",
+    "date": "2026-10-05",
+    "project": "네이버 화면 보기 스킬",
+    "title": "네이버 화면 보기를 일반 채팅(Chat 탭)에서도 쓰게 등록",
+    "status": "완료",
+    "summary": "일반 채팅은 스킬 폴더를 못 읽어서 같은 기능을 로컬 MCP 도구(naver_view)로 감싸 Claude 데스크톱 앱에 등록. 블로그 검색·블로그 글·결제화면 거절까지 시험 통과.",
+    "next": "루크: Claude 앱 ⌘Q 로 완전히 끄고 다시 켜기 → 일반 채팅에서 \"네이버 블로그에서 ○○ 찾아봐줘\". 웹·폰 앱은 불가(이 맥 크롬 사용).",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>서버: ~/.claude/skills/naver-view/scripts/mcp_server.py (외부 패키지 없음)</p><p>등록: ~/Library/Application Support/Claude/claude_desktop_config.json → mcpServers.naver-view (백업 .bak-20261005)</p>"
+  },
+  {
     "id": "2026-10-05-finder-mac-auto-test-stopped",
     "date": "2026-10-05",
     "project": "멘토루크 파인더",
