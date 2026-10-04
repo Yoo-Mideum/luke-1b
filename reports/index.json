@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-kititi-intro",
+    "date": "2026-10-05",
+    "project": "키티티 상담 사이트",
+    "title": "브랜드 인트로 추가 + 들어가자마자 아래로 내려가던 버그 수정",
+    "status": "완료",
+    "summary": "접속 시 4초 브랜드 광고 인트로 후 첫 화면, 페이지가 메뉴로 끌려 내려가던 원인 3가지 수정, 질문 모달은 인트로 뒤 3초",
+    "next": "실제 휴대폰에서 루크 확인",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · index.html #intro, app.js. 원인: 탭 scrollIntoView가 페이지 전체를 끌어내림, 탭 클릭 시 주소 #시술 기록, 브라우저 스크롤 기억. 테스트: 인트로 3초 표시→5.4초 사라짐·scrollY 0, 8.6초 질문 모달, 새로고침 시 인트로 생략·scrollY 0.</p>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-brief",
     "date": "2026-10-05",
     "project": "원크루 사이트",
