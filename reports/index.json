@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-finder-mac-auto-test-stopped",
+    "date": "2026-10-05",
+    "project": "멘토루크 파인더",
+    "title": "맥북에서 저절로 돌던 11번가·G마켓·옥션 가격 검색 테스트 차단",
+    "status": "완료",
+    "summary": "08:33 '네이버 화면 표시 문제 조사' 채팅이 띄운 작업 제안 버튼을 눌러 새 채팅 'Check finder's discontinued Naver Shopping API'가 시작됨. 그 채팅이 네이버 쇼핑 API 종료 대응 코드를 고친 뒤, 지시받은 대로 테스트 상품 3개(더마팩토리·넘버즈인·아누아) 회귀 검색을 맥북에서 돌림 → 11번가·G마켓·옥션 창이 뜬 것. 윈도우 노트북과는 무관. 08:51 백엔드·검색 브라우저 4개·화면 서버를 모두 끄고 그 채팅의 진행도 멈춤",
+    "next": "그 채팅이 고친 코드(naver.py·service.py·catalog_check.py)는 테스트가 중간에 끊겨 검증 안 됨 — 이어서 할지 루크 결정",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]</code></p><ul><li>원인 채팅: Check finder's discontinued Naver Shopping API (local_8d0183cd, 맥 데스크톱 앱, 원격 아님)</li><li>부모 채팅: 네이버 화면 표시 문제 조사 — 08:29 작업 제안 버튼 생성</li><li>08:40 백엔드(포트 8000) 실행 → 08:45 테스트 데이터 입력 → 08:46 화면(vite) 실행·회귀 검색 3건</li><li>08:51 전부 종료, 포트 8000/5173 비어 있음 확인</li></ul>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-members-door",
     "date": "2026-10-05",
     "project": "원크루 사이트",
