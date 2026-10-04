@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-supabase-limit",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "2단계 막힘 — Supabase 무료 한도(2개) 꽉 참, 다른 이메일로 새 계정 필요",
+    "status": "막힘",
+    "summary": "지시서를 읽고 시작. 도메인은 맨 나중에 정하기로 함(그동안 vercel.app 주소). 원크루용 새 Supabase 프로젝트를 만들려 했으나 기존 계정의 무료 2개(거인의 도구 공방·지원사업 찾기)가 꽉 차 있음. 루크가 다른 이메일로 새 계정을 원해 무료/유료 비교표를 전달",
+    "next": "루크가 다른 이메일로 Supabase 가입 → 클로드가 프로젝트 만들기·키 복사 → 3단계(새 저장소·빈 입구 배포)",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]</code> · 지시서 <code>원크루-사이트-프롬프트.md</code></p><ul><li>도메인 후보(비어 있음): onecrewclub.com · giantsonecrew.com · onecrew.club · lukeonecrew.com</li><li>Supabase Pro는 프로젝트당 월 $25부터, 1주 비활동 멈춤 없음·7일 백업</li></ul>"
+  },
+  {
     "id": "2026-10-05-hemenail-unverified-recheck",
     "date": "2026-10-05",
     "project": "헤메네일",
