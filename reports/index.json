@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-persona-panel",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "첫 화면 페르소나 검토 회의(20명) + 새 사진 4장",
+    "status": "완료",
+    "summary": "가상 패널 20명(자산 10억대·재정 빠듯·300만원 수강생·자산 100억대 각 4명 + 해외 컨설턴트 4명 가상)이 같은 설문으로 첫 화면을 평가하고 토의·투표. 첫인상 7.3, 믿을 근거 2.6, 결제 도움 3.4. 결론: 톤은 지키고 사람을 가까이, 결과를 말하는 제목, 회원 실적·강사 한 줄, '합류 상담 신청'. 결론대로 사진 4장을 새로 만들고 미리보기까지 만듦",
+    "next": "루크 확인 3가지(실적 한 줄 첫 화면 노출, 강사 실제 사진, '마지막·2명' 사실 여부) 뒤 사이트에 반영",
+    "deploy_url": "https://claude.ai/artifact/8T1CTszYi5LwHBzfnJqu3M",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 f09b706, docs/panel-2026-10-05)</p><ul><li>투표: 사진 B 10 · 제목 B 11 · 버튼 B 10 · 실적 20/강사 16 · 한글 이름 9 · 휴대폰 고정 버튼 14</li><li>새 사진 4장 Weave GPT Image 2.5 (32크레딧, 남은 500)</li><li>사이트에는 아직 넣지 않음</li></ul>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-entrance-gm",
     "date": "2026-10-05",
     "project": "원크루 사이트",
