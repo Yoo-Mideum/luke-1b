@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-step3",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "3단계 완료 — 새 저장소·Vercel 프로젝트·빈 입구 화면 배포",
+    "status": "완료",
+    "summary": "루크 결정으로 Supabase(회원·로그인)는 공방 것을 같이 쓰기로 바꿈(두 사이트 회원 통로는 만들지 않음). 원크루 전용 저장소와 Vercel 프로젝트를 새로 만들고, 공방과 같은 글꼴·색·로그인 틀을 가져와 빈 입구 화면을 임시 주소에 배포",
+    "next": "4단계 — 로그인·가입 + 원크루 회원 표 + 관리자 화면(처음 넣을 회원 명단 루크 확인)",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 c35e820)</p><ul><li>저장소 Yoo-Mideum/onecrew-site(비공개), Vercel luke-42e1/onecrew-site</li><li>도메인은 맨 나중에 — 그동안 luke-onecrew.vercel.app, 검색엔진에는 올리지 않음</li><li>PC·휴대폰 폭 캡처 확인, 가로 넘침 없음</li></ul>"
+  },
+  {
     "id": "2026-10-05-kititi-ad-library",
     "date": "2026-10-05",
     "project": "키티티 상담 사이트",
