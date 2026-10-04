@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-04-kititi-credentials",
+    "date": "2026-10-04",
+    "project": "키티티 상담 사이트",
+    "title": "원장 수상·자격증 사이트 반영",
+    "status": "완료",
+    "summary": "국회의원상 2회·퍼스널컬러컨설턴트 1급 등 자격 5종을 메인·웨딩·가이드에 반영, 원본 사진 썸네일 포함",
+    "next": "원장님 추가 수상·자격 사진 받으면 data.js awards/certs에 추가",
+    "deploy_url": "https://kititi-by-jiyoung.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: ~/Desktop/[클로드 작업]/kititi-site · data.js SHOP.awards/certs · img/cert/</p><p>수상: 2022 최고지도자상, 2021 우수작품상(월드뷰티아트&amp;디자인 국제공모전, 국회의원상). 자격: 퍼스널컬러컨설턴트 1급·이미지메이킹 2급(KIAE), 무대분장사 2급·방송분장사 3급·바디페인팅 1급(한국분장예술인협회). 경력에 아카데미 강사 추가.</p>"
+  },
+  {
     "id": "2026-10-04-hemenail-unverified",
     "date": "2026-10-04",
     "project": "헤메네일",
