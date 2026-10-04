@@ -46,6 +46,22 @@ a{color:var(--accent);text-decoration:none}
 .card.accent{border-color:var(--accent);background:var(--accent-soft)}
 .card.gold{border-color:var(--gold);background:var(--gold-soft)}
 .card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}
@@ -493,6 +509,7 @@ INDEX = """
   <a href="priority/"><b>우선순위</b><span>P0 → P3 · 보류 목록</span></a>
   <a href="people/"><b>사람별 현황</b><span>메이브님·디노·뿌요·지영</span></a>
   <a href="schedule/"><b>일정 도식</b><span>10월 타임라인 · 마일스톤</span></a>
+  <a href="universe/"><b>사업 유니버스</b><span>지금 돌아가는 것 전부 — 지도</span></a>
   <a href="philosophy/"><b>삼각 파이프라인</b><span>원크루 · 일십백천 · 불씨 이론</span></a>
   <a href="platform/"><b>강의 플랫폼 전략</b><span>유입 · 락인 · 플레이어 3자 구도</span></a>
   <a href="guides/"><b>할 일 설명서</b><span>항목별 어떻게 하는지 단계별</span></a>
@@ -1053,6 +1070,174 @@ PLATFORM = """
 <div class="src" style="margin-top:14px">근거: 9/29 메이븐 회의 녹음(플랫폼 구상·인베이더 분석·수치) · 9/30 루크 구두(역할 배정: PD=모객, 본부장=락인·챌린지·카페·광고, 루크·메이브님=플레이어·강사 교육) · 7월 10억 전략 대화(계약 조항). 이름 표기는 녹음 기준(초이스토리 PD·종혁 본부장) — 실명 확인 필요</div>
 """
 
+# ---------------------------------------------------------------- 사업 유니버스 지도
+UNIVERSE = """
+<h1>사업 유니버스</h1>
+<p class="note">지금 돌아가고 있는 것과 세우는 중인 것을 하나의 지도로. 가운데가 루크, 바깥 세 구역이 <a href="../philosophy/">삼각 파이프라인</a>의 세 줄입니다. 선 위를 도는 점은 손님과 돈이 구역 사이를 도는 흐름입니다. <b>여기에 더 넣을 것을 말해주면 그대로 그려 넣습니다.</b></p>
+
+<div class="sky">
+<svg viewBox="0 0 360 672" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="사업 유니버스 지도 — 가운데 루크, 세 구역(채널·브랜딩 / 지식·교육 / 상품·유통)과 그 사이를 도는 흐름" style="font-family:'Noto Sans KR',sans-serif">
+  <defs>
+    <radialGradient id="uCore" cx="50%" cy="40%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#ffe9b8"/><stop offset="100%" stop-color="#e3b04b"/></radialGradient>
+    <path id="e1" d="M169,154 Q116,312 99,471"/>
+    <path id="e2" d="M191,154 Q244,312 261,471"/>
+    <path id="e3" d="M138,520 Q180,568 222,520"/>
+    <path id="s1" d="M180,294 L180,157"/>
+    <path id="s2" d="M164,362 L112,474"/>
+    <path id="s3" d="M196,362 L248,474"/>
+  </defs>
+
+  <g fill="#cfe9ff">
+    <circle class="lu-star" cx="26" cy="36" r="1.4" style="animation-delay:0s"/>
+    <circle class="lu-star" cx="334" cy="92" r="1.1" style="animation-delay:.7s"/>
+    <circle class="lu-star" cx="48" cy="248" r="1.5" style="animation-delay:1.4s"/>
+    <circle class="lu-star" cx="320" cy="236" r="1.2" style="animation-delay:2.1s"/>
+    <circle class="lu-star" cx="300" cy="338" r="1.4" style="animation-delay:.4s"/>
+    <circle class="lu-star" cx="58" cy="344" r="1.1" style="animation-delay:1.9s"/>
+    <circle class="lu-star" cx="180" cy="596" r="1.3" style="animation-delay:1.1s"/>
+    <circle class="lu-star" cx="22" cy="492" r="1.2" style="animation-delay:2.6s"/>
+    <circle class="lu-star" cx="344" cy="486" r="1.4" style="animation-delay:.9s"/>
+    <circle class="lu-star" cx="120" cy="206" r="1.1" style="animation-delay:3.1s"/>
+    <circle class="lu-star" cx="240" cy="200" r="1.3" style="animation-delay:1.6s"/>
+    <circle class="lu-star" cx="200" cy="658" r="1.1" style="animation-delay:2.3s"/>
+  </g>
+
+  <g stroke="#7fa8bd" stroke-width="1" opacity=".45">
+    <line x1="180" y1="105" x2="72" y2="52"/><line x1="180" y1="105" x2="288" y2="52"/>
+    <line x1="180" y1="105" x2="46" y2="140"/><line x1="180" y1="105" x2="314" y2="140"/>
+    <line x1="88" y1="520" x2="30" y2="430"/><line x1="88" y1="520" x2="24" y2="600"/>
+    <line x1="88" y1="520" x2="110" y2="624"/><line x1="88" y1="520" x2="138" y2="458"/>
+    <line x1="272" y1="520" x2="330" y2="430"/><line x1="272" y1="520" x2="336" y2="600"/>
+    <line x1="272" y1="520" x2="250" y2="624"/><line x1="272" y1="520" x2="222" y2="458"/>
+  </g>
+
+  <g fill="none" stroke-linecap="round">
+    <use xlink:href="#e1" href="#e1" class="lu-flow" stroke="#9fe6cd" stroke-width="2"/>
+    <use xlink:href="#e2" href="#e2" class="lu-flow" stroke="#9fe6cd" stroke-width="2" style="animation-delay:-1s"/>
+    <use xlink:href="#e3" href="#e3" class="lu-flow" stroke="#9fe6cd" stroke-width="2" style="animation-delay:-2s"/>
+    <use xlink:href="#s1" href="#s1" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
+    <use xlink:href="#s2" href="#s2" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
+    <use xlink:href="#s3" href="#s3" class="lu-spoke" stroke="#ffe9b8" stroke-width="1.6" opacity=".8"/>
+  </g>
+
+  <g fill="#ffffff">
+    <circle r="2.8"><animateMotion dur="7s" repeatCount="indefinite"><mpath xlink:href="#e1" href="#e1"/></animateMotion></circle>
+    <circle r="2.2" opacity=".75"><animateMotion dur="7s" begin="-3.5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e1" href="#e1"/></animateMotion></circle>
+    <circle r="2.8"><animateMotion dur="7s" begin="-2s" repeatCount="indefinite"><mpath xlink:href="#e2" href="#e2"/></animateMotion></circle>
+    <circle r="2.2" opacity=".75"><animateMotion dur="7s" begin="-5s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e2" href="#e2"/></animateMotion></circle>
+    <circle r="2.8"><animateMotion dur="5s" begin="-1s" repeatCount="indefinite"><mpath xlink:href="#e3" href="#e3"/></animateMotion></circle>
+    <circle r="2.2" opacity=".75"><animateMotion dur="5s" begin="-3s" repeatCount="indefinite" keyPoints="1;0" keyTimes="0;1" calcMode="linear"><mpath xlink:href="#e3" href="#e3"/></animateMotion></circle>
+    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" repeatCount="indefinite"><mpath xlink:href="#s1" href="#s1"/></animateMotion></circle>
+    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" begin="-1.5s" repeatCount="indefinite"><mpath xlink:href="#s2" href="#s2"/></animateMotion></circle>
+    <circle r="2" fill="#ffe9b8"><animateMotion dur="4.5s" begin="-3s" repeatCount="indefinite"><mpath xlink:href="#s3" href="#s3"/></animateMotion></circle>
+  </g>
+
+  <g>
+    <circle cx="180" cy="105" r="54" fill="#0c1a20" stroke="#4fd1a5" stroke-width="2"/>
+    <text x="180" y="100" text-anchor="middle" fill="#9fe6cd" font-size="12.5" font-weight="700">① 채널·브랜딩</text>
+    <text x="180" y="118" text-anchor="middle" fill="#6f9a90" font-size="10">신뢰 → 유입</text>
+    <circle cx="88" cy="520" r="54" fill="#0c1a20" stroke="#e3b04b" stroke-width="2"/>
+    <text x="88" y="515" text-anchor="middle" fill="#f0cd84" font-size="12.5" font-weight="700">② 지식·교육</text>
+    <text x="88" y="533" text-anchor="middle" fill="#9d8757" font-size="10">신뢰 → 매출</text>
+    <circle cx="272" cy="520" r="54" fill="#0c1a20" stroke="#8fb0ff" stroke-width="2"/>
+    <text x="272" y="515" text-anchor="middle" fill="#b9ccff" font-size="12.5" font-weight="700">③ 상품·유통</text>
+    <text x="272" y="533" text-anchor="middle" fill="#8694b5" font-size="10">반복 → 회전</text>
+  </g>
+
+  <g>
+    <circle class="lu-halo" cx="180" cy="330" r="50" fill="#e3b04b"/>
+    <circle cx="180" cy="330" r="36" fill="url(#uCore)"/>
+    <text x="180" y="327" text-anchor="middle" fill="#3d2a06" font-size="15" font-weight="700">루크</text>
+    <text x="180" y="344" text-anchor="middle" fill="#6b4c11" font-size="10">ONE CREW</text>
+  </g>
+
+  <g fill="#e8eef2" font-size="11" text-anchor="middle">
+    <circle class="lu-node" cx="72" cy="52" r="4.5" fill="#4fd1a5"/><text class="lu-lab" x="72" y="38">유튜브 1만</text>
+    <circle class="lu-node" cx="288" cy="52" r="4.5" fill="#4fd1a5" style="animation-delay:-.6s"/><text class="lu-lab" x="288" y="38">네이버 카페</text>
+    <circle class="lu-node" cx="46" cy="140" r="4.5" fill="#4fd1a5" style="animation-delay:-1.2s"/><text class="lu-lab" x="46" y="161">카톡 1천</text>
+    <circle class="lu-node" cx="314" cy="140" r="4.5" fill="#4fd1a5" style="animation-delay:-1.8s"/><text class="lu-lab" x="314" y="161">뷰셀 채널</text>
+    <circle class="lu-node" cx="30" cy="430" r="4.5" fill="#e3b04b" style="animation-delay:-.3s"/><text class="lu-lab" x="34" y="418">원크루</text>
+    <circle class="lu-node" cx="24" cy="600" r="4.5" fill="#e3b04b" style="animation-delay:-.9s"/><text class="lu-lab" x="30" y="620">일십백천</text>
+    <circle class="lu-node" cx="110" cy="624" r="4.5" fill="#e3b04b" style="animation-delay:-1.5s"/><text class="lu-lab" x="110" y="643">300만 툴킷</text>
+    <circle class="lu-node" cx="138" cy="458" r="4.5" fill="#e3b04b" style="animation-delay:-2.1s"/><text class="lu-lab" x="136" y="446">강의 플랫폼</text>
+    <circle class="lu-node" cx="330" cy="430" r="4.5" fill="#8fb0ff" style="animation-delay:-.5s"/><text class="lu-lab" x="326" y="418">3PL 물류</text>
+    <circle class="lu-node" cx="336" cy="600" r="4.5" fill="#8fb0ff" style="animation-delay:-1.1s"/><text class="lu-lab" x="330" y="620">루크 툴박스</text>
+    <circle class="lu-node" cx="250" cy="624" r="4.5" fill="#8fb0ff" style="animation-delay:-1.7s"/><text class="lu-lab" x="250" y="643">재고 판매</text>
+    <circle class="lu-node" cx="222" cy="458" r="4.5" fill="#8fb0ff" style="animation-delay:-2.3s"/><text class="lu-lab" x="226" y="446">위탁판매</text>
+  </g>
+</svg>
+</div>
+<div class="legend">
+  <span><i style="background:#4fd1a5"></i>채널·브랜딩</span>
+  <span><i style="background:#e3b04b"></i>지식·교육</span>
+  <span><i style="background:#8fb0ff"></i>상품·유통</span>
+  <span>흰 점 = 손님·돈의 흐름 · 노란 점 = 루크의 시간</span>
+</div>
+
+<h2>① 채널·브랜딩 <small>신뢰를 만드는 입구</small></h2>
+<div class="card accent">
+  <ul class="list">
+    <li><div class="t">유튜브 멘토루크 · 약 1만 명</div><div class="m">주 1개 공개 강의 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) · 10월 말 무료 라이브로 신규 리스트 확보 예정</div></li>
+    <li><div class="t">카카오톡 커뮤니티 약 1,000명 · 네이버 카페</div><div class="m">선판매·공지 라인. 신규 강의 플랫폼에서는 이 자리를 '락인 축'이 맡는 구조로 설계 중</div></li>
+    <li><div class="t">뷰셀 채널 (메이브님)</div><div class="m">화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정</div></li>
+  </ul>
+  <div class="note">이 구역이 꺼지면 ②·③의 신규 유입이 멈춥니다. 대신 ③의 후기·실적이 이 구역의 소재가 됩니다.</div>
+</div>
+
+<h2>② 지식·교육 <small>신뢰를 돈으로 바꾸는 줄</small></h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">원크루 (ONE CREW) — 정가 3,900만 / 수강생 출신 3,300만</div><div class="m">평생 파트너십 컨설팅. 한 사람의 삼각 파이프라인을 같이 세우는 것이 목표 · <a href="../philosophy/">설명서</a></div></li>
+    <li><div class="t">일십백천 — 990만</div><div class="m">삼각형 중 '브랜딩' 한 축에 집중하는 브랜드 인큐베이팅. 수료자가 원크루로 올라오는 사다리</div></li>
+    <li><div class="t">신규 강의 플랫폼 — 세우는 중</div><div class="m">메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 1,000만 제외 4,000만 · <a href="../platform/">전략</a></div></li>
+    <li><div class="t">300만 툴킷 프로그램 — 기획</div><div class="m">자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만, 1기 8명 목표</div></li>
+  </ul>
+  <div class="note">계획값이며 실적이 아닙니다(9/14~9/29 노션·녹음 기준).</div>
+</div>
+
+<h2>③ 상품·유통 <small>신뢰 없이도 도는 반복 매출</small></h2>
+<div class="card blue">
+  <ul class="list">
+    <li><div class="t">루크 툴박스 — 월 19,900 / 연 199,000</div><div class="m">소액 대량 구독. 12월 500명 → 3월 1,000명 목표 · 개발자 계정 3종 등록이 배포의 앞단</div></li>
+    <li><div class="t">3PL 물류 대행 + 수강생 재고 외부 판매</div><div class="m">창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매, 수수료 15~20%</div></li>
+    <li><div class="t">위탁판매 (메이크업헬퍼)</div><div class="m">원크루 최은봉 대표 건 · 12주 테스트, 11월 말 판정</div></li>
+  </ul>
+  <div class="note">이 구역의 고객은 강의를 안 들어도 들어옵니다. 그래서 ①이 쉬어도 돈이 끊기지 않습니다.</div>
+</div>
+
+<h2>궤도를 같이 도는 사람</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">메이브님 (신정현 · 뷰셀)</div><div class="m">②·① — 신규 강의 플랫폼 공동 플레이어, 뷰셀 채널</div></li>
+    <li><div class="t">디노 (김수민 · 미니쌤)</div><div class="m">② — 12주 빌드업으로 AI 셀러 실무 교육 독립 라인 (10/5 1주차 시작)</div></li>
+    <li><div class="t">뿌요 (최근영)</div><div class="m">③ — 물류·운영. 교육실장 라인으로 상담까지</div></li>
+    <li><div class="t">지영 원장 (키티티바이지영)</div><div class="m">① 브랜딩 컨설팅 사례 · 2월 샵 오픈 · 정부지원사업 <a href="../grants/">정리</a></div></li>
+    <li><div class="t">종혁 본부장 · 초이스토리 PD <span class="tag">제안 전</span></div><div class="m">신규 강의 플랫폼의 락인 축 / 모객 축 후보</div></li>
+  </ul>
+</div>
+
+<h2>아직 비어 있는 자리</h2>
+<div class="card gold">
+  <p style="margin:0 0 8px">지도에 더 넣을 것을 말해주면 그대로 그려 넣습니다. 예를 들어 —</p>
+  <ul class="list">
+    <li><div class="t">새 구역이나 새 별</div><div class="m">아직 지도에 없는 사업·채널·상품. 이름과 한 줄 설명만 주면 됨</div></li>
+    <li><div class="t">선 (어디서 어디로 손님이 가는지)</div><div class="m">"툴박스 쓰던 사람이 원크루로 온다" 같은 실제 경로</div></li>
+    <li><div class="t">단계 표시</div><div class="m">돌아감 / 세우는 중 / 구상만 — 별 색이나 모양으로 구분</div></li>
+    <li><div class="t">시간축</div><div class="m">2026 → 2027에 어떤 별이 커지는지. 연도별로 지도를 바꿔 보여줄 수 있음</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a>(수익 줄·금액) · <a href="../philosophy/">삼각 파이프라인</a>(세 줄 구조) · <a href="../platform/">강의 플랫폼 전략</a> · 9/14~9/29 노션 액션보드·플라우드 녹음. 금액은 모두 계획값입니다.</div>
+
+<script>
+try{
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var s=document.querySelector('.sky svg'); if(s && s.pauseAnimations) s.pauseAnimations();
+  }
+}catch(e){}
+</script>
+"""
+
 # ---------------------------------------------------------------- 할 일 설명서
 GUIDES = [
  {"slug":"report-protocol","title":"보고 프로토콜 — 다른 채팅·코드가 상황판에 보고하는 법","p":"P1","due":"상시","why":"흩어진 채팅의 결과를 한 곳(상황판)에서 보려면 모든 채팅이 같은 형식으로 남겨야 한다. 클로드 채팅의 GitHub 커넥터는 읽기 전용이라 깃허브에 직접 못 쓴다 → 노션 액션보드에 남기고, 매일 06:40 갱신이 상황판으로 옮긴다.",
@@ -1514,6 +1699,7 @@ def main():
     write(os.path.join(base, "priority", "index.html"), page("우선순위", PRIORITY))
     write(os.path.join(base, "people", "index.html"), page("사람별 현황", PEOPLE))
     write(os.path.join(base, "schedule", "index.html"), page("일정 도식", SCHEDULE))
+    write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", UNIVERSE))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
     write(os.path.join(base, "platform", "index.html"), page("강의 플랫폼 전략", PLATFORM))
     write(os.path.join(base, "guides", "index.html"), page("할 일 설명서", guide_index_html()))
