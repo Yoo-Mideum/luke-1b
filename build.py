@@ -66,6 +66,9 @@ a{color:var(--accent);text-decoration:none}
 .uni-nd.sel text{fill:#fff;font-weight:700}
 .uni-nd.sel circle{stroke:#fff}
 #uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
 @media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -1202,14 +1205,18 @@ UNI_EDGES = [
  ("commu","toolbox","자체 사이트·구독 사이트를 같은 스택으로 짓는 구상 (확인 필요)"),
 ]
 
+
+UNI_ANCHOR = {"ch":(96,180,-130), "kn":(268,250,95), "pr":(266,580,115), "base":(92,540,-75), "tool":(180,660,15)}
+
 def universe_html():
     nodes = [{"id":"luke","n":"루크","full":"루크 (ONE CREW)","st":"on","big":2,"reg":"core","c":"#f0cd84",
-              "ax":180,"ay":370,"exp":0,"from":"",
+              "ax":180,"ay":380,"az":0,"exp":0,"from":"",
               "d":"다섯 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}]
     for R in UNI_REGIONS:
+        A = UNI_ANCHOR[R["id"]]
         for N in R["nodes"]:
             nodes.append({"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"big":N.get("big",0),
-                          "reg":R["id"],"c":R["color"],"ax":R["ax"],"ay":R["ay"],"d":N["d"],
+                          "reg":R["id"],"c":R["color"],"ax":A[0],"ay":A[1],"az":A[2],"d":N["d"],
                           "exp":N.get("exp",0),"from":N.get("from",""),
                           "href":N.get("href",""),"hl":N.get("hl","")})
     data = {
@@ -1219,9 +1226,16 @@ def universe_html():
     }
     body = """
 <h1>사업 유니버스</h1>
-<p class="note">사업·채널·상품·도구를 점으로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 관계망</b>입니다. 점을 누르면 그 점과 이어진 것만 남고, 무엇으로 이어져 있는지가 아래에 열립니다. 점을 끌어서 옮길 수도 있습니다. 사람들과의 대화에서 나온 <b>확장 구상</b>도 같이 올렸고, 어디서 나온 이야기인지 각 점에 적어 뒀습니다.</p>
+<p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
 
-<div class="sky"><svg viewBox="0 0 360 820" id="uniMap" role="img" aria-label="사업 유니버스 관계망" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
+<div class="sky"><svg viewBox="0 0 360 760" id="uniMap" role="img" aria-label="사업 유니버스 별자리" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
+<div class="uniBar">
+  <button type="button" id="uni2d" class="on">평면</button>
+  <button type="button" id="uni3d">입체</button>
+  <button type="button" id="uniHome">홈</button>
+  <button type="button" id="uniExp">확장 구상만</button>
+  <button type="button" id="uniReset">재배치</button>
+</div>
 <div class="legend" id="uniLeg">
   <span><i style="background:#f0cd84"></i>루크</span>
   <span><a href="#" data-reg="ch"><i style="background:#4fd1a5"></i>채널·브랜딩</a></span>
@@ -1234,16 +1248,16 @@ def universe_html():
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
-  <span><a href="#" id="uniExp">확장 구상만 보기</a></span>
-  <span><a href="#" id="uniReset">재배치</a></span>
+  <span id="uniTip"></span>
 </div>
 
 <div class="card" id="uniPanel"></div>
 
-<h2>이 관계망 보는 법</h2>
+<h2>이 별자리 보는 법</h2>
 <div class="card">
   <ul class="list">
-    <li><div class="t">줄이 곧 사업</div><div class="m">점 세 개가 따로 있으면 부업 셋입니다. 줄로 엮여야 하나가 흔들려도 나머지가 받칩니다 — <a href="../philosophy/">삼각 파이프라인</a>의 핵심</div></li>
+    <li><div class="t">줄이 곧 사업</div><div class="m">별 세 개가 따로 있으면 부업 셋입니다. 줄로 엮여야 하나가 흔들려도 나머지가 받칩니다 — <a href="../philosophy/">삼각 파이프라인</a>의 핵심</div></li>
+    <li><div class="t">입체로 보면 구역이 앞뒤로 갈라집니다</div><div class="m">같은 색끼리 깊이가 비슷하게 놓여 있어, 돌려 보면 어느 구역이 어디에 몰려 있는지 덩어리로 보입니다</div></li>
     <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
     <li><div class="t">⑤ 도구·자동화는 혼자 돈이 되지 않습니다</div><div class="m">만들어서 루크 툴박스 구독으로 묶이거나, 수강생에게 기본판을 풀어 강의 후킹이 될 때 돈이 됩니다. 줄이 툴박스로 모이는 이유</div></li>
     <li><div class="t">'확인 필요'가 붙은 줄</div><div class="m">아직 기록으로 확인되지 않은 연결입니다. 맞는지 알려주시면 확정하거나 지웁니다</div></li>
@@ -1252,7 +1266,7 @@ def universe_html():
 
 <h2>아직 비어 있는 자리</h2>
 <div class="card gold">
-  <p style="margin:0 0 8px">말씀해주시면 점이든 줄이든 그대로 넣습니다.</p>
+  <p style="margin:0 0 8px">말씀해주시면 별이든 줄이든 그대로 넣습니다.</p>
   <ul class="list">
     <li><div class="t">오프라인 창고형 매장</div><div class="m">위치·평수·취급 품목·운영 인력·여는 시점. 3PL 재고를 쓰는 건지, 별도 매입인지</div></li>
     <li><div class="t">개인 트레이드 채널</div><div class="m">무엇을 다루는 채널인지, 어느 플랫폼인지</div></li>
@@ -1261,61 +1275,78 @@ def universe_html():
   </ul>
 </div>
 
-<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 8/25~10/4 노션 액션보드·플라우드 녹음·클로드 대화 기록. 확장 구상 점에는 어느 대화에서 나온 것인지 적어 두었습니다. 금액은 모두 계획값이며 실적이 아닙니다.</div>
+<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 8/25~10/4 노션 액션보드·플라우드 녹음·클로드 대화 기록. 확장 구상 별에는 어느 대화에서 나온 것인지 적어 두었습니다. 금액은 모두 계획값이며 실적이 아닙니다.</div>
 
 <script>
 (function(){
 var D = __DATA__;
-var W=360, H=820, svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel');
+var W=360, H=760, CX=180, CY=380, F=760;
+var svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel'), tip=document.getElementById('uniTip');
 var NS='http://www.w3.org/2000/svg';
 var N={}, nodes=D.nodes, edges=D.edges, regs={};
 D.regions.forEach(function(r){regs[r.id]=r;});
 regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'다섯 구역이 전부 여기를 지나갑니다.'};
 var seed=20261005;
 function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
-function place(){
-  nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*110; n.y=n.ay+(rnd()-0.5)*110; n.vx=0; n.vy=0; });
-}
-nodes.forEach(function(n){ N[n.id]=n; n.r=n.big===2?16:(n.big===1?8:6); n.deg=0; n.adj=[]; n.hw=Math.min(n.n.length*4.7+4, 62); });
+var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
+var HOME={rotY:0.55, rotX:-0.22};
+
+nodes.forEach(function(n){ N[n.id]=n; n.r=n.big===2?15:(n.big===1?7.5:5.8); n.deg=0; n.adj=[]; n.hw=Math.min(n.n.length*4.7+4, 60); });
 edges.forEach(function(e){
   var a=N[e.a], b=N[e.b]; if(!a||!b) return;
-  a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l});
-  e.t = rnd();
+  a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l}); e.t=rnd();
 });
+function place(){ nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*110; n.y=n.ay+(rnd()-0.5)*110; n.z=n.az+(rnd()-0.5)*90; n.vx=0;n.vy=0;n.vz=0; }); }
 place();
 function tick(k){
+  var flat = (MODE==='2d');
   for(var i=0;i<nodes.length;i++){ for(var j=i+1;j<nodes.length;j++){
-    var a=nodes[i], b=nodes[j], dx=b.x-a.x, dy=b.y-a.y, d2=dx*dx+dy*dy;
-    if(d2<1) d2=1; var d=Math.sqrt(d2);
+    var a=nodes[i], b=nodes[j], dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z;
+    var d2=dx*dx+dy*dy+dz*dz; if(d2<1) d2=1; var d=Math.sqrt(d2);
     var f=2200/d2; if(f>3) f=3;
-    var ux=dx/d, uy=dy/d;
-    a.vx-=ux*f; a.vy-=uy*f; b.vx+=ux*f; b.vy+=uy*f;
+    var ux=dx/d, uy=dy/d, uz=dz/d;
+    a.vx-=ux*f; a.vy-=uy*f; a.vz-=uz*f; b.vx+=ux*f; b.vy+=uy*f; b.vz+=uz*f;
     var min=a.r+b.r+20;
-    if(d<min){ var p=(min-d)*0.5; a.vx-=ux*p; a.vy-=uy*p; b.vx+=ux*p; b.vy+=uy*p; }
+    if(d<min){ var p=(min-d)*0.5; a.vx-=ux*p; a.vy-=uy*p; a.vz-=uz*p; b.vx+=ux*p; b.vy+=uy*p; b.vz+=uz*p; }
   }}
   edges.forEach(function(e){
     var a=N[e.a], b=N[e.b]; if(!a||!b) return;
-    var dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)||1;
-    var f=(d-74)*0.012, ux=dx/d, uy=dy/d;
-    a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
+    var dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, d=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
+    var f=(d-74)*0.012, ux=dx/d, uy=dy/d, uz=dz/d;
+    a.vx+=ux*f; a.vy+=uy*f; a.vz+=uz*f; b.vx-=ux*f; b.vy-=uy*f; b.vz-=uz*f;
   });
   nodes.forEach(function(n){
     n.vx += (n.ax-n.x)*0.006; n.vy += (n.ay-n.y)*0.006;
-    if(n.id==='luke'){ n.vx += (180-n.x)*0.05; n.vy += (370-n.y)*0.05; }
-    if(n.drag) { n.vx=0; n.vy=0; return; }
-    n.vx*=0.80; n.vy*=0.80;
-    n.x+=n.vx*k; n.y+=n.vy*k;
-    var mx=Math.max(n.r+10, n.hw+6), my=n.r+16;
+    n.vz += ((flat?0:n.az)-n.z)*(flat?0.14:0.008);
+    if(n.id==='luke'){ n.vx += (CX-n.x)*0.05; n.vy += (CY-n.y)*0.05; n.vz += (0-n.z)*0.05; }
+    n.vx*=0.80; n.vy*=0.80; n.vz*=0.80;
+    n.x+=n.vx*k; n.y+=n.vy*k; n.z+=n.vz*k;
+    var mx=Math.max(n.r+10, n.hw+6);
     if(n.x<mx) n.x=mx; if(n.x>W-mx) n.x=W-mx;
-    if(n.y<my+10) n.y=my+10; if(n.y>H-my-18) n.y=H-my-18;
+    if(n.y<120) n.y=120; if(n.y>650) n.y=650;
+    if(n.z<-150) n.z=-150; if(n.z>150) n.z=150;
   });
 }
 function settle(){ for(var s=0;s<620;s++) tick(1); }
 settle();
 
 function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
-var gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{});
-svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
+var defs=el('defs',{});
+var rg=el('radialGradient',{id:'uGlow'});
+rg.appendChild(el('stop',{offset:'0%','stop-color':'#ffffff','stop-opacity':'.55'}));
+rg.appendChild(el('stop',{offset:'100%','stop-color':'#ffffff','stop-opacity':'0'}));
+defs.appendChild(rg); svg.appendChild(defs);
+var gStar=el('g',{}), gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{});
+svg.appendChild(gStar); svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
+
+var STARS=[];
+for(var i=0;i<110;i++){
+  var th=rnd()*Math.PI*2, ph=Math.acos(2*rnd()-1), R=640+rnd()*260;
+  STARS.push({x:R*Math.sin(ph)*Math.cos(th), y:R*Math.sin(ph)*Math.sin(th)*0.7, z:R*Math.cos(ph),
+              s:0.5+rnd()*1.1, ph:rnd()*6.28, el:el('circle',{fill:'#cfe9ff',r:'1'})});
+}
+STARS.forEach(function(s){ gStar.appendChild(s.el); });
+
 edges.forEach(function(e){
   e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.38'});
   gEdge.appendChild(e.el);
@@ -1328,32 +1359,79 @@ nodes.forEach(function(n){
   if(n.st==='build'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'2'};}
   if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
+  n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
   n.t1 = el('text',{'text-anchor':'middle','font-size':n.big?'10':'9','fill':'#e8eef2','class':'lu-lab'});
   n.t1.textContent=n.n;
   n.hit = el('circle',{'r':Math.max(n.r+10,14),'fill':'transparent'});
-  g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
+  g.appendChild(n.glow); g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
   gNode.appendChild(g); n.g=g;
 });
+
+function proj(x,y,z){
+  var dx=x-CX, dy=y-CY, dz=z;
+  var cy=Math.cos(rotY), sy=Math.sin(rotY);
+  var X=dx*cy+dz*sy, Z=-dx*sy+dz*cy;
+  var cx2=Math.cos(rotX), sx2=Math.sin(rotX);
+  var Y=dy*cx2-Z*sx2; var Z2=dy*sx2+Z*cx2;
+  var d=F/(F+Z2), s=d*zoom;
+  return {x:CX+X*s, y:CY+Y*s, s:s, d:d, z:Z2};
+}
+function projStar(st){
+  var cy=Math.cos(rotY), sy=Math.sin(rotY);
+  var X=st.x*cy+st.z*sy, Z=-st.x*sy+st.z*cy;
+  var cx2=Math.cos(rotX), sx2=Math.sin(rotX);
+  var Y=st.y*cx2-Z*sx2; var Z2=st.y*sx2+Z*cx2;
+  if(Z2<-F+40) return null;
+  var s=F/(F+Z2);
+  return {x:CX+X*s*0.5, y:CY+Y*s*0.5, s:s};
+}
+var tms=0;
 function draw(){
+  tms+=0.016;
+  var three = (MODE==='3d');
+  STARS.forEach(function(st){
+    if(!three){ st.el.setAttribute('opacity','0'); return; }
+    var p=projStar(st);
+    if(!p){ st.el.setAttribute('opacity','0'); return; }
+    st.el.setAttribute('cx',p.x); st.el.setAttribute('cy',p.y);
+    st.el.setAttribute('r',Math.max(0.3, st.s*p.s*0.9));
+    st.el.setAttribute('opacity', (0.25+0.45*Math.abs(Math.sin(tms*0.7+st.ph)))*Math.min(1,p.s));
+  });
+  nodes.forEach(function(n){ var p=proj(n.x,n.y,n.z); n.px=p.x; n.py=p.y; n.ps=p.s; n.pd=p.d; n.pz=p.z; });
   edges.forEach(function(e){
     var a=N[e.a], b=N[e.b];
-    e.el.setAttribute('x1',a.x); e.el.setAttribute('y1',a.y);
-    e.el.setAttribute('x2',b.x); e.el.setAttribute('y2',b.y);
+    e.el.setAttribute('x1',a.px); e.el.setAttribute('y1',a.py);
+    e.el.setAttribute('x2',b.px); e.el.setAttribute('y2',b.py);
     e.t += 0.003; if(e.t>1) e.t-=1;
-    e.p.setAttribute('cx', a.x+(b.x-a.x)*e.t); e.p.setAttribute('cy', a.y+(b.y-a.y)*e.t);
+    e.p.setAttribute('cx', a.px+(b.px-a.px)*e.t); e.p.setAttribute('cy', a.py+(b.py-a.py)*e.t);
+    if(three){ var dd=(a.pd+b.pd)/2; e.el.setAttribute('stroke-width', (0.5+1.3*(dd-0.82))*(e.hi?1.9:1)); }
+    else e.el.setAttribute('stroke-width', e.hi?1.8:1);
   });
   nodes.forEach(function(n){
-    n.halo.setAttribute('cx',n.x); n.halo.setAttribute('cy',n.y);
-    n.c1.setAttribute('cx',n.x); n.c1.setAttribute('cy',n.y);
-    n.hit.setAttribute('cx',n.x); n.hit.setAttribute('cy',n.y);
-    n.t1.setAttribute('x',n.x); n.t1.setAttribute('y',n.y+n.r+10);
+    var s=three?n.ps:1;
+    n.glow.setAttribute('cx',n.px); n.glow.setAttribute('cy',n.py); n.glow.setAttribute('r',n.r*3.2*s);
+    n.glow.setAttribute('opacity', three?(0.12+0.55*Math.max(0,Math.min(1,(n.pd-0.84)*2.6))):0.42);
+    n.halo.setAttribute('cx',n.px); n.halo.setAttribute('cy',n.py); n.halo.setAttribute('r',(n.r+7)*s);
+    n.c1.setAttribute('cx',n.px); n.c1.setAttribute('cy',n.py); n.c1.setAttribute('r',n.r*s);
+    n.hit.setAttribute('cx',n.px); n.hit.setAttribute('cy',n.py); n.hit.setAttribute('r',Math.max(n.r*s+10,14));
+    n.t1.setAttribute('x',n.px); n.t1.setAttribute('y',n.py+n.r*s+10*s);
+    n.t1.setAttribute('font-size', (n.big?10:9)*Math.max(0.7,s));
+    n.t1.setAttribute('opacity', three? Math.max(0, Math.min(1,(n.pd-0.92)*6)) : 1);
   });
+  if(three){
+    var order=nodes.slice().sort(function(a,b){return b.pz-a.pz;});
+    for(var i=0;i<order.length;i++) gNode.appendChild(order[i].g);
+  }
 }
 var reduce=false;
 try{ reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
-function loop(){ tick(0.35); draw(); if(!reduce) requestAnimationFrame(loop); }
+function loop(){
+  if(MODE==='3d' && !dragRot && spin) rotY += 0.0014;
+  tick(MODE==='2d'?0.35:0.3); draw();
+  if(!reduce) requestAnimationFrame(loop);
+}
 draw(); if(!reduce) requestAnimationFrame(loop);
 
 var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
@@ -1365,14 +1443,14 @@ function apply(){
   else if(filt){ keep={}; nodes.forEach(function(n){ if(n.reg===filt) keep[n.id]=1; }); keep['luke']=1; }
   nodes.forEach(function(n){
     var on = !keep || keep[n.id];
-    n.g.style.opacity = on? '1':'.12';
+    n.g.style.opacity = on? '1':'.1';
     n.halo.setAttribute('opacity', (sel===n.id)?'.35':'0');
   });
   edges.forEach(function(e){
     var on = sel ? (e.a===sel||e.b===sel) : (!keep || (keep[e.a] && keep[e.b]));
+    e.hi = !!(sel && on);
     e.el.setAttribute('opacity', on? (sel?'.9':'.38') : '.04');
     e.el.setAttribute('stroke', (sel && on)? N[sel].c : '#7fa8bd');
-    e.el.setAttribute('stroke-width', (sel && on)? '1.8':'1');
     e.p.setAttribute('opacity', on? '.8':'0');
   });
 }
@@ -1380,7 +1458,7 @@ function lk(n){ return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>'; }
 function home(){
   sel=null; filt=null; apply();
   var ex=nodes.filter(function(n){return n.exp;});
-  var h='<h3>관계망 전체</h3><p class="note" style="margin-top:0">점 '+nodes.length+'개 · 줄 '+edges.length+'개. 그중 대화에서 나온 확장 구상이 '+ex.length+'개입니다 — <a href="#" data-f="exp">확장 구상만 보기</a></p><ul class="list">';
+  var h='<h3>별자리 전체</h3><p class="note" style="margin-top:0">별 '+nodes.length+'개 · 줄 '+edges.length+'개. 그중 대화에서 나온 확장 구상이 '+ex.length+'개입니다 — <a href="#" data-f="exp">확장 구상만 보기</a></p><ul class="list">';
   D.regions.forEach(function(r){
     var ns=nodes.filter(function(n){return n.reg===r.id;});
     h+='<li><div class="t"><a href="#" data-f="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+ns.map(lk).join(' · ')+'</div></li>';
@@ -1400,7 +1478,7 @@ function showExp(){
     h+=ns.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.full+'</a> <span style="opacity:.7">— '+ST[n.st][0]+(n['from']?' · '+n['from']:'')+'</span>';}).join('<br>');
     h+='</div></li>';
   });
-  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
+  h+='</ul><p class="note"><a href="#" data-go="home">← 별자리 전체</a></p>';
   panel.innerHTML=h;
 }
 function showReg(rid){
@@ -1412,7 +1490,7 @@ function showReg(rid){
   ns.forEach(function(n){
     h+='<li><span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><div class="t"><a href="#" data-go="'+n.id+'">'+n.full+'</a></div><div class="m">'+n.d+'</div></li>';
   });
-  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
+  h+='</ul><p class="note"><a href="#" data-go="home">← 별자리 전체</a></p>';
   panel.innerHTML=h;
 }
 function show(id){
@@ -1428,47 +1506,84 @@ function show(id){
     var m=N[a.id];
     h+='<li><div class="t"><a href="#" data-go="'+a.id+'" style="color:'+m.c+'">'+m.full+'</a></div><div class="m">'+a.l+'</div></li>';
   });
-  h+='</ul><p class="note"><a href="#" data-f="'+n.reg+'">← '+r.name+'</a> · <a href="#" data-go="home">관계망 전체</a></p>';
+  h+='</ul><p class="note"><a href="#" data-f="'+n.reg+'">← '+r.name+'</a> · <a href="#" data-go="home">별자리 전체</a></p>';
   panel.innerHTML=h;
 }
 function route(e){
   var a=e.target.closest?e.target.closest('[data-go],[data-f],[data-reg]'):null;
   if(!a) return; e.preventDefault();
   var g=a.getAttribute('data-go'), f=a.getAttribute('data-f')||a.getAttribute('data-reg');
-  if(g==='home') home();
-  else if(g) show(g);
-  else if(f==='exp') showExp();
-  else if(f) showReg(f);
+  if(g==='home') home(); else if(g) show(g);
+  else if(f==='exp') showExp(); else if(f) showReg(f);
   panel.scrollIntoView({block:'nearest'});
 }
 panel.addEventListener('click',route);
 document.getElementById('uniLeg').addEventListener('click',route);
-document.getElementById('uniExp').addEventListener('click',function(e){e.preventDefault();showExp();panel.scrollIntoView({block:'nearest'});});
-document.getElementById('uniReset').addEventListener('click',function(e){
-  e.preventDefault(); seed=20261005; place(); settle(); draw();
+var b2=document.getElementById('uni2d'), b3=document.getElementById('uni3d');
+function setMode(m){
+  MODE=m; spin=(m==='3d')?1:0;
+  if(m==='3d'){ rotY=HOME.rotY; rotX=HOME.rotX; zoom=0.82; } else { rotY=0; rotX=0; zoom=1; }
+  b2.className = (m==='2d')?'on':''; b3.className=(m==='3d')?'on':'';
+  tip.textContent = (m==='3d')?'손가락으로 끌어 돌리기 · 두 손가락으로 확대':'';
+  draw();
+}
+b2.addEventListener('click',function(){setMode('2d');});
+b3.addEventListener('click',function(){setMode('3d');});
+document.getElementById('uniHome').addEventListener('click',function(){
+  setMode('2d'); seed=20261005; place(); settle(); home(); draw();
 });
-var drag=null, moved=0, pt=svg.createSVGPoint();
+document.getElementById('uniExp').addEventListener('click',function(){showExp();panel.scrollIntoView({block:'nearest'});});
+document.getElementById('uniReset').addEventListener('click',function(){
+  seed=20261005; place(); settle(); draw();
+});
+
+var drag=null, dragRot=false, moved=0, lastP=null, pt=svg.createSVGPoint(), pts={};
 function loc(ev){ pt.x=ev.clientX; pt.y=ev.clientY; var m=svg.getScreenCTM(); return m?pt.matrixTransform(m.inverse()):{x:0,y:0}; }
 function hitNode(p){
   var best=null, bd=1e9;
-  nodes.forEach(function(n){ var d=(n.x-p.x)*(n.x-p.x)+(n.y-p.y)*(n.y-p.y); var rr=Math.max(n.r+10,14); if(d<rr*rr && d<bd){bd=d;best=n;} });
+  nodes.forEach(function(n){ var rr=Math.max((n.r*(MODE==='3d'?n.ps:1))+10,14);
+    var d=(n.px-p.x)*(n.px-p.x)+(n.py-p.y)*(n.py-p.y); if(d<rr*rr && d<bd){bd=d;best=n;} });
   return best;
 }
 svg.addEventListener('pointerdown',function(ev){
-  var p=loc(ev), n=hitNode(p); if(!n) return;
-  drag=n; n.drag=1; moved=0; svg.setPointerCapture(ev.pointerId); ev.preventDefault();
+  pts[ev.pointerId]={x:ev.clientX,y:ev.clientY};
+  var p=loc(ev), n=hitNode(p); moved=0; lastP={x:ev.clientX,y:ev.clientY};
+  if(n && MODE==='2d'){ drag=n; n.drag=1; }
+  else { dragRot=true; }
+  try{svg.setPointerCapture(ev.pointerId);}catch(e){}
+  ev.preventDefault();
 });
 svg.addEventListener('pointermove',function(ev){
-  if(!drag) return; var p=loc(ev);
-  moved += Math.abs(p.x-drag.x)+Math.abs(p.y-drag.y);
-  drag.x=p.x; drag.y=p.y; draw(); ev.preventDefault();
+  if(pts[ev.pointerId]) pts[ev.pointerId]={x:ev.clientX,y:ev.clientY};
+  var ids=Object.keys(pts);
+  if(MODE==='3d' && ids.length>=2){
+    var a=pts[ids[0]], b=pts[ids[1]];
+    var d=Math.hypot(a.x-b.x,a.y-b.y);
+    if(svg._pd) zoom = Math.max(0.5, Math.min(2.2, zoom*(d/svg._pd)));
+    svg._pd=d; moved+=20; return;
+  }
+  if(drag){ var p=loc(ev); moved+=Math.abs(p.x-drag.x)+Math.abs(p.y-drag.y); drag.x=p.x; drag.y=p.y; draw(); ev.preventDefault(); return; }
+  if(dragRot && lastP){
+    var dx=ev.clientX-lastP.x, dy=ev.clientY-lastP.y;
+    moved+=Math.abs(dx)+Math.abs(dy);
+    if(MODE==='3d'){ rotY += dx*0.008; rotX = Math.max(-1.1, Math.min(1.1, rotX + dy*0.006)); draw(); }
+    lastP={x:ev.clientX,y:ev.clientY};
+    ev.preventDefault();
+  }
 });
-svg.addEventListener('pointerup',function(ev){
-  if(!drag) return; var n=drag; n.drag=0; drag=null;
-  if(moved<6) show(n.id);
+function endPtr(ev){
+  delete pts[ev.pointerId]; if(Object.keys(pts).length<2) svg._pd=0;
+  if(drag){ var n=drag; n.drag=0; drag=null; if(moved<6) show(n.id); }
+  else if(dragRot){ dragRot=false; if(moved<6){ var p=loc(ev), n2=hitNode(p); if(n2) show(n2.id); } }
+  lastP=null;
   try{svg.releasePointerCapture(ev.pointerId);}catch(e){}
-});
-svg.addEventListener('pointercancel',function(){ if(drag){drag.drag=0;drag=null;} });
+}
+svg.addEventListener('pointerup',endPtr);
+svg.addEventListener('pointercancel',endPtr);
+svg.addEventListener('wheel',function(ev){
+  if(MODE!=='3d') return; ev.preventDefault();
+  zoom = Math.max(0.5, Math.min(2.2, zoom*(ev.deltaY>0?0.94:1.06))); draw();
+},{passive:false});
 home();
 })();
 </script>
