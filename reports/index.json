@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-gate-review",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "라운지 대문 페르소나 검토(24명) + 결과 5가지 반영",
+    "status": "완료",
+    "summary": "대문의 목적(회원이 들어가는 문, 팔지 않음)에 맞춘 새 설문으로 가상 패널 24명이 평가. 팔려는 느낌 없음 9.0·첫인상 8.5는 높고, 살아 있는 곳처럼 보임 3.4·다음 걸음 5.2가 낮음. 투표 결과대로 빈 공개 자료 자리를 숨기고, 잠긴 방마다 든 것을 구체적으로 적고, 소개로 가는 조용한 한 줄, 로그인한 회원용 '라운지 들어가기', 휴대폰 설명 한 문장을 넣어 배포",
+    "next": "처음 열어 둘 자료 하나 정하기(루크) — 실제 자료가 올라와야 '살아 있는 느낌' 점수가 오름",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 2831537)</p><ul><li>회의 기록: https://claude.ai/artifact/WEoQdZAHGG9wRvDZjkGBE5</li><li>투표: 빈 자리 숨김 18 · 방 구체적으로 15 · 소개 한 줄 19 · 들어가기 16 · 휴대폰 한 문장 20 (24명)</li><li>나중에: 자료 제목을 잠긴 채로 대문에(21표, 자료실 만든 뒤)</li></ul>"
+  },
+  {
     "id": "2026-10-05-onecrew-site-wordmark",
     "date": "2026-10-05",
     "project": "원크루 사이트",
