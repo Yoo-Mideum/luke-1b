@@ -60,6 +60,7 @@ a{color:var(--accent);text-decoration:none}
 .lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
 .lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
 .lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
 .uni-hit{cursor:pointer}
@@ -70,7 +71,7 @@ a{color:var(--accent);text-decoration:none}
 .uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
 .uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
 .uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
-@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node{animation:none}}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}

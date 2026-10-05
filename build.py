@@ -59,6 +59,7 @@ a{color:var(--accent);text-decoration:none}
 .lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
 .lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
 .lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
 .uni-hit{cursor:pointer}
@@ -69,7 +70,7 @@ a{color:var(--accent);text-decoration:none}
 .uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
 .uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
 .uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
-@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node{animation:none}}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media (max-width:420px){.grid{grid-template-columns:1fr}}
@@ -1200,11 +1201,39 @@ UNI_EDGES = [
  ("callai","voice","AI가 루크 목소리로 답하도록 연결하려는 구상"),
  ("voice","videof","텍스트 → 루크 목소리 오디오를 영상에 얹음"),
  ("videof","yt","영상 제작 비용을 줄여 채널 운영을 가볍게"),
- ("beauty","kititi","미용 가격 정보라 지영 원장 쪽과 맞닿음 (확인 필요)"),
  ("beauty","toolbox","오프라인샵 팩과 같은 묶음인지 확인 필요"),
  ("commu","toolbox","자체 사이트·구독 사이트를 같은 스택으로 짓는 구상 (확인 필요)"),
 ]
 
+
+
+# 가능성 연결 — 기록된 사실이 아니라 루크의 자산을 보고 클로드가 검토한 '이을 수 있는 선'
+# (a, b, 왜 될 것 같은지, 그러려면 필요한 것, 거리 1=지금 당장 / 2=이번 분기 / 3=내년)
+UNI_POSS = [
+ ("resale","onecrew","수강생 재고를 회사가 팔아주는 것을 원크루·일십백천 혜택으로 묶으면, 고가 상품을 결제할 때 '최악이어도 재고는 회수된다'는 안전장치가 생긴다. 상담에서 가장 많이 걸리는 지점이 바로 손실 공포다.","판매 수수료와 회수 범위를 상품 설명에 명문화 · 재고 판매 첫 실적 몇 건",1),
+ ("bsj","onecrew","컨설팅의 고질병은 숙제를 안 하는 것이다. 배수진(돈 걸고 목표달성)을 원크루·일십백천 과제 이행에 붙이면 실행률 장치가 된다. 내부에서 먼저 쓰고 그 데이터로 앱을 판다.","과제 단위 정의 · 돈을 거는 방식(환급·기부)의 법적 검토",1),
+ ("autoreg","resale","재고 판매 상품을 여러 채널에 자동으로 올리면 사람 손 없이 회전한다. 지금 재고 판매가 느린 이유가 등록 노동이라면 바로 풀리는 병목.","자동등록의 네이버 API 차단 원인 해결 · 당근·번개장터 등록 경로 확인",1),
+ ("typer","kititi","지영 원장 샵 블로그를 블로그타이퍼로 돌려 첫 외부 고객 사례를 만든다. '오프라인 샵 자동화'를 파는 데 필요한 것은 기능이 아니라 증거 한 건이다.","원장 동의 · 업종 글감 틀 · 네이버 제재 리스크 사전 설명",1),
+ ("margin","beauty","가격비교는 '같은 물건이 어디서 얼마인지' 맞추는 같은 기술이다. 마진메이커 엔진을 미용 가격비교에 그대로 쓰면 새 사이트를 처음부터 짓지 않아도 된다.","시술명 표준화(상품명과 달리 표기가 제각각) · 수집 범위 결정",1),
+ ("kititi","beauty","지영 원장 샵의 실제 가격·시술 데이터가 미용 가격비교의 첫 데이터가 된다. 한 곳이 모델이 되면 다음 샵 영업이 쉬워진다.","원장 동의 · 경쟁 샵 노출에 대한 합의",2),
+ ("kititi","toolbox","툴박스 오프라인샵 팩(+9,900)의 첫 실사용자. 키티티에서 돌려보고 숫자가 나오면 미용 샵 대상 구독 영업의 레퍼런스가 된다.","샵용 기능 묶음 확정 · 한 달 사용 데이터",2),
+ ("callai","toolbox","상담 AI를 '내 전화를 대신 받아주는 AI'로 돌리면 사업자 누구에게나 팔 수 있다. 내부용으로 만들어 외부로 파는 툴박스 공식 그대로.","녹음 100건의 사용 동의·비식별 처리 · 통화 연결 방식",2),
+ ("soam","callai","소명·제재 대응 문의도 상담 전화의 큰 축이다. 같은 지식베이스로 묶으면 AI가 두 유형을 함께 답한다.","소명 사례 정리 · 답변 경계(법률 자문이 되지 않도록)",2),
+ ("toolkit","dino","디노 12주 수료자가 300만 툴킷 1기의 첫 후보다. 교육 → 도구 묶음으로 올라가는 사다리가 이미 한 줄 있다.","12주 종료 시점과 툴킷 1기 모집 시점 맞추기 · 배분 비율",2),
+ ("plat","videof","플랫폼의 챌린지 영상과 광고 소재를 영상공장으로 찍어내면 락인 축의 제작 부담이 크게 준다. 영상 제작비가 인베이더 실패의 한 축이었다.","영상공장 품질이 광고로 쓸 수준인지 1회차 검증",2),
+ ("blog","onecrew","유튜브가 못 잡는 검색 수요를 블로그가 잡는다. 상담 사례 글은 '이거 괜찮은 겁니까' 유형이 검색으로 찾는 바로 그 글이다.","사례 공개 동의 · 상담 신청 동선 한 줄",2),
+ ("commu","plat","플랫폼 락인 축이 쓸 커뮤니티를 자체 사이트로 지으면 네이버 카페 의존이 줄고 수강생 데이터를 회사가 갖는다. 소유권은 3자 협업에서 가장 중요한 조건이다.","본부장과의 역할·데이터 소유 합의가 먼저",2),
+ ("mktg","vcell","채널 운영 대행 역량을 뷰셀에도 붙이면 메이브님 촬영 부담이 준다. 메이브님 시간이 플랫폼 쪽으로 넘어가야 하는 시점과 맞는다.","대행 범위에 뷰셀 포함 재협의 · 비용 분담",2),
+ ("store","live","창고형 매장 오픈데이를 라이브 커머스 현장으로 쓰면 재고 소진과 콘텐츠를 한 번에 가져간다. 고정비 낮은 오픈데이 모델과 맞물린다.","매장 개설이 먼저 · 오픈데이 주기 결정",2),
+ ("store","consign","메이크업헬퍼 위탁 물량을 오픈데이에서 직접 판다. 브랜드사 미입점 채널·폐쇄몰 조건과 성격이 맞는다 — 다만 계약서 문구 확인 필요.","위수탁계약의 판매 채널 조항 확인 · 매장 개설",3),
+ ("voice","ilsip","내 목소리 엔진이 서면 400개 영상 강의의 개정과 재녹음을 다시 찍지 않고 한다. 강의 자산이 많을수록 이득이 커지는 구조.","엔진 품질이 강의로 쓸 수준인지 · 기존 강의 대본화",3),
+ ("own","plat","플랫폼 1기는 3자 배분이지만 자체 강의는 전부 회사 몫이다. 플랫폼을 검증 무대로 쓰고 검증된 커리큘럼만 자체로 가져오는 순서가 자연스럽다.","플랫폼 협업 계약에 경업·IP 귀속 조항 정리가 먼저",3),
+ ("own","tpl","자체 강의 수강생이 그대로 3PL 고객이 된다. 교육과 물류가 한 회사 안에서 도는 것이 셀러들의 수다 구상의 핵심이다.","법인 정리 · 3PL 수용 능력",3),
+ ("grant","sudan","신규 법인은 업력이 짧아 창업 3년 이내 조건의 지원사업 문이 열린다. 힐링디어스(약 5년)로는 막히는 길이다.","대표자 요건·업종 코드 확인 필요 — 같은 업종 재창업으로 보면 제외될 수 있음",3),
+ ("grant","store","오프라인 매장·물류 설비는 시설·공간 항목이 있는 지원사업과 맞는 구석이 많다.","사업 계획상 매장 개설 시점 · 해당 공고의 시설비 인정 범위 확인 필요",3),
+ ("seoul","live","서울 강의장이 생기면 무료 라이브·특강을 오프라인 병행으로 돌릴 수 있다. 같은 사람을 만나도 전환이 다르다.","서울 이전 · 강의장 규모",3),
+ ("trade","bsj","트레이드 채널과 '돈 걸고 목표달성'은 같은 관객(돈·성취)을 본다. 채널이 앱의 첫 사용자 풀이 된다.","트레이드 채널의 내용·플랫폼이 먼저 정해져야 함",3),
+]
 
 UNI_ANCHOR = {"ch":(96,180,-130), "kn":(268,250,95), "pr":(266,580,115), "base":(92,540,-75), "tool":(180,660,15)}
 
@@ -1222,6 +1251,7 @@ def universe_html():
     data = {
       "nodes": nodes,
       "edges": [{"a":a,"b":b,"l":l} for a,b,l in UNI_EDGES],
+      "poss": [{"a":a,"b":b,"l":l,"need":nd,"w":w} for a,b,l,nd,w in UNI_POSS],
       "regions": [{"id":R["id"],"no":R["no"],"name":R["name"],"sub":R["sub"],"color":R["color"],"desc":R["desc"]} for R in UNI_REGIONS],
     }
     body = """
@@ -1233,6 +1263,7 @@ def universe_html():
   <button type="button" id="uni2d" class="on">평면</button>
   <button type="button" id="uni3d">입체</button>
   <button type="button" id="uniHome">홈</button>
+  <button type="button" id="uniPoss" class="on">가능성 선</button>
   <button type="button" id="uniExp">확장 구상만</button>
   <button type="button" id="uniReset">재배치</button>
 </div>
@@ -1248,10 +1279,15 @@ def universe_html():
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
+  <span><svg width="26" height="8" style="vertical-align:-1px"><line x1="1" y1="4" x2="25" y2="4" stroke="#ffcf8a" stroke-width="2" stroke-dasharray="4 4"/></svg> 노란 점선 = 가능성</span>
   <span id="uniTip"></span>
 </div>
 
 <div class="card" id="uniPanel"></div>
+
+<h2>가능성 선 <small>지금 자산으로 이을 수 있는 것</small></h2>
+<p class="note">기록에 있는 사실이 아니라, 지금 가진 것들을 보고 <b>이을 수 있어 보이는 연결</b>을 정리한 것입니다. 지도에서 노란 점선으로 그어 뒀고, 별을 누르면 그 별에서 뻗는 가능성만 모아 보입니다. 아니라고 보시면 지웁니다.</p>
+__POSS__
 
 <h2>이 별자리 보는 법</h2>
 <div class="card">
@@ -1296,6 +1332,12 @@ edges.forEach(function(e){
   var a=N[e.a], b=N[e.b]; if(!a||!b) return;
   a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l}); e.t=rnd();
 });
+var poss=D.poss;
+nodes.forEach(function(n){ n.pot=[]; });
+poss.forEach(function(e){
+  var a=N[e.a], b=N[e.b]; if(!a||!b) return;
+  a.pot.push({id:e.b,l:e.l,need:e.need,w:e.w}); b.pot.push({id:e.a,l:e.l,need:e.need,w:e.w});
+});
 function place(){ nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*110; n.y=n.ay+(rnd()-0.5)*110; n.z=n.az+(rnd()-0.5)*90; n.vx=0;n.vy=0;n.vz=0; }); }
 place();
 function tick(k){
@@ -1313,6 +1355,12 @@ function tick(k){
     var a=N[e.a], b=N[e.b]; if(!a||!b) return;
     var dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, d=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
     var f=(d-74)*0.012, ux=dx/d, uy=dy/d, uz=dz/d;
+    a.vx+=ux*f; a.vy+=uy*f; a.vz+=uz*f; b.vx-=ux*f; b.vy-=uy*f; b.vz-=uz*f;
+  });
+  poss.forEach(function(e){
+    var a=N[e.a], b=N[e.b]; if(!a||!b) return;
+    var dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, d=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
+    var f=(d-120)*0.004, ux=dx/d, uy=dy/d, uz=dz/d;
     a.vx+=ux*f; a.vy+=uy*f; a.vz+=uz*f; b.vx-=ux*f; b.vy-=uy*f; b.vz-=uz*f;
   });
   nodes.forEach(function(n){
@@ -1336,8 +1384,8 @@ var rg=el('radialGradient',{id:'uGlow'});
 rg.appendChild(el('stop',{offset:'0%','stop-color':'#ffffff','stop-opacity':'.55'}));
 rg.appendChild(el('stop',{offset:'100%','stop-color':'#ffffff','stop-opacity':'0'}));
 defs.appendChild(rg); svg.appendChild(defs);
-var gStar=el('g',{}), gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{});
-svg.appendChild(gStar); svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
+var gStar=el('g',{}), gPoss=el('g',{}), gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{});
+svg.appendChild(gStar); svg.appendChild(gPoss); svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
 
 var STARS=[];
 for(var i=0;i<110;i++){
@@ -1352,6 +1400,13 @@ edges.forEach(function(e){
   gEdge.appendChild(e.el);
   e.p = el('circle',{'r':'1.8','fill':'#dff6ef','opacity':'.8'});
   gPulse.appendChild(e.p);
+});
+var POPA={1:.62,2:.42,3:.28};
+poss.forEach(function(e){
+  e.el = el('line',{'stroke':'#ffcf8a','stroke-width':'1.2','stroke-linecap':'round',
+                    'stroke-dasharray':(e.w===1?'5 4':(e.w===2?'4 6':'2 7')),
+                    'opacity':POPA[e.w],'class':'lu-pflow'});
+  gPoss.appendChild(e.el);
 });
 nodes.forEach(function(n){
   var g=el('g',{'class':'uni-nd','style':'cursor:pointer'});
@@ -1400,6 +1455,11 @@ function draw(){
     st.el.setAttribute('opacity', (0.25+0.45*Math.abs(Math.sin(tms*0.7+st.ph)))*Math.min(1,p.s));
   });
   nodes.forEach(function(n){ var p=proj(n.x,n.y,n.z); n.px=p.x; n.py=p.y; n.ps=p.s; n.pd=p.d; n.pz=p.z; });
+  poss.forEach(function(e){
+    var a=N[e.a], b=N[e.b];
+    e.el.setAttribute('x1',a.px); e.el.setAttribute('y1',a.py);
+    e.el.setAttribute('x2',b.px); e.el.setAttribute('y2',b.py);
+  });
   edges.forEach(function(e){
     var a=N[e.a], b=N[e.b];
     e.el.setAttribute('x1',a.px); e.el.setAttribute('y1',a.py);
@@ -1435,7 +1495,8 @@ function loop(){
 draw(); if(!reduce) requestAnimationFrame(loop);
 
 var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
-var sel=null, filt=null;
+var WD={1:'지금 당장',2:'이번 분기',3:'내년'};
+var sel=null, filt=null, showP=true;
 function apply(){
   var keep=null;
   if(sel){ keep={}; keep[sel]=1; N[sel].adj.forEach(function(a){keep[a.id]=1;}); }
@@ -1445,6 +1506,11 @@ function apply(){
     var on = !keep || keep[n.id];
     n.g.style.opacity = on? '1':'.1';
     n.halo.setAttribute('opacity', (sel===n.id)?'.35':'0');
+  });
+  poss.forEach(function(e){
+    var on = showP && (sel ? (e.a===sel||e.b===sel) : (!keep || (keep[e.a] && keep[e.b])));
+    e.el.setAttribute('opacity', on? (sel?0.95:POPA[e.w]) : 0);
+    e.el.setAttribute('stroke-width', (sel && on)? '2':'1.2');
   });
   edges.forEach(function(e){
     var on = sel ? (e.a===sel||e.b===sel) : (!keep || (keep[e.a] && keep[e.b]));
@@ -1458,7 +1524,7 @@ function lk(n){ return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>'; }
 function home(){
   sel=null; filt=null; apply();
   var ex=nodes.filter(function(n){return n.exp;});
-  var h='<h3>별자리 전체</h3><p class="note" style="margin-top:0">별 '+nodes.length+'개 · 줄 '+edges.length+'개. 그중 대화에서 나온 확장 구상이 '+ex.length+'개입니다 — <a href="#" data-f="exp">확장 구상만 보기</a></p><ul class="list">';
+  var h='<h3>별자리 전체</h3><p class="note" style="margin-top:0">별 '+nodes.length+'개 · 지금 이어진 줄 '+edges.length+'개 · 이을 수 있는 노란 점선 '+poss.length+'개. 대화에서 나온 확장 구상은 '+ex.length+'개입니다 — <a href="#" data-f="exp">확장 구상만 보기</a></p><ul class="list">';
   D.regions.forEach(function(r){
     var ns=nodes.filter(function(n){return n.reg===r.id;});
     h+='<li><div class="t"><a href="#" data-f="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+ns.map(lk).join(' · ')+'</div></li>';
@@ -1506,7 +1572,16 @@ function show(id){
     var m=N[a.id];
     h+='<li><div class="t"><a href="#" data-go="'+a.id+'" style="color:'+m.c+'">'+m.full+'</a></div><div class="m">'+a.l+'</div></li>';
   });
-  h+='</ul><p class="note"><a href="#" data-f="'+n.reg+'">← '+r.name+'</a> · <a href="#" data-go="home">별자리 전체</a></p>';
+  h+='</ul>';
+  if(n.pot.length){
+    h+='<h3 style="margin-top:12px">이어질 수 있는 것 '+n.pot.length+'개 <small style="color:var(--muted);font-weight:400">가능성</small></h3><ul class="list">';
+    n.pot.slice().sort(function(a,b){return a.w-b.w;}).forEach(function(a){
+      var m=N[a.id];
+      h+='<li><span class="tag '+(a.w===1?'p0':(a.w===2?'p1':'p2'))+'">'+WD[a.w]+'</span><div class="t"><a href="#" data-go="'+a.id+'" style="color:'+m.c+'">'+m.full+'</a></div><div class="m">'+a.l+'</div><div class="m" style="opacity:.75">필요한 것: '+a.need+'</div></li>';
+    });
+    h+='</ul>';
+  }
+  h+='<p class="note"><a href="#" data-f="'+n.reg+'">← '+r.name+'</a> · <a href="#" data-go="home">별자리 전체</a></p>';
   panel.innerHTML=h;
 }
 function route(e){
@@ -1519,6 +1594,12 @@ function route(e){
 }
 panel.addEventListener('click',route);
 document.getElementById('uniLeg').addEventListener('click',route);
+var pl=document.getElementById('uniPossList');
+if(pl) pl.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('[data-go]'):null;
+  if(!a) return; e.preventDefault(); show(a.getAttribute('data-go'));
+  var sk=document.querySelector('.sky'); if(sk) sk.scrollIntoView({block:'start',behavior:'smooth'});
+});
 var b2=document.getElementById('uni2d'), b3=document.getElementById('uni3d');
 function setMode(m){
   MODE=m; spin=(m==='3d')?1:0;
@@ -1530,8 +1611,10 @@ function setMode(m){
 b2.addEventListener('click',function(){setMode('2d');});
 b3.addEventListener('click',function(){setMode('3d');});
 document.getElementById('uniHome').addEventListener('click',function(){
-  setMode('2d'); seed=20261005; place(); settle(); home(); draw();
+  setMode('2d'); seed=20261005; place(); settle(); showP=true; bp.className='on'; home(); draw();
 });
+var bp=document.getElementById('uniPoss');
+bp.addEventListener('click',function(){ showP=!showP; bp.className=showP?'on':''; apply(); });
 document.getElementById('uniExp').addEventListener('click',function(){showExp();panel.scrollIntoView({block:'nearest'});});
 document.getElementById('uniReset').addEventListener('click',function(){
   seed=20261005; place(); settle(); draw();
@@ -1588,7 +1671,24 @@ home();
 })();
 </script>
 """
-    return body.replace("__DATA__", json.dumps(data, ensure_ascii=False))
+    NAME = {}
+    for R in UNI_REGIONS:
+        for Nn in R["nodes"]:
+            NAME[Nn["id"]] = (Nn["full"], R["color"])
+    NAME["luke"] = ("루크 (ONE CREW)", "#f0cd84")
+    WLBL = {1:("지금 당장","p0"), 2:("이번 분기","p1"), 3:("내년","p2")}
+    cards = []
+    for w, cls in [(1,"accent"), (2,"gold"), (3,"")]:
+        rows = [x for x in UNI_POSS if x[4]==w]
+        if not rows: continue
+        cards.append('<h3 style="margin:16px 0 8px">%s <small style="color:var(--muted);font-weight:400">%d개</small></h3>' % (WLBL[w][0], len(rows)))
+        cards.append('<div class="card %s"><ul class="list">' % cls)
+        for a,b,l,nd,_w in rows:
+            an,ac = NAME[a]; bn,bc = NAME[b]
+            cards.append('<li><div class="t"><a href="#" data-go="%s" style="color:%s">%s</a> <span style="color:var(--muted)">↔</span> <a href="#" data-go="%s" style="color:%s">%s</a></div><div class="m">%s</div><div class="m" style="opacity:.75">필요한 것: %s</div></li>' % (a,ac,an,b,bc,bn,l,nd))
+        cards.append('</ul></div>')
+    body2 = body.replace("__POSS__", '<div id="uniPossList">' + "".join(cards) + '</div>')
+    return body2.replace("__DATA__", json.dumps(data, ensure_ascii=False))
 
 # ---------------------------------------------------------------- 할 일 설명서
 GUIDES = [
