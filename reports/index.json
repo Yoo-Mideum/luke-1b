@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-06-jiwon-finder-update",
+    "date": "2026-10-06",
+    "project": "되는 지원사업 찾기",
+    "title": "공고 갱신 다듬기 — 한 줄 명령으로 2~3분",
+    "status": "완료",
+    "summary": "기업마당 '접수 중' 목록을 기준으로 새 공고만 받고 끝난 공고는 빼도록 바꿨습니다. 처음 40분 걸리던 갱신이 2~3분으로 줄었고, 닷새치 변동(새 공고 71건, 접수 끝 96건, 목록에 없던 142건 정리)을 반영해 총 1,425건으로 배포했습니다.",
+    "next": "매일 아침 자동 갱신을 예약할지 결정 · 가입 메일 인증 끌지 결정",
+    "deploy_url": "https://jiwon-finder.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: <code>~/Desktop/[클로드 작업]/jiwon-finder</code></p><ul><li>갱신 명령: <code>npm run update</code> (목록 → 새 공고만 상세·공고문 → 조건 정리 → 시험 인물 검사 → 빌드 → 바뀐 것이 있을 때만 커밋·배포)</li><li>안전장치: 목록이 덜 읽히거나 절반 아래로 줄면 아무것도 바꾸지 않고 멈춤</li><li>날짜 없는 공고(예산 소진 시까지 등)는 공공데이터 파일의 접수 기간을 함께 표시</li><li>기록: <code>drafts/update.log</code></li></ul>"
+  },
+  {
     "id": "2026-10-06-onecrew-site-speed",
     "date": "2026-10-06",
     "project": "원크루 사이트",
