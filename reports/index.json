@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-naver-view-chat-live",
+    "date": "2026-10-05",
+    "project": "네이버 화면 보기 스킬",
+    "title": "네이버 화면 보기 — 일반 채팅·모든 Code 채팅 연결 확인",
+    "status": "완료",
+    "summary": "앱 재시작 후 naver_view 도구가 Claude 앱에 연결됨(로그 initialize·tools/list 확인), 실제 호출로 블로그 글 본문+캡처 받아옴. 블로그 글 결과에서 광고 iframe·중복 본문 제거(86KB→7.7KB).",
+    "next": "일반 채팅에서 \"naver_view 로 ○○ 열어줘\" 로 사용. claude.ai 웹·폰은 구조상 불가.",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>원인: 앱이 켜진 채로 설정을 고치면 앱이 덮어써서 등록이 지워짐 → 앱이 꺼진 틈에 등록하는 일회성 launchd 작업으로 해결.</p><p>로그: ~/Library/Logs/Claude/mcp-server-naver-view.log</p>"
+  },
+  {
     "id": "2026-10-05-naver-view-chat",
     "date": "2026-10-05",
     "project": "네이버 화면 보기 스킬",
