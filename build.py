@@ -1077,36 +1077,35 @@ PLATFORM = """
 
 # ---------------------------------------------------------------- 사업 유니버스 지도
 UNI_REGIONS = [
- {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","x":14,"y":24,
+ {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","ax":90,"ay":110,
   "desc":"사람이 나를 알게 되는 입구. 이 구역이 꺼지면 나머지 구역의 신규 유입이 멈춥니다. 대신 상품·유통의 후기와 실적이 이 구역의 소재가 됩니다.",
   "nodes":[
-   {"id":"yt","n":"유튜브 1만","full":"유튜브 멘토루크","st":"on","d":"구독자 약 1만 명. 주 1개 공개 강의 업로드 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) 개설 예정."},
+   {"id":"yt","n":"유튜브 1만","full":"유튜브 멘토루크","st":"on","big":1,"d":"구독자 약 1만 명. 주 1개 공개 강의 업로드 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) 개설 예정."},
    {"id":"cafe","n":"네이버 카페","full":"네이버 카페","st":"on","d":"선판매·공지 라인. 신규 강의 플랫폼에서는 이 역할을 '락인 축'이 맡는 구조로 설계 중."},
    {"id":"kakao","n":"카톡 1천","full":"카카오톡 커뮤니티","st":"on","d":"약 1,000명. 특강 공지와 선판매가 여기서 돕니다."},
    {"id":"vcell","n":"뷰셀 채널","full":"뷰셀 채널 (메이브님)","st":"on","d":"화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정."},
-   {"id":"live","n":"무료 라이브","full":"10월 말 무료 라이브","st":"build","d":"록터뷰 2회차 영상 설명란·고정댓글에 신청 링크를 넣어 신규 리스트를 만드는 자리. 10/2 녹음에서 10/25(일) 19:00로 언급 — 확정 여부와 신청 링크는 확인 필요.",
-    "href":"../guides/free-live/","hl":"설명서"},
+   {"id":"live","n":"무료 라이브","full":"10월 말 무료 라이브","st":"build","d":"록터뷰 2회차 영상 설명란·고정댓글에 신청 링크를 넣어 신규 리스트를 만드는 자리. 10/2 녹음에서 10/25(일) 19:00로 언급 — 확정 여부와 신청 링크는 확인 필요.","href":"../guides/free-live/","hl":"설명서"},
   ]},
- {"id":"kn","no":"②","name":"지식·교육","sub":"신뢰 → 매출","color":"#e3b04b","x":190,"y":24,
+ {"id":"kn","no":"②","name":"지식·교육","sub":"신뢰 → 매출","color":"#e3b04b","ax":278,"ay":150,
   "desc":"신뢰를 돈으로 바꾸고, 검색·추천으로 새 사람을 데려오는 줄. 금액은 모두 계획값이며 실적이 아닙니다.",
   "nodes":[
-   {"id":"onecrew","n":"원크루","full":"원크루 (ONE CREW)","st":"on","d":"평생 파트너십 컨설팅. 정가 3,900만 / 루크 수강생 출신 3,300만. 한 사람의 삼각 파이프라인을 같이 설계하고 세우는 것이 목표.","href":"../philosophy/","hl":"삼각 파이프라인"},
+   {"id":"onecrew","n":"원크루","full":"원크루 (ONE CREW)","st":"on","big":1,"d":"평생 파트너십 컨설팅. 정가 3,900만 / 루크 수강생 출신 3,300만. 한 사람의 삼각 파이프라인을 같이 설계하고 세우는 것이 목표.","href":"../philosophy/","hl":"삼각 파이프라인"},
    {"id":"ilsip","n":"일십백천","full":"일십백천","st":"on","d":"990만. 삼각형 중 '브랜딩' 한 축에 집중하는 브랜드 인큐베이팅. 약 400개 영상 강의 + 1:1. 수료자가 원크루로 올라오는 사다리.","href":"../philosophy/","hl":"삼각 파이프라인"},
-   {"id":"plat","n":"강의 플랫폼","full":"신규 강의 플랫폼","st":"build","d":"메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 약 1,000만 제외 4,000만. 3인이면 25명에 각 1,300만. 10/5 PD 미팅 → 10/8 종혁 본부장 미팅.","href":"../platform/","hl":"전략 페이지"},
+   {"id":"plat","n":"강의 플랫폼","full":"신규 강의 플랫폼","st":"build","big":1,"d":"메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 약 1,000만 제외 4,000만. 3인이면 25명에 각 1,300만. 10/5 PD 미팅 → 10/8 종혁 본부장 미팅.","href":"../platform/","hl":"전략 페이지"},
    {"id":"toolkit","n":"300만 툴킷","full":"300만 툴킷 프로그램","st":"idea","d":"자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만. 1기 8명 목표."},
    {"id":"dino","n":"디노 12주","full":"디노(미니쌤) 12주 빌드업","st":"build","d":"AI 셀러 실무 교육 라인. 1달 90 / 2달 200 / 3달 350만 기준, 상품별 배분 비율 확정 필요. 10/5 1주차 시작.","href":"../guides/dino-12weeks/","hl":"설명서"},
    {"id":"kititi","n":"키티티 컨설팅","full":"키티티바이지영 컨설팅","st":"on","d":"윤지영 원장(성신여대 인근 메이크업 샵)의 브랜딩·확장 자문. 상표 출원 진행 중, 2월 샵 오픈 목표, 상담 사이트 운영. 월 고정 자문 + 매출 연동으로 유료 전환이 과제.","href":"../grants/","hl":"정부지원사업 정리"},
   ]},
- {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","x":190,"y":549,
+ {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","ax":250,"ay":430,
   "desc":"신뢰가 없어도 상품 자체로 유입이 생기는 줄. 채널이 쉬어도 돈이 끊기지 않게 받쳐주는 자리입니다.",
   "nodes":[
-   {"id":"3pl","n":"3PL 물류","full":"3PL 물류 대행","st":"on","d":"수강생 재고 보관·출고 대행. 뿌요가 운영. 입고 미처리 상태에서 운송장이 나가는 오류를 잡는 안정화가 진행 중.","href":"../guides/logistics-stabilize/","hl":"설명서"},
+   {"id":"tpl","n":"3PL 물류","full":"3PL 물류 대행","st":"on","big":1,"d":"수강생 재고 보관·출고 대행. 뿌요가 운영. 입고 미처리 상태에서 운송장이 나가는 오류를 잡는 안정화가 진행 중.","href":"../guides/logistics-stabilize/","hl":"설명서"},
    {"id":"resale","n":"재고 판매","full":"수강생 재고 외부 판매","st":"build","d":"창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매하고 수수료 15~20%. 동의서 → 재고 시트 → 당근 비즈프로필 → 30개 등록 순서.","href":"../guides/3pl-resale/","hl":"설명서"},
    {"id":"store","n":"창고형 매장","full":"오프라인 창고형 매장","st":"idea","d":"창고 재고를 오프라인에서 직접 파는 구조. 3PL 창고와 재고 외부 판매가 이어지는 다음 칸입니다. 위치·평수·운영 인력·취급 품목은 아직 정해진 기록이 없어 확인 필요 — 알려주시면 이 칸을 채웁니다."},
-   {"id":"toolbox","n":"루크 툴박스","full":"루크 툴박스","st":"build","d":"월 19,900 / 연 199,000 소액 대량 구독. 12월 500명 → 3월 1,000명 → 6월 월 3,000만 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.","href":"../guides/developer-accounts/","hl":"개발자 계정 설명서"},
+   {"id":"toolbox","n":"루크 툴박스","full":"루크 툴박스","st":"build","big":1,"d":"월 19,900 / 연 199,000 소액 대량 구독. 12월 500명 → 3월 1,000명 → 6월 월 3,000만 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.","href":"../guides/developer-accounts/","hl":"개발자 계정 설명서"},
    {"id":"consign","n":"위탁판매","full":"위탁판매 (메이크업헬퍼)","st":"build","d":"원크루 최은봉 대표 건. 12주 테스트, 광고 상한 약 189만, 11월 말 판정."},
   ]},
- {"id":"base","no":"④","name":"기반·자금","sub":"받치는 땅","color":"#b79cff","x":14,"y":599,
+ {"id":"base","no":"④","name":"기반·자금","sub":"받치는 땅","color":"#b79cff","ax":80,"ay":410,
   "desc":"세 줄을 떠받치는 바닥. 돈을 버는 줄은 아니지만 여기가 흔들리면 위의 셋이 같이 흔들립니다.",
   "nodes":[
    {"id":"grant","n":"정부지원사업","full":"정부지원사업","st":"build","d":"루크 본인은 해당 없고 지영 원장·메이브님·디노·뿌요가 대상. 2026년 해당분 정리와 2027년 도전 리스트(지원금·자격·과제·경쟁률)를 따로 모아 뒀습니다.","href":"../grants/","hl":"정부지원사업 페이지"},
@@ -1115,68 +1114,63 @@ UNI_REGIONS = [
   ]},
 ]
 
-def uni_svg():
-    W, H = 360, 760
-    BW = 156
-    out = []
-    out.append('<svg viewBox="0 0 %d %d" xmlns:xlink="http://www.w3.org/1999/xlink" id="uniMap" role="img" aria-label="사업 유니버스 지도 — 네 구역과 그 사이를 도는 흐름" style="font-family:\'Noto Sans KR\',sans-serif">' % (W, H))
-    out.append('<defs><radialGradient id="uCore" cx="50%" cy="40%"><stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#ffe9b8"/><stop offset="100%" stop-color="#e3b04b"/></radialGradient>')
-    out.append('<path id="uRing" d="M180,240 A120,150 0 1,1 180,540 A120,150 0 1,1 180,240"/></defs>')
-    stars = [(26,250,1.4,0),(334,268,1.1,.7),(48,330,1.5,1.4),(318,440,1.2,2.1),(300,330,1.3,.4),(58,460,1.1,1.9),(180,742,1.3,1.1),(22,296,1.2,2.6),(344,350,1.4,.9),(120,268,1.1,3.1),(240,500,1.3,1.6),(130,512,1.1,2.3)]
-    out.append('<g fill="#cfe9ff">')
-    for cx,cy,r,d in stars:
-        out.append('<circle class="lu-star" cx="%s" cy="%s" r="%s" style="animation-delay:%ss"/>' % (cx,cy,r,d))
-    out.append('</g>')
-    out.append('<use xlink:href="#uRing" href="#uRing" class="lu-flow" fill="none" stroke="#9fe6cd" stroke-width="2" stroke-linecap="round"/>')
-    out.append('<g fill="none" stroke="#ffe9b8" stroke-width="1.5" opacity=".75" class="lu-spoke">'
-               '<line x1="180" y1="352" x2="180" y2="248"/><line x1="180" y1="428" x2="180" y2="532"/>'
-               '<line x1="142" y1="390" x2="68" y2="390"/><line x1="218" y1="390" x2="292" y2="390"/></g>')
-    out.append('<g stroke="#7fa8bd" stroke-width="1" opacity=".5">'
-               '<line x1="168" y1="205" x2="98" y2="286"/><line x1="192" y1="232" x2="262" y2="286"/>'
-               '<line x1="192" y1="556" x2="262" y2="494"/><line x1="168" y1="606" x2="98" y2="494"/></g>')
-    for i,(dur,beg) in enumerate([(14,"0s"),(14,"-4.6s"),(14,"-9.2s")]):
-        out.append('<circle r="%s" fill="#fff" opacity="%s"><animateMotion dur="%ss" begin="%s" repeatCount="indefinite"><mpath xlink:href="#uRing" href="#uRing"/></animateMotion></circle>' % (3 if i==0 else 2.3, .95 if i==0 else .7, dur, beg))
-    out.append('<g id="uniRegions">')
-    for R in UNI_REGIONS:
-        x, y = R["x"], R["y"]
-        h = 50 + len(R["nodes"])*25 + 12
-        c = R["color"]
-        out.append('<g id="r-%s" class="uni-reg">' % R["id"])
-        out.append('<rect x="%d" y="%d" width="%d" height="%d" rx="20" fill="#0c1a20" fill-opacity=".92" stroke="%s" stroke-width="2"/>' % (x,y,BW,h,c))
-        out.append('<text x="%d" y="%d" fill="%s" font-size="12.5" font-weight="700">%s %s</text>' % (x+14, y+26, c, R["no"], R["name"]))
-        out.append('<text x="%d" y="%d" fill="#7f8f99" font-size="9.5">%s</text>' % (x+14, y+41, R["sub"]))
-        out.append('<rect class="uni-hit" data-r="%s" x="%d" y="%d" width="%d" height="34" fill="transparent"><title>%s 구역</title></rect>' % (R["id"], x, y, BW, R["name"]))
-        for j,N in enumerate(R["nodes"]):
-            ry = y + 58 + j*25
-            if N["st"] == "on":
-                dot = '<circle cx="%d" cy="%d" r="4.6" fill="%s" class="lu-node" style="animation-delay:-%ss"/>' % (x+16, ry-4, c, round(j*.6,1))
-            elif N["st"] == "build":
-                dot = '<circle cx="%d" cy="%d" r="4.4" fill="none" stroke="%s" stroke-width="2" class="lu-node" style="animation-delay:-%ss"/>' % (x+16, ry-4, c, round(j*.6,1))
-            else:
-                dot = '<circle cx="%d" cy="%d" r="4.4" fill="none" stroke="%s" stroke-width="1.6" stroke-dasharray="2 2.4"/>' % (x+16, ry-4, c)
-            out.append('<g id="n-%s" class="uni-nd">%s<text class="lu-lab" x="%d" y="%d" fill="#e8eef2" font-size="10.5">%s</text>'
-                       '<rect class="uni-hit" data-n="%s" x="%d" y="%d" width="%d" height="24" fill="transparent"><title>%s</title></rect></g>'
-                       % (N["id"], dot, x+28, ry, N["n"], N["id"], x+6, ry-16, BW-12, N["full"]))
-        out.append('</g>')
-    out.append('</g>')
-    out.append('<g id="r-core"><circle class="lu-halo" cx="180" cy="390" r="52" fill="#e3b04b"/>'
-               '<circle cx="180" cy="390" r="38" fill="url(#uCore)"/>'
-               '<text x="180" y="387" text-anchor="middle" fill="#3d2a06" font-size="15" font-weight="700">루크</text>'
-               '<text x="180" y="404" text-anchor="middle" fill="#6b4c11" font-size="10">ONE CREW</text>'
-               '<circle class="uni-hit" data-r="core" cx="180" cy="390" r="44" fill="transparent"><title>루크 — 전체 보기</title></circle></g>')
-    out.append('</svg>')
-    return "\n".join(out)
+# (a, b, 관계 설명) — 확인되지 않은 연결은 설명에 '확인 필요'를 남김
+UNI_EDGES = [
+ ("luke","onecrew","1:1 세션을 루크가 직접 진행"),
+ ("luke","plat","플레이어·강사 교육을 루크·메이브님이 맡는 구도"),
+ ("luke","toolbox","프로그램 기획·개발이 루크 손에 있음"),
+ ("luke","kititi","원장 자문을 루크가 직접"),
+ ("luke","tpl","운영은 뿌요, 규칙 승인은 루크"),
+ ("luke","yt","촬영·녹화가 루크 시간의 큰 몫"),
+ ("yt","live","영상 설명란·고정댓글에 라이브 신청 링크"),
+ ("yt","onecrew","영상 보고 들어온 문의가 상담으로"),
+ ("yt","toolbox","수강생에겐 도구 기본판 무료 → 외부·구독은 유료"),
+ ("live","onecrew","라이브 참석자 → 상담 → 전환"),
+ ("kakao","live","카톡 1천에 특강·라이브 공지"),
+ ("cafe","kakao","같은 선판매·공지 라인"),
+ ("cafe","plat","플랫폼의 락인 축이 카페 운영을 맡는 구조"),
+ ("vcell","plat","뷰셀 채널이 플랫폼 모객 자산"),
+ ("vcell","consign","화장품 유입과 메이크업헬퍼가 같은 상품군"),
+ ("onecrew","ilsip","일십백천 수료자가 원크루로 올라오는 사다리"),
+ ("ilsip","kititi","키티티가 브랜딩 축 컨설팅의 실제 사례"),
+ ("onecrew","consign","최은봉 대표(원크루) 건이 메이크업헬퍼 위탁"),
+ ("onecrew","tpl","수강생 재고가 3PL 창고로 들어옴"),
+ ("plat","onecrew","플랫폼 수강생이 원크루 후보 풀"),
+ ("toolkit","toolbox","툴킷에 들어가는 프로그램이 툴박스 구독 상품과 같은 것"),
+ ("dino","corp","디노 독립 수익이 서야 사무실 구조가 안정"),
+ ("tpl","resale","창고에 잠든 재고가 외부 판매 물건"),
+ ("resale","store","창고형 매장이 재고를 오프라인으로 빼는 다음 칸 (확인 필요)"),
+ ("tpl","store","같은 창고를 쓰는 구조인지 확인 필요"),
+ ("resale","yt","팔린 실적이 다시 영상·강의 소재"),
+ ("grant","kititi","지영 원장이 2027 도전 대상"),
+ ("grant","dino","디노 폐업·업력 시나리오를 같이 검토"),
+ ("grant","vcell","메이브님도 지원사업 대상"),
+ ("corp","tpl","통신판매업 신고·명의가 법인"),
+ ("corp","seoul","본점 주소·이전 등기가 서울 이전과 맞물림"),
+ ("seoul","store","서울 이전·건물 매입이 오프라인 매장 자리와 겹침 (확인 필요)"),
+ ("seoul","plat","플랫폼이 안정되는 시점에 강의장 포함 이전"),
+]
 
 def universe_html():
-    data = {"regions":[{"id":R["id"],"no":R["no"],"name":R["name"],"sub":R["sub"],"color":R["color"],"desc":R["desc"],
-                        "nodes":[{"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"d":N["d"],
-                                  "href":N.get("href",""),"hl":N.get("hl","")} for N in R["nodes"]]} for R in UNI_REGIONS]}
+    nodes = [{"id":"luke","n":"루크","full":"루크 (ONE CREW)","st":"on","big":2,"reg":"core","c":"#f0cd84",
+              "ax":180,"ay":270,"d":"네 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}]
+    for R in UNI_REGIONS:
+        for N in R["nodes"]:
+            nodes.append({"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"big":N.get("big",0),
+                          "reg":R["id"],"c":R["color"],"ax":R["ax"],"ay":R["ay"],"d":N["d"],
+                          "href":N.get("href",""),"hl":N.get("hl","")})
+    data = {
+      "nodes": nodes,
+      "edges": [{"a":a,"b":b,"l":l} for a,b,l in UNI_EDGES],
+      "regions": [{"id":R["id"],"no":R["no"],"name":R["name"],"sub":R["sub"],"color":R["color"],"desc":R["desc"]} for R in UNI_REGIONS],
+    }
     body = """
 <h1>사업 유니버스</h1>
-<p class="note">지금 돌아가는 것과 세우는 중인 것을 한 장의 지도로. <b>구역 이름이나 별을 누르면</b> 그 자리의 내용이 지도 아래에 열립니다. 가운데 루크를 누르면 전체로 돌아옵니다. 빈 칸(확인 필요)은 알려주시면 그대로 채워 넣습니다.</p>
+<p class="note">사업·채널·상품을 점으로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 관계망</b>입니다. 점을 누르면 그 점과 이어진 것들만 남고, 무엇으로 이어져 있는지가 아래에 열립니다. 점을 끌어서 움직일 수도 있습니다.</p>
 
-<div class="sky">__SVG__</div>
+<div class="sky"><svg viewBox="0 0 360 560" id="uniMap" role="img" aria-label="사업 유니버스 관계망" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
 <div class="legend">
+  <span><i style="background:#f0cd84"></i>루크</span>
   <span><i style="background:#4fd1a5"></i>채널·브랜딩</span>
   <span><i style="background:#e3b04b"></i>지식·교육</span>
   <span><i style="background:#8fb0ff"></i>상품·유통</span>
@@ -1186,105 +1180,211 @@ def universe_html():
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
+  <span><a href="#" id="uniReset">재배치</a></span>
 </div>
 
 <div class="card" id="uniPanel"></div>
 
-<h2>이 지도 보는 법</h2>
+<h2>이 관계망 보는 법</h2>
 <div class="card">
   <ul class="list">
-    <li><div class="t">가운데 — 루크</div><div class="m">네 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다</div></li>
-    <li><div class="t">도는 선 — 손님과 돈</div><div class="m">영상 보던 사람이 강의를 듣고, 수강생이 3PL에 재고를 맡기고, 그 재고가 팔린 실적이 다시 영상 소재가 됩니다. 한 바퀴가 돌아야 구조입니다</div></li>
-    <li><div class="t">별 모양 — 단계</div><div class="m">채움은 지금 돈이 나오는 것, 테두리는 세우는 중, 점선은 아직 구상. 점선을 테두리로 옮기는 것이 이번 분기 일입니다</div></li>
-    <li><div class="t">④ 기반·자금</div><div class="m">돈을 버는 줄은 아니지만 법인·지원금·공간이 흔들리면 위의 셋이 같이 흔들립니다</div></li>
+    <li><div class="t">줄이 곧 사업</div><div class="m">점 세 개가 따로 있으면 부업 셋입니다. 줄로 엮여야 하나가 흔들려도 나머지가 받칩니다 — <a href="../philosophy/">삼각 파이프라인</a>의 핵심</div></li>
+    <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄이 가장 많습니다. 그 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
+    <li><div class="t">점 모양이 단계</div><div class="m">채움은 지금 돈이 나오는 것, 테두리는 세우는 중, 점선은 구상. 점선을 테두리로 옮기는 것이 이번 분기 일입니다</div></li>
+    <li><div class="t">'확인 필요'가 붙은 줄</div><div class="m">아직 기록으로 확인되지 않은 연결입니다. 맞는지 알려주시면 확정하거나 지웁니다</div></li>
   </ul>
 </div>
 
 <h2>아직 비어 있는 자리</h2>
 <div class="card gold">
-  <p style="margin:0 0 8px">말씀해주시면 그대로 지도에 넣습니다 — 지금 확인이 필요한 칸은 이렇습니다.</p>
+  <p style="margin:0 0 8px">말씀해주시면 점이든 줄이든 그대로 넣습니다.</p>
   <ul class="list">
     <li><div class="t">오프라인 창고형 매장</div><div class="m">위치·평수·취급 품목·운영 인력·여는 시점. 3PL 재고를 쓰는 건지, 별도 매입인지</div></li>
     <li><div class="t">10월 말 무료 라이브</div><div class="m">10/25(일) 19:00이 확정인지, 신청 링크</div></li>
-    <li><div class="t">새 별 / 새 구역</div><div class="m">지도에 없는 사업·채널·상품. 이름과 한 줄이면 충분</div></li>
-    <li><div class="t">실제 손님 이동 경로</div><div class="m">"툴박스 쓰던 사람이 원크루로 온다" 같은 실제 경로를 선으로 그립니다</div></li>
+    <li><div class="t">새 점</div><div class="m">관계망에 없는 사업·채널·상품. 이름과 한 줄이면 충분</div></li>
+    <li><div class="t">새 줄</div><div class="m">"A 쓰던 사람이 B로 온다" 같은 실제 경로를 말해주면 줄로 묶습니다</div></li>
   </ul>
 </div>
 
-<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 9/14~10/4 노션 액션보드·플라우드 녹음. 금액은 모두 계획값이며 실적이 아닙니다. 오프라인 창고형 매장은 루크 구두 언급(10/5)만 있고 세부는 확인 필요.</div>
+<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 9/14~10/4 노션 액션보드·플라우드 녹음. 금액은 모두 계획값이며 실적이 아닙니다.</div>
 
 <script>
-const UNI = __DATA__;
-const ST = {on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
-const panel = document.getElementById('uniPanel');
-const svg = document.getElementById('uniMap');
-const regs = {}; UNI.regions.forEach(r=>regs[r.id]=r);
-function dim(rid){
-  UNI.regions.forEach(r=>{
-    const g = document.getElementById('r-'+r.id);
-    if(g) g.style.opacity = (!rid||rid==='core'||rid===r.id) ? '1' : '.32';
+(function(){
+var D = __DATA__;
+var W=360, H=560, svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel');
+var NS='http://www.w3.org/2000/svg';
+var N={}, nodes=D.nodes, edges=D.edges, regs={};
+D.regions.forEach(function(r){regs[r.id]=r;});
+regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'네 구역이 전부 여기를 지나갑니다.'};
+var seed=20261005;
+function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
+nodes.forEach(function(n){
+  N[n.id]=n;
+  n.r = n.big===2?17:(n.big===1?8.5:6.5);
+  n.x = n.ax + (rnd()-0.5)*90; n.y = n.ay + (rnd()-0.5)*90;
+  n.vx=0; n.vy=0; n.deg=0; n.adj=[];
+});
+edges.forEach(function(e){
+  var a=N[e.a], b=N[e.b]; if(!a||!b) return;
+  a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l});
+  e.t = rnd();
+});
+function tick(k){
+  for(var i=0;i<nodes.length;i++){ for(var j=i+1;j<nodes.length;j++){
+    var a=nodes[i], b=nodes[j], dx=b.x-a.x, dy=b.y-a.y, d2=dx*dx+dy*dy;
+    if(d2<1) d2=1; var d=Math.sqrt(d2);
+    var f=2600/d2; if(f>3) f=3;
+    var ux=dx/d, uy=dy/d;
+    a.vx-=ux*f; a.vy-=uy*f; b.vx+=ux*f; b.vy+=uy*f;
+    var min=a.r+b.r+16;
+    if(d<min){ var p=(min-d)*0.5; a.vx-=ux*p; a.vy-=uy*p; b.vx+=ux*p; b.vy+=uy*p; }
+  }}
+  edges.forEach(function(e){
+    var a=N[e.a], b=N[e.b]; if(!a||!b) return;
+    var dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)||1;
+    var f=(d-78)*0.012, ux=dx/d, uy=dy/d;
+    a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
   });
-  document.querySelectorAll('.uni-nd').forEach(n=>n.classList.remove('sel'));
+  nodes.forEach(function(n){
+    n.vx += (n.ax-n.x)*0.006; n.vy += (n.ay-n.y)*0.006;
+    if(n.id==='luke'){ n.vx += (180-n.x)*0.05; n.vy += (268-n.y)*0.05; }
+    if(n.drag) { n.vx=0; n.vy=0; return; }
+    n.vx*=0.80; n.vy*=0.80;
+    n.x+=n.vx*k; n.y+=n.vy*k;
+    var m=n.r+14;
+    if(n.x<m) n.x=m; if(n.x>W-m) n.x=W-m;
+    if(n.y<m+10) n.y=m+10; if(n.y>H-m-10) n.y=H-m-10;
+  });
+}
+for(var s=0;s<520;s++) tick(1);
+
+function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
+var gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{}), gHull=el('g',{});
+svg.appendChild(gHull); svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
+edges.forEach(function(e){
+  e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.42'});
+  gEdge.appendChild(e.el);
+  e.p = el('circle',{'r':'1.9','fill':'#dff6ef','opacity':'.85'});
+  gPulse.appendChild(e.p);
+});
+nodes.forEach(function(n){
+  var g=el('g',{'class':'uni-nd','style':'cursor:pointer'});
+  var at={'r':n.r,'fill':n.c};
+  if(n.st==='build'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'2'};}
+  if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
+  if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
+  n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
+  n.c1 = el('circle',at);
+  n.t1 = el('text',{'text-anchor':'middle','font-size':n.big?'10.5':'9.5','fill':'#e8eef2','class':'lu-lab'});
+  n.t1.textContent=n.n;
+  n.hit = el('circle',{'r':Math.max(n.r+11,15),'fill':'transparent'});
+  g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
+  gNode.appendChild(g); n.g=g;
+});
+function draw(){
+  edges.forEach(function(e){
+    var a=N[e.a], b=N[e.b];
+    e.el.setAttribute('x1',a.x); e.el.setAttribute('y1',a.y);
+    e.el.setAttribute('x2',b.x); e.el.setAttribute('y2',b.y);
+    e.t += 0.0032; if(e.t>1) e.t-=1;
+    e.p.setAttribute('cx', a.x+(b.x-a.x)*e.t); e.p.setAttribute('cy', a.y+(b.y-a.y)*e.t);
+  });
+  nodes.forEach(function(n){
+    n.halo.setAttribute('cx',n.x); n.halo.setAttribute('cy',n.y);
+    n.c1.setAttribute('cx',n.x); n.c1.setAttribute('cy',n.y);
+    n.hit.setAttribute('cx',n.x); n.hit.setAttribute('cy',n.y);
+    n.t1.setAttribute('x',n.x); n.t1.setAttribute('y',n.y+n.r+11);
+  });
+}
+var reduce=false;
+try{ reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+function loop(){ tick(0.35); draw(); if(!reduce) requestAnimationFrame(loop); }
+draw(); if(!reduce) requestAnimationFrame(loop);
+
+var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
+var sel=null;
+function apply(){
+  var near={};
+  if(sel){ near[sel]=1; N[sel].adj.forEach(function(a){near[a.id]=1;}); }
+  nodes.forEach(function(n){
+    var on = !sel || near[n.id];
+    n.g.style.opacity = on? '1':'.14';
+    n.halo.setAttribute('opacity', (sel===n.id)?'.35':'0');
+  });
+  edges.forEach(function(e){
+    var on = !sel || e.a===sel || e.b===sel;
+    e.el.setAttribute('opacity', on? (sel?'.9':'.42') : '.05');
+    e.el.setAttribute('stroke', (sel && on)? N[sel].c : '#7fa8bd');
+    e.el.setAttribute('stroke-width', (sel && on)? '1.8':'1');
+    e.p.setAttribute('opacity', on? '.85':'0');
+  });
 }
 function home(){
-  dim(null);
-  let h = '<h3>네 구역 전체</h3><p class="note" style="margin-top:0">지도에서 구역 이름이나 별을 누르면 여기에 내용이 열립니다.</p><ul class="list">';
-  UNI.regions.forEach(r=>{
-    const on=r.nodes.filter(n=>n.st==='on').length, bd=r.nodes.filter(n=>n.st==='build').length, id=r.nodes.filter(n=>n.st==='idea').length;
-    h += '<li><div class="t"><a href="#" data-go="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+r.nodes.map(n=>n.n).join(' · ')+'<br>돌아감 '+on+' · 세우는 중 '+bd+' · 구상 '+id+'</div></li>';
+  sel=null; apply();
+  var h='<h3>관계망 전체</h3><p class="note" style="margin-top:0">점 '+nodes.length+'개 · 줄 '+edges.length+'개. 점을 누르면 그 점에 이어진 것만 남습니다.</p><ul class="list">';
+  D.regions.forEach(function(r){
+    var ns=nodes.filter(function(n){return n.reg===r.id;});
+    h+='<li><div class="t" style="color:'+r.color+'">'+r.no+' '+r.name+'</div><div class="m">'+
+       ns.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>';}).join(' · ')+'</div></li>';
   });
-  panel.innerHTML = h+'</ul>';
+  var top=nodes.slice().sort(function(a,b){return b.deg-a.deg;}).slice(0,4);
+  h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.n+'</a> '+n.deg;}).join(' · ')+'</div>';
+  panel.innerHTML=h;
 }
-function showReg(rid){
-  const r = regs[rid]; if(!r) return home();
-  dim(rid);
-  let h = '<h3 style="color:'+r.color+'">'+r.no+' '+r.name+' <small style="color:var(--muted);font-weight:400">'+r.sub+'</small></h3>';
-  h += '<p class="note" style="margin-top:0">'+r.desc+'</p><ul class="list">';
-  r.nodes.forEach(n=>{
-    h += '<li><span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><div class="t"><a href="#" data-go="'+rid+':'+n.id+'">'+n.full+'</a></div><div class="m">'+n.d+'</div>'+(n.href?'<div class="m"><a href="'+n.href+'">'+n.hl+' →</a></div>':'')+'</li>';
+function show(id){
+  var n=N[id]; if(!n) return home();
+  sel=id; apply();
+  var r=regs[n.reg];
+  var h='<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+(r.no?r.no+' ':'')+r.name+'</span>';
+  h+='<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
+  if(n.href) h+='<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
+  h+='<h3 style="margin-top:12px">이어진 것 '+n.adj.length+'개</h3><ul class="list">';
+  n.adj.forEach(function(a){
+    var m=N[a.id];
+    h+='<li><div class="t"><a href="#" data-go="'+a.id+'" style="color:'+m.c+'">'+m.full+'</a></div><div class="m">'+a.l+'</div></li>';
   });
-  h += '</ul><p class="note"><a href="#" data-go="home">← 전체 보기</a></p>';
-  panel.innerHTML = h;
+  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
+  panel.innerHTML=h;
 }
-function showNode(rid,nid){
-  const r = regs[rid]; if(!r) return home();
-  const n = r.nodes.filter(x=>x.id===nid)[0]; if(!n) return showReg(rid);
-  dim(rid);
-  const g = document.getElementById('n-'+nid); if(g) g.classList.add('sel');
-  let h = '<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+r.no+' '+r.name+'</span>';
-  h += '<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
-  if(n.href) h += '<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
-  const sib = r.nodes.filter(x=>x.id!==nid).map(x=>'<a href="#" data-go="'+rid+':'+x.id+'">'+x.n+'</a>').join(' · ');
-  h += '<div class="note">같은 구역: '+sib+'</div><p class="note"><a href="#" data-go="'+rid+'">← '+r.name+'</a> · <a href="#" data-go="home">전체 보기</a></p>';
-  panel.innerHTML = h;
-}
-function go(key){
-  if(!key||key==='home'||key==='core') return home();
-  if(key.indexOf(':')>0){const p=key.split(':');return showNode(p[0],p[1]);}
-  return showReg(key);
-}
-svg.addEventListener('click',function(e){
-  const hit = e.target.closest ? e.target.closest('.uni-hit') : null;
-  if(!hit) return;
-  const r = hit.getAttribute('data-r');
-  if(r) return go(r);
-  const nid = hit.getAttribute('data-n');
-  if(nid){
-    for(const R of UNI.regions){ if(R.nodes.some(x=>x.id===nid)) return showNode(R.id,nid); }
-  }
-});
 panel.addEventListener('click',function(e){
-  const a = e.target.closest ? e.target.closest('[data-go]') : null;
-  if(!a) return; e.preventDefault(); go(a.getAttribute('data-go'));
+  var a=e.target.closest?e.target.closest('[data-go]'):null;
+  if(!a) return; e.preventDefault();
+  var k=a.getAttribute('data-go');
+  if(k==='home') home(); else show(k);
   panel.scrollIntoView({block:'nearest'});
 });
+document.getElementById('uniReset').addEventListener('click',function(e){
+  e.preventDefault(); seed=20261005;
+  nodes.forEach(function(n){n.x=n.ax+(rnd()-0.5)*90;n.y=n.ay+(rnd()-0.5)*90;n.vx=0;n.vy=0;});
+  for(var i=0;i<520;i++) tick(1); draw();
+});
+var drag=null, moved=0, pt=svg.createSVGPoint();
+function loc(ev){ pt.x=ev.clientX; pt.y=ev.clientY; var m=svg.getScreenCTM(); return m?pt.matrixTransform(m.inverse()):{x:0,y:0}; }
+function hitNode(p){
+  var best=null, bd=1e9;
+  nodes.forEach(function(n){ var d=(n.x-p.x)*(n.x-p.x)+(n.y-p.y)*(n.y-p.y); var rr=Math.max(n.r+11,15); if(d<rr*rr && d<bd){bd=d;best=n;} });
+  return best;
+}
+svg.addEventListener('pointerdown',function(ev){
+  var p=loc(ev), n=hitNode(p); if(!n) return;
+  drag=n; n.drag=1; moved=0; svg.setPointerCapture(ev.pointerId); ev.preventDefault();
+});
+svg.addEventListener('pointermove',function(ev){
+  if(!drag) return; var p=loc(ev);
+  moved += Math.abs(p.x-drag.x)+Math.abs(p.y-drag.y);
+  drag.x=p.x; drag.y=p.y; draw(); ev.preventDefault();
+});
+svg.addEventListener('pointerup',function(ev){
+  if(!drag) return; var n=drag; n.drag=0; drag=null;
+  if(moved<6) show(n.id);
+  try{svg.releasePointerCapture(ev.pointerId);}catch(e){}
+});
+svg.addEventListener('pointercancel',function(){ if(drag){drag.drag=0;drag=null;} });
 home();
-try{
-  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches && svg.pauseAnimations) svg.pauseAnimations();
-}catch(e){}
+})();
 </script>
 """
-    return body.replace("__SVG__", uni_svg()).replace("__DATA__", json.dumps(data, ensure_ascii=False))
+    return body.replace("__DATA__", json.dumps(data, ensure_ascii=False))
 
 # ---------------------------------------------------------------- 할 일 설명서
 GUIDES = [
