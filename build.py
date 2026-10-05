@@ -70,6 +70,12 @@ a{color:var(--accent);text-decoration:none}
 .uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
 .uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
 .uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
 @media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -1268,11 +1274,13 @@ def universe_html():
 <h1>사업 유니버스</h1>
 <p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
 
+<div class="uni-split"><div class="uni-left">
 <div class="sky"><svg viewBox="0 0 360 760" id="uniMap" role="img" aria-label="사업 유니버스 별자리" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
 <div class="uniBar">
   <button type="button" id="uni2d" class="on">평면</button>
   <button type="button" id="uni3d">입체</button>
   <button type="button" id="uniHome">홈</button>
+  <button type="button" id="uniDesk">데스크탑</button>
   <button type="button" id="uniPoss" class="on">가능성 선</button>
   <button type="button" id="uniExp">확장 구상만</button>
   <button type="button" id="uniReset">재배치</button>
@@ -1293,7 +1301,7 @@ def universe_html():
   <span id="uniTip"></span>
 </div>
 
-<div class="card" id="uniPanel"></div>
+</div><div class="uni-right"><div class="card" id="uniPanel"></div></div></div>
 
 <h2>가능성 선 <small>지금 자산으로 이을 수 있는 것</small></h2>
 <p class="note">기록에 있는 사실이 아니라, 지금 가진 것들을 보고 <b>이을 수 있어 보이는 연결</b>을 정리한 것입니다. 지도에서 노란 점선으로 그어 뒀고, 별을 누르면 그 별에서 뻗는 가능성만 모아 보입니다. 아니라고 보시면 지웁니다.</p>
@@ -1326,7 +1334,14 @@ __POSS__
 <script>
 (function(){
 var D = __DATA__;
-var W=360, H=760, CX=180, CY=380, F=760;
+var VIEWS={
+ m:{W:360,H:760,CX:180,CY:380,F:760,L:74,K:2200,PL:120,Z3:0.82,G:0.006,FC:3,FS:9,NR:1,SEP:20,J:110,
+    A:{core:[180,380,0],ch:[96,180,-130],kn:[268,250,95],pr:[266,580,115],base:[92,540,-75],tool:[180,660,15]}},
+ d:{W:1180,H:710,CX:590,CY:350,F:1500,L:150,K:11500,PL:230,Z3:0.92,G:0.013,FC:6.5,FS:13.5,NR:1.5,SEP:40,J:190,
+    A:{core:[590,350,0],ch:[215,170,-130],kn:[960,180,95],pr:[965,505,115],base:[205,515,-75],tool:[590,560,15]}}
+};
+var VIEW='m', CFG=VIEWS.m;
+var W=CFG.W, H=CFG.H, CX=CFG.CX, CY=CFG.CY, F=CFG.F;
 var svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel'), tip=document.getElementById('uniTip');
 var NS='http://www.w3.org/2000/svg';
 var N={}, nodes=D.nodes, edges=D.edges, regs={};
@@ -1337,7 +1352,16 @@ function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
 var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
 var HOME={rotY:0.55, rotX:-0.22};
 
-nodes.forEach(function(n){ N[n.id]=n; n.r=n.big===2?15:(n.big===1?7.5:5.8); n.deg=0; n.adj=[]; n.hw=Math.min(n.n.length*4.7+4, 60); });
+function sizeNodes(){
+  nodes.forEach(function(n){
+    n.r=(n.big===2?15:(n.big===1?7.5:5.8))*CFG.NR;
+    n.fs=(n.big?CFG.FS+1:CFG.FS);
+    n.hw=Math.min(n.n.length*(n.fs*0.52)+4, CFG.W*0.17);
+    if(n.t1){ n.t1.setAttribute('font-size',n.fs); n.t1.textContent=n.n; }
+  });
+}
+nodes.forEach(function(n){ N[n.id]=n; n.deg=0; n.adj=[]; });
+sizeNodes();
 edges.forEach(function(e){
   var a=N[e.a], b=N[e.b]; if(!a||!b) return;
   a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l}); e.t=rnd();
@@ -1348,40 +1372,46 @@ poss.forEach(function(e){
   var a=N[e.a], b=N[e.b]; if(!a||!b) return;
   a.pot.push({id:e.b,l:e.l,need:e.need,w:e.w}); b.pot.push({id:e.a,l:e.l,need:e.need,w:e.w});
 });
-function place(){ nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*110; n.y=n.ay+(rnd()-0.5)*110; n.z=n.az+(rnd()-0.5)*90; n.vx=0;n.vy=0;n.vz=0; }); }
+function place(){ nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*CFG.J; n.y=n.ay+(rnd()-0.5)*CFG.J; n.z=n.az+(rnd()-0.5)*90; n.vx=0;n.vy=0;n.vz=0; }); }
 place();
 function tick(k){
   var flat = (MODE==='2d');
   for(var i=0;i<nodes.length;i++){ for(var j=i+1;j<nodes.length;j++){
     var a=nodes[i], b=nodes[j], dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z;
     var d2=dx*dx+dy*dy+dz*dz; if(d2<1) d2=1; var d=Math.sqrt(d2);
-    var f=2200/d2; if(f>3) f=3;
+    var f=CFG.K/d2; if(f>CFG.FC) f=CFG.FC;
     var ux=dx/d, uy=dy/d, uz=dz/d;
     a.vx-=ux*f; a.vy-=uy*f; a.vz-=uz*f; b.vx+=ux*f; b.vy+=uy*f; b.vz+=uz*f;
-    var min=a.r+b.r+20;
+    var min=a.r+b.r+CFG.SEP;
     if(d<min){ var p=(min-d)*0.5; a.vx-=ux*p; a.vy-=uy*p; a.vz-=uz*p; b.vx+=ux*p; b.vy+=uy*p; b.vz+=uz*p; }
+    if(Math.abs(dy)<CFG.FS*1.9 && Math.abs(dz)<70){
+      var needx=a.hw+b.hw+8, adx=Math.abs(dx);
+      if(adx<needx){ var sg=(dx<0?-1:1), pw=(needx-adx)*0.22;
+        a.vx-=sg*pw; b.vx+=sg*pw; a.vy-=(dy<0?-1:1)*0.5; b.vy+=(dy<0?-1:1)*0.5; }
+    }
   }}
   edges.forEach(function(e){
     var a=N[e.a], b=N[e.b]; if(!a||!b) return;
     var dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, d=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
-    var f=(d-74)*0.012, ux=dx/d, uy=dy/d, uz=dz/d;
+    var f=(d-CFG.L)*0.012, ux=dx/d, uy=dy/d, uz=dz/d;
     a.vx+=ux*f; a.vy+=uy*f; a.vz+=uz*f; b.vx-=ux*f; b.vy-=uy*f; b.vz-=uz*f;
   });
   poss.forEach(function(e){
     var a=N[e.a], b=N[e.b]; if(!a||!b) return;
     var dx=b.x-a.x, dy=b.y-a.y, dz=b.z-a.z, d=Math.sqrt(dx*dx+dy*dy+dz*dz)||1;
-    var f=(d-120)*0.004, ux=dx/d, uy=dy/d, uz=dz/d;
+    var f=(d-CFG.PL)*0.004, ux=dx/d, uy=dy/d, uz=dz/d;
     a.vx+=ux*f; a.vy+=uy*f; a.vz+=uz*f; b.vx-=ux*f; b.vy-=uy*f; b.vz-=uz*f;
   });
   nodes.forEach(function(n){
-    n.vx += (n.ax-n.x)*0.006; n.vy += (n.ay-n.y)*0.006;
+    n.vx += (n.ax-n.x)*CFG.G; n.vy += (n.ay-n.y)*CFG.G;
     n.vz += ((flat?0:n.az)-n.z)*(flat?0.14:0.008);
     if(n.id==='luke'){ n.vx += (CX-n.x)*0.05; n.vy += (CY-n.y)*0.05; n.vz += (0-n.z)*0.05; }
     n.vx*=0.80; n.vy*=0.80; n.vz*=0.80;
     n.x+=n.vx*k; n.y+=n.vy*k; n.z+=n.vz*k;
     var mx=Math.max(n.r+10, n.hw+6);
     if(n.x<mx) n.x=mx; if(n.x>W-mx) n.x=W-mx;
-    if(n.y<120) n.y=120; if(n.y>650) n.y=650;
+    var yt=Math.max(60,H*0.155), yb=H-Math.max(46,H*0.125);
+    if(n.y<yt) n.y=yt; if(n.y>yb) n.y=yb;
     if(n.z<-150) n.z=-150; if(n.z>150) n.z=150;
   });
 }
@@ -1427,7 +1457,7 @@ nodes.forEach(function(n){
   n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
-  n.t1 = el('text',{'text-anchor':'middle','font-size':n.big?'10':'9','fill':'#e8eef2','class':'lu-lab'});
+  n.t1 = el('text',{'text-anchor':'middle','font-size':n.fs,'fill':'#e8eef2','class':'lu-lab'});
   n.t1.textContent=n.n;
   n.hit = el('circle',{'r':Math.max(n.r+10,14),'fill':'transparent'});
   g.appendChild(n.glow); g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
@@ -1450,7 +1480,7 @@ function projStar(st){
   var Y=st.y*cx2-Z*sx2; var Z2=st.y*sx2+Z*cx2;
   if(Z2<-F+40) return null;
   var s=F/(F+Z2);
-  return {x:CX+X*s*0.5, y:CY+Y*s*0.5, s:s};
+  return {x:CX+X*s*(W/720), y:CY+Y*s*(W/720), s:s};
 }
 var tms=0;
 function draw(){
@@ -1487,7 +1517,7 @@ function draw(){
     n.c1.setAttribute('cx',n.px); n.c1.setAttribute('cy',n.py); n.c1.setAttribute('r',n.r*s);
     n.hit.setAttribute('cx',n.px); n.hit.setAttribute('cy',n.py); n.hit.setAttribute('r',Math.max(n.r*s+10,14));
     n.t1.setAttribute('x',n.px); n.t1.setAttribute('y',n.py+n.r*s+10*s);
-    n.t1.setAttribute('font-size', (n.big?10:9)*Math.max(0.7,s));
+    n.t1.setAttribute('font-size', n.fs*Math.max(0.7,s));
     n.t1.setAttribute('opacity', three? Math.max(0, Math.min(1,(n.pd-0.92)*6)) : 1);
   });
   if(three){
@@ -1613,7 +1643,7 @@ if(pl) pl.addEventListener('click',function(e){
 var b2=document.getElementById('uni2d'), b3=document.getElementById('uni3d');
 function setMode(m){
   MODE=m; spin=(m==='3d')?1:0;
-  if(m==='3d'){ rotY=HOME.rotY; rotX=HOME.rotX; zoom=0.82; } else { rotY=0; rotX=0; zoom=1; }
+  if(m==='3d'){ rotY=HOME.rotY; rotX=HOME.rotX; zoom=CFG.Z3; } else { rotY=0; rotX=0; zoom=1; }
   b2.className = (m==='2d')?'on':''; b3.className=(m==='3d')?'on':'';
   tip.textContent = (m==='3d')?'손가락으로 끌어 돌리기 · 두 손가락으로 확대':'';
   draw();
@@ -1623,6 +1653,21 @@ b3.addEventListener('click',function(){setMode('3d');});
 document.getElementById('uniHome').addEventListener('click',function(){
   setMode('2d'); seed=20261005; place(); settle(); showP=true; bp.className='on'; home(); draw();
 });
+var bd=document.getElementById('uniDesk');
+function setView(v){
+  VIEW=v; CFG=VIEWS[v];
+  W=CFG.W; H=CFG.H; CX=CFG.CX; CY=CFG.CY; F=CFG.F;
+  svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  nodes.forEach(function(n){ var a=CFG.A[n.reg]||CFG.A.core; n.ax=a[0]; n.ay=a[1]; n.az=a[2]; });
+  sizeNodes();
+  document.body.classList.toggle('uni-wide', v==='d');
+  bd.className=(v==='d')?'on':'';
+  bd.textContent=(v==='d')?'모바일':'데스크탑';
+  if(MODE==='3d') zoom=CFG.Z3;
+  seed=20261005; place(); settle(); draw();
+  try{ localStorage.setItem('luke1b-uniview', v); }catch(e){}
+}
+bd.addEventListener('click',function(){ setView(VIEW==='d'?'m':'d'); });
 var bp=document.getElementById('uniPoss');
 bp.addEventListener('click',function(){ showP=!showP; bp.className=showP?'on':''; apply(); });
 document.getElementById('uniExp').addEventListener('click',function(){showExp();panel.scrollIntoView({block:'nearest'});});
@@ -1678,6 +1723,12 @@ svg.addEventListener('wheel',function(ev){
   zoom = Math.max(0.5, Math.min(2.2, zoom*(ev.deltaY>0?0.94:1.06))); draw();
 },{passive:false});
 home();
+(function(){
+  var v=null;
+  try{ v=localStorage.getItem('luke1b-uniview'); }catch(e){}
+  if(!v) v = (window.innerWidth>=1040) ? 'd' : 'm';
+  if(v==='d') setView('d'); else { bd.textContent='데스크탑'; }
+})();
 })();
 </script>
 """
@@ -1697,7 +1748,7 @@ home();
             an,ac = NAME[a]; bn,bc = NAME[b]
             cards.append('<li><div class="t"><a href="#" data-go="%s" style="color:%s">%s</a> <span style="color:var(--muted)">↔</span> <a href="#" data-go="%s" style="color:%s">%s</a></div><div class="m">%s</div><div class="m" style="opacity:.75">필요한 것: %s</div></li>' % (a,ac,an,b,bc,bn,l,nd))
         cards.append('</ul></div>')
-    body2 = body.replace("__POSS__", '<div id="uniPossList">' + "".join(cards) + '</div>')
+    body2 = body.replace("__POSS__", '<div id="uniPossList" class="uniPossGrid">' + "".join(cards) + '</div>')
     return body2.replace("__DATA__", json.dumps(data, ensure_ascii=False))
 
 # ---------------------------------------------------------------- 할 일 설명서
