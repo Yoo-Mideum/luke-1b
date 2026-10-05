@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-06-tools-display-cleanup",
+    "date": "2026-10-06",
+    "project": "루크 툴박스",
+    "title": "도구 화면 정리 배포",
+    "status": "완료",
+    "summary": "판매 중인 프로그램이 '준비 중'으로 보이던 것 정리, 판매 카드에서 소개 화면으로 연결, 구매하기를 눌러도 로그인 전에 값과 받는 방법이 보이게, 홈 프로그램 칸을 '판매 중 3가지'로.",
+    "next": "루크: 실행 화면·영상, 환불 기준, 설치 대수·윈도우/맥, 네이버 계정 처리 방식, 상품 자동등록 소개 내용.",
+    "deploy_url": "https://giantstoolbox.com/programs",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>커밋 b1099c3. 결정이 필요한 것(환불·값·체험판)은 건드리지 않았습니다.</p><p>폴더: ~/Desktop/luke-toolbox</p>"
+  },
+  {
     "id": "2026-10-05-hemenail-ads-v1",
     "date": "2026-10-05",
     "project": "헤메네일",
