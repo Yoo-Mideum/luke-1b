@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-05-onecrew-site-lounge",
+    "date": "2026-10-05",
+    "project": "원크루 사이트",
+    "title": "대문을 '원크루 라운지'로 — 입구·안쪽 사진 새로 만들어 반영",
+    "status": "완료",
+    "summary": "루크가 '원크루 전용관?' '원크루 라운지?'를 제안. 전용관은 쇼핑몰 판매 코너 이름으로 많이 쓰여 파는 느낌이 나서 라운지로 진행(코드 한 줄로 바꿀 수 있음). 사진 기획을 '컨설팅 장면'에서 '회원만 들어가는 장소'로 바꿔, 반쯤 열린 문 입구(PC·휴대폰)와 라운지 안쪽 3장을 새로 만들어 대문에 넣고 배포",
+    "next": "처음 열어 둘 자료 정하기(루크) → 원크루 회원 표 + 회원 넣기/빼기 관리자 화면",
+    "deploy_url": "https://luke-onecrew.vercel.app",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더 <code>~/Desktop/[클로드 작업]/onecrew-site</code> (커밋 d3601e5)</p><ul><li>사진 3장 Weave GPT Image 2.5 (24크레딧, 남은 476)</li><li>휴대폰은 이름만 문 위에, 버튼은 사진 맨 아래에 (문을 가리지 않게)</li><li>공간 이름은 src/lib/site.ts 의 SPACE_NAME 한 곳</li><li>컨설팅 장면 사진은 소개(/about)로 옮김</li></ul>"
+  },
+  {
     "id": "2026-10-05-naver-view-chat-live",
     "date": "2026-10-05",
     "project": "네이버 화면 보기 스킬",
