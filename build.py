@@ -1077,16 +1077,20 @@ PLATFORM = """
 
 # ---------------------------------------------------------------- 사업 유니버스 지도
 UNI_REGIONS = [
- {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","ax":90,"ay":110,
-  "desc":"사람이 나를 알게 되는 입구. 이 구역이 꺼지면 나머지 구역의 신규 유입이 멈춥니다. 대신 상품·유통의 후기와 실적이 이 구역의 소재가 됩니다.",
+ {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","ax":90,"ay":130,
+  "desc":"사람이 나를 알게 되는 입구. 이 구역이 꺼지면 나머지 구역의 신규 유입이 멈춥니다.",
   "nodes":[
    {"id":"yt","n":"유튜브 1만","full":"유튜브 멘토루크","st":"on","big":1,"d":"구독자 약 1만 명. 주 1개 공개 강의 업로드 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) 개설 예정."},
    {"id":"cafe","n":"네이버 카페","full":"네이버 카페","st":"on","d":"선판매·공지 라인. 신규 강의 플랫폼에서는 이 역할을 '락인 축'이 맡는 구조로 설계 중."},
    {"id":"kakao","n":"카톡 1천","full":"카카오톡 커뮤니티","st":"on","d":"약 1,000명. 특강 공지와 선판매가 여기서 돕니다."},
    {"id":"vcell","n":"뷰셀 채널","full":"뷰셀 채널 (메이브님)","st":"on","d":"화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정."},
    {"id":"live","n":"무료 라이브","full":"10월 말 무료 라이브","st":"build","d":"록터뷰 2회차 영상 설명란·고정댓글에 신청 링크를 넣어 신규 리스트를 만드는 자리. 10/2 녹음에서 10/25(일) 19:00로 언급 — 확정 여부와 신청 링크는 확인 필요.","href":"../guides/free-live/","hl":"설명서"},
+   {"id":"mktg","n":"마케팅 대행","full":"SNS 채널 운영 대행","st":"build","exp":1,"d":"유튜브·인스타그램·틱톡 채널 운영(영상 업로드 포함)을 마케팅 업체에 맡기는 협업. 유튜브는 업체가 운영 전반을 맡는 구조라 '편집자' 권한으로, 틱톡은 기존 개인 계정 대신 브랜드용 신규 계정을 새로 만들어 넘기기로 결정.","from":"마케팅 업체와의 협의 (9/14)"},
+   {"id":"blog","n":"멘토루크 블로그","full":"멘토루크 블로그","st":"build","exp":1,"d":"플라우드 녹음을 자동 수집해 글감으로 쓰는 루크 전용 블로그. 글 틀과 발화 분석(내 말 비율·상대 발화 수)까지 붙어 있음.","from":"클로드 코드 작업 보고 (10/4)"},
+   {"id":"commu","n":"고객 커뮤니티 사이트","full":"고객 커뮤니티 사이트","st":"idea","exp":1,"d":"정보 게시 중심의 자체 커뮤니티 사이트. 9/28 회의에서 루크가 개발하려는 세 사이트 중 하나로 언급됨.","from":"9/28 회의 (메이브님·디노)"},
+   {"id":"trade","n":"개인 트레이드 채널","full":"개인 트레이드 채널","st":"idea","exp":1,"d":"9/29 메이브님 회의에서 루크 개인 과제로 나온 신규 채널. 다루는 내용과 플랫폼은 아직 기록이 없어 확인 필요.","from":"9/29 메이브님 회의"},
   ]},
- {"id":"kn","no":"②","name":"지식·교육","sub":"신뢰 → 매출","color":"#e3b04b","ax":278,"ay":150,
+ {"id":"kn","no":"②","name":"지식·교육","sub":"신뢰 → 매출","color":"#e3b04b","ax":280,"ay":180,
   "desc":"신뢰를 돈으로 바꾸고, 검색·추천으로 새 사람을 데려오는 줄. 금액은 모두 계획값이며 실적이 아닙니다.",
   "nodes":[
    {"id":"onecrew","n":"원크루","full":"원크루 (ONE CREW)","st":"on","big":1,"d":"평생 파트너십 컨설팅. 정가 3,900만 / 루크 수강생 출신 3,300만. 한 사람의 삼각 파이프라인을 같이 설계하고 세우는 것이 목표.","href":"../philosophy/","hl":"삼각 파이프라인"},
@@ -1095,22 +1099,38 @@ UNI_REGIONS = [
    {"id":"toolkit","n":"300만 툴킷","full":"300만 툴킷 프로그램","st":"idea","d":"자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만. 1기 8명 목표."},
    {"id":"dino","n":"디노 12주","full":"디노(미니쌤) 12주 빌드업","st":"build","d":"AI 셀러 실무 교육 라인. 1달 90 / 2달 200 / 3달 350만 기준, 상품별 배분 비율 확정 필요. 10/5 1주차 시작.","href":"../guides/dino-12weeks/","hl":"설명서"},
    {"id":"kititi","n":"키티티 컨설팅","full":"키티티바이지영 컨설팅","st":"on","d":"윤지영 원장(성신여대 인근 메이크업 샵)의 브랜딩·확장 자문. 상표 출원 진행 중, 2월 샵 오픈 목표, 상담 사이트 운영. 월 고정 자문 + 매출 연동으로 유료 전환이 과제.","href":"../grants/","hl":"정부지원사업 정리"},
+   {"id":"sudan","n":"셀러들의 수다","full":"셀러들의 수다 (신규 교육회사)","st":"idea","exp":1,"d":"메이브님(신정현)과 운영하려는 교육회사 — 교육에 3PL을 묶은 형태. 신규 법인 설립 vs 힐링디어스 상호 변경 후 이사 선임 사이에서 고민 중이고, 이사로 들이면 기존 재무가 보일 수 있어 신규 설립 쪽으로 기울어 있음.","from":"메이브님과의 법인 논의 (10/2)"},
+   {"id":"own","n":"자체 강의 2027","full":"회사 자체 강의 (2027)","st":"idea","exp":1,"d":"내년에 회사 이름으로 직접 강의를 열고, 3PL 재고 판매와 연계하려는 구상.","from":"3PL 수익 구상 (9월)"},
+   {"id":"callai","n":"전화 상담 AI","full":"전화 상담 AI","st":"idea","exp":1,"d":"'이거 괜찮은 겁니까' 유형의 계약 문의 전화가 매우 많고 녹음이 100건 넘게 있음(한 통 10~30분). 이 사례들을 분석해 해당 유형만이라도 AI가 답하게 만들려는 구상.","from":"상담 전화 자동화 논의 (9/17)"},
   ]},
- {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","ax":250,"ay":430,
+ {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","ax":268,"ay":600,
   "desc":"신뢰가 없어도 상품 자체로 유입이 생기는 줄. 채널이 쉬어도 돈이 끊기지 않게 받쳐주는 자리입니다.",
   "nodes":[
    {"id":"tpl","n":"3PL 물류","full":"3PL 물류 대행","st":"on","big":1,"d":"수강생 재고 보관·출고 대행. 뿌요가 운영. 입고 미처리 상태에서 운송장이 나가는 오류를 잡는 안정화가 진행 중.","href":"../guides/logistics-stabilize/","hl":"설명서"},
    {"id":"resale","n":"재고 판매","full":"수강생 재고 외부 판매","st":"build","d":"창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매하고 수수료 15~20%. 동의서 → 재고 시트 → 당근 비즈프로필 → 30개 등록 순서.","href":"../guides/3pl-resale/","hl":"설명서"},
-   {"id":"store","n":"창고형 매장","full":"오프라인 창고형 매장","st":"idea","d":"창고 재고를 오프라인에서 직접 파는 구조. 3PL 창고와 재고 외부 판매가 이어지는 다음 칸입니다. 위치·평수·운영 인력·취급 품목은 아직 정해진 기록이 없어 확인 필요 — 알려주시면 이 칸을 채웁니다."},
-   {"id":"toolbox","n":"루크 툴박스","full":"루크 툴박스","st":"build","big":1,"d":"월 19,900 / 연 199,000 소액 대량 구독. 12월 500명 → 3월 1,000명 → 6월 월 3,000만 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.","href":"../guides/developer-accounts/","hl":"개발자 계정 설명서"},
-   {"id":"consign","n":"위탁판매","full":"위탁판매 (메이크업헬퍼)","st":"build","d":"원크루 최은봉 대표 건. 12주 테스트, 광고 상한 약 189만, 11월 말 판정."},
+   {"id":"store","n":"창고형 매장","full":"오프라인 창고형 매장","st":"idea","exp":1,"d":"창고 재고를 오프라인에서 직접 파는 구조. 고정비가 낮은 오픈데이+온라인 판매 모델을 더 무거운 대안보다 먼저 두기로 한 기록이 있음. 위치·평수·운영 인력·취급 품목은 아직 미정 — 확인 필요.","from":"3PL 수익 구상 (10월)"},
+   {"id":"toolbox","n":"루크 툴박스","full":"루크 툴박스","st":"build","big":1,"d":"월 19,900 / 연 199,000, 오프라인샵 팩 +9,900. 아래 도구들을 하나의 구독으로 묶어 파는 자리. 12월 500명 → 3월 1,000명 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.","href":"../guides/developer-accounts/","hl":"개발자 계정 설명서"},
+   {"id":"consign","n":"위탁판매","full":"위탁판매 (메이크업헬퍼)","st":"build","d":"원크루 최은봉 대표 건. 위수탁계약서 기준(사입 아님). 국내는 토스·당근 등 브랜드사 미입점 플랫폼·폐쇄몰·공동구매, 해외는 쇼피·큐텐재팬·이베이. 12주 테스트, 광고 상한 약 189만, 11월 말 판정."},
+   {"id":"beauty","n":"미용 가격비교","full":"미용 가격비교 사이트","st":"idea","exp":1,"d":"미용 가격 정보를 확인하는 사이트. 9/28 회의에서 루크가 개발하려는 세 사이트 중 하나로 언급됨.","from":"9/28 회의 (메이브님·디노)"},
   ]},
- {"id":"base","no":"④","name":"기반·자금","sub":"받치는 땅","color":"#b79cff","ax":80,"ay":410,
+ {"id":"base","no":"④","name":"기반·자금","sub":"받치는 땅","color":"#b79cff","ax":78,"ay":560,
   "desc":"세 줄을 떠받치는 바닥. 돈을 버는 줄은 아니지만 여기가 흔들리면 위의 셋이 같이 흔들립니다.",
   "nodes":[
    {"id":"grant","n":"정부지원사업","full":"정부지원사업","st":"build","d":"루크 본인은 해당 없고 지영 원장·메이브님·디노·뿌요가 대상. 2026년 해당분 정리와 2027년 도전 리스트(지원금·자격·과제·경쟁률)를 따로 모아 뒀습니다.","href":"../grants/","hl":"정부지원사업 페이지"},
-   {"id":"corp","n":"힐링디어스(주)","full":"힐링디어스(주)","st":"on","d":"법인. 본점 주소 확보 후 본점이전 등기와 사업자등록 정정이 진행 중."},
-   {"id":"seoul","n":"서울 이전·건물","full":"서울 이전 · 건물 매입","st":"idea","d":"내년 초 사무실·강의장을 서울로, 현 사무실은 창고·물류 거점으로. 월 렌트가 300~500만을 넘어가면 자체 건물 매입을 검토(9/29 메이브님 회의)."},
+   {"id":"corp","n":"힐링디어스(주)","full":"힐링디어스(주)","st":"on","d":"설립 후 매출 없이 유지된 업력 약 5년 법인. 스칸센 A동 709호는 9/30부로 계약 종료, 새 본점은 비과밀억제권역을 피해 구리 시내 비상주 사무실로 알아보기로 함."},
+   {"id":"seoul","n":"서울 이전·건물","full":"서울 이전 · 건물 매입","st":"idea","exp":1,"d":"내년 초 사무실·강의장을 서울로, 현 사무실은 창고·물류 거점으로. 월 렌트가 300~500만을 넘어가면 자체 건물 매입을 검토.","from":"9/29 메이브님 회의"},
+  ]},
+ {"id":"tool","no":"⑤","name":"도구·자동화","sub":"만들어서 묶어 판다","color":"#ff9f7a","ax":180,"ay":760,
+  "desc":"직접 만들어 쓰고, 수강생에게 기본판을 무료로 풀어 강의 후킹으로 쓰고, 외부·맞춤·구독은 유료로 받는 자리. 이것들이 모여 루크 툴박스 구독이 됩니다.",
+  "nodes":[
+   {"id":"margin","n":"마진메이커","full":"마진메이커","st":"build","exp":1,"d":"상품소싱 마진 자동계산 크롬 확장. 구매처 가격을 자동 계산하고, 모르는 사이트는 사용자가 캡처 영역을 지정해 OCR로 읽으며, 사이트별 할인 규칙을 서버에 쌓아 점점 정확해지게 하기로 결정.","from":"도구 개발 논의 (10월)"},
+   {"id":"cut","n":"연출컷메이커","full":"연출컷메이커","st":"on","exp":1,"d":"AI 상품 연출컷 생성 크롬 확장. Gemini API를 BYOK(키는 사용자 것) 방식으로 써서 수강생에게 배포.","from":"도구 개발"},
+   {"id":"typer","n":"블로그타이퍼","full":"블로그타이퍼","st":"build","exp":1,"d":"네이버 블로그에 붙여넣기가 아니라 사람이 키보드로 치듯 한 글자씩 입력하는 자동화. Claude Code + Playwright 방식으로 결정.","from":"블로그 자동화 논의 (8/30)"},
+   {"id":"soam","n":"소명서 메이커","full":"정가품 소명서 메이커","st":"build","exp":1,"d":"네이버 정가품 소명서를 자동 생성하는 프로그램. Vercel claim·Drive OAuth 클라이언트 ID·실제 API 키 테스트 3건이 마무리로 남아 있음.","from":"수강생 대응 도구"},
+   {"id":"videof","n":"영상공장","full":"영상공장 (동영상 자동 제작)","st":"build","exp":1,"d":"동영상을 자동으로 만드는 서비스. 9/28 회의에서 개발하려는 세 사이트 중 하나로 나왔고, API 키 5개 발급과 목소리 1~3분 녹음이 다음 단계.","from":"9/28 회의 (메이브님·디노)"},
+   {"id":"voice","n":"내 목소리 엔진","full":"내 목소리 엔진","st":"idea","exp":1,"d":"유료 서비스를 쓰지 않고 직접 만들어, 본인 목소리만 특화 학습해 재현. AI API는 텍스트만 만들고 출력은 프로그램이 루크 목소리로. 텍스트를 넣으면 오디오 파일을 만드는 쪽도 함께 원함.","from":"음성 프로그램 구상 (9/8)"},
+   {"id":"bsj","n":"배수진","full":"배수진 (목표달성 앱)","st":"idea","exp":1,"d":"돈을 걸고 목표를 달성하는 앱. 프로토타입 검토 단계. 셀러에 국한하지 않는 파이프라인을 원한다는 방향과 맞닿아 있음.","from":"앱 구상"},
+   {"id":"autoreg","n":"자동등록","full":"자동 상품등록 프로그램","st":"build","exp":1,"d":"상품을 자동으로 등록하는 프로그램. 글자 추출(OCR)은 확장 프로그램 단에서 하고 AI는 추출된 텍스트로 상세페이지만 만드는 구조가 낫다고 봄. 네이버 API 정책·키·IP 차단으로 등록 실패가 나던 건의 원인 진단이 남아 있음.","from":"9/28 회의 · 도구 개발"},
   ]},
 ]
 
@@ -1122,26 +1142,42 @@ UNI_EDGES = [
  ("luke","kititi","원장 자문을 루크가 직접"),
  ("luke","tpl","운영은 뿌요, 규칙 승인은 루크"),
  ("luke","yt","촬영·녹화가 루크 시간의 큰 몫"),
+ ("luke","trade","9/29 회의에서 루크 개인 과제로 나온 신규 채널"),
  ("yt","live","영상 설명란·고정댓글에 라이브 신청 링크"),
  ("yt","onecrew","영상 보고 들어온 문의가 상담으로"),
  ("yt","toolbox","수강생에겐 도구 기본판 무료 → 외부·구독은 유료"),
+ ("yt","mktg","유튜브 채널 운영을 업체에 '편집자' 권한으로 위임"),
  ("live","onecrew","라이브 참석자 → 상담 → 전환"),
  ("kakao","live","카톡 1천에 특강·라이브 공지"),
  ("cafe","kakao","같은 선판매·공지 라인"),
  ("cafe","plat","플랫폼의 락인 축이 카페 운영을 맡는 구조"),
+ ("cafe","commu","네이버 카페 역할을 자체 사이트로 옮기는 구상"),
  ("vcell","plat","뷰셀 채널이 플랫폼 모객 자산"),
  ("vcell","consign","화장품 유입과 메이크업헬퍼가 같은 상품군"),
+ ("blog","typer","사람처럼 치는 자동 입력 프로그램이 블로그를 돌림"),
+ ("blog","yt","같은 녹음·강의 내용을 글로 다시 씀"),
  ("onecrew","ilsip","일십백천 수료자가 원크루로 올라오는 사다리"),
  ("ilsip","kititi","키티티가 브랜딩 축 컨설팅의 실제 사례"),
  ("onecrew","consign","최은봉 대표(원크루) 건이 메이크업헬퍼 위탁"),
  ("onecrew","tpl","수강생 재고가 3PL 창고로 들어옴"),
+ ("onecrew","callai","계약 문의 전화 녹음 100건+가 AI 학습 재료"),
  ("plat","onecrew","플랫폼 수강생이 원크루 후보 풀"),
+ ("plat","sudan","메이브님과 같이 세우는 교육 축이라 한 몸으로 움직임"),
+ ("sudan","corp","신규 법인 설립 vs 힐링디어스 상호 변경 사이에서 고민 중"),
+ ("sudan","tpl","교육에 3PL을 묶은 형태의 회사 구상"),
+ ("own","resale","자체 강의를 3PL 재고 판매와 연계하려는 구상"),
+ ("own","sudan","자체 강의를 어느 회사 이름으로 할지와 맞물림 (확인 필요)"),
  ("toolkit","toolbox","툴킷에 들어가는 프로그램이 툴박스 구독 상품과 같은 것"),
+ ("toolkit","autoreg","툴킷 구성의 자동등록 1년 이용권"),
+ ("toolkit","soam","툴킷 구성의 소명서 1년 이용권"),
+ ("toolkit","cut","툴킷 구성의 연출컷 1년 이용권"),
  ("dino","corp","디노 독립 수익이 서야 사무실 구조가 안정"),
+ ("dino","videof","AI 영상 제작을 디노 라인에서 먼저 돌려봄"),
  ("tpl","resale","창고에 잠든 재고가 외부 판매 물건"),
  ("resale","store","창고형 매장이 재고를 오프라인으로 빼는 다음 칸 (확인 필요)"),
  ("tpl","store","같은 창고를 쓰는 구조인지 확인 필요"),
  ("resale","yt","팔린 실적이 다시 영상·강의 소재"),
+ ("resale","cut","판매용 상품 사진을 연출컷으로 만드는 흐름 (확인 필요)"),
  ("grant","kititi","지영 원장이 2027 도전 대상"),
  ("grant","dino","디노 폐업·업력 시나리오를 같이 검토"),
  ("grant","vcell","메이브님도 지원사업 대상"),
@@ -1149,15 +1185,32 @@ UNI_EDGES = [
  ("corp","seoul","본점 주소·이전 등기가 서울 이전과 맞물림"),
  ("seoul","store","서울 이전·건물 매입이 오프라인 매장 자리와 겹침 (확인 필요)"),
  ("seoul","plat","플랫폼이 안정되는 시점에 강의장 포함 이전"),
+ ("margin","toolbox","툴박스 구독에 묶이는 도구"),
+ ("cut","toolbox","툴박스 구독에 묶이는 도구"),
+ ("typer","toolbox","툴박스 구독에 묶이는 도구"),
+ ("soam","toolbox","툴박스 구독에 묶이는 도구"),
+ ("videof","toolbox","툴박스 구독에 묶이는 도구"),
+ ("autoreg","toolbox","툴박스 구독에 묶이는 도구"),
+ ("bsj","toolbox","셀러에 국한하지 않는 파이프라인 — 툴박스가 가려는 방향"),
+ ("margin","yt","수강생에게 기본판을 풀어 강의 후킹으로"),
+ ("autoreg","tpl","등록·출고가 물류와 바로 이어짐"),
+ ("callai","voice","AI가 루크 목소리로 답하도록 연결하려는 구상"),
+ ("voice","videof","텍스트 → 루크 목소리 오디오를 영상에 얹음"),
+ ("videof","yt","영상 제작 비용을 줄여 채널 운영을 가볍게"),
+ ("beauty","kititi","미용 가격 정보라 지영 원장 쪽과 맞닿음 (확인 필요)"),
+ ("beauty","toolbox","오프라인샵 팩과 같은 묶음인지 확인 필요"),
+ ("commu","toolbox","자체 사이트·구독 사이트를 같은 스택으로 짓는 구상 (확인 필요)"),
 ]
 
 def universe_html():
     nodes = [{"id":"luke","n":"루크","full":"루크 (ONE CREW)","st":"on","big":2,"reg":"core","c":"#f0cd84",
-              "ax":180,"ay":270,"d":"네 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}]
+              "ax":180,"ay":370,"exp":0,"from":"",
+              "d":"다섯 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}]
     for R in UNI_REGIONS:
         for N in R["nodes"]:
             nodes.append({"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"big":N.get("big",0),
                           "reg":R["id"],"c":R["color"],"ax":R["ax"],"ay":R["ay"],"d":N["d"],
+                          "exp":N.get("exp",0),"from":N.get("from",""),
                           "href":N.get("href",""),"hl":N.get("hl","")})
     data = {
       "nodes": nodes,
@@ -1166,20 +1219,22 @@ def universe_html():
     }
     body = """
 <h1>사업 유니버스</h1>
-<p class="note">사업·채널·상품을 점으로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 관계망</b>입니다. 점을 누르면 그 점과 이어진 것들만 남고, 무엇으로 이어져 있는지가 아래에 열립니다. 점을 끌어서 움직일 수도 있습니다.</p>
+<p class="note">사업·채널·상품·도구를 점으로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 관계망</b>입니다. 점을 누르면 그 점과 이어진 것만 남고, 무엇으로 이어져 있는지가 아래에 열립니다. 점을 끌어서 옮길 수도 있습니다. 사람들과의 대화에서 나온 <b>확장 구상</b>도 같이 올렸고, 어디서 나온 이야기인지 각 점에 적어 뒀습니다.</p>
 
-<div class="sky"><svg viewBox="0 0 360 560" id="uniMap" role="img" aria-label="사업 유니버스 관계망" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
-<div class="legend">
+<div class="sky"><svg viewBox="0 0 360 820" id="uniMap" role="img" aria-label="사업 유니버스 관계망" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
+<div class="legend" id="uniLeg">
   <span><i style="background:#f0cd84"></i>루크</span>
-  <span><i style="background:#4fd1a5"></i>채널·브랜딩</span>
-  <span><i style="background:#e3b04b"></i>지식·교육</span>
-  <span><i style="background:#8fb0ff"></i>상품·유통</span>
-  <span><i style="background:#b79cff"></i>기반·자금</span>
+  <span><a href="#" data-reg="ch"><i style="background:#4fd1a5"></i>채널·브랜딩</a></span>
+  <span><a href="#" data-reg="kn"><i style="background:#e3b04b"></i>지식·교육</a></span>
+  <span><a href="#" data-reg="pr"><i style="background:#8fb0ff"></i>상품·유통</a></span>
+  <span><a href="#" data-reg="base"><i style="background:#b79cff"></i>기반·자금</a></span>
+  <span><a href="#" data-reg="tool"><i style="background:#ff9f7a"></i>도구·자동화</a></span>
 </div>
 <div class="legend" style="margin-top:-8px">
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
+  <span><a href="#" id="uniExp">확장 구상만 보기</a></span>
   <span><a href="#" id="uniReset">재배치</a></span>
 </div>
 
@@ -1189,8 +1244,8 @@ def universe_html():
 <div class="card">
   <ul class="list">
     <li><div class="t">줄이 곧 사업</div><div class="m">점 세 개가 따로 있으면 부업 셋입니다. 줄로 엮여야 하나가 흔들려도 나머지가 받칩니다 — <a href="../philosophy/">삼각 파이프라인</a>의 핵심</div></li>
-    <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄이 가장 많습니다. 그 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
-    <li><div class="t">점 모양이 단계</div><div class="m">채움은 지금 돈이 나오는 것, 테두리는 세우는 중, 점선은 구상. 점선을 테두리로 옮기는 것이 이번 분기 일입니다</div></li>
+    <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
+    <li><div class="t">⑤ 도구·자동화는 혼자 돈이 되지 않습니다</div><div class="m">만들어서 루크 툴박스 구독으로 묶이거나, 수강생에게 기본판을 풀어 강의 후킹이 될 때 돈이 됩니다. 줄이 툴박스로 모이는 이유</div></li>
     <li><div class="t">'확인 필요'가 붙은 줄</div><div class="m">아직 기록으로 확인되지 않은 연결입니다. 맞는지 알려주시면 확정하거나 지웁니다</div></li>
   </ul>
 </div>
@@ -1200,71 +1255,71 @@ def universe_html():
   <p style="margin:0 0 8px">말씀해주시면 점이든 줄이든 그대로 넣습니다.</p>
   <ul class="list">
     <li><div class="t">오프라인 창고형 매장</div><div class="m">위치·평수·취급 품목·운영 인력·여는 시점. 3PL 재고를 쓰는 건지, 별도 매입인지</div></li>
+    <li><div class="t">개인 트레이드 채널</div><div class="m">무엇을 다루는 채널인지, 어느 플랫폼인지</div></li>
     <li><div class="t">10월 말 무료 라이브</div><div class="m">10/25(일) 19:00이 확정인지, 신청 링크</div></li>
-    <li><div class="t">새 점</div><div class="m">관계망에 없는 사업·채널·상품. 이름과 한 줄이면 충분</div></li>
-    <li><div class="t">새 줄</div><div class="m">"A 쓰던 사람이 B로 온다" 같은 실제 경로를 말해주면 줄로 묶습니다</div></li>
+    <li><div class="t">빠진 확장 구상</div><div class="m">사람들과 얘기했지만 여기 없는 것. 이름과 한 줄, 누구와 한 이야기인지</div></li>
   </ul>
 </div>
 
-<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 9/14~10/4 노션 액션보드·플라우드 녹음. 금액은 모두 계획값이며 실적이 아닙니다.</div>
+<div class="src" style="margin-top:14px">근거: <a href="../roadmap/">돈 버는 로드맵</a> · <a href="../philosophy/">삼각 파이프라인</a> · <a href="../platform/">강의 플랫폼 전략</a> · <a href="../grants/">정부지원사업</a> · 8/25~10/4 노션 액션보드·플라우드 녹음·클로드 대화 기록. 확장 구상 점에는 어느 대화에서 나온 것인지 적어 두었습니다. 금액은 모두 계획값이며 실적이 아닙니다.</div>
 
 <script>
 (function(){
 var D = __DATA__;
-var W=360, H=560, svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel');
+var W=360, H=820, svg=document.getElementById('uniMap'), panel=document.getElementById('uniPanel');
 var NS='http://www.w3.org/2000/svg';
 var N={}, nodes=D.nodes, edges=D.edges, regs={};
 D.regions.forEach(function(r){regs[r.id]=r;});
-regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'네 구역이 전부 여기를 지나갑니다.'};
+regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'다섯 구역이 전부 여기를 지나갑니다.'};
 var seed=20261005;
 function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
-nodes.forEach(function(n){
-  N[n.id]=n;
-  n.r = n.big===2?17:(n.big===1?8.5:6.5);
-  n.x = n.ax + (rnd()-0.5)*90; n.y = n.ay + (rnd()-0.5)*90;
-  n.vx=0; n.vy=0; n.deg=0; n.adj=[];
-});
+function place(){
+  nodes.forEach(function(n){ n.x=n.ax+(rnd()-0.5)*110; n.y=n.ay+(rnd()-0.5)*110; n.vx=0; n.vy=0; });
+}
+nodes.forEach(function(n){ N[n.id]=n; n.r=n.big===2?16:(n.big===1?8:6); n.deg=0; n.adj=[]; n.hw=Math.min(n.n.length*4.7+4, 62); });
 edges.forEach(function(e){
   var a=N[e.a], b=N[e.b]; if(!a||!b) return;
   a.deg++; b.deg++; a.adj.push({id:e.b,l:e.l}); b.adj.push({id:e.a,l:e.l});
   e.t = rnd();
 });
+place();
 function tick(k){
   for(var i=0;i<nodes.length;i++){ for(var j=i+1;j<nodes.length;j++){
     var a=nodes[i], b=nodes[j], dx=b.x-a.x, dy=b.y-a.y, d2=dx*dx+dy*dy;
     if(d2<1) d2=1; var d=Math.sqrt(d2);
-    var f=2600/d2; if(f>3) f=3;
+    var f=2200/d2; if(f>3) f=3;
     var ux=dx/d, uy=dy/d;
     a.vx-=ux*f; a.vy-=uy*f; b.vx+=ux*f; b.vy+=uy*f;
-    var min=a.r+b.r+16;
+    var min=a.r+b.r+20;
     if(d<min){ var p=(min-d)*0.5; a.vx-=ux*p; a.vy-=uy*p; b.vx+=ux*p; b.vy+=uy*p; }
   }}
   edges.forEach(function(e){
     var a=N[e.a], b=N[e.b]; if(!a||!b) return;
     var dx=b.x-a.x, dy=b.y-a.y, d=Math.sqrt(dx*dx+dy*dy)||1;
-    var f=(d-78)*0.012, ux=dx/d, uy=dy/d;
+    var f=(d-74)*0.012, ux=dx/d, uy=dy/d;
     a.vx+=ux*f; a.vy+=uy*f; b.vx-=ux*f; b.vy-=uy*f;
   });
   nodes.forEach(function(n){
     n.vx += (n.ax-n.x)*0.006; n.vy += (n.ay-n.y)*0.006;
-    if(n.id==='luke'){ n.vx += (180-n.x)*0.05; n.vy += (268-n.y)*0.05; }
+    if(n.id==='luke'){ n.vx += (180-n.x)*0.05; n.vy += (370-n.y)*0.05; }
     if(n.drag) { n.vx=0; n.vy=0; return; }
     n.vx*=0.80; n.vy*=0.80;
     n.x+=n.vx*k; n.y+=n.vy*k;
-    var m=n.r+14;
-    if(n.x<m) n.x=m; if(n.x>W-m) n.x=W-m;
-    if(n.y<m+10) n.y=m+10; if(n.y>H-m-10) n.y=H-m-10;
+    var mx=Math.max(n.r+10, n.hw+6), my=n.r+16;
+    if(n.x<mx) n.x=mx; if(n.x>W-mx) n.x=W-mx;
+    if(n.y<my+10) n.y=my+10; if(n.y>H-my-18) n.y=H-my-18;
   });
 }
-for(var s=0;s<520;s++) tick(1);
+function settle(){ for(var s=0;s<620;s++) tick(1); }
+settle();
 
 function el(t,a){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);return e;}
-var gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{}), gHull=el('g',{});
-svg.appendChild(gHull); svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
+var gEdge=el('g',{}), gPulse=el('g',{}), gNode=el('g',{});
+svg.appendChild(gEdge); svg.appendChild(gPulse); svg.appendChild(gNode);
 edges.forEach(function(e){
-  e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.42'});
+  e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.38'});
   gEdge.appendChild(e.el);
-  e.p = el('circle',{'r':'1.9','fill':'#dff6ef','opacity':'.85'});
+  e.p = el('circle',{'r':'1.8','fill':'#dff6ef','opacity':'.8'});
   gPulse.appendChild(e.p);
 });
 nodes.forEach(function(n){
@@ -1275,9 +1330,9 @@ nodes.forEach(function(n){
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
-  n.t1 = el('text',{'text-anchor':'middle','font-size':n.big?'10.5':'9.5','fill':'#e8eef2','class':'lu-lab'});
+  n.t1 = el('text',{'text-anchor':'middle','font-size':n.big?'10':'9','fill':'#e8eef2','class':'lu-lab'});
   n.t1.textContent=n.n;
-  n.hit = el('circle',{'r':Math.max(n.r+11,15),'fill':'transparent'});
+  n.hit = el('circle',{'r':Math.max(n.r+10,14),'fill':'transparent'});
   g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
   gNode.appendChild(g); n.g=g;
 });
@@ -1286,14 +1341,14 @@ function draw(){
     var a=N[e.a], b=N[e.b];
     e.el.setAttribute('x1',a.x); e.el.setAttribute('y1',a.y);
     e.el.setAttribute('x2',b.x); e.el.setAttribute('y2',b.y);
-    e.t += 0.0032; if(e.t>1) e.t-=1;
+    e.t += 0.003; if(e.t>1) e.t-=1;
     e.p.setAttribute('cx', a.x+(b.x-a.x)*e.t); e.p.setAttribute('cy', a.y+(b.y-a.y)*e.t);
   });
   nodes.forEach(function(n){
     n.halo.setAttribute('cx',n.x); n.halo.setAttribute('cy',n.y);
     n.c1.setAttribute('cx',n.x); n.c1.setAttribute('cy',n.y);
     n.hit.setAttribute('cx',n.x); n.hit.setAttribute('cy',n.y);
-    n.t1.setAttribute('x',n.x); n.t1.setAttribute('y',n.y+n.r+11);
+    n.t1.setAttribute('x',n.x); n.t1.setAttribute('y',n.y+n.r+10);
   });
 }
 var reduce=false;
@@ -1302,67 +1357,101 @@ function loop(){ tick(0.35); draw(); if(!reduce) requestAnimationFrame(loop); }
 draw(); if(!reduce) requestAnimationFrame(loop);
 
 var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
-var sel=null;
+var sel=null, filt=null;
 function apply(){
-  var near={};
-  if(sel){ near[sel]=1; N[sel].adj.forEach(function(a){near[a.id]=1;}); }
+  var keep=null;
+  if(sel){ keep={}; keep[sel]=1; N[sel].adj.forEach(function(a){keep[a.id]=1;}); }
+  else if(filt==='exp'){ keep={}; nodes.forEach(function(n){ if(n.exp) keep[n.id]=1; }); keep['luke']=1; }
+  else if(filt){ keep={}; nodes.forEach(function(n){ if(n.reg===filt) keep[n.id]=1; }); keep['luke']=1; }
   nodes.forEach(function(n){
-    var on = !sel || near[n.id];
-    n.g.style.opacity = on? '1':'.14';
+    var on = !keep || keep[n.id];
+    n.g.style.opacity = on? '1':'.12';
     n.halo.setAttribute('opacity', (sel===n.id)?'.35':'0');
   });
   edges.forEach(function(e){
-    var on = !sel || e.a===sel || e.b===sel;
-    e.el.setAttribute('opacity', on? (sel?'.9':'.42') : '.05');
+    var on = sel ? (e.a===sel||e.b===sel) : (!keep || (keep[e.a] && keep[e.b]));
+    e.el.setAttribute('opacity', on? (sel?'.9':'.38') : '.04');
     e.el.setAttribute('stroke', (sel && on)? N[sel].c : '#7fa8bd');
     e.el.setAttribute('stroke-width', (sel && on)? '1.8':'1');
-    e.p.setAttribute('opacity', on? '.85':'0');
+    e.p.setAttribute('opacity', on? '.8':'0');
   });
 }
+function lk(n){ return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>'; }
 function home(){
-  sel=null; apply();
-  var h='<h3>관계망 전체</h3><p class="note" style="margin-top:0">점 '+nodes.length+'개 · 줄 '+edges.length+'개. 점을 누르면 그 점에 이어진 것만 남습니다.</p><ul class="list">';
+  sel=null; filt=null; apply();
+  var ex=nodes.filter(function(n){return n.exp;});
+  var h='<h3>관계망 전체</h3><p class="note" style="margin-top:0">점 '+nodes.length+'개 · 줄 '+edges.length+'개. 그중 대화에서 나온 확장 구상이 '+ex.length+'개입니다 — <a href="#" data-f="exp">확장 구상만 보기</a></p><ul class="list">';
   D.regions.forEach(function(r){
     var ns=nodes.filter(function(n){return n.reg===r.id;});
-    h+='<li><div class="t" style="color:'+r.color+'">'+r.no+' '+r.name+'</div><div class="m">'+
-       ns.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>';}).join(' · ')+'</div></li>';
+    h+='<li><div class="t"><a href="#" data-f="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+ns.map(lk).join(' · ')+'</div></li>';
   });
   var top=nodes.slice().sort(function(a,b){return b.deg-a.deg;}).slice(0,4);
-  h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.n+'</a> '+n.deg;}).join(' · ')+'</div>';
+  h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return lk(n)+' '+n.deg;}).join(' · ')+'</div>';
+  panel.innerHTML=h;
+}
+function showExp(){
+  sel=null; filt='exp'; apply();
+  var h='<h3>확장 구상 <small style="color:var(--muted);font-weight:400">대화에서 나온 것</small></h3>'+
+        '<p class="note" style="margin-top:0">사람들과 얘기하면서 나왔지만 아직 돈이 되는 줄로 서지 않은 것들입니다. 어디서 나온 이야기인지 함께 적었습니다.</p><ul class="list">';
+  D.regions.forEach(function(r){
+    var ns=nodes.filter(function(n){return n.reg===r.id && n.exp;});
+    if(!ns.length) return;
+    h+='<li><div class="t" style="color:'+r.color+'">'+r.no+' '+r.name+'</div><div class="m">';
+    h+=ns.map(function(n){return '<a href="#" data-go="'+n.id+'">'+n.full+'</a> <span style="opacity:.7">— '+ST[n.st][0]+(n['from']?' · '+n['from']:'')+'</span>';}).join('<br>');
+    h+='</div></li>';
+  });
+  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
+  panel.innerHTML=h;
+}
+function showReg(rid){
+  var r=regs[rid]; if(!r) return home();
+  sel=null; filt=rid; apply();
+  var ns=nodes.filter(function(n){return n.reg===rid;});
+  var h='<h3 style="color:'+r.color+'">'+r.no+' '+r.name+' <small style="color:var(--muted);font-weight:400">'+r.sub+'</small></h3>';
+  h+='<p class="note" style="margin-top:0">'+r.desc+'</p><ul class="list">';
+  ns.forEach(function(n){
+    h+='<li><span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><div class="t"><a href="#" data-go="'+n.id+'">'+n.full+'</a></div><div class="m">'+n.d+'</div></li>';
+  });
+  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
   panel.innerHTML=h;
 }
 function show(id){
   var n=N[id]; if(!n) return home();
-  sel=id; apply();
+  sel=id; filt=null; apply();
   var r=regs[n.reg];
   var h='<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+(r.no?r.no+' ':'')+r.name+'</span>';
   h+='<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
+  if(n['from']) h+='<div class="note" style="margin-bottom:8px">어디서 나온 이야기: '+n['from']+'</div>';
   if(n.href) h+='<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
   h+='<h3 style="margin-top:12px">이어진 것 '+n.adj.length+'개</h3><ul class="list">';
   n.adj.forEach(function(a){
     var m=N[a.id];
     h+='<li><div class="t"><a href="#" data-go="'+a.id+'" style="color:'+m.c+'">'+m.full+'</a></div><div class="m">'+a.l+'</div></li>';
   });
-  h+='</ul><p class="note"><a href="#" data-go="home">← 관계망 전체</a></p>';
+  h+='</ul><p class="note"><a href="#" data-f="'+n.reg+'">← '+r.name+'</a> · <a href="#" data-go="home">관계망 전체</a></p>';
   panel.innerHTML=h;
 }
-panel.addEventListener('click',function(e){
-  var a=e.target.closest?e.target.closest('[data-go]'):null;
+function route(e){
+  var a=e.target.closest?e.target.closest('[data-go],[data-f],[data-reg]'):null;
   if(!a) return; e.preventDefault();
-  var k=a.getAttribute('data-go');
-  if(k==='home') home(); else show(k);
+  var g=a.getAttribute('data-go'), f=a.getAttribute('data-f')||a.getAttribute('data-reg');
+  if(g==='home') home();
+  else if(g) show(g);
+  else if(f==='exp') showExp();
+  else if(f) showReg(f);
   panel.scrollIntoView({block:'nearest'});
-});
+}
+panel.addEventListener('click',route);
+document.getElementById('uniLeg').addEventListener('click',route);
+document.getElementById('uniExp').addEventListener('click',function(e){e.preventDefault();showExp();panel.scrollIntoView({block:'nearest'});});
 document.getElementById('uniReset').addEventListener('click',function(e){
-  e.preventDefault(); seed=20261005;
-  nodes.forEach(function(n){n.x=n.ax+(rnd()-0.5)*90;n.y=n.ay+(rnd()-0.5)*90;n.vx=0;n.vy=0;});
-  for(var i=0;i<520;i++) tick(1); draw();
+  e.preventDefault(); seed=20261005; place(); settle(); draw();
 });
 var drag=null, moved=0, pt=svg.createSVGPoint();
 function loc(ev){ pt.x=ev.clientX; pt.y=ev.clientY; var m=svg.getScreenCTM(); return m?pt.matrixTransform(m.inverse()):{x:0,y:0}; }
 function hitNode(p){
   var best=null, bd=1e9;
-  nodes.forEach(function(n){ var d=(n.x-p.x)*(n.x-p.x)+(n.y-p.y)*(n.y-p.y); var rr=Math.max(n.r+11,15); if(d<rr*rr && d<bd){bd=d;best=n;} });
+  nodes.forEach(function(n){ var d=(n.x-p.x)*(n.x-p.x)+(n.y-p.y)*(n.y-p.y); var rr=Math.max(n.r+10,14); if(d<rr*rr && d<bd){bd=d;best=n;} });
   return best;
 }
 svg.addEventListener('pointerdown',function(ev){
