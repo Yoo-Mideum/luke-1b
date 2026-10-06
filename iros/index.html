@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>등기부 열람 — 클릭 순서 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-07</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>등기부 열람 — 클릭 순서</h1>
+<p class="note">힐링디어스(주) 등기사항전부증명서를 인터넷등기소에서 직접 보는 방법입니다. <b>열람 700원, 5분이면 끝납니다.</b> 확인할 것은 세 가지 — 중임 기록 · 임원 취임일 · 최후 등기일. 왜 봐야 하는지는 <a href="../relocation/">10/15 등기 체크리스트</a>에 있습니다.</p>
+
+<h2>시작하기 전에</h2>
+<div class="card">
+  <dl class="kv">
+    <dt>주소</dt><dd><a href="https://www.iros.go.kr" target="_blank" rel="noopener"><b>www.iros.go.kr</b></a> — 대법원 인터넷등기소</dd>
+    <dt>준비물</dt><dd>카드·계좌이체·휴대폰 결제 중 하나. <b>공동인증서는 없어도 됩니다</b></dd>
+    <dt>법인등록번호</dt><dd>모르셔도 상호로 찾을 수 있습니다. 알고 계시면 더 빠릅니다 — <b>법인 사업자등록증</b>에 적혀 있습니다</dd>
+    <dt>비용</dt><dd>열람 700원 / 발급 1,000원</dd>
+  </dl>
+</div>
+
+<h2>화면 순서</h2>
+<div class="card accent">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="d">1단계</div><div class="t">iros.go.kr 접속 → 상단 <b>[법인등기]</b> → <b>[열람/발급(출력)]</b></div><div class="d">부동산등기가 아니라 <b>법인등기</b>입니다. 메뉴가 나란히 있어서 헷갈리기 쉽습니다</div></li>
+
+    <li><div class="d">2단계</div><div class="t">검색 조건 입력</div><div class="d">
+      <b>관할등기소</b> — '전체'로 두세요 (구리 관할을 모르셔도 됩니다)<br>
+      <b>법인구분</b> — 주식회사<br>
+      <b>등기상태</b> — <b>살아있는 등기</b><br>
+      <b>본지점구분</b> — 본점<br>
+      <b>상호</b> — <b>힐링디어스</b> 입력 후 검색
+    </div></li>
+
+    <li><div class="d">3단계</div><div class="t">검색 결과에서 우리 회사 고르기</div><div class="d">같은 상호가 여러 개 뜰 수 있습니다. <b>본점 주소</b>를 보고 고르세요 — 등기부상으로는 아직 <b>경기도 구리시 갈매순환로 154 A408호</b>로 되어 있을 겁니다</div></li>
+
+    <li class="big"><div class="d">4단계 — 여기가 핵심</div><div class="t">등기기록 유형에서 <b>'말소사항 포함'</b> 선택</div><div class="d">
+      '전부'를 고르고, 그 안에서 <b>말소사항 포함</b>을 선택하세요.<br>
+      <b>'현재 유효사항'만 고르면 과거 중임 기록이 안 보입니다.</b> 지금 확인하려는 게 바로 그 과거 기록이라, 여기서 잘못 고르면 헛수고가 됩니다
+    </div></li>
+
+    <li><div class="d">5단계</div><div class="t">주민등록번호 공개 여부 → <b>미공개</b></div><div class="d">본인 확인용이니 공개할 필요가 없습니다</div></li>
+
+    <li><div class="d">6단계</div><div class="t">결제 → 화면에서 바로 열람</div><div class="d">열람 700원. 결제하면 바로 화면에 뜹니다</div></li>
+  </ol>
+</div>
+
+<h2>열리면 세 군데를 보세요</h2>
+<div class="card wrapx">
+<table>
+<tr><th>어디를</th><th>무엇을 찾나</th><th>어떻게 읽나</th></tr>
+<tr><td><b>① 임원에 관한 사항</b></td><td>"사내이사 유믿음 2022년 3월 16일 취임" 밑에 <b>"○년 ○월 ○일 중임"</b>이 있는지</td><td><b>있으면</b> 그 날 + 3년이 다음 만료일 → 지금은 괜찮음<br><b>없으면</b> 2025-03경 만료 → 밀려 있음</td></tr>
+<tr><td><b>② 같은 란의 감사</b></td><td>어머니 취임일과 중임 기록</td><td>감사는 임기 계산이 달라(상법 제410조) 이사와 만료일이 어긋납니다. 따로 보세요</td></tr>
+<tr><td><b>③ 가장 아래 등기 날짜</b></td><td>마지막으로 등기한 날</td><td>이게 <b>해산간주 5년</b>의 기산점입니다. 2022-03-16(설립) 그대로면 2027년이 위험 구간</td></tr>
+</table>
+<div class="note">중임 기록은 보통 <b>취소선이 그어진 줄 바로 아래</b>에 새 줄로 나타납니다. 말소사항 포함으로 떼야 그 취소선 줄까지 보입니다.</div>
+</div>
+
+<h2>막히기 쉬운 곳</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">부동산등기 메뉴로 들어갔다</div><div class="m">상단에 [부동산등기]와 [법인등기]가 나란히 있습니다. <b>법인등기</b>로 들어가세요</div></li>
+    <li><div class="t">검색 결과가 안 나온다</div><div class="m">상호를 '힐링디어스'까지만 넣어보세요. '(주)'나 '주식회사'를 붙이면 안 걸릴 수 있습니다. 그래도 안 되면 <b>법인등록번호</b>로 검색하세요 — 사업자등록증에 있습니다</div></li>
+    <li><div class="t">'현재 유효사항'으로 떼버렸다</div><div class="m">과거 기록이 안 보입니다. 700원이 아깝지만 <b>말소사항 포함으로 다시 떼세요</b></div></li>
+    <li><div class="t">법무사에게 줄 건데 열람으로 떼었다</div><div class="m">열람 화면에서 출력한 것은 <b>제출용으로 효력이 없습니다.</b> 제출하실 거면 발급 1,000원으로 다시 받으세요. 직접 보기만 할 거면 열람으로 충분합니다</div></li>
+  </ul>
+</div>
+
+<h2>다 보시고 나면</h2>
+<div class="card blue">
+  <ul class="list">
+    <li><div class="t">중임 기록이 있었다</div><div class="m">임원 쪽은 깨끗합니다. 10/15 등기는 <b>본점이전 + 상호변경 + 목적추가</b> 셋만 하면 됩니다</div></li>
+    <li><div class="t">중임 기록이 없었다</div><div class="m">1년 반 밀려 있는 겁니다. <b>중임등기를 같이 넣으세요.</b> 어차피 상호·목적 때문에 주주총회를 여실 거라 결의를 한 번에 올리면 됩니다</div></li>
+    <li class="big"><div class="t">최후 등기일이 2022-03-16 그대로였다</div><div class="m">해산간주 시계가 2027년 3월에 5년이 됩니다. <b>10/15 등기로 리셋되니 더더욱 미루면 안 됩니다</b></div></li>
+  </ul>
+  <div class="note">어느 경우든 화면을 캡처해서 법무사에게 보내시면 통화가 훨씬 빨라집니다. 받으셨다는 임원 임기 안내 우편물도 같이요.</div>
+</div>
+
+<div class="src" style="margin-top:14px">근거(2026-10-07 확인): 대법원 인터넷등기소 법인등기 열람·발급 절차(메뉴 [법인등기] → [열람/발급(출력)], 검색 조건으로 관할등기소·법인구분·등기상태·본지점구분·상호, 주민등록번호 공개 여부 선택, 열람 700원·발급 1,000원, 열람 화면 출력물은 제출용 효력 없음) · 상법 제383조(이사 임기 최대 3년) · 상법 제410조(감사 임기) · 상법 제520조의2(최후 등기 후 5년 해산간주). <b>화면 문구와 버튼 위치는 사이트 개편에 따라 달라질 수 있습니다.</b> 이 대화는 루크님 컴퓨터에 연결돼 있지 않아 제가 직접 열어서 보여드릴 수는 없었습니다.</div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-07 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
