@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>초월스토리 강사 협업 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-06</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>초월스토리 강사 협업</h1>
+<p class="note">10/6 두 건의 녹음에서 정리했습니다 — 16:30 촬영(온라인 셀러 자동화·성장 전략, 42분)과 17:22 메이브님·초월스토리 회의(신규 강사 협업 모델·런칭 계획, 48분). <a href="../invader/">인베이더가 접는다는 이야기</a>를 들은 당일에 그 자리를 대신할 틀이 잡힌 셈입니다.</p>
+
+<h2>합의된 것</h2>
+<div class="card accent">
+  <dl class="kv">
+    <dt>루크가 하는 일</dt><dd>강사 섭외 · 강의 기획 · PPT 제작 지원 · 라이브 코칭 · 프로그램 공유</dd>
+    <dt>초월스토리가 하는 일</dt><dd>운영·모객·채널. 소수 정예로 임팩트 있는 강의를 지향</dd>
+    <dt>루크 수수료</dt><dd><b>PG 수수료를 제외한 전체 매출의 8% 고정</b></dd>
+    <dt>강사 배분</dt><dd>광고비 등 <b>모든 비용을 뺀 순수익을 강사와 5:5</b> (광고비는 총매출의 8%로 추정)</dd>
+    <dt>상품</dt><dd><b>289만 원 단일 프로젝트</b>가 유력 — 과거 사례에서 구성 차이가 전환율에 큰 영향이 없었음</dd>
+    <dt>강사에게 제시한 수익</dt><dd>2,200만 ~ 3,200만 원</dd>
+    <dt>역제안</dt><dd>초월스토리가 영입한 신규 강사의 역량이 부족하면, <b>최소 2개월 준비 기간</b>을 주면 프로그램 개발까지 지원</dd>
+    <dt>강사 종료 기준</dt><dd>성과가 미흡하면 <b>2회 시도 후 협업 종료</b></dd>
+  </dl>
+</div>
+
+<h2>런칭 계획 <small>5주 주기</small></h2>
+<div class="card">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="d">10월 말~11월 초</div><div class="t">촬영 시작</div><div class="d">출연자 1명 포함 촬영 기획안을 초월스토리가 전달</div></li>
+    <li><div class="d">런칭 3주 전부터</div><div class="t">고연령 성과자·성과 수강생 영상 각 4편 업로드</div><div class="d">온드 채널만으로는 모자라서 신뢰도 높은 얼굴을 앞에 세우는 것</div></li>
+    <li><div class="d">11~12월</div><div class="t">메타·구글 유료 광고 병행</div><div class="d">유튜브 라이브 시청자 400~600명 확보가 목표</div></li>
+    <li class="big"><div class="d">12월 초</div><div class="t">라이브 — 정규 4회 + 보너스 1회</div><div class="d">전환율 10%로 30~40명 모집이 초기 목표</div></li>
+  </ol>
+  <div class="note">이와 별개로 <b>10/25 무료 라이브 특강</b>은 루크 자체 건으로 확정됐습니다 (4종 자판기 전체 사용법 + 저가 소싱 노하우, 고정 댓글 단톡방 입장자 전원에게 자동 등록 자판기 7일 무료 이용권).</div>
+</div>
+
+<h2>숫자를 맞춰보면 — 두 군데가 어긋납니다 <small>계약 전에 닫을 것</small></h2>
+<div class="card red">
+  <h3 style="margin-bottom:8px">① 강사 몫이 계산보다 1,400~1,600만 적게 제시돼 있습니다</h3>
+  <div class="wrapx"><table>
+  <tr><th></th><th>30명</th><th>40명</th></tr>
+  <tr><td>매출 (289만 × 인원)</td><td class="num">8,670만</td><td class="num">1억 1,560만</td></tr>
+  <tr><td>− 루크 수수료 8%</td><td class="num">694만</td><td class="num">925만</td></tr>
+  <tr><td>− 광고비 8%(추정)</td><td class="num">694만</td><td class="num">925만</td></tr>
+  <tr><td>= 남는 돈</td><td class="num">7,282만</td><td class="num">9,710만</td></tr>
+  <tr><td><b>5:5 하면 강사 몫</b></td><td class="num"><b>3,641만</b></td><td class="num"><b>4,855만</b></td></tr>
+  <tr><td>회의에서 제시한 값</td><td class="num">2,200만</td><td class="num">3,200만</td></tr>
+  </table></div>
+  <p class="note" style="margin-top:8px">차이만큼 다른 비용(PG·PD 인건비·제작비 등)이 들어간다고 본 것이거나, 보수적으로 제시한 것입니다. 어느 쪽이든 <b>'비용'에 무엇이 들어가는지 목록을 못 박지 않으면 정산할 때 분쟁이 납니다.</b> 5:5는 비율이고, 분모를 정하는 것이 실제 계약입니다.</p>
+
+  <h3 style="margin:16px 0 8px">② 8%가 두 번 나오는데 서로 다른 8%입니다</h3>
+  <p style="margin:0 0 8px">루크 수수료 8%(PG 제외 매출 기준)와 광고비 8%(총매출 기준 추정)가 같은 숫자라 섞이기 쉽습니다. <b>'전체 매출'의 정의</b>(PG 전/후, 환불 전/후, 부가세 포함 여부)와 <b>광고비를 순수익 계산에서 빼는 주체</b>를 글로 적어야 합니다.</p>
+
+  <h3 style="margin:16px 0 8px">③ 전환율 10%는 과거의 3배 이상입니다</h3>
+  <p style="margin:0">과거 신규 강사 런칭 기록은 <b>DB 3,000개 → 라이브 유입 18~20%(540~600명) → 전환 3% 내외</b>였습니다. 같은 유입(400~600명)에서 과거 전환율을 쓰면 <b>16~18명</b>, 목표 전환율 10%를 쓰면 30~40명 — 두 배 이상 차이입니다. 숫자를 어느 쪽으로 잡고 광고비를 태울지가 손익을 가릅니다.</p>
+</div>
+
+<h2>결론이 안 난 다섯 가지</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><span class="tag p0">1</span><div class="t">루크의 참여 범위 — 단순 플레이어인가, 공동 기획인가</div><div class="m">여기에 따라 수익 배분이 달라집니다. 10/22·10/29에 옵션 정리와 배분 초안을 만들기로 했습니다</div></li>
+    <li><span class="tag p0">2</span><div class="t">상품 최종 확정</div><div class="m">289만 단일로 갈지, 1:1 컨설팅반을 넣을지, 목표 객단가는 얼마인지</div></li>
+    <li><span class="tag p0">3</span><div class="t">파일럿 강사가 아직 없다</div><div class="m">'가장 빠른 스타트'가 목표인데 사람이 정해지지 않았습니다. 고연령 성과자 섭외도 불확실하고 실패 시 대안이 없습니다 — 12월 초 라이브를 지키려면 이게 가장 먼저입니다</div></li>
+    <li><span class="tag p1">4</span><div class="t">운영 부담</div><div class="m">강사가 늘면 단톡방·커뮤니케이션이 같이 늘어납니다. PD 위임 기준과 강사에게 기획 의도를 전달하는 방식을 정해야 합니다</div></li>
+    <li><span class="tag p1">5</span><div class="t">퍼널이 안 먹힐 때의 대비가 없다</div><div class="m">전환율이 떨어졌을 때 쓸 대체 퍼널·A/B 로드맵이 비어 있습니다</div></li>
+  </ul>
+</div>
+
+<h2>날짜가 잡힌 것</h2>
+<div class="card wrapx">
+<table>
+<tr><th>날짜</th><th>할 일</th><th>누가</th></tr>
+<tr><td>10/17</td><td>채널별 리드 소스 태깅 · UTM 표준화</td><td>초월스토리</td></tr>
+<tr><td>10/19·10/25</td><td>PD 역할·권한 정의와 위임 기준</td><td>초월스토리</td></tr>
+<tr><td>10/20</td><td>5주 런칭 캘린더 + 정규 4회·보너스 1회 편성표</td><td>초월스토리</td></tr>
+<tr><td>10/20</td><td>라이브 단계별(등록→참여→체류→구매) 지표 정의·리포트 템플릿</td><td>초월스토리</td></tr>
+<tr><td>10/21·10/23</td><td>단톡방 운영 프로토콜 · 파일럿 2회 성과 기준과 종료 조건 문서화</td><td>초월스토리</td></tr>
+<tr><td>10/22·10/29</td><td><b>협업 모델 옵션(플레이어 vs 공동 빌드업) + 수익 배분 초안</b></td><td>루크·초월스토리</td></tr>
+<tr><td>10/24</td><td>메타·구글애즈 캠페인 설계 + 라이브 모객 400~600명 KPI</td><td>초월스토리</td></tr>
+<tr><td>10월 말~11월 초</td><td>출연자 1명 포함 촬영 기획안 전달</td><td>초월스토리</td></tr>
+<tr><td>11월 초</td><td>첫 촬영 <span class="tag">담당 미지정</span></td><td>—</td></tr>
+<tr><td>11/8</td><td>라이브 시청자 코호트(400/600/1000명)별 전환율 비교</td><td>초월스토리</td></tr>
+<tr><td>12월 초</td><td>라이브 방송 <span class="tag">잠정</span></td><td>—</td></tr>
+<tr><td>상시</td><td>적합한 강사 소개 · 강의 기획 · PPT · 라이브 코칭 지원</td><td>루크</td></tr>
+<tr><td>상시</td><td>유튜브·라이브 출연 성과자 섭외 (불가 시 초월스토리가 별도 준비)</td><td>루크</td></tr>
+</table>
+</div>
+
+<h2>이게 왜 중요한가</h2>
+<div class="card blue">
+  <ul class="list">
+    <li><div class="t">인베이더가 하던 역할이 초월스토리로 넘어가는 그림</div><div class="m">기수를 돌리고 사람을 모아주던 자리입니다. 다만 조건이 다릅니다 — 인베이더는 수취율 20%였고, 여기서는 루크가 <b>받는</b> 쪽(8%)에 더해 강사 5:5까지 들어갑니다</div></li>
+    <li><div class="t">루크의 자리가 '강사'에서 '강사를 공급하는 사람'으로 바뀐다</div><div class="m">직접 가르치는 대신 강사를 소개하고 기획·PPT·코칭을 붙여 수수료를 받는 구조. 시간을 덜 쓰고 반복 가능하다는 점에서 <a href="../philosophy/">원크루에서 가르치는 구조</a>를 본인에게 적용하는 것이기도 합니다</div></li>
+    <li><div class="t">10/25 무료 라이브가 이 계획의 리허설이 된다</div><div class="m">유튜브 라이브 → 단톡방 → 무료 이용권 동선을 12월 런칭 전에 한 번 돌려보는 자리입니다. 여기서 나온 유입률·단톡방 반응이 400~600명 목표의 근거가 됩니다</div></li>
+    <li><div class="t">그래도 11~12월 건이다</div><div class="m">촬영 11월, 라이브 12월. <b>10~11월 현금은 여전히 원크루 전환과 마지막 기수</b>에서 나옵니다</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거: 10/6 17:22 메이븐·초월스토리 회의 녹음(48분) · 10/6 16:30 초월스토리 촬영 녹음(42분). 표의 계산은 회의에 나온 수치(289만 · 8% · 5:5 · 30~40명)를 그대로 넣어 클로드가 맞춰본 것으로, 비용 항목이 확정되지 않아 실제와 다를 수 있습니다. 계약 조건은 구두 합의 단계이며 문서화 전입니다.</div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-06 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
