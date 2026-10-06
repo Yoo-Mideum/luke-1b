@@ -83,7 +83,7 @@ body.uni-full{overflow:hidden}
 #uniStage.full .sky svg{width:100%;height:100%}
 #uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
 #uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
-#uniStage.full #uniLeg{bottom:50px}
+#uniStage.full #uniLeg{bottom:80px}
 #uniStage.full .uniLeg2{bottom:10px}
 #uniStage.full .legend a{color:#dfe9f0}
 #uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
@@ -1277,11 +1277,29 @@ UNI_POSS = [
  ("trade","bsj","트레이드 채널과 '돈 걸고 목표달성'은 같은 관객(돈·성취)을 본다. 채널이 앱의 첫 사용자 풀이 된다.","트레이드 채널의 내용·플랫폼이 먼저 정해져야 함",3),
 ]
 
+# 플라우드 최근 30일 녹음에서 센 언급 빈도 (recs=언급된 녹음 수, hits=총 언급 횟수)
+BUZZ_WINDOW = "2026-09-06 ~ 2026-10-06"
+BUZZ_SCANNED = 56
+UNI_BUZZ = {
+ "yt":(3,8), "cafe":(1,15), "kakao":(10,19), "vcell":(10,25), "live":(13,27), "mktg":(1,2),
+ "blog":(2,6), "commu":(2,9), "trade":(1,1), "onecrew":(13,13), "ilsip":(1,1), "plat":(2,7),
+ "toolkit":(0,0), "dino":(7,29), "kititi":(10,49), "sudan":(0,0), "own":(0,0), "callai":(3,6),
+ "tpl":(7,23), "resale":(1,2), "store":(2,3), "toolbox":(0,0), "consign":(14,43), "beauty":(1,2),
+ "grant":(3,9), "corp":(0,0), "seoul":(2,6), "margin":(0,0), "cut":(0,0), "typer":(0,0),
+ "soam":(3,5), "videof":(1,2), "voice":(0,0), "bsj":(0,0), "autoreg":(15,46),
+}
+def buzz_score(i):
+    r,h = UNI_BUZZ.get(i,(0,0)); return r + h/4.0
+def buzz_heat(i):
+    sc = buzz_score(i)
+    return 3 if sc>=19 else (2 if sc>=10 else (1 if sc>0 else 0))
+
+
 UNI_ANCHOR = {"ch":(96,180,-130), "kn":(268,250,95), "pr":(266,580,115), "base":(92,540,-75), "tool":(180,660,15)}
 
 def universe_html():
     nodes = [{"id":"luke","n":"루크","full":"루크 (ONE CREW)","st":"on","big":2,"reg":"core","c":"#f0cd84",
-              "ax":180,"ay":380,"az":0,"exp":0,"from":"",
+              "ax":180,"ay":380,"az":0,"exp":0,"from":"","bz":0,"bh":0,"heat":0,
               "d":"다섯 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}]
     for R in UNI_REGIONS:
         A = UNI_ANCHOR[R["id"]]
@@ -1289,11 +1307,14 @@ def universe_html():
             nodes.append({"id":N["id"],"n":N["n"],"full":N["full"],"st":N["st"],"big":N.get("big",0),
                           "reg":R["id"],"c":R["color"],"ax":A[0],"ay":A[1],"az":A[2],"d":N["d"],
                           "exp":N.get("exp",0),"from":N.get("from",""),
+                          "bz":UNI_BUZZ.get(N["id"],(0,0))[0],"bh":UNI_BUZZ.get(N["id"],(0,0))[1],
+                          "heat":buzz_heat(N["id"]),
                           "href":N.get("href",""),"hl":N.get("hl","")})
     data = {
       "nodes": nodes,
       "edges": [{"a":a,"b":b,"l":l} for a,b,l in UNI_EDGES],
       "poss": [{"a":a,"b":b,"l":l,"need":nd,"w":w} for a,b,l,nd,w in UNI_POSS],
+      "buzz": {"window":BUZZ_WINDOW,"scanned":BUZZ_SCANNED},
       "regions": [{"id":R["id"],"no":R["no"],"name":R["name"],"sub":R["sub"],"color":R["color"],"desc":R["desc"]} for R in UNI_REGIONS],
     }
     body = """
@@ -1310,6 +1331,7 @@ def universe_html():
   <button type="button" id="uniAdd">＋ 메모·새 별</button>
   <button type="button" id="uniDesk">데스크탑</button>
   <button type="button" id="uniPoss" class="on">가능성 선</button>
+  <button type="button" id="uniBuzz">최근 많이 나온 별</button>
   <button type="button" id="uniExp">확장 구상만</button>
   <button type="button" id="uniReset">재배치</button>
 </div>
@@ -1326,6 +1348,7 @@ def universe_html():
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
   <span><svg width="26" height="8" style="vertical-align:-1px"><line x1="1" y1="4" x2="25" y2="4" stroke="#ffcf8a" stroke-width="2" stroke-dasharray="4 4"/></svg> 노란 점선 = 가능성</span>
+  <span>크고 고리가 번지는 별 = 최근 30일 대화에 많이 나온 것</span>
   <span id="uniTip"></span>
 </div>
 
@@ -1356,6 +1379,10 @@ def universe_html():
   </div>
   <div id="ufList"></div>
 </div></div>
+
+<h2>최근 대화에 많이 나온 것 <small>플라우드 __BZWIN__</small></h2>
+<p class="note">녹음 <b>__BZN__건</b>(2분 이상 업무 녹음, 사적인 것 제외)의 요약 노트에서 각 사업이 몇 번 나왔는지 센 결과입니다. 많이 나온 별일수록 지도에서 <b>크고, 고리가 번지고, 거기서 나가는 줄이 밝고 빠르게</b> 흐릅니다.</p>
+<div id="uniBuzzList">__BUZZ__</div>
 
 <h2>가능성 선 <small>지금 자산으로 이을 수 있는 것</small></h2>
 <p class="note">기록에 있는 사실이 아니라, 지금 가진 것들을 보고 <b>이을 수 있어 보이는 연결</b>을 정리한 것입니다. 지도에서 노란 점선으로 그어 뒀고, 별을 누르면 그 별에서 뻗는 가능성만 모아 보입니다. 아니라고 보시면 지웁니다.</p>
@@ -1437,10 +1464,12 @@ function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
 var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
 var HOME={rotY:0.55, rotX:-0.22};
 
+var HEATR={0:1,1:1.10,2:1.34,3:1.62};
 function sizeNodes(){
   nodes.forEach(function(n){
-    n.r=(n.big===2?15:(n.big===1?7.5:5.8))*CFG.NR;
-    n.fs=(n.big?CFG.FS+1:CFG.FS);
+    var hm=HEATR[n.heat||0];
+    n.r=(n.big===2?15:(n.big===1?7.5:5.8))*CFG.NR*hm;
+    n.fs=(n.big?CFG.FS+1:CFG.FS)*(n.heat>=3?1.22:(n.heat>=2?1.1:1));
     n.hw=Math.min(n.n.length*(n.fs*0.52)+4, CFG.W*0.17);
     if(n.t1){ n.t1.setAttribute('font-size',n.fs); n.t1.textContent=n.n; }
   });
@@ -1522,10 +1551,16 @@ for(var i=0;i<110;i++){
 STARS.forEach(function(s){ gStar.appendChild(s.el); });
 
 edges.forEach(function(e){
-  e.el = el('line',{'stroke':(e.mine?'#ffffff':'#7fa8bd'),'stroke-width':'1','stroke-linecap':'round','opacity':(e.mine?'.6':'.38')});
+  var A=N[e.a], B=N[e.b];
+  e.hot = Math.max((A&&A.heat)||0,(B&&B.heat)||0);
+  var col = e.mine ? '#ffffff' : (e.hot>=3?'#bfe9ff':(e.hot>=2?'#9ec6dd':'#7fa8bd'));
+  var op  = e.mine ? .6 : (e.hot>=3?.78:(e.hot>=2?.56:.32));
+  e.base = {c:col,o:op,w:1+0.35*e.hot};
+  e.el = el('line',{'stroke':col,'stroke-width':e.base.w,'stroke-linecap':'round','opacity':op});
   gEdge.appendChild(e.el);
-  e.p = el('circle',{'r':'1.8','fill':'#dff6ef','opacity':'.8'});
+  e.p = el('circle',{'r':1.8+0.45*e.hot,'fill':(e.hot>=2?'#ffffff':'#dff6ef'),'opacity':(e.hot>=2?'.95':'.8')});
   gPulse.appendChild(e.p);
+  if(e.hot>=3){ e.p2 = el('circle',{'r':1.8+0.45*e.hot,'fill':'#ffffff','opacity':'.75'}); gPulse.appendChild(e.p2); e.t2=rnd(); }
 });
 var POPA={1:.62,2:.42,3:.28};
 poss.forEach(function(e){
@@ -1541,13 +1576,16 @@ nodes.forEach(function(n){
   if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
   if(n.mine){at={'r':n.r,'fill':'#0c1a20','stroke':'#ffffff','stroke-width':'2','stroke-dasharray':'3 3'};}
+  n.ring = el('circle',{'r':n.r,'fill':'none','stroke':n.c,'stroke-width':'1.6','opacity':'0'});
+  n.ph = rnd();
   n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
   n.t1 = el('text',{'text-anchor':'middle','font-size':n.fs,'fill':'#e8eef2','class':'lu-lab'});
   n.t1.textContent=n.n;
+  if(n.heat>=3) n.t1.setAttribute('font-weight','700');
   n.hit = el('circle',{'r':Math.max(n.r+10,14),'fill':'transparent'});
-  g.appendChild(n.glow); g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
+  g.appendChild(n.glow); g.appendChild(n.ring); g.appendChild(n.halo); g.appendChild(n.c1); g.appendChild(n.t1); g.appendChild(n.hit);
   gNode.appendChild(g); n.g=g;
 });
 
@@ -1591,16 +1629,25 @@ function draw(){
     var a=N[e.a], b=N[e.b];
     e.el.setAttribute('x1',a.px); e.el.setAttribute('y1',a.py);
     e.el.setAttribute('x2',b.px); e.el.setAttribute('y2',b.py);
-    e.t += 0.003; if(e.t>1) e.t-=1;
+    var sp = 0.003*(1+0.85*(e.hot||0));
+    e.t += sp; if(e.t>1) e.t-=1;
     e.p.setAttribute('cx', a.px+(b.px-a.px)*e.t); e.p.setAttribute('cy', a.py+(b.py-a.py)*e.t);
+    if(e.p2){ e.t2 += sp; if(e.t2>1) e.t2-=1;
+      e.p2.setAttribute('cx', a.px+(b.px-a.px)*e.t2); e.p2.setAttribute('cy', a.py+(b.py-a.py)*e.t2); }
     if(three){ var dd=(a.pd+b.pd)/2; e.el.setAttribute('stroke-width', (0.5+1.3*(dd-0.82))*(e.hi?1.9:1)); }
     else e.el.setAttribute('stroke-width', e.hi?1.8:1);
   });
   nodes.forEach(function(n){
     var s=three?n.ps:1;
     n.glow.setAttribute('cx',n.px); n.glow.setAttribute('cy',n.py); n.glow.setAttribute('r',n.r*3.2*s);
-    n.glow.setAttribute('opacity', three?(0.12+0.55*Math.max(0,Math.min(1,(n.pd-0.84)*2.6))):0.42);
+    n.glow.setAttribute('opacity', (three?(0.12+0.55*Math.max(0,Math.min(1,(n.pd-0.84)*2.6))):0.42)*(1+0.30*(n.heat||0)));
     n.halo.setAttribute('cx',n.px); n.halo.setAttribute('cy',n.py); n.halo.setAttribute('r',(n.r+7)*s);
+    if(n.heat>=2){
+      var ph=((tms*0.40+n.ph)%1);
+      n.ring.setAttribute('cx',n.px); n.ring.setAttribute('cy',n.py);
+      n.ring.setAttribute('r', n.r*s*(1+1.15*ph));
+      n.ring.setAttribute('opacity', (n.heat>=3?0.55:0.34)*(1-ph));
+    }
     n.c1.setAttribute('cx',n.px); n.c1.setAttribute('cy',n.py); n.c1.setAttribute('r',n.r*s);
     n.hit.setAttribute('cx',n.px); n.hit.setAttribute('cy',n.py); n.hit.setAttribute('r',Math.max(n.r*s+10,14));
     n.t1.setAttribute('x',n.px); n.t1.setAttribute('y',n.py+n.r*s+10*s);
@@ -1628,6 +1675,7 @@ function apply(){
   var keep=null;
   if(sel){ keep={}; keep[sel]=1; N[sel].adj.forEach(function(a){keep[a.id]=1;}); }
   else if(filt==='exp'){ keep={}; nodes.forEach(function(n){ if(n.exp) keep[n.id]=1; }); keep['luke']=1; }
+  else if(filt==='buzz'){ keep={}; nodes.forEach(function(n){ if(n.heat>=2) keep[n.id]=1; }); keep['luke']=1; }
   else if(filt){ keep={}; nodes.forEach(function(n){ if(n.reg===filt) keep[n.id]=1; }); keep['luke']=1; }
   nodes.forEach(function(n){
     var on = !keep || keep[n.id];
@@ -1644,8 +1692,11 @@ function apply(){
     e.hi = !!(sel && on);
     e.el.setAttribute('opacity', on? (sel?'.9':'.38') : '.04');
     e.el.setAttribute('stroke', (sel && on)? N[sel].c : '#7fa8bd');
-    e.p.setAttribute('opacity', on? '.8':'0');
+    e.p.setAttribute('opacity', on? (e.hot>=2?'.95':'.8'):'0');
+    if(e.p2) e.p2.setAttribute('opacity', on? '.75':'0');
+    if(!on && e.hot>=2){ e.el.setAttribute('stroke','#7fa8bd'); }
   });
+  nodes.forEach(function(n){ if(n.heat<2) return; var kp=!keep||keep[n.id]; if(!kp) n.ring.setAttribute('opacity','0'); });
 }
 function lk(n){ return '<a href="#" data-go="'+n.id+'">'+n.n+'</a>'; }
 function home(){
@@ -1660,6 +1711,23 @@ function home(){
   if(mine.length) h+='<li><div class="t" style="color:#fff">＋ 내 메모</div><div class="m">'+mine.map(lk).join(' · ')+'</div></li>';
   var top=nodes.slice().sort(function(a,b){return b.deg-a.deg;}).slice(0,4);
   h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return lk(n)+' '+n.deg;}).join(' · ')+'</div>';
+  var bz=buzzRank().slice(0,5);
+  h+='<div class="note">최근 30일 대화에 가장 많이 나온 별: '+bz.map(function(n){return lk(n)+' '+n.bz+'건';}).join(' · ')+' — <a href="#" data-f="buzz">그것만 보기</a></div>';
+  panel.innerHTML=h;
+}
+function buzzRank(){ return nodes.filter(function(n){return n.bz>0||n.bh>0;})
+  .sort(function(a,b){ return (b.bz+b.bh/4)-(a.bz+a.bh/4); }); }
+function showBuzz(){
+  sel=null; filt='buzz'; apply();
+  var r=buzzRank();
+  var h='<h3>최근 많이 나온 별 <small style="color:var(--muted);font-weight:400">'+D.buzz.window+'</small></h3>'+
+    '<p class="note" style="margin-top:0">플라우드 녹음 '+D.buzz.scanned+'건(2분 이상 업무 녹음, 사적인 것 제외)의 요약 노트에서 각 사업이 몇 번 나왔는지 센 것입니다. 많이 나온 별일수록 크고, 고리가 번지고, 거기서 나가는 줄이 밝고 빠릅니다.</p><ul class="list">';
+  r.slice(0,14).forEach(function(n,i){
+    h+='<li><span class="tag '+(n.heat>=3?'p0':(n.heat>=2?'p1':'p2'))+'">'+(i+1)+'위</span>'+
+       '<div class="t"><a href="#" data-go="'+n.id+'" style="color:'+n.c+'">'+n.full+'</a></div>'+
+       '<div class="m">녹음 '+n.bz+'건 · '+n.bh+'번 언급</div></li>';
+  });
+  h+='</ul><p class="note"><a href="#" data-go="home">← 별자리 전체</a></p>';
   panel.innerHTML=h;
 }
 function showExp(){
@@ -1694,6 +1762,7 @@ function show(id){
   var r=regs[n.reg];
   var h='<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+(r.no?r.no+' ':'')+r.name+'</span>';
   h+='<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
+  if(n.bz||n.bh) h+='<div class="note" style="margin-bottom:8px">최근 30일 대화 언급: 녹음 <b>'+n.bz+'건</b> · <b>'+n.bh+'번</b>'+(n.heat>=3?' — 가장 많이 나온 축':(n.heat>=2?' — 자주 나오는 축':''))+'</div>';
   if(n['from']) h+='<div class="note" style="margin-bottom:8px">어디서 나온 이야기: '+n['from']+'</div>';
   if(n.mem && n.mem.length){
     h+='<h3 style="margin-top:12px">내 메모 '+n.mem.length+'개</h3><ul class="list">';
@@ -1726,11 +1795,14 @@ function route(e){
   if(!a) return; e.preventDefault();
   var g=a.getAttribute('data-go'), f=a.getAttribute('data-f')||a.getAttribute('data-reg');
   if(g==='home') home(); else if(g) show(g);
-  else if(f==='exp') showExp(); else if(f) showReg(f);
+  else if(f==='exp') showExp(); else if(f==='buzz') showBuzz(); else if(f) showReg(f);
   panel.scrollIntoView({block:'nearest'});
 }
 panel.addEventListener('click',route);
 document.getElementById('uniLeg').addEventListener('click',route);
+['uniPossList','uniBuzzList'].forEach(function(id){ var q=document.getElementById(id); if(q) q.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('[data-go]'):null; if(!a) return; e.preventDefault(); show(a.getAttribute('data-go'));
+  var sk=document.querySelector('.sky'); if(sk) sk.scrollIntoView({block:'start',behavior:'smooth'}); }); });
 var pl=document.getElementById('uniPossList');
 if(pl) pl.addEventListener('click',function(e){
   var a=e.target.closest?e.target.closest('[data-go]'):null;
@@ -1766,6 +1838,7 @@ function setView(v){
 bd.addEventListener('click',function(){ setView(VIEW==='d'?'m':'d'); });
 var bp=document.getElementById('uniPoss');
 bp.addEventListener('click',function(){ showP=!showP; bp.className=showP?'on':''; apply(); });
+document.getElementById('uniBuzz').addEventListener('click',function(){showBuzz();panel.scrollIntoView({block:'nearest'});});
 document.getElementById('uniExp').addEventListener('click',function(){showExp();panel.scrollIntoView({block:'nearest'});});
 document.getElementById('uniReset').addEventListener('click',function(){
   seed=20261005; place(); settle(); draw();
@@ -1995,6 +2068,26 @@ home();
             an,ac = NAME[a]; bn,bc = NAME[b]
             cards.append('<li><div class="t"><a href="#" data-go="%s" style="color:%s">%s</a> <span style="color:var(--muted)">↔</span> <a href="#" data-go="%s" style="color:%s">%s</a></div><div class="m">%s</div><div class="m" style="opacity:.75">필요한 것: %s</div></li>' % (a,ac,an,b,bc,bn,l,nd))
         cards.append('</ul></div>')
+    NM = {}
+    for R in UNI_REGIONS:
+        for Nn in R["nodes"]:
+            NM[Nn["id"]] = (Nn["full"], R["color"])
+    rank = sorted([i for i in UNI_BUZZ if UNI_BUZZ[i][0] or UNI_BUZZ[i][1]], key=lambda i:-buzz_score(i))
+    rows = []
+    tier = {3:("가장 많이 나온 축","accent"),2:("자주 나오는 축","gold"),1:("가끔 나오는 축","")}
+    for t in (3,2,1):
+        ids = [i for i in rank if buzz_heat(i)==t and i in NM]
+        if not ids: continue
+        rows.append('<h3 style="margin:16px 0 8px">%s <small style="color:var(--muted);font-weight:400">%d개</small></h3><div class="card %s"><ul class="list">' % (tier[t][0], len(ids), tier[t][1]))
+        for i in ids:
+            r,hh = UNI_BUZZ[i]; nm,cl = NM[i]
+            rows.append('<li><div class="t"><a href="#" data-go="%s" style="color:%s">%s</a></div><div class="m">녹음 %d건 · %d번 언급</div></li>' % (i, cl, nm, r, hh))
+        rows.append('</ul></div>')
+    zero = [NM[i][0] for i in UNI_BUZZ if not (UNI_BUZZ[i][0] or UNI_BUZZ[i][1]) and i in NM]
+    rows.append('<div class="card"><div class="t">최근 30일 녹음에 한 번도 안 나온 것 %d개</div><div class="m">%s</div>'
+                '<div class="note">말이 안 나온다고 중요하지 않은 것은 아닙니다 — 혼자 만들고 있어서 대화에 안 올라오는 것(도구 쪽)과, 정말 멈춰 있는 것을 구분해 보세요.</div></div>' % (len(zero), " · ".join(zero)))
+    rows.append('<div class="src">세는 법: 녹음 요약 노트에서 각 사업의 이름과 별칭이 나온 횟수. 제목에만 나오고 본문에 없으면 그대로 집계했고(원크루 13건이 그런 경우), \'법인\'처럼 다른 뜻으로 쓰인 말은 빼고, \'당근\'은 거래처 상품 판매 맥락과 수강생 재고 재판매 맥락을 나눠서 뒤쪽만 셌습니다. 사적인 녹음 18건과 2분 미만 23건은 제외했습니다. 사람이 말한 횟수이지 매출이나 중요도가 아닙니다.</div>')
+    body = body.replace("__BUZZ__", "".join(rows)).replace("__BZWIN__", BUZZ_WINDOW).replace("__BZN__", str(BUZZ_SCANNED))
     body2 = body.replace("__POSS__", '<div id="uniPossList" class="uniPossGrid">' + "".join(cards) + '</div>')
     return body2.replace("__DATA__", json.dumps(data, ensure_ascii=False))
 
