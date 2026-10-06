@@ -76,6 +76,32 @@ body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);
 body.uni-wide #uniPanel{margin-bottom:0}
 body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 @media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:50px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
 @media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -1272,14 +1298,16 @@ def universe_html():
     }
     body = """
 <h1>사업 유니버스</h1>
-<p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
+<p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>전체 화면</b>으로 열면 지도만 꽉 차게 보고 그 안에서 바로 상세를 읽을 수 있습니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. <b>＋ 메모·새 별</b>로 지도 위에서 바로 새 사업이나 코멘트를 올릴 수 있습니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
 
-<div class="uni-split"><div class="uni-left">
+<div class="uni-split" id="uniStage"><div class="uni-left">
 <div class="sky"><svg viewBox="0 0 360 760" id="uniMap" role="img" aria-label="사업 유니버스 별자리" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
 <div class="uniBar">
   <button type="button" id="uni2d" class="on">평면</button>
   <button type="button" id="uni3d">입체</button>
   <button type="button" id="uniHome">홈</button>
+  <button type="button" id="uniFull">전체 화면</button>
+  <button type="button" id="uniAdd">＋ 메모·새 별</button>
   <button type="button" id="uniDesk">데스크탑</button>
   <button type="button" id="uniPoss" class="on">가능성 선</button>
   <button type="button" id="uniExp">확장 구상만</button>
@@ -1293,7 +1321,7 @@ def universe_html():
   <span><a href="#" data-reg="base"><i style="background:#b79cff"></i>기반·자금</a></span>
   <span><a href="#" data-reg="tool"><i style="background:#ff9f7a"></i>도구·자동화</a></span>
 </div>
-<div class="legend" style="margin-top:-8px">
+<div class="legend uniLeg2" style="margin-top:-8px">
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
@@ -1302,6 +1330,32 @@ def universe_html():
 </div>
 
 </div><div class="uni-right"><div class="card" id="uniPanel"></div></div></div>
+
+<div class="uniForm" id="uniForm"><div class="box">
+  <h3 id="ufTitle">내 메모 · 새 별 추가</h3>
+  <p class="note" style="margin-top:4px">이 기기에 바로 저장돼 지도에 흰 별로 올라갑니다. <b>깃허브에 올리기</b>를 누르면 이슈로 접수되고, 다음 날 아침 자동 갱신 때 정식으로 지도에 반영됩니다.</p>
+  <label for="ufKind">무엇을 추가할까요</label>
+  <select id="ufKind"><option value="node">새 별 — 새 사업·채널·상품·도구</option><option value="comment">코멘트 — 기존 별에 메모</option></select>
+  <div id="ufNodeBox">
+    <label for="ufName">이름</label><input id="ufName" type="text" placeholder="예: 셀러 전용 중고 장비 마켓" maxlength="30">
+  </div>
+  <label for="ufTarget">어느 별에 이을까요 <span style="opacity:.7">(코멘트는 대상 별)</span></label>
+  <select id="ufTarget"></select>
+  <div id="ufLinkBox">
+    <label for="ufLink">그 별과 어떤 관계인지 <span style="opacity:.7">(선택)</span></label>
+    <input id="ufLink" type="text" placeholder="예: 창고 재고를 이쪽으로 돌린다" maxlength="60">
+  </div>
+  <label for="ufText">내용</label><textarea id="ufText" placeholder="무엇인지, 왜 하려는지, 지금 걸리는 것"></textarea>
+  <div class="row">
+    <button type="button" id="ufSave" class="on">지도에 올리기</button>
+    <button type="button" id="ufGh">깃허브에 올리기</button>
+  </div>
+  <div class="row">
+    <button type="button" id="ufCopy">클로드에 붙여넣을 글 복사</button>
+    <button type="button" id="ufClose">닫기</button>
+  </div>
+  <div id="ufList"></div>
+</div></div>
 
 <h2>가능성 선 <small>지금 자산으로 이을 수 있는 것</small></h2>
 <p class="note">기록에 있는 사실이 아니라, 지금 가진 것들을 보고 <b>이을 수 있어 보이는 연결</b>을 정리한 것입니다. 지도에서 노란 점선으로 그어 뒀고, 별을 누르면 그 별에서 뻗는 가능성만 모아 보입니다. 아니라고 보시면 지웁니다.</p>
@@ -1315,6 +1369,16 @@ __POSS__
     <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
     <li><div class="t">⑤ 도구·자동화는 혼자 돈이 되지 않습니다</div><div class="m">만들어서 루크 툴박스 구독으로 묶이거나, 수강생에게 기본판을 풀어 강의 후킹이 될 때 돈이 됩니다. 줄이 툴박스로 모이는 이유</div></li>
     <li><div class="t">'확인 필요'가 붙은 줄</div><div class="m">아직 기록으로 확인되지 않은 연결입니다. 맞는지 알려주시면 확정하거나 지웁니다</div></li>
+  </ul>
+</div>
+
+<h2>지도 위에서 바로 올리기</h2>
+<div class="card accent">
+  <ul class="list">
+    <li><div class="t">＋ 메모·새 별</div><div class="m">지도 위 버튼(전체 화면 안에서도 됩니다). 새 사업·채널·상품을 올리거나, 고른 별에 코멘트를 답니다</div></li>
+    <li><div class="t">지도에 올리기 — 바로 보입니다</div><div class="m">흰 점선 별로 지도에 즉시 올라갑니다. 다만 이 기기(브라우저)에만 저장돼 다른 기기에서는 안 보입니다</div></li>
+    <li><div class="t">깃허브에 올리기 — 정식으로 들어갑니다</div><div class="m">깃허브 이슈로 접수됩니다. 매일 아침 6시 40분 자동 갱신이 이슈를 읽어 지도에 정식으로 넣고, 반영했다고 댓글을 달고 이슈를 닫습니다. 그때부터 모든 기기에서 보입니다</div></li>
+    <li><div class="t">클로드에 붙여넣을 글 복사</div><div class="m">아침까지 기다리기 싫을 때. 복사해서 클로드 대화에 붙여넣으면 바로 올려 드립니다</div></li>
   </ul>
 </div>
 
@@ -1336,9 +1400,9 @@ __POSS__
 var D = __DATA__;
 var VIEWS={
  m:{W:360,H:760,CX:180,CY:380,F:760,L:74,K:2200,PL:120,Z3:0.82,G:0.006,FC:3,FS:9,NR:1,SEP:20,J:110,
-    A:{core:[180,380,0],ch:[96,180,-130],kn:[268,250,95],pr:[266,580,115],base:[92,540,-75],tool:[180,660,15]}},
+    A:{core:[180,380,0],ch:[96,180,-130],kn:[268,250,95],pr:[266,580,115],base:[92,540,-75],tool:[180,660,15],my:[180,250,40]}},
  d:{W:1180,H:710,CX:590,CY:350,F:1500,L:150,K:11500,PL:230,Z3:0.92,G:0.013,FC:6.5,FS:13.5,NR:1.5,SEP:40,J:190,
-    A:{core:[590,350,0],ch:[215,170,-130],kn:[960,180,95],pr:[965,505,115],base:[205,515,-75],tool:[590,560,15]}}
+    A:{core:[590,350,0],ch:[215,170,-130],kn:[960,180,95],pr:[965,505,115],base:[205,515,-75],tool:[590,560,15],my:[590,200,40]}}
 };
 var VIEW='m', CFG=VIEWS.m;
 var W=CFG.W, H=CFG.H, CX=CFG.CX, CY=CFG.CY, F=CFG.F;
@@ -1347,6 +1411,27 @@ var NS='http://www.w3.org/2000/svg';
 var N={}, nodes=D.nodes, edges=D.edges, regs={};
 D.regions.forEach(function(r){regs[r.id]=r;});
 regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'다섯 구역이 전부 여기를 지나갑니다.'};
+regs.my={id:'my',no:'＋',name:'내 메모',sub:'이 기기에 저장됨',color:'#ffffff',desc:'이 화면에서 직접 올린 것입니다. 지금은 이 기기에만 저장돼 있고, 깃허브에 올리면 다음 갱신 때 정식으로 들어갑니다.'};
+var NOTEK='luke1b-uninotes';
+function loadNotes(){ try{ return JSON.parse(localStorage.getItem(NOTEK)||'[]'); }catch(e){ return []; } }
+function saveNotes(a){ try{ localStorage.setItem(NOTEK, JSON.stringify(a)); }catch(e){} }
+var notes=loadNotes();
+var byId={}; nodes.forEach(function(n){ byId[n.id]=n; });
+notes.forEach(function(nt){
+  if(nt.kind==='node'){
+    if(byId[nt.id]) return;
+    var nn={id:nt.id,n:nt.name,full:nt.name,st:'idea',big:0,reg:'my',c:'#ffffff',
+            ax:0,ay:0,az:0,exp:0,from:'내가 '+(nt.ts||'').slice(0,10)+'에 올림',mine:1,
+            d:nt.text||'(설명 없음)'};
+    nodes.push(nn); byId[nn.id]=nn;
+    if(nt.target && byId[nt.target]) edges.push({a:nt.id,b:nt.target,l:nt.link||'내가 이어둔 선',mine:1});
+  }
+});
+notes.forEach(function(nt){
+  if(nt.kind==='comment' && byId[nt.target]){
+    var t=byId[nt.target]; if(!t.mem) t.mem=[]; t.mem.push(nt);
+  }
+});
 var seed=20261005;
 function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
 var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
@@ -1409,7 +1494,8 @@ function tick(k){
     n.vx*=0.80; n.vy*=0.80; n.vz*=0.80;
     n.x+=n.vx*k; n.y+=n.vy*k; n.z+=n.vz*k;
     var mx=Math.max(n.r+10, n.hw+6);
-    if(n.x<mx) n.x=mx; if(n.x>W-mx) n.x=W-mx;
+    var xmax=(CFG.XMAX||W);
+    if(n.x<mx) n.x=mx; if(n.x>xmax-mx) n.x=xmax-mx;
     var yt=Math.max(60,H*0.155), yb=H-Math.max(46,H*0.125);
     if(n.y<yt) n.y=yt; if(n.y>yb) n.y=yb;
     if(n.z<-150) n.z=-150; if(n.z>150) n.z=150;
@@ -1436,7 +1522,7 @@ for(var i=0;i<110;i++){
 STARS.forEach(function(s){ gStar.appendChild(s.el); });
 
 edges.forEach(function(e){
-  e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.38'});
+  e.el = el('line',{'stroke':(e.mine?'#ffffff':'#7fa8bd'),'stroke-width':'1','stroke-linecap':'round','opacity':(e.mine?'.6':'.38')});
   gEdge.appendChild(e.el);
   e.p = el('circle',{'r':'1.8','fill':'#dff6ef','opacity':'.8'});
   gPulse.appendChild(e.p);
@@ -1454,6 +1540,7 @@ nodes.forEach(function(n){
   if(n.st==='build'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'2'};}
   if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
+  if(n.mine){at={'r':n.r,'fill':'#0c1a20','stroke':'#ffffff','stroke-width':'2','stroke-dasharray':'3 3'};}
   n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
@@ -1569,6 +1656,8 @@ function home(){
     var ns=nodes.filter(function(n){return n.reg===r.id;});
     h+='<li><div class="t"><a href="#" data-f="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+ns.map(lk).join(' · ')+'</div></li>';
   });
+  var mine=nodes.filter(function(n){return n.mine;});
+  if(mine.length) h+='<li><div class="t" style="color:#fff">＋ 내 메모</div><div class="m">'+mine.map(lk).join(' · ')+'</div></li>';
   var top=nodes.slice().sort(function(a,b){return b.deg-a.deg;}).slice(0,4);
   h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return lk(n)+' '+n.deg;}).join(' · ')+'</div>';
   panel.innerHTML=h;
@@ -1606,6 +1695,12 @@ function show(id){
   var h='<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+(r.no?r.no+' ':'')+r.name+'</span>';
   h+='<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
   if(n['from']) h+='<div class="note" style="margin-bottom:8px">어디서 나온 이야기: '+n['from']+'</div>';
+  if(n.mem && n.mem.length){
+    h+='<h3 style="margin-top:12px">내 메모 '+n.mem.length+'개</h3><ul class="list">';
+    n.mem.forEach(function(m){ h+='<li><div class="m" style="opacity:.75">'+(m.ts||'').slice(0,10)+'</div><div class="t" style="font-weight:400">'+m.text+'</div></li>'; });
+    h+='</ul>';
+  }
+  h+='<p class="note" style="margin-bottom:8px"><a href="#" data-add="'+n.id+'">＋ 이 별에 메모 달기</a></p>';
   if(n.href) h+='<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
   h+='<h3 style="margin-top:12px">이어진 것 '+n.adj.length+'개</h3><ul class="list">';
   n.adj.forEach(function(a){
@@ -1625,6 +1720,8 @@ function show(id){
   panel.innerHTML=h;
 }
 function route(e){
+  var ad=e.target.closest?e.target.closest('[data-add]'):null;
+  if(ad){ e.preventDefault(); openForm('comment', ad.getAttribute('data-add')); return; }
   var a=e.target.closest?e.target.closest('[data-go],[data-f],[data-reg]'):null;
   if(!a) return; e.preventDefault();
   var g=a.getAttribute('data-go'), f=a.getAttribute('data-f')||a.getAttribute('data-reg');
@@ -1661,11 +1758,10 @@ function setView(v){
   nodes.forEach(function(n){ var a=CFG.A[n.reg]||CFG.A.core; n.ax=a[0]; n.ay=a[1]; n.az=a[2]; });
   sizeNodes();
   document.body.classList.toggle('uni-wide', v==='d');
-  bd.className=(v==='d')?'on':'';
-  bd.textContent=(v==='d')?'모바일':'데스크탑';
+  if(v!=='f'){ bd.className=(v==='d')?'on':''; bd.textContent=(v==='d')?'모바일':'데스크탑'; }
   if(MODE==='3d') zoom=CFG.Z3;
   seed=20261005; place(); settle(); draw();
-  try{ localStorage.setItem('luke1b-uniview', v); }catch(e){}
+  if(v!=='f'){ try{ localStorage.setItem('luke1b-uniview', v); }catch(e){} }
 }
 bd.addEventListener('click',function(){ setView(VIEW==='d'?'m':'d'); });
 var bp=document.getElementById('uniPoss');
@@ -1722,12 +1818,163 @@ svg.addEventListener('wheel',function(ev){
   if(MODE!=='3d') return; ev.preventDefault();
   zoom = Math.max(0.5, Math.min(2.2, zoom*(ev.deltaY>0?0.94:1.06))); draw();
 },{passive:false});
+
+// ---------------- 전체 화면 ----------------
+var stage=document.getElementById('uniStage'), bf=document.getElementById('uniFull'), prevView='m';
+function fullCfg(w,h){
+  var n=nodes.length, xm=(w>900? w-398 : w);
+  var L=Math.max(86, Math.sqrt(xm*h/n)*0.90);
+  return {W:w,H:h,XMAX:xm,CX:xm/2,CY:h/2,F:Math.max(w,h)*1.25,L:L,K:L*L*0.5,PL:L*1.55,Z3:0.9,
+    G:0.013,FC:6.5,FS:Math.max(10,Math.min(16,L*0.095)),NR:Math.max(1,Math.min(1.9,L/100)),
+    SEP:L*0.27,J:L*1.25,
+    A:{core:[xm*0.50,h*0.50,0],ch:[xm*0.19,h*0.24,-130],kn:[xm*0.81,h*0.25,95],
+       pr:[xm*0.82,h*0.74,115],base:[xm*0.18,h*0.75,-75],tool:[xm*0.50,h*0.86,15],
+       my:[xm*0.50,h*0.30,40]}};
+}
+function sizeFull(){
+  var r=stage.getBoundingClientRect();
+  VIEWS.f=fullCfg(Math.max(320,Math.round(r.width)), Math.max(360,Math.round(r.height)));
+  setView('f');
+}
+function enterFull(){
+  if(VIEW!=='f') prevView=VIEW;
+  stage.classList.add('full'); document.body.classList.add('uni-full');
+  bf.className='on'; bf.textContent='화면 닫기';
+  try{ if(stage.requestFullscreen) stage.requestFullscreen(); }catch(e){}
+  try{ localStorage.setItem('luke1b-unifull','1'); }catch(e){}
+  setTimeout(sizeFull, 60);
+}
+function exitFull(){
+  stage.classList.remove('full'); document.body.classList.remove('uni-full');
+  bf.className=''; bf.textContent='전체 화면';
+  try{ if(document.fullscreenElement && document.exitFullscreen) document.exitFullscreen(); }catch(e){}
+  try{ localStorage.removeItem('luke1b-unifull'); }catch(e){}
+  setView(prevView==='f'?'m':prevView);
+}
+bf.addEventListener('click',function(){ if(stage.classList.contains('full')) exitFull(); else enterFull(); });
+document.addEventListener('fullscreenchange',function(){
+  if(!document.fullscreenElement && stage.classList.contains('full')) exitFull();
+});
+document.addEventListener('keydown',function(ev){
+  if(ev.key==='Escape'){ if(form.classList.contains('on')) closeForm(); else if(stage.classList.contains('full')) exitFull(); }
+});
+var rsT=null;
+window.addEventListener('resize',function(){
+  if(!stage.classList.contains('full')) return;
+  clearTimeout(rsT); rsT=setTimeout(sizeFull,180);
+});
+
+// ---------------- 메모 · 새 별 ----------------
+var form=document.getElementById('uniForm'), ufKind=document.getElementById('ufKind'),
+    ufName=document.getElementById('ufName'), ufTarget=document.getElementById('ufTarget'),
+    ufLink=document.getElementById('ufLink'), ufText=document.getElementById('ufText'),
+    ufNodeBox=document.getElementById('ufNodeBox'), ufLinkBox=document.getElementById('ufLinkBox'),
+    ufList=document.getElementById('ufList');
+function fillTargets(){
+  var h='<option value="">(선택 안 함)</option>';
+  D.regions.forEach(function(r){
+    h+='<optgroup label="'+r.no+' '+r.name+'">';
+    nodes.filter(function(n){return n.reg===r.id;}).forEach(function(n){ h+='<option value="'+n.id+'">'+n.full+'</option>'; });
+    h+='</optgroup>';
+  });
+  h+='<optgroup label="루크"><option value="luke">루크 (ONE CREW)</option></optgroup>';
+  var mine=nodes.filter(function(n){return n.mine;});
+  if(mine.length){ h+='<optgroup label="＋ 내 메모">'; mine.forEach(function(n){ h+='<option value="'+n.id+'">'+n.full+'</option>'; }); h+='</optgroup>'; }
+  ufTarget.innerHTML=h;
+}
+function syncKind(){
+  var k=ufKind.value;
+  ufNodeBox.style.display = (k==='node')?'':'none';
+  ufLinkBox.style.display = (k==='node')?'':'none';
+  document.getElementById('ufTitle').textContent = (k==='node')?'새 별 추가':'코멘트 달기';
+}
+ufKind.addEventListener('change',syncKind);
+function renderNoteList(){
+  if(!notes.length){ ufList.innerHTML='<p class="note" style="margin-top:14px">아직 올린 것이 없습니다.</p>'; return; }
+  var h='<h3 style="margin-top:18px">올려둔 것 '+notes.length+'개</h3><ul class="list">';
+  notes.slice().reverse().forEach(function(nt){
+    var who = nt.kind==='node' ? ('새 별 · '+nt.name) : ('코멘트 · '+(nt.targetName||''));
+    h+='<li><div class="t" style="font-size:14px">'+who+'</div><div class="m">'+(nt.text||'')+'</div>'+
+       '<div class="m"><a href="'+ghUrl(nt)+'" target="_blank" rel="noopener">깃허브에 올리기</a> · <a href="#" data-del="'+nt.key+'">지우기</a></div></li>';
+  });
+  ufList.innerHTML=h+'</ul>';
+}
+ufList.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('[data-del]'):null;
+  if(!a) return; e.preventDefault();
+  var k=a.getAttribute('data-del');
+  notes=notes.filter(function(x){return x.key!==k;}); saveNotes(notes);
+  location.reload();
+});
+function openForm(kind,target){
+  fillTargets(); ufKind.value=kind||'node'; syncKind();
+  ufName.value=''; ufLink.value=''; ufText.value='';
+  ufTarget.value = target || (sel||'');
+  renderNoteList();
+  form.classList.add('on'); setTimeout(function(){ (kind==='comment'?ufText:ufName).focus(); },30);
+}
+function closeForm(){ form.classList.remove('on'); }
+document.getElementById('uniAdd').addEventListener('click',function(){ openForm('node', sel||''); });
+document.getElementById('ufClose').addEventListener('click',closeForm);
+form.addEventListener('click',function(e){ if(e.target===form) closeForm(); });
+function nameOf(id){ var n=N[id]||byId[id]; return n?n.full:''; }
+function collect(){
+  var k=ufKind.value, t=ufTarget.value, txt=(ufText.value||'').trim();
+  var nm=(ufName.value||'').trim();
+  if(k==='node' && !nm){ alert('이름을 적어주세요.'); return null; }
+  if(k==='comment' && !t){ alert('어느 별에 다는 코멘트인지 골라주세요.'); return null; }
+  if(!txt){ alert('내용을 적어주세요.'); return null; }
+  var ts=new Date().toISOString();
+  return {key:'k'+Date.now(), kind:k, id:'my-'+Date.now(), name:nm, target:t,
+          targetName:nameOf(t), link:(ufLink.value||'').trim(), text:txt, ts:ts};
+}
+function ghUrl(nt){
+  var title, body;
+  if(nt.kind==='node'){
+    title='[유니버스] 새 별: '+nt.name;
+    body='종류: 새 별 (사업·채널·상품·도구)\\n이름: '+nt.name+'\\n설명: '+nt.text+
+         '\\n이을 곳: '+(nt.targetName||'(없음)')+'\\n관계: '+(nt.link||'(없음)')+'\\n적은 때: '+nt.ts+
+         '\\n\\n사업 유니버스 페이지에서 보냄 — 다음 갱신 때 지도에 반영해 주세요.';
+  }else{
+    title='[유니버스] 코멘트: '+(nt.targetName||'');
+    body='종류: 코멘트\\n대상 별: '+(nt.targetName||'')+'\\n내용: '+nt.text+'\\n적은 때: '+nt.ts+
+         '\\n\\n사업 유니버스 페이지에서 보냄 — 다음 갱신 때 지도에 반영해 주세요.';
+  }
+  return 'https://github.com/Yoo-Mideum/luke-1b/issues/new?labels=universe&title='+
+         encodeURIComponent(title)+'&body='+encodeURIComponent(body);
+}
+function asText(nt){
+  if(nt.kind==='node') return '유니버스에 새 별 추가\\n이름: '+nt.name+'\\n설명: '+nt.text+'\\n이을 곳: '+(nt.targetName||'(없음)')+'\\n관계: '+(nt.link||'(없음)');
+  return '유니버스 코멘트\\n대상 별: '+(nt.targetName||'')+'\\n내용: '+nt.text;
+}
+document.getElementById('ufSave').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  notes.push(nt); saveNotes(notes);
+  try{ if(stage.classList.contains('full')) localStorage.setItem('luke1b-unifull','1'); }catch(e){}
+  location.reload();
+});
+document.getElementById('ufGh').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  notes.push(nt); saveNotes(notes);
+  window.open(ghUrl(nt),'_blank','noopener');
+  renderNoteList();
+});
+document.getElementById('ufCopy').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  var t=asText(nt);
+  try{ navigator.clipboard.writeText(t); alert('복사했습니다. 클로드 대화에 붙여넣으면 지도에 넣어 드립니다.'); }
+  catch(e){ prompt('복사해서 클로드에 붙여넣으세요', t); }
+});
+
 home();
 (function(){
   var v=null;
   try{ v=localStorage.getItem('luke1b-uniview'); }catch(e){}
   if(!v) v = (window.innerWidth>=1040) ? 'd' : 'm';
   if(v==='d') setView('d'); else { bd.textContent='데스크탑'; }
+  var wasFull=null; try{ wasFull=localStorage.getItem('luke1b-unifull'); }catch(e){}
+  if(wasFull==='1'){ prevView=(v==='d'?'d':'m'); stage.classList.add('full'); document.body.classList.add('uni-full');
+    bf.className='on'; bf.textContent='화면 닫기'; setTimeout(sizeFull,60); }
 })();
 })();
 </script>

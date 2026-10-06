@@ -77,6 +77,32 @@ body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);
 body.uni-wide #uniPanel{margin-bottom:0}
 body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
 @media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:50px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
 @media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
 .card.red{border-color:var(--red);background:var(--red-soft)}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
@@ -148,14 +174,16 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <script>window.LUKE_ROOT="../";</script>
 
 <h1>사업 유니버스</h1>
-<p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
+<p class="note">사업·채널·상품·도구를 별로 두고, <b>실제로 이어져 있는 관계만 줄로 묶은 별자리</b>입니다. <b>전체 화면</b>으로 열면 지도만 꽉 차게 보고 그 안에서 바로 상세를 읽을 수 있습니다. <b>입체</b>로 바꾸면 손가락으로 돌려가며 볼 수 있고, <b>홈</b>을 누르면 처음 화면으로 돌아옵니다. <b>＋ 메모·새 별</b>로 지도 위에서 바로 새 사업이나 코멘트를 올릴 수 있습니다. 별을 누르면 그 별과 이어진 것만 남습니다. 사람들과의 대화에서 나온 확장 구상도 함께 올렸고, 어디서 나온 이야기인지 각 별에 적어 뒀습니다.</p>
 
-<div class="uni-split"><div class="uni-left">
+<div class="uni-split" id="uniStage"><div class="uni-left">
 <div class="sky"><svg viewBox="0 0 360 760" id="uniMap" role="img" aria-label="사업 유니버스 별자리" style="font-family:'Noto Sans KR',sans-serif;touch-action:none"></svg></div>
 <div class="uniBar">
   <button type="button" id="uni2d" class="on">평면</button>
   <button type="button" id="uni3d">입체</button>
   <button type="button" id="uniHome">홈</button>
+  <button type="button" id="uniFull">전체 화면</button>
+  <button type="button" id="uniAdd">＋ 메모·새 별</button>
   <button type="button" id="uniDesk">데스크탑</button>
   <button type="button" id="uniPoss" class="on">가능성 선</button>
   <button type="button" id="uniExp">확장 구상만</button>
@@ -169,7 +197,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <span><a href="#" data-reg="base"><i style="background:#b79cff"></i>기반·자금</a></span>
   <span><a href="#" data-reg="tool"><i style="background:#ff9f7a"></i>도구·자동화</a></span>
 </div>
-<div class="legend" style="margin-top:-8px">
+<div class="legend uniLeg2" style="margin-top:-8px">
   <span><i style="background:var(--muted)"></i>채움 = 돌아감</span>
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
@@ -178,6 +206,32 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 </div>
 
 </div><div class="uni-right"><div class="card" id="uniPanel"></div></div></div>
+
+<div class="uniForm" id="uniForm"><div class="box">
+  <h3 id="ufTitle">내 메모 · 새 별 추가</h3>
+  <p class="note" style="margin-top:4px">이 기기에 바로 저장돼 지도에 흰 별로 올라갑니다. <b>깃허브에 올리기</b>를 누르면 이슈로 접수되고, 다음 날 아침 자동 갱신 때 정식으로 지도에 반영됩니다.</p>
+  <label for="ufKind">무엇을 추가할까요</label>
+  <select id="ufKind"><option value="node">새 별 — 새 사업·채널·상품·도구</option><option value="comment">코멘트 — 기존 별에 메모</option></select>
+  <div id="ufNodeBox">
+    <label for="ufName">이름</label><input id="ufName" type="text" placeholder="예: 셀러 전용 중고 장비 마켓" maxlength="30">
+  </div>
+  <label for="ufTarget">어느 별에 이을까요 <span style="opacity:.7">(코멘트는 대상 별)</span></label>
+  <select id="ufTarget"></select>
+  <div id="ufLinkBox">
+    <label for="ufLink">그 별과 어떤 관계인지 <span style="opacity:.7">(선택)</span></label>
+    <input id="ufLink" type="text" placeholder="예: 창고 재고를 이쪽으로 돌린다" maxlength="60">
+  </div>
+  <label for="ufText">내용</label><textarea id="ufText" placeholder="무엇인지, 왜 하려는지, 지금 걸리는 것"></textarea>
+  <div class="row">
+    <button type="button" id="ufSave" class="on">지도에 올리기</button>
+    <button type="button" id="ufGh">깃허브에 올리기</button>
+  </div>
+  <div class="row">
+    <button type="button" id="ufCopy">클로드에 붙여넣을 글 복사</button>
+    <button type="button" id="ufClose">닫기</button>
+  </div>
+  <div id="ufList"></div>
+</div></div>
 
 <h2>가능성 선 <small>지금 자산으로 이을 수 있는 것</small></h2>
 <p class="note">기록에 있는 사실이 아니라, 지금 가진 것들을 보고 <b>이을 수 있어 보이는 연결</b>을 정리한 것입니다. 지도에서 노란 점선으로 그어 뒀고, 별을 누르면 그 별에서 뻗는 가능성만 모아 보입니다. 아니라고 보시면 지웁니다.</p>
@@ -191,6 +245,16 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <li><div class="t">가운데 루크에 줄이 몰리는 것이 지금의 병목</div><div class="m">루크에 직접 붙은 줄을 사람에게 넘기는 것이 구역을 늘리는 것보다 먼저입니다</div></li>
     <li><div class="t">⑤ 도구·자동화는 혼자 돈이 되지 않습니다</div><div class="m">만들어서 루크 툴박스 구독으로 묶이거나, 수강생에게 기본판을 풀어 강의 후킹이 될 때 돈이 됩니다. 줄이 툴박스로 모이는 이유</div></li>
     <li><div class="t">'확인 필요'가 붙은 줄</div><div class="m">아직 기록으로 확인되지 않은 연결입니다. 맞는지 알려주시면 확정하거나 지웁니다</div></li>
+  </ul>
+</div>
+
+<h2>지도 위에서 바로 올리기</h2>
+<div class="card accent">
+  <ul class="list">
+    <li><div class="t">＋ 메모·새 별</div><div class="m">지도 위 버튼(전체 화면 안에서도 됩니다). 새 사업·채널·상품을 올리거나, 고른 별에 코멘트를 답니다</div></li>
+    <li><div class="t">지도에 올리기 — 바로 보입니다</div><div class="m">흰 점선 별로 지도에 즉시 올라갑니다. 다만 이 기기(브라우저)에만 저장돼 다른 기기에서는 안 보입니다</div></li>
+    <li><div class="t">깃허브에 올리기 — 정식으로 들어갑니다</div><div class="m">깃허브 이슈로 접수됩니다. 매일 아침 6시 40분 자동 갱신이 이슈를 읽어 지도에 정식으로 넣고, 반영했다고 댓글을 달고 이슈를 닫습니다. 그때부터 모든 기기에서 보입니다</div></li>
+    <li><div class="t">클로드에 붙여넣을 글 복사</div><div class="m">아침까지 기다리기 싫을 때. 복사해서 클로드 대화에 붙여넣으면 바로 올려 드립니다</div></li>
   </ul>
 </div>
 
@@ -212,9 +276,9 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 var D = {"nodes": [{"id": "luke", "n": "루크", "full": "루크 (ONE CREW)", "st": "on", "big": 2, "reg": "core", "c": "#f0cd84", "ax": 180, "ay": 380, "az": 0, "exp": 0, "from": "", "d": "다섯 구역이 전부 루크 한 사람을 지나갑니다. 그래서 구역을 늘리는 것보다 각 구역에 사람을 앉히는 것이 먼저입니다."}, {"id": "yt", "n": "유튜브 1만", "full": "유튜브 멘토루크", "st": "on", "big": 1, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "구독자 약 1만 명. 주 1개 공개 강의 업로드 유지. 멤버십 4,900원(특강 풀버전·월 상품 브리핑) 개설 예정.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "cafe", "n": "네이버 카페", "full": "네이버 카페", "st": "on", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "선판매·공지 라인. 신규 강의 플랫폼에서는 이 역할을 '락인 축'이 맡는 구조로 설계 중.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "kakao", "n": "카톡 1천", "full": "카카오톡 커뮤니티", "st": "on", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "약 1,000명. 특강 공지와 선판매가 여기서 돕니다.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "vcell", "n": "뷰셀 채널", "full": "뷰셀 채널 (메이브님)", "st": "on", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "화장품 쪽 유입. 2화 촬영 완료, 10/7 공개 예정.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "live", "n": "무료 라이브", "full": "10월 말 무료 라이브", "st": "build", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "록터뷰 2회차 영상 설명란·고정댓글에 신청 링크를 넣어 신규 리스트를 만드는 자리. 10/2 녹음에서 10/25(일) 19:00로 언급 — 확정 여부와 신청 링크는 확인 필요.", "exp": 0, "from": "", "href": "../guides/free-live/", "hl": "설명서"}, {"id": "mktg", "n": "마케팅 대행", "full": "SNS 채널 운영 대행", "st": "build", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "유튜브·인스타그램·틱톡 채널 운영(영상 업로드 포함)을 마케팅 업체에 맡기는 협업. 유튜브는 업체가 운영 전반을 맡는 구조라 '편집자' 권한으로, 틱톡은 기존 개인 계정 대신 브랜드용 신규 계정을 새로 만들어 넘기기로 결정.", "exp": 1, "from": "마케팅 업체와의 협의 (9/14)", "href": "", "hl": ""}, {"id": "blog", "n": "멘토루크 블로그", "full": "멘토루크 블로그", "st": "build", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "플라우드 녹음을 자동 수집해 글감으로 쓰는 루크 전용 블로그. 글 틀과 발화 분석(내 말 비율·상대 발화 수)까지 붙어 있음.", "exp": 1, "from": "클로드 코드 작업 보고 (10/4)", "href": "", "hl": ""}, {"id": "commu", "n": "고객 커뮤니티 사이트", "full": "고객 커뮤니티 사이트", "st": "idea", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "정보 게시 중심의 자체 커뮤니티 사이트. 9/28 회의에서 루크가 개발하려는 세 사이트 중 하나로 언급됨.", "exp": 1, "from": "9/28 회의 (메이브님·디노)", "href": "", "hl": ""}, {"id": "trade", "n": "개인 트레이드 채널", "full": "개인 트레이드 채널", "st": "idea", "big": 0, "reg": "ch", "c": "#4fd1a5", "ax": 96, "ay": 180, "az": -130, "d": "9/29 메이브님 회의에서 루크 개인 과제로 나온 신규 채널. 다루는 내용과 플랫폼은 아직 기록이 없어 확인 필요.", "exp": 1, "from": "9/29 메이브님 회의", "href": "", "hl": ""}, {"id": "onecrew", "n": "원크루", "full": "원크루 (ONE CREW)", "st": "on", "big": 1, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "평생 파트너십 컨설팅. 정가 3,900만 / 루크 수강생 출신 3,300만. 한 사람의 삼각 파이프라인을 같이 설계하고 세우는 것이 목표.", "exp": 0, "from": "", "href": "../philosophy/", "hl": "삼각 파이프라인"}, {"id": "ilsip", "n": "일십백천", "full": "일십백천", "st": "on", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "990만. 삼각형 중 '브랜딩' 한 축에 집중하는 브랜드 인큐베이팅. 약 400개 영상 강의 + 1:1. 수료자가 원크루로 올라오는 사다리.", "exp": 0, "from": "", "href": "../philosophy/", "hl": "삼각 파이프라인"}, {"id": "plat", "n": "강의 플랫폼", "full": "신규 강의 플랫폼", "st": "build", "big": 1, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "메이브님과 3자 구도(모객 / 락인 / 플레이어). 250만×20명 = 5,000만, 광고 약 1,000만 제외 4,000만. 3인이면 25명에 각 1,300만. 10/5 PD 미팅 → 10/8 종혁 본부장 미팅.", "exp": 0, "from": "", "href": "../platform/", "hl": "전략 페이지"}, {"id": "toolkit", "n": "300만 툴킷", "full": "300만 툴킷 프로그램", "st": "idea", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "자동등록+소명서+연출컷 1년 + 8주 코칭 + 파일 구독 = 300만. 1기 8명 목표.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "dino", "n": "디노 12주", "full": "디노(미니쌤) 12주 빌드업", "st": "build", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "AI 셀러 실무 교육 라인. 1달 90 / 2달 200 / 3달 350만 기준, 상품별 배분 비율 확정 필요. 10/5 1주차 시작.", "exp": 0, "from": "", "href": "../guides/dino-12weeks/", "hl": "설명서"}, {"id": "kititi", "n": "키티티 컨설팅", "full": "키티티바이지영 컨설팅", "st": "on", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "윤지영 원장(성신여대 인근 메이크업 샵)의 브랜딩·확장 자문. 상표 출원 진행 중, 2월 샵 오픈 목표, 상담 사이트 운영. 월 고정 자문 + 매출 연동으로 유료 전환이 과제.", "exp": 0, "from": "", "href": "../grants/", "hl": "정부지원사업 정리"}, {"id": "sudan", "n": "셀러들의 수다", "full": "셀러들의 수다 (신규 교육회사)", "st": "idea", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "메이브님(신정현)과 운영하려는 교육회사 — 교육에 3PL을 묶은 형태. 신규 법인 설립 vs 힐링디어스 상호 변경 후 이사 선임 사이에서 고민 중이고, 이사로 들이면 기존 재무가 보일 수 있어 신규 설립 쪽으로 기울어 있음.", "exp": 1, "from": "메이브님과의 법인 논의 (10/2)", "href": "", "hl": ""}, {"id": "own", "n": "자체 강의 2027", "full": "회사 자체 강의 (2027)", "st": "idea", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "내년에 회사 이름으로 직접 강의를 열고, 3PL 재고 판매와 연계하려는 구상.", "exp": 1, "from": "3PL 수익 구상 (9월)", "href": "", "hl": ""}, {"id": "callai", "n": "전화 상담 AI", "full": "전화 상담 AI", "st": "idea", "big": 0, "reg": "kn", "c": "#e3b04b", "ax": 268, "ay": 250, "az": 95, "d": "'이거 괜찮은 겁니까' 유형의 계약 문의 전화가 매우 많고 녹음이 100건 넘게 있음(한 통 10~30분). 이 사례들을 분석해 해당 유형만이라도 AI가 답하게 만들려는 구상.", "exp": 1, "from": "상담 전화 자동화 논의 (9/17)", "href": "", "hl": ""}, {"id": "tpl", "n": "3PL 물류", "full": "3PL 물류 대행", "st": "on", "big": 1, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "수강생 재고 보관·출고 대행. 뿌요가 운영. 입고 미처리 상태에서 운송장이 나가는 오류를 잡는 안정화가 진행 중.", "exp": 0, "from": "", "href": "../guides/logistics-stabilize/", "hl": "설명서"}, {"id": "resale", "n": "재고 판매", "full": "수강생 재고 외부 판매", "st": "build", "big": 0, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "창고에 잠든 수강생 재고를 회사가 당근·번개장터·네이버에서 판매하고 수수료 15~20%. 동의서 → 재고 시트 → 당근 비즈프로필 → 30개 등록 순서.", "exp": 0, "from": "", "href": "../guides/3pl-resale/", "hl": "설명서"}, {"id": "store", "n": "창고형 매장", "full": "오프라인 창고형 매장", "st": "idea", "big": 0, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "창고 재고를 오프라인에서 직접 파는 구조. 고정비가 낮은 오픈데이+온라인 판매 모델을 더 무거운 대안보다 먼저 두기로 한 기록이 있음. 위치·평수·운영 인력·취급 품목은 아직 미정 — 확인 필요.", "exp": 1, "from": "3PL 수익 구상 (10월)", "href": "", "hl": ""}, {"id": "toolbox", "n": "루크 툴박스", "full": "루크 툴박스", "st": "build", "big": 1, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "월 19,900 / 연 199,000, 오프라인샵 팩 +9,900. 아래 도구들을 하나의 구독으로 묶어 파는 자리. 12월 500명 → 3월 1,000명 목표. 개발자 계정 3종 등록이 모든 배포의 앞단.", "exp": 0, "from": "", "href": "../guides/developer-accounts/", "hl": "개발자 계정 설명서"}, {"id": "consign", "n": "위탁판매", "full": "위탁판매 (메이크업헬퍼)", "st": "build", "big": 0, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "원크루 최은봉 대표 건. 위수탁계약서 기준(사입 아님). 국내는 토스·당근 등 브랜드사 미입점 플랫폼·폐쇄몰·공동구매, 해외는 쇼피·큐텐재팬·이베이. 12주 테스트, 광고 상한 약 189만, 11월 말 판정.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "beauty", "n": "미용 가격비교", "full": "미용 가격비교 사이트", "st": "idea", "big": 0, "reg": "pr", "c": "#8fb0ff", "ax": 266, "ay": 580, "az": 115, "d": "미용 가격 정보를 확인하는 사이트. 9/28 회의에서 루크가 개발하려는 세 사이트 중 하나로 언급됨.", "exp": 1, "from": "9/28 회의 (메이브님·디노)", "href": "", "hl": ""}, {"id": "grant", "n": "정부지원사업", "full": "정부지원사업", "st": "build", "big": 0, "reg": "base", "c": "#b79cff", "ax": 92, "ay": 540, "az": -75, "d": "루크 본인은 해당 없고 지영 원장·메이브님·디노·뿌요가 대상. 2026년 해당분 정리와 2027년 도전 리스트(지원금·자격·과제·경쟁률)를 따로 모아 뒀습니다.", "exp": 0, "from": "", "href": "../grants/", "hl": "정부지원사업 페이지"}, {"id": "corp", "n": "힐링디어스(주)", "full": "힐링디어스(주)", "st": "on", "big": 0, "reg": "base", "c": "#b79cff", "ax": 92, "ay": 540, "az": -75, "d": "설립 후 매출 없이 유지된 업력 약 5년 법인. 스칸센 A동 709호는 9/30부로 계약 종료, 새 본점은 비과밀억제권역을 피해 구리 시내 비상주 사무실로 알아보기로 함.", "exp": 0, "from": "", "href": "", "hl": ""}, {"id": "seoul", "n": "서울 이전·건물", "full": "서울 이전 · 건물 매입", "st": "idea", "big": 0, "reg": "base", "c": "#b79cff", "ax": 92, "ay": 540, "az": -75, "d": "내년 초 사무실·강의장을 서울로, 현 사무실은 창고·물류 거점으로. 월 렌트가 300~500만을 넘어가면 자체 건물 매입을 검토.", "exp": 1, "from": "9/29 메이브님 회의", "href": "", "hl": ""}, {"id": "margin", "n": "마진메이커", "full": "마진메이커", "st": "build", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "상품소싱 마진 자동계산 크롬 확장. 구매처 가격을 자동 계산하고, 모르는 사이트는 사용자가 캡처 영역을 지정해 OCR로 읽으며, 사이트별 할인 규칙을 서버에 쌓아 점점 정확해지게 하기로 결정.", "exp": 1, "from": "도구 개발 논의 (10월)", "href": "", "hl": ""}, {"id": "cut", "n": "연출컷메이커", "full": "연출컷메이커", "st": "on", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "AI 상품 연출컷 생성 크롬 확장. Gemini API를 BYOK(키는 사용자 것) 방식으로 써서 수강생에게 배포.", "exp": 1, "from": "도구 개발", "href": "", "hl": ""}, {"id": "typer", "n": "블로그타이퍼", "full": "블로그타이퍼", "st": "build", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "네이버 블로그에 붙여넣기가 아니라 사람이 키보드로 치듯 한 글자씩 입력하는 자동화. Claude Code + Playwright 방식으로 결정.", "exp": 1, "from": "블로그 자동화 논의 (8/30)", "href": "", "hl": ""}, {"id": "soam", "n": "소명서 메이커", "full": "정가품 소명서 메이커", "st": "build", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "네이버 정가품 소명서를 자동 생성하는 프로그램. Vercel claim·Drive OAuth 클라이언트 ID·실제 API 키 테스트 3건이 마무리로 남아 있음.", "exp": 1, "from": "수강생 대응 도구", "href": "", "hl": ""}, {"id": "videof", "n": "영상공장", "full": "영상공장 (동영상 자동 제작)", "st": "build", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "동영상을 자동으로 만드는 서비스. 9/28 회의에서 개발하려는 세 사이트 중 하나로 나왔고, API 키 5개 발급과 목소리 1~3분 녹음이 다음 단계.", "exp": 1, "from": "9/28 회의 (메이브님·디노)", "href": "", "hl": ""}, {"id": "voice", "n": "내 목소리 엔진", "full": "내 목소리 엔진", "st": "idea", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "유료 서비스를 쓰지 않고 직접 만들어, 본인 목소리만 특화 학습해 재현. AI API는 텍스트만 만들고 출력은 프로그램이 루크 목소리로. 텍스트를 넣으면 오디오 파일을 만드는 쪽도 함께 원함.", "exp": 1, "from": "음성 프로그램 구상 (9/8)", "href": "", "hl": ""}, {"id": "bsj", "n": "배수진", "full": "배수진 (목표달성 앱)", "st": "idea", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "돈을 걸고 목표를 달성하는 앱. 프로토타입 검토 단계. 셀러에 국한하지 않는 파이프라인을 원한다는 방향과 맞닿아 있음.", "exp": 1, "from": "앱 구상", "href": "", "hl": ""}, {"id": "autoreg", "n": "자동등록", "full": "자동 상품등록 프로그램", "st": "build", "big": 0, "reg": "tool", "c": "#ff9f7a", "ax": 180, "ay": 660, "az": 15, "d": "상품을 자동으로 등록하는 프로그램. 글자 추출(OCR)은 확장 프로그램 단에서 하고 AI는 추출된 텍스트로 상세페이지만 만드는 구조가 낫다고 봄. 네이버 API 정책·키·IP 차단으로 등록 실패가 나던 건의 원인 진단이 남아 있음.", "exp": 1, "from": "9/28 회의 · 도구 개발", "href": "", "hl": ""}], "edges": [{"a": "luke", "b": "onecrew", "l": "1:1 세션을 루크가 직접 진행"}, {"a": "luke", "b": "plat", "l": "플레이어·강사 교육을 루크·메이브님이 맡는 구도"}, {"a": "luke", "b": "toolbox", "l": "프로그램 기획·개발이 루크 손에 있음"}, {"a": "luke", "b": "kititi", "l": "원장 자문을 루크가 직접"}, {"a": "luke", "b": "tpl", "l": "운영은 뿌요, 규칙 승인은 루크"}, {"a": "luke", "b": "yt", "l": "촬영·녹화가 루크 시간의 큰 몫"}, {"a": "luke", "b": "trade", "l": "9/29 회의에서 루크 개인 과제로 나온 신규 채널"}, {"a": "yt", "b": "live", "l": "영상 설명란·고정댓글에 라이브 신청 링크"}, {"a": "yt", "b": "onecrew", "l": "영상 보고 들어온 문의가 상담으로"}, {"a": "yt", "b": "toolbox", "l": "수강생에겐 도구 기본판 무료 → 외부·구독은 유료"}, {"a": "yt", "b": "mktg", "l": "유튜브 채널 운영을 업체에 '편집자' 권한으로 위임"}, {"a": "live", "b": "onecrew", "l": "라이브 참석자 → 상담 → 전환"}, {"a": "kakao", "b": "live", "l": "카톡 1천에 특강·라이브 공지"}, {"a": "cafe", "b": "kakao", "l": "같은 선판매·공지 라인"}, {"a": "cafe", "b": "plat", "l": "플랫폼의 락인 축이 카페 운영을 맡는 구조"}, {"a": "cafe", "b": "commu", "l": "네이버 카페 역할을 자체 사이트로 옮기는 구상"}, {"a": "vcell", "b": "plat", "l": "뷰셀 채널이 플랫폼 모객 자산"}, {"a": "vcell", "b": "consign", "l": "화장품 유입과 메이크업헬퍼가 같은 상품군"}, {"a": "blog", "b": "typer", "l": "사람처럼 치는 자동 입력 프로그램이 블로그를 돌림"}, {"a": "blog", "b": "yt", "l": "같은 녹음·강의 내용을 글로 다시 씀"}, {"a": "onecrew", "b": "ilsip", "l": "일십백천 수료자가 원크루로 올라오는 사다리"}, {"a": "ilsip", "b": "kititi", "l": "키티티가 브랜딩 축 컨설팅의 실제 사례"}, {"a": "onecrew", "b": "consign", "l": "최은봉 대표(원크루) 건이 메이크업헬퍼 위탁"}, {"a": "onecrew", "b": "tpl", "l": "수강생 재고가 3PL 창고로 들어옴"}, {"a": "onecrew", "b": "callai", "l": "계약 문의 전화 녹음 100건+가 AI 학습 재료"}, {"a": "plat", "b": "onecrew", "l": "플랫폼 수강생이 원크루 후보 풀"}, {"a": "plat", "b": "sudan", "l": "메이브님과 같이 세우는 교육 축이라 한 몸으로 움직임"}, {"a": "sudan", "b": "corp", "l": "신규 법인 설립 vs 힐링디어스 상호 변경 사이에서 고민 중"}, {"a": "sudan", "b": "tpl", "l": "교육에 3PL을 묶은 형태의 회사 구상"}, {"a": "own", "b": "resale", "l": "자체 강의를 3PL 재고 판매와 연계하려는 구상"}, {"a": "own", "b": "sudan", "l": "자체 강의를 어느 회사 이름으로 할지와 맞물림 (확인 필요)"}, {"a": "toolkit", "b": "toolbox", "l": "툴킷에 들어가는 프로그램이 툴박스 구독 상품과 같은 것"}, {"a": "toolkit", "b": "autoreg", "l": "툴킷 구성의 자동등록 1년 이용권"}, {"a": "toolkit", "b": "soam", "l": "툴킷 구성의 소명서 1년 이용권"}, {"a": "toolkit", "b": "cut", "l": "툴킷 구성의 연출컷 1년 이용권"}, {"a": "dino", "b": "corp", "l": "디노 독립 수익이 서야 사무실 구조가 안정"}, {"a": "dino", "b": "videof", "l": "AI 영상 제작을 디노 라인에서 먼저 돌려봄"}, {"a": "tpl", "b": "resale", "l": "창고에 잠든 재고가 외부 판매 물건"}, {"a": "resale", "b": "store", "l": "창고형 매장이 재고를 오프라인으로 빼는 다음 칸 (확인 필요)"}, {"a": "tpl", "b": "store", "l": "같은 창고를 쓰는 구조인지 확인 필요"}, {"a": "resale", "b": "yt", "l": "팔린 실적이 다시 영상·강의 소재"}, {"a": "resale", "b": "cut", "l": "판매용 상품 사진을 연출컷으로 만드는 흐름 (확인 필요)"}, {"a": "grant", "b": "kititi", "l": "지영 원장이 2027 도전 대상"}, {"a": "grant", "b": "dino", "l": "디노 폐업·업력 시나리오를 같이 검토"}, {"a": "grant", "b": "vcell", "l": "메이브님도 지원사업 대상"}, {"a": "corp", "b": "tpl", "l": "통신판매업 신고·명의가 법인"}, {"a": "corp", "b": "seoul", "l": "본점 주소·이전 등기가 서울 이전과 맞물림"}, {"a": "seoul", "b": "store", "l": "서울 이전·건물 매입이 오프라인 매장 자리와 겹침 (확인 필요)"}, {"a": "seoul", "b": "plat", "l": "플랫폼이 안정되는 시점에 강의장 포함 이전"}, {"a": "margin", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "cut", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "typer", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "soam", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "videof", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "autoreg", "b": "toolbox", "l": "툴박스 구독에 묶이는 도구"}, {"a": "bsj", "b": "toolbox", "l": "셀러에 국한하지 않는 파이프라인 — 툴박스가 가려는 방향"}, {"a": "margin", "b": "yt", "l": "수강생에게 기본판을 풀어 강의 후킹으로"}, {"a": "autoreg", "b": "tpl", "l": "등록·출고가 물류와 바로 이어짐"}, {"a": "callai", "b": "voice", "l": "AI가 루크 목소리로 답하도록 연결하려는 구상"}, {"a": "voice", "b": "videof", "l": "텍스트 → 루크 목소리 오디오를 영상에 얹음"}, {"a": "videof", "b": "yt", "l": "영상 제작 비용을 줄여 채널 운영을 가볍게"}, {"a": "beauty", "b": "toolbox", "l": "오프라인샵 팩과 같은 묶음인지 확인 필요"}, {"a": "commu", "b": "toolbox", "l": "자체 사이트·구독 사이트를 같은 스택으로 짓는 구상 (확인 필요)"}], "poss": [{"a": "resale", "b": "onecrew", "l": "수강생 재고를 회사가 팔아주는 것을 원크루·일십백천 혜택으로 묶으면, 고가 상품을 결제할 때 '최악이어도 재고는 회수된다'는 안전장치가 생긴다. 상담에서 가장 많이 걸리는 지점이 바로 손실 공포다.", "need": "판매 수수료와 회수 범위를 상품 설명에 명문화 · 재고 판매 첫 실적 몇 건", "w": 1}, {"a": "bsj", "b": "onecrew", "l": "컨설팅의 고질병은 숙제를 안 하는 것이다. 배수진(돈 걸고 목표달성)을 원크루·일십백천 과제 이행에 붙이면 실행률 장치가 된다. 내부에서 먼저 쓰고 그 데이터로 앱을 판다.", "need": "과제 단위 정의 · 돈을 거는 방식(환급·기부)의 법적 검토", "w": 1}, {"a": "autoreg", "b": "resale", "l": "재고 판매 상품을 여러 채널에 자동으로 올리면 사람 손 없이 회전한다. 지금 재고 판매가 느린 이유가 등록 노동이라면 바로 풀리는 병목.", "need": "자동등록의 네이버 API 차단 원인 해결 · 당근·번개장터 등록 경로 확인", "w": 1}, {"a": "typer", "b": "kititi", "l": "지영 원장 샵 블로그를 블로그타이퍼로 돌려 첫 외부 고객 사례를 만든다. '오프라인 샵 자동화'를 파는 데 필요한 것은 기능이 아니라 증거 한 건이다.", "need": "원장 동의 · 업종 글감 틀 · 네이버 제재 리스크 사전 설명", "w": 1}, {"a": "margin", "b": "beauty", "l": "가격비교는 '같은 물건이 어디서 얼마인지' 맞추는 같은 기술이다. 마진메이커 엔진을 미용 가격비교에 그대로 쓰면 새 사이트를 처음부터 짓지 않아도 된다.", "need": "시술명 표준화(상품명과 달리 표기가 제각각) · 수집 범위 결정", "w": 1}, {"a": "kititi", "b": "beauty", "l": "지영 원장 샵의 실제 가격·시술 데이터가 미용 가격비교의 첫 데이터가 된다. 한 곳이 모델이 되면 다음 샵 영업이 쉬워진다.", "need": "원장 동의 · 경쟁 샵 노출에 대한 합의", "w": 2}, {"a": "kititi", "b": "toolbox", "l": "툴박스 오프라인샵 팩(+9,900)의 첫 실사용자. 키티티에서 돌려보고 숫자가 나오면 미용 샵 대상 구독 영업의 레퍼런스가 된다.", "need": "샵용 기능 묶음 확정 · 한 달 사용 데이터", "w": 2}, {"a": "callai", "b": "toolbox", "l": "상담 AI를 '내 전화를 대신 받아주는 AI'로 돌리면 사업자 누구에게나 팔 수 있다. 내부용으로 만들어 외부로 파는 툴박스 공식 그대로.", "need": "녹음 100건의 사용 동의·비식별 처리 · 통화 연결 방식", "w": 2}, {"a": "soam", "b": "callai", "l": "소명·제재 대응 문의도 상담 전화의 큰 축이다. 같은 지식베이스로 묶으면 AI가 두 유형을 함께 답한다.", "need": "소명 사례 정리 · 답변 경계(법률 자문이 되지 않도록)", "w": 2}, {"a": "toolkit", "b": "dino", "l": "디노 12주 수료자가 300만 툴킷 1기의 첫 후보다. 교육 → 도구 묶음으로 올라가는 사다리가 이미 한 줄 있다.", "need": "12주 종료 시점과 툴킷 1기 모집 시점 맞추기 · 배분 비율", "w": 2}, {"a": "plat", "b": "videof", "l": "플랫폼의 챌린지 영상과 광고 소재를 영상공장으로 찍어내면 락인 축의 제작 부담이 크게 준다. 영상 제작비가 인베이더 실패의 한 축이었다.", "need": "영상공장 품질이 광고로 쓸 수준인지 1회차 검증", "w": 2}, {"a": "blog", "b": "onecrew", "l": "유튜브가 못 잡는 검색 수요를 블로그가 잡는다. 상담 사례 글은 '이거 괜찮은 겁니까' 유형이 검색으로 찾는 바로 그 글이다.", "need": "사례 공개 동의 · 상담 신청 동선 한 줄", "w": 2}, {"a": "commu", "b": "plat", "l": "플랫폼 락인 축이 쓸 커뮤니티를 자체 사이트로 지으면 네이버 카페 의존이 줄고 수강생 데이터를 회사가 갖는다. 소유권은 3자 협업에서 가장 중요한 조건이다.", "need": "본부장과의 역할·데이터 소유 합의가 먼저", "w": 2}, {"a": "mktg", "b": "vcell", "l": "채널 운영 대행 역량을 뷰셀에도 붙이면 메이브님 촬영 부담이 준다. 메이브님 시간이 플랫폼 쪽으로 넘어가야 하는 시점과 맞는다.", "need": "대행 범위에 뷰셀 포함 재협의 · 비용 분담", "w": 2}, {"a": "store", "b": "live", "l": "창고형 매장 오픈데이를 라이브 커머스 현장으로 쓰면 재고 소진과 콘텐츠를 한 번에 가져간다. 고정비 낮은 오픈데이 모델과 맞물린다.", "need": "매장 개설이 먼저 · 오픈데이 주기 결정", "w": 2}, {"a": "store", "b": "consign", "l": "메이크업헬퍼 위탁 물량을 오픈데이에서 직접 판다. 브랜드사 미입점 채널·폐쇄몰 조건과 성격이 맞는다 — 다만 계약서 문구 확인 필요.", "need": "위수탁계약의 판매 채널 조항 확인 · 매장 개설", "w": 3}, {"a": "voice", "b": "ilsip", "l": "내 목소리 엔진이 서면 400개 영상 강의의 개정과 재녹음을 다시 찍지 않고 한다. 강의 자산이 많을수록 이득이 커지는 구조.", "need": "엔진 품질이 강의로 쓸 수준인지 · 기존 강의 대본화", "w": 3}, {"a": "own", "b": "plat", "l": "플랫폼 1기는 3자 배분이지만 자체 강의는 전부 회사 몫이다. 플랫폼을 검증 무대로 쓰고 검증된 커리큘럼만 자체로 가져오는 순서가 자연스럽다.", "need": "플랫폼 협업 계약에 경업·IP 귀속 조항 정리가 먼저", "w": 3}, {"a": "own", "b": "tpl", "l": "자체 강의 수강생이 그대로 3PL 고객이 된다. 교육과 물류가 한 회사 안에서 도는 것이 셀러들의 수다 구상의 핵심이다.", "need": "법인 정리 · 3PL 수용 능력", "w": 3}, {"a": "grant", "b": "sudan", "l": "신규 법인은 업력이 짧아 창업 3년 이내 조건의 지원사업 문이 열린다. 힐링디어스(약 5년)로는 막히는 길이다.", "need": "대표자 요건·업종 코드 확인 필요 — 같은 업종 재창업으로 보면 제외될 수 있음", "w": 3}, {"a": "grant", "b": "store", "l": "오프라인 매장·물류 설비는 시설·공간 항목이 있는 지원사업과 맞는 구석이 많다.", "need": "사업 계획상 매장 개설 시점 · 해당 공고의 시설비 인정 범위 확인 필요", "w": 3}, {"a": "seoul", "b": "live", "l": "서울 강의장이 생기면 무료 라이브·특강을 오프라인 병행으로 돌릴 수 있다. 같은 사람을 만나도 전환이 다르다.", "need": "서울 이전 · 강의장 규모", "w": 3}, {"a": "trade", "b": "bsj", "l": "트레이드 채널과 '돈 걸고 목표달성'은 같은 관객(돈·성취)을 본다. 채널이 앱의 첫 사용자 풀이 된다.", "need": "트레이드 채널의 내용·플랫폼이 먼저 정해져야 함", "w": 3}], "regions": [{"id": "ch", "no": "①", "name": "채널·브랜딩", "sub": "신뢰 → 유입", "color": "#4fd1a5", "desc": "사람이 나를 알게 되는 입구. 이 구역이 꺼지면 나머지 구역의 신규 유입이 멈춥니다."}, {"id": "kn", "no": "②", "name": "지식·교육", "sub": "신뢰 → 매출", "color": "#e3b04b", "desc": "신뢰를 돈으로 바꾸고, 검색·추천으로 새 사람을 데려오는 줄. 금액은 모두 계획값이며 실적이 아닙니다."}, {"id": "pr", "no": "③", "name": "상품·유통", "sub": "반복 → 회전", "color": "#8fb0ff", "desc": "신뢰가 없어도 상품 자체로 유입이 생기는 줄. 채널이 쉬어도 돈이 끊기지 않게 받쳐주는 자리입니다."}, {"id": "base", "no": "④", "name": "기반·자금", "sub": "받치는 땅", "color": "#b79cff", "desc": "세 줄을 떠받치는 바닥. 돈을 버는 줄은 아니지만 여기가 흔들리면 위의 셋이 같이 흔들립니다."}, {"id": "tool", "no": "⑤", "name": "도구·자동화", "sub": "만들어서 묶어 판다", "color": "#ff9f7a", "desc": "직접 만들어 쓰고, 수강생에게 기본판을 무료로 풀어 강의 후킹으로 쓰고, 외부·맞춤·구독은 유료로 받는 자리. 이것들이 모여 루크 툴박스 구독이 됩니다."}]};
 var VIEWS={
  m:{W:360,H:760,CX:180,CY:380,F:760,L:74,K:2200,PL:120,Z3:0.82,G:0.006,FC:3,FS:9,NR:1,SEP:20,J:110,
-    A:{core:[180,380,0],ch:[96,180,-130],kn:[268,250,95],pr:[266,580,115],base:[92,540,-75],tool:[180,660,15]}},
+    A:{core:[180,380,0],ch:[96,180,-130],kn:[268,250,95],pr:[266,580,115],base:[92,540,-75],tool:[180,660,15],my:[180,250,40]}},
  d:{W:1180,H:710,CX:590,CY:350,F:1500,L:150,K:11500,PL:230,Z3:0.92,G:0.013,FC:6.5,FS:13.5,NR:1.5,SEP:40,J:190,
-    A:{core:[590,350,0],ch:[215,170,-130],kn:[960,180,95],pr:[965,505,115],base:[205,515,-75],tool:[590,560,15]}}
+    A:{core:[590,350,0],ch:[215,170,-130],kn:[960,180,95],pr:[965,505,115],base:[205,515,-75],tool:[590,560,15],my:[590,200,40]}}
 };
 var VIEW='m', CFG=VIEWS.m;
 var W=CFG.W, H=CFG.H, CX=CFG.CX, CY=CFG.CY, F=CFG.F;
@@ -223,6 +287,27 @@ var NS='http://www.w3.org/2000/svg';
 var N={}, nodes=D.nodes, edges=D.edges, regs={};
 D.regions.forEach(function(r){regs[r.id]=r;});
 regs.core={id:'core',no:'',name:'루크',sub:'',color:'#f0cd84',desc:'다섯 구역이 전부 여기를 지나갑니다.'};
+regs.my={id:'my',no:'＋',name:'내 메모',sub:'이 기기에 저장됨',color:'#ffffff',desc:'이 화면에서 직접 올린 것입니다. 지금은 이 기기에만 저장돼 있고, 깃허브에 올리면 다음 갱신 때 정식으로 들어갑니다.'};
+var NOTEK='luke1b-uninotes';
+function loadNotes(){ try{ return JSON.parse(localStorage.getItem(NOTEK)||'[]'); }catch(e){ return []; } }
+function saveNotes(a){ try{ localStorage.setItem(NOTEK, JSON.stringify(a)); }catch(e){} }
+var notes=loadNotes();
+var byId={}; nodes.forEach(function(n){ byId[n.id]=n; });
+notes.forEach(function(nt){
+  if(nt.kind==='node'){
+    if(byId[nt.id]) return;
+    var nn={id:nt.id,n:nt.name,full:nt.name,st:'idea',big:0,reg:'my',c:'#ffffff',
+            ax:0,ay:0,az:0,exp:0,from:'내가 '+(nt.ts||'').slice(0,10)+'에 올림',mine:1,
+            d:nt.text||'(설명 없음)'};
+    nodes.push(nn); byId[nn.id]=nn;
+    if(nt.target && byId[nt.target]) edges.push({a:nt.id,b:nt.target,l:nt.link||'내가 이어둔 선',mine:1});
+  }
+});
+notes.forEach(function(nt){
+  if(nt.kind==='comment' && byId[nt.target]){
+    var t=byId[nt.target]; if(!t.mem) t.mem=[]; t.mem.push(nt);
+  }
+});
 var seed=20261005;
 function rnd(){seed=(seed*1103515245+12345)&0x7fffffff;return seed/0x7fffffff;}
 var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
@@ -285,7 +370,8 @@ function tick(k){
     n.vx*=0.80; n.vy*=0.80; n.vz*=0.80;
     n.x+=n.vx*k; n.y+=n.vy*k; n.z+=n.vz*k;
     var mx=Math.max(n.r+10, n.hw+6);
-    if(n.x<mx) n.x=mx; if(n.x>W-mx) n.x=W-mx;
+    var xmax=(CFG.XMAX||W);
+    if(n.x<mx) n.x=mx; if(n.x>xmax-mx) n.x=xmax-mx;
     var yt=Math.max(60,H*0.155), yb=H-Math.max(46,H*0.125);
     if(n.y<yt) n.y=yt; if(n.y>yb) n.y=yb;
     if(n.z<-150) n.z=-150; if(n.z>150) n.z=150;
@@ -312,7 +398,7 @@ for(var i=0;i<110;i++){
 STARS.forEach(function(s){ gStar.appendChild(s.el); });
 
 edges.forEach(function(e){
-  e.el = el('line',{'stroke':'#7fa8bd','stroke-width':'1','stroke-linecap':'round','opacity':'.38'});
+  e.el = el('line',{'stroke':(e.mine?'#ffffff':'#7fa8bd'),'stroke-width':'1','stroke-linecap':'round','opacity':(e.mine?'.6':'.38')});
   gEdge.appendChild(e.el);
   e.p = el('circle',{'r':'1.8','fill':'#dff6ef','opacity':'.8'});
   gPulse.appendChild(e.p);
@@ -330,6 +416,7 @@ nodes.forEach(function(n){
   if(n.st==='build'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'2'};}
   if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
+  if(n.mine){at={'r':n.r,'fill':'#0c1a20','stroke':'#ffffff','stroke-width':'2','stroke-dasharray':'3 3'};}
   n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
   n.c1 = el('circle',at);
@@ -445,6 +532,8 @@ function home(){
     var ns=nodes.filter(function(n){return n.reg===r.id;});
     h+='<li><div class="t"><a href="#" data-f="'+r.id+'" style="color:'+r.color+'">'+r.no+' '+r.name+'</a></div><div class="m">'+ns.map(lk).join(' · ')+'</div></li>';
   });
+  var mine=nodes.filter(function(n){return n.mine;});
+  if(mine.length) h+='<li><div class="t" style="color:#fff">＋ 내 메모</div><div class="m">'+mine.map(lk).join(' · ')+'</div></li>';
   var top=nodes.slice().sort(function(a,b){return b.deg-a.deg;}).slice(0,4);
   h+='</ul><div class="note">줄이 가장 많이 몰린 곳: '+top.map(function(n){return lk(n)+' '+n.deg;}).join(' · ')+'</div>';
   panel.innerHTML=h;
@@ -482,6 +571,12 @@ function show(id){
   var h='<span class="tag '+ST[n.st][1]+'">'+ST[n.st][0]+'</span><span class="tag" style="color:'+r.color+';border-color:'+r.color+'">'+(r.no?r.no+' ':'')+r.name+'</span>';
   h+='<h3 style="margin-top:8px">'+n.full+'</h3><p style="margin-bottom:8px">'+n.d+'</p>';
   if(n['from']) h+='<div class="note" style="margin-bottom:8px">어디서 나온 이야기: '+n['from']+'</div>';
+  if(n.mem && n.mem.length){
+    h+='<h3 style="margin-top:12px">내 메모 '+n.mem.length+'개</h3><ul class="list">';
+    n.mem.forEach(function(m){ h+='<li><div class="m" style="opacity:.75">'+(m.ts||'').slice(0,10)+'</div><div class="t" style="font-weight:400">'+m.text+'</div></li>'; });
+    h+='</ul>';
+  }
+  h+='<p class="note" style="margin-bottom:8px"><a href="#" data-add="'+n.id+'">＋ 이 별에 메모 달기</a></p>';
   if(n.href) h+='<p style="margin-bottom:8px"><a href="'+n.href+'">'+n.hl+' →</a></p>';
   h+='<h3 style="margin-top:12px">이어진 것 '+n.adj.length+'개</h3><ul class="list">';
   n.adj.forEach(function(a){
@@ -501,6 +596,8 @@ function show(id){
   panel.innerHTML=h;
 }
 function route(e){
+  var ad=e.target.closest?e.target.closest('[data-add]'):null;
+  if(ad){ e.preventDefault(); openForm('comment', ad.getAttribute('data-add')); return; }
   var a=e.target.closest?e.target.closest('[data-go],[data-f],[data-reg]'):null;
   if(!a) return; e.preventDefault();
   var g=a.getAttribute('data-go'), f=a.getAttribute('data-f')||a.getAttribute('data-reg');
@@ -537,11 +634,10 @@ function setView(v){
   nodes.forEach(function(n){ var a=CFG.A[n.reg]||CFG.A.core; n.ax=a[0]; n.ay=a[1]; n.az=a[2]; });
   sizeNodes();
   document.body.classList.toggle('uni-wide', v==='d');
-  bd.className=(v==='d')?'on':'';
-  bd.textContent=(v==='d')?'모바일':'데스크탑';
+  if(v!=='f'){ bd.className=(v==='d')?'on':''; bd.textContent=(v==='d')?'모바일':'데스크탑'; }
   if(MODE==='3d') zoom=CFG.Z3;
   seed=20261005; place(); settle(); draw();
-  try{ localStorage.setItem('luke1b-uniview', v); }catch(e){}
+  if(v!=='f'){ try{ localStorage.setItem('luke1b-uniview', v); }catch(e){} }
 }
 bd.addEventListener('click',function(){ setView(VIEW==='d'?'m':'d'); });
 var bp=document.getElementById('uniPoss');
@@ -598,12 +694,163 @@ svg.addEventListener('wheel',function(ev){
   if(MODE!=='3d') return; ev.preventDefault();
   zoom = Math.max(0.5, Math.min(2.2, zoom*(ev.deltaY>0?0.94:1.06))); draw();
 },{passive:false});
+
+// ---------------- 전체 화면 ----------------
+var stage=document.getElementById('uniStage'), bf=document.getElementById('uniFull'), prevView='m';
+function fullCfg(w,h){
+  var n=nodes.length, xm=(w>900? w-398 : w);
+  var L=Math.max(86, Math.sqrt(xm*h/n)*0.90);
+  return {W:w,H:h,XMAX:xm,CX:xm/2,CY:h/2,F:Math.max(w,h)*1.25,L:L,K:L*L*0.5,PL:L*1.55,Z3:0.9,
+    G:0.013,FC:6.5,FS:Math.max(10,Math.min(16,L*0.095)),NR:Math.max(1,Math.min(1.9,L/100)),
+    SEP:L*0.27,J:L*1.25,
+    A:{core:[xm*0.50,h*0.50,0],ch:[xm*0.19,h*0.24,-130],kn:[xm*0.81,h*0.25,95],
+       pr:[xm*0.82,h*0.74,115],base:[xm*0.18,h*0.75,-75],tool:[xm*0.50,h*0.86,15],
+       my:[xm*0.50,h*0.30,40]}};
+}
+function sizeFull(){
+  var r=stage.getBoundingClientRect();
+  VIEWS.f=fullCfg(Math.max(320,Math.round(r.width)), Math.max(360,Math.round(r.height)));
+  setView('f');
+}
+function enterFull(){
+  if(VIEW!=='f') prevView=VIEW;
+  stage.classList.add('full'); document.body.classList.add('uni-full');
+  bf.className='on'; bf.textContent='화면 닫기';
+  try{ if(stage.requestFullscreen) stage.requestFullscreen(); }catch(e){}
+  try{ localStorage.setItem('luke1b-unifull','1'); }catch(e){}
+  setTimeout(sizeFull, 60);
+}
+function exitFull(){
+  stage.classList.remove('full'); document.body.classList.remove('uni-full');
+  bf.className=''; bf.textContent='전체 화면';
+  try{ if(document.fullscreenElement && document.exitFullscreen) document.exitFullscreen(); }catch(e){}
+  try{ localStorage.removeItem('luke1b-unifull'); }catch(e){}
+  setView(prevView==='f'?'m':prevView);
+}
+bf.addEventListener('click',function(){ if(stage.classList.contains('full')) exitFull(); else enterFull(); });
+document.addEventListener('fullscreenchange',function(){
+  if(!document.fullscreenElement && stage.classList.contains('full')) exitFull();
+});
+document.addEventListener('keydown',function(ev){
+  if(ev.key==='Escape'){ if(form.classList.contains('on')) closeForm(); else if(stage.classList.contains('full')) exitFull(); }
+});
+var rsT=null;
+window.addEventListener('resize',function(){
+  if(!stage.classList.contains('full')) return;
+  clearTimeout(rsT); rsT=setTimeout(sizeFull,180);
+});
+
+// ---------------- 메모 · 새 별 ----------------
+var form=document.getElementById('uniForm'), ufKind=document.getElementById('ufKind'),
+    ufName=document.getElementById('ufName'), ufTarget=document.getElementById('ufTarget'),
+    ufLink=document.getElementById('ufLink'), ufText=document.getElementById('ufText'),
+    ufNodeBox=document.getElementById('ufNodeBox'), ufLinkBox=document.getElementById('ufLinkBox'),
+    ufList=document.getElementById('ufList');
+function fillTargets(){
+  var h='<option value="">(선택 안 함)</option>';
+  D.regions.forEach(function(r){
+    h+='<optgroup label="'+r.no+' '+r.name+'">';
+    nodes.filter(function(n){return n.reg===r.id;}).forEach(function(n){ h+='<option value="'+n.id+'">'+n.full+'</option>'; });
+    h+='</optgroup>';
+  });
+  h+='<optgroup label="루크"><option value="luke">루크 (ONE CREW)</option></optgroup>';
+  var mine=nodes.filter(function(n){return n.mine;});
+  if(mine.length){ h+='<optgroup label="＋ 내 메모">'; mine.forEach(function(n){ h+='<option value="'+n.id+'">'+n.full+'</option>'; }); h+='</optgroup>'; }
+  ufTarget.innerHTML=h;
+}
+function syncKind(){
+  var k=ufKind.value;
+  ufNodeBox.style.display = (k==='node')?'':'none';
+  ufLinkBox.style.display = (k==='node')?'':'none';
+  document.getElementById('ufTitle').textContent = (k==='node')?'새 별 추가':'코멘트 달기';
+}
+ufKind.addEventListener('change',syncKind);
+function renderNoteList(){
+  if(!notes.length){ ufList.innerHTML='<p class="note" style="margin-top:14px">아직 올린 것이 없습니다.</p>'; return; }
+  var h='<h3 style="margin-top:18px">올려둔 것 '+notes.length+'개</h3><ul class="list">';
+  notes.slice().reverse().forEach(function(nt){
+    var who = nt.kind==='node' ? ('새 별 · '+nt.name) : ('코멘트 · '+(nt.targetName||''));
+    h+='<li><div class="t" style="font-size:14px">'+who+'</div><div class="m">'+(nt.text||'')+'</div>'+
+       '<div class="m"><a href="'+ghUrl(nt)+'" target="_blank" rel="noopener">깃허브에 올리기</a> · <a href="#" data-del="'+nt.key+'">지우기</a></div></li>';
+  });
+  ufList.innerHTML=h+'</ul>';
+}
+ufList.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('[data-del]'):null;
+  if(!a) return; e.preventDefault();
+  var k=a.getAttribute('data-del');
+  notes=notes.filter(function(x){return x.key!==k;}); saveNotes(notes);
+  location.reload();
+});
+function openForm(kind,target){
+  fillTargets(); ufKind.value=kind||'node'; syncKind();
+  ufName.value=''; ufLink.value=''; ufText.value='';
+  ufTarget.value = target || (sel||'');
+  renderNoteList();
+  form.classList.add('on'); setTimeout(function(){ (kind==='comment'?ufText:ufName).focus(); },30);
+}
+function closeForm(){ form.classList.remove('on'); }
+document.getElementById('uniAdd').addEventListener('click',function(){ openForm('node', sel||''); });
+document.getElementById('ufClose').addEventListener('click',closeForm);
+form.addEventListener('click',function(e){ if(e.target===form) closeForm(); });
+function nameOf(id){ var n=N[id]||byId[id]; return n?n.full:''; }
+function collect(){
+  var k=ufKind.value, t=ufTarget.value, txt=(ufText.value||'').trim();
+  var nm=(ufName.value||'').trim();
+  if(k==='node' && !nm){ alert('이름을 적어주세요.'); return null; }
+  if(k==='comment' && !t){ alert('어느 별에 다는 코멘트인지 골라주세요.'); return null; }
+  if(!txt){ alert('내용을 적어주세요.'); return null; }
+  var ts=new Date().toISOString();
+  return {key:'k'+Date.now(), kind:k, id:'my-'+Date.now(), name:nm, target:t,
+          targetName:nameOf(t), link:(ufLink.value||'').trim(), text:txt, ts:ts};
+}
+function ghUrl(nt){
+  var title, body;
+  if(nt.kind==='node'){
+    title='[유니버스] 새 별: '+nt.name;
+    body='종류: 새 별 (사업·채널·상품·도구)\n이름: '+nt.name+'\n설명: '+nt.text+
+         '\n이을 곳: '+(nt.targetName||'(없음)')+'\n관계: '+(nt.link||'(없음)')+'\n적은 때: '+nt.ts+
+         '\n\n사업 유니버스 페이지에서 보냄 — 다음 갱신 때 지도에 반영해 주세요.';
+  }else{
+    title='[유니버스] 코멘트: '+(nt.targetName||'');
+    body='종류: 코멘트\n대상 별: '+(nt.targetName||'')+'\n내용: '+nt.text+'\n적은 때: '+nt.ts+
+         '\n\n사업 유니버스 페이지에서 보냄 — 다음 갱신 때 지도에 반영해 주세요.';
+  }
+  return 'https://github.com/Yoo-Mideum/luke-1b/issues/new?labels=universe&title='+
+         encodeURIComponent(title)+'&body='+encodeURIComponent(body);
+}
+function asText(nt){
+  if(nt.kind==='node') return '유니버스에 새 별 추가\n이름: '+nt.name+'\n설명: '+nt.text+'\n이을 곳: '+(nt.targetName||'(없음)')+'\n관계: '+(nt.link||'(없음)');
+  return '유니버스 코멘트\n대상 별: '+(nt.targetName||'')+'\n내용: '+nt.text;
+}
+document.getElementById('ufSave').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  notes.push(nt); saveNotes(notes);
+  try{ if(stage.classList.contains('full')) localStorage.setItem('luke1b-unifull','1'); }catch(e){}
+  location.reload();
+});
+document.getElementById('ufGh').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  notes.push(nt); saveNotes(notes);
+  window.open(ghUrl(nt),'_blank','noopener');
+  renderNoteList();
+});
+document.getElementById('ufCopy').addEventListener('click',function(){
+  var nt=collect(); if(!nt) return;
+  var t=asText(nt);
+  try{ navigator.clipboard.writeText(t); alert('복사했습니다. 클로드 대화에 붙여넣으면 지도에 넣어 드립니다.'); }
+  catch(e){ prompt('복사해서 클로드에 붙여넣으세요', t); }
+});
+
 home();
 (function(){
   var v=null;
   try{ v=localStorage.getItem('luke1b-uniview'); }catch(e){}
   if(!v) v = (window.innerWidth>=1040) ? 'd' : 'm';
   if(v==='d') setView('d'); else { bd.textContent='데스크탑'; }
+  var wasFull=null; try{ wasFull=localStorage.getItem('luke1b-unifull'); }catch(e){}
+  if(wasFull==='1'){ prevView=(v==='d'?'d':'m'); stage.classList.add('full'); document.body.classList.add('uni-full');
+    bf.className='on'; bf.textContent='화면 닫기'; setTimeout(sizeFull,60); }
 })();
 })();
 </script>
