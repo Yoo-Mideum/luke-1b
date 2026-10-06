@@ -1,5 +1,18 @@
 [
  {
+  "id": "onecrew-20261006-auto-deploy-blocked",
+  "date": "2026-10-06",
+  "project": "원크루 사이트",
+  "title": "자동 배포 연결 — 루크님 클릭 한 번 대기 / 5회차 자료는 배포 완료",
+  "status": "막힘",
+  "summary": "푸시하면 자동 배포되게 깃허브와 Vercel을 연결하려 했으나, Vercel 계정에 깃허브 로그인이 연결돼 있지 않아 멈췄습니다. 루크님이 Vercel 설정에서 깃허브를 한 번 연결해 주시면 이어서 진행합니다. 다른 세션이 올려 둔 5회차 자료는 점검 뒤 수동으로 배포했습니다.",
+  "next": "루크: Vercel 계정 설정 → Authentication → Add New → GitHub 연결 후 '됐어'라고 알려 주기",
+  "deploy_url": "https://vercel.com/account/settings/authentication",
+  "chat_url": "",
+  "source": "claude-code",
+  "detail": "<ul><li>막힌 곳: 연결 명령이 '깃허브 로그인 연결을 먼저 추가하라'며 멈춤</li><li>연결 뒤에는 커밋 작성자 메일을 연결한 깃허브 계정의 것으로 바꿔야 배포가 막히지 않음 (클로드가 처리)</li><li>5회차 자료: 규칙대로 들어온 것 확인, 글자·모양 차이 0, 실제 주소 반영 완료</li></ul>"
+ },
+ {
   "id": "onecrew-20261006-crew-library",
   "date": "2026-10-06",
   "project": "원크루 사이트",
