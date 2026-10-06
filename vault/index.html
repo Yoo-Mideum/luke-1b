@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>셀프 등기 · 정관 찾기 · 서류 보관 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-07</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>셀프 등기 · 정관 찾기 · 서류 보관</h1>
+<p class="note">10/7에 주신 세 가지 질문에 대한 답입니다. 힐링디어스(주) 기준 — 자본금 100만 원, 주주 루크 100%, 이사 1명(대표이사), 감사 1명, 관할 의정부지방법원 남양주지원 등기과. 저는 법무사가 아닙니다.</p>
+
+<h2>① 혼자 할까, 법무사를 쓸까</h2>
+<div class="card accent">
+  <p style="font-size:17px;font-family:'Gowun Dodum',sans-serif;margin:0 0 8px"><b>이번 건은 법무사를 쓰세요. 다음부터 단건은 혼자 하셔도 됩니다.</b></p>
+  <p style="margin:0">셀프등기가 불가능해서가 아닙니다. 오히려 힐링디어스는 <b>셀프에 가장 유리한 조건</b>을 다 갖추고 있습니다. 문제는 이번 건의 성격입니다.</p>
+</div>
+
+<div class="card blue">
+  <p style="margin:0 0 10px"><b>셀프에 유리한 조건 — 자본금 10억 미만 소규모 회사 특례</b></p>
+  <ul class="list">
+    <li><div class="t">정관·의사록 공증이 필요 없습니다</div><div class="m">자본금 10억 미만이면 인증 의무가 없습니다. 공증 사무소에 갈 일이 없습니다</div></li>
+    <li><div class="t">주주총회를 실제로 열 필요가 없습니다</div><div class="m">주주 전원 동의로 소집절차를 생략할 수 있고 <b>서면결의</b>로 대체됩니다. 루크님이 100% 주주시니 <b>서류 한 장</b>으로 끝납니다</div></li>
+    <li><div class="t">이사가 1명이라 이사회가 없습니다</div><div class="m">본점이전은 <b>이사 결정서</b>로 처리됩니다</div></li>
+  </ul>
+</div>
+
+<div class="card red">
+  <p style="margin:0 0 10px"><b>그런데 이번 건은 이렇습니다</b></p>
+  <ul class="list">
+    <li><span class="tag p0">1</span><div class="t">8일 남았고, 반려되면 되돌릴 시간이 없습니다</div><div class="m">상호 중복, 첨부서면 누락, 결의서 형식 — 처음 하면 한 번은 걸립니다. 보정하는 동안 10/15가 지나가면 과태료가 붙습니다</div></li>
+    <li><span class="tag p0">2</span><div class="t">정관 원본이 아직 없습니다</div><div class="m">상호·목적·수권주식·공고방법을 바꾸려면 <b>지금 정관이 무엇인지부터 알아야</b> 합니다. 아래 ②번이 선행 조건인데, 등기소 열람·등사는 법무사가 대신 해줄 수 있습니다</div></li>
+    <li><span class="tag p0">3</span><div class="t">앞으로 2년간 등기할 일이 줄줄이 있습니다</div><div class="m">지분 이전, 신정현님 임원 선임, 증자, 창고형 매장 지점 설치까지. <b>거래 법무사를 한 명 만들어 두는 게 전체 비용을 낮춥니다</b> — 매번 처음부터 설명하지 않아도 되니까요</div></li>
+  </ul>
+</div>
+
+<div class="card wrapx">
+<table>
+<tr><th></th><th>혼자</th><th>법무사</th></tr>
+<tr><td>공과금</td><td class="num">142,000원</td><td class="num">142,000원</td></tr>
+<tr><td>수수료</td><td class="num">0원</td><td class="num"><span class="tag">확인 필요</span></td></tr>
+<tr><td>정관 찾기</td><td class="num">직접</td><td class="num">대행 가능</td></tr>
+<tr><td>반려 시</td><td class="num"><b>기한 초과 위험</b></td><td class="num">법무사가 보정</td></tr>
+<tr><td>걸리는 시간</td><td class="num">처음이면 반나절~하루</td><td class="num">서류 전달만</td></tr>
+</table>
+<div class="note">법무사 수수료는 사무소마다 다릅니다 — <b>2~3곳에 전화해서 "본점이전 + 상호변경 + 목적추가 + 수권주식 증가 + 공고방법 변경, 자본금 100만 원 1인 회사"로 견적을 받아보세요.</b> 묶어서 하면 단건보다 유리한 경우가 많습니다.</div>
+</div>
+
+<div class="card gold">
+  <p style="margin:0 0 8px"><b>다음부터 혼자 하셔도 되는 것</b></p>
+  <ul class="list">
+    <li><div class="t">대표이사 주소 변경</div><div class="m">결의도 필요 없고 서류가 단순합니다</div></li>
+    <li><div class="t">같은 관할 안에서의 단순 본점이전</div><div class="m">이사 결정서 한 장</div></li>
+    <li><div class="t">임원 중임등기</div><div class="m">2028년 3월에 또 오는 일입니다. 이번에 법무사가 하는 걸 옆에서 보고 서식을 받아두시면 다음엔 혼자 하실 수 있습니다</div></li>
+  </ul>
+  <div class="note">이번에 법무사에게 <b>이번 건의 첨부서면 일체를 PDF로 받아두세요.</b> 다음에 같은 걸 할 때 그게 교재가 됩니다.</div>
+</div>
+
+<h2>② 정관 — 새로 만들기 전에 찾으세요</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px">정관은 <b>'새로 만드는' 게 아니라 '고치는' 문서</b>입니다. 설립 때 만든 원시정관이 법적으로 존재하고, 그걸 주주총회 결의로 변경해 온 이력이 있습니다. 어딘가에 반드시 있습니다 — 정관은 전산망에 등록되지 않고 <b>회사가 직접 보관</b>하는 문서라서 '발급'이 안 될 뿐입니다.</p>
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">등기를 맡겼던 법무사</div><div class="d">세 번의 등기가 있었습니다 — <b>설립(2022-03), 목적 대량 추가(2023-01), 중임(2025-03).</b> 각각 다른 사무소일 수도 있습니다. 가장 가능성 높은 경로입니다</div></li>
+    <li><div class="t">세무사</div><div class="d">기장을 맡기면서 법인 서류 일체를 넘기셨을 수 있습니다. 어차피 수입금액 때문에 전화하실 거니 같이 물어보세요</div></li>
+    <li class="big"><div class="t">관할 등기소 열람·등사 — 가장 확실합니다</div><div class="d"><b>의정부지방법원 남양주지원 등기과.</b> 등기 신청 때 제출한 정관이 편철돼 있고, <b>5년 이내 제출분</b>은 열람·등사를 신청할 수 있습니다. 설립(2022-03)도 목적변경(2023-01)도 모두 5년 안이라 지금은 됩니다. <b>5년이 지나면 폐기되니 올해 안에 받아두세요</b></div></li>
+    <li><div class="t">공증 사무소</div><div class="d">설립 때 공증을 받았다면 그쪽에도 사본이 있습니다. 다만 자본금 10억 미만이라 공증을 안 했을 가능성이 높습니다</div></li>
+    <li><div class="t">외장하드·메일 검색</div><div class="d">검색어는 <b>'정관', '힐링디어스', '발기인'</b>. 기간은 2022년 2~3월과 2023년 1월 전후</div></li>
+  </ol>
+</div>
+
+<div class="card blue">
+  <p style="margin:0 0 8px"><b>그래도 못 찾으면 — 어렵지 않습니다</b></p>
+  <p style="margin:0">주주총회에서 <b>'정관 전부개정'</b> 결의를 하면 됩니다. 1인 주주라 서면결의로 가능하고 공증도 필요 없습니다. 등기부에 적힌 내용(상호·본점·목적·주식·공고방법)과 일치하게 재작성하는 작업이고, 법무사가 늘 하는 일입니다.</p>
+  <div class="note">사실 이번에 <b>상호·목적·수권주식·공고방법 네 군데를 다 바꾸실 거라</b>, 원본을 찾아도 어차피 대폭 고칩니다. <b>처음부터 전부개정으로 가는 게 더 깔끔할 수 있습니다</b> — 법무사에게 이 선택지를 물어보세요.</div>
+</div>
+
+<h2>③ 서류 보관 — 지금은 목록 한 장이면 됩니다</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">프로그램을 만들 일은 맞는데 지금은 아닙니다. 외장하드 뒤지실 때 이 목록을 체크리스트로 쓰세요. <b>상법상 본점에 비치할 의무가 있는 것</b>부터 적었습니다.</p>
+  <div class="wrapx"><table>
+  <tr><th>문서</th><th>왜 필요한가</th><th>상태</th></tr>
+  <tr><td><b>정관</b> (최신 + 변경 이력)</td><td>본점 비치 의무. 모든 등기의 출발점</td><td class="num"><b>찾는 중</b></td></tr>
+  <tr><td><b>주주명부</b></td><td>본점 비치 의무. 지분 51/26/23의 근거가 될 문서</td><td class="num">확인 필요</td></tr>
+  <tr><td><b>주주총회 의사록</b> 전부</td><td>본점 비치 의무. 정관 변경 이력의 증거</td><td class="num">확인 필요</td></tr>
+  <tr><td>이사 결정서 / 이사회 의사록</td><td>본점이전 등 결의 기록</td><td class="num">확인 필요</td></tr>
+  <tr><td>등기사항전부증명서</td><td>10/7 열람 완료</td><td class="num">확보</td></tr>
+  <tr><td>법인인감증명서 · 인감카드</td><td>등기 신청에 필요</td><td class="num">확인 필요</td></tr>
+  <tr><td>사업자등록증</td><td>법인등록번호 확인, 정정신고에 필요</td><td class="num">확인 필요</td></tr>
+  <tr><td>설립 서류 일체</td><td>발기인총회 의사록, 주식인수증, 잔고증명 등</td><td class="num">확인 필요</td></tr>
+  <tr><td>법인세·부가세 신고서, 재무제표</td><td>수입금액 확인, 빌딩 대출 심사</td><td class="num">세무사 보관</td></tr>
+  <tr><td>임대차계약서</td><td>사업자등록 정정에 필요</td><td class="num">확인 필요</td></tr>
+  </table></div>
+  <div class="note">보관은 거창할 필요 없습니다 — <b>클라우드에 '법인/힐링디어스' 폴더 하나</b> 만들고 위 순서대로 넣으세요. 파일명 앞에 날짜를 붙이면(2022-03-16_정관.pdf) 그것만으로 이력이 됩니다. 프로그램은 넣을 서류가 다 모인 다음에 만들어도 늦지 않습니다.</div>
+</div>
+
+<h2>이번 주 순서</h2>
+<div class="card">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="d">오늘~내일</div><div class="t">법무사 2~3곳 견적 + 정관 보유 여부 확인</div><div class="d">설립을 맡겼던 곳이 있으면 거기부터. "정관 가지고 계신가요"를 먼저 물어보세요</div></li>
+    <li><div class="d">같은 전화에</div><div class="t">세무사에게 수입금액 + 정관 보유 여부</div></li>
+    <li><div class="d">둘 다 없으면</div><div class="t">등기소 열람·등사 신청 (또는 법무사에게 대행 요청)</div></li>
+    <li class="big"><div class="d">10/15까지</div><div class="t">본점이전 + 상호 + 목적 + 수권주식 + 공고방법 접수</div><div class="d">정관이 안 나오면 <b>전부개정</b>으로 진행</div></li>
+  </ol>
+</div>
+
+<div class="src" style="margin-top:14px">근거(2026-10-07 확인): 자본금 10억 원 미만 소규모 주식회사 특례 — 정관 공증 의무 없음, 이사 1~2명 가능(3명 미만이면 이사회 불요), 감사 임의, 주주총회 소집통지 10일, 주주 전원 동의 시 소집절차 생략 및 서면결의 가능(상법 제292조·제318조·제363조·제383조·제409조 관련) · 정관 분실 시 ① 설립 대행 법무사·변호사 ② 공증 사무소 ③ 관할 등기소 열람·등사(등기 신청 시 정관을 제출한 건에 한하며 <b>5년 경과 후 폐기</b>) · 상법 제396조(정관·주주총회 의사록은 본점과 지점에, 주주명부는 본점에 비치) · 본점이전 공과금 142,000원(같은 관할). <b>법무사 수수료는 사무소별로 달라 확인하지 못했습니다. 등기소 열람·등사의 구체적 신청 방법과 수수료도 확인 필요입니다.</b></div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-07 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
