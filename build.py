@@ -4,7 +4,7 @@ python3 build.py 실행 시 index.html 과 하위 폴더 index.html 을 전부 �
 (부분 수정 금지 원칙: 매번 파일 전체를 다시 생성)"""
 import json, os, datetime
 
-UPDATED = "2026-10-06"
+UPDATED = "2026-10-07"
 SITE = "내 연봉 10억 만들기"
 
 CSS = r"""
@@ -553,6 +553,7 @@ INDEX = """
   <a href="people/"><b>사람별 현황</b><span>메이브님·디노·뿌요·지영</span></a>
   <a href="schedule/"><b>일정 도식</b><span>10월 타임라인 · 마일스톤</span></a>
   <a href="invader/"><b>인베이더 종료 대비</b><span>10/6 들은 이야기 · 마지막 기수에 챙길 것</span></a>
+  <a href="pilot/"><b>파일럿 강사 결정</b><span>가을 대표님 vs 뿌요 — 같은 기준으로 비교</span></a>
   <a href="chowol/"><b>초월스토리 강사 협업</b><span>10/6 계약 조건 · 12월 런칭 · 어긋나는 숫자</span></a>
   <a href="maven/"><b>메이브님 공동 액션 플랜</b><span>10/6 회의 — 구독·스토어·오프라인 3축</span></a>
   <a href="universe/"><b>사업 유니버스</b><span>지금 돌아가는 것 전부 — 지도</span></a>
@@ -1181,7 +1182,7 @@ CHOWOL = """
   <ul class="list">
     <li><span class="tag p0">1</span><div class="t">루크의 참여 범위 — 단순 플레이어인가, 공동 기획인가</div><div class="m">여기에 따라 수익 배분이 달라집니다. 10/22·10/29에 옵션 정리와 배분 초안을 만들기로 했습니다</div></li>
     <li><span class="tag p0">2</span><div class="t">상품 최종 확정</div><div class="m">289만 단일로 갈지, 1:1 컨설팅반을 넣을지, 목표 객단가는 얼마인지</div></li>
-    <li><span class="tag p0">3</span><div class="t">파일럿 강사가 아직 없다</div><div class="m">'가장 빠른 스타트'가 목표인데 사람이 정해지지 않았습니다. 고연령 성과자 섭외도 불확실하고 실패 시 대안이 없습니다 — 12월 초 라이브를 지키려면 이게 가장 먼저입니다</div></li>
+    <li><span class="tag p0">3</span><div class="t">파일럿 강사 — 후보 두 분 중 미결</div><div class="m">10/7 기준 <b>가을(정복녀) 대표님</b>(40대 주부·원크루) 또는 <b>뿌요</b>. 11월 초 촬영이니 실제로 3주 남았습니다 — 두 분을 같은 기준에 올려 비교한 것은 <a href="../pilot/">파일럿 강사 결정</a>에 있습니다</div></li>
     <li><span class="tag p1">4</span><div class="t">운영 부담</div><div class="m">강사가 늘면 단톡방·커뮤니케이션이 같이 늘어납니다. PD 위임 기준과 강사에게 기획 의도를 전달하는 방식을 정해야 합니다</div></li>
     <li><span class="tag p1">5</span><div class="t">퍼널이 안 먹힐 때의 대비가 없다</div><div class="m">전환율이 떨어졌을 때 쓸 대체 퍼널·A/B 로드맵이 비어 있습니다</div></li>
   </ul>
@@ -1218,6 +1219,109 @@ CHOWOL = """
 </div>
 
 <div class="src" style="margin-top:14px">근거: 10/6 17:22 메이븐·초월스토리 회의 녹음(48분) · 10/6 16:30 초월스토리 촬영 녹음(42분). 표의 계산은 회의에 나온 수치(289만 · 8% · 5:5 · 30~40명)를 그대로 넣어 클로드가 맞춰본 것으로, 비용 항목이 확정되지 않아 실제와 다를 수 있습니다. 계약 조건은 구두 합의 단계이며 문서화 전입니다.</div>
+"""
+
+# ---------------------------------------------------------------- 파일럿 강사 결정
+PILOT = """
+<h1>파일럿 강사 — 누구로 갈 것인가</h1>
+<p class="note">후보는 두 분입니다 — <b>가을(정복녀) 대표님</b>(40대 주부·원크루) 또는 <b>뿌요(최근영)</b>(30대 중후반). <a href="../chowol/">초월스토리 협업</a>에서 결론이 안 난 다섯 가지 중 3번이고, <b>12월 초 라이브를 지키려면 가장 먼저 닫아야 하는 칸</b>입니다. 11월 초에 촬영이 들어가야 하니 실제로 남은 시간은 3주입니다.</p>
+
+<h2>먼저, 이 자리가 요구하는 것 <small>회의에서 나온 조건 그대로</small></h2>
+<div class="card accent">
+  <ul class="list">
+    <li><span class="tag p0">1</span><div class="t">289만 원을 파는 얼굴</div><div class="m">단일 고가 상품입니다. 기능 설명이 아니라 <b>"저 사람처럼 되고 싶다"</b>가 전환을 만듭니다</div></li>
+    <li><span class="tag p0">2</span><div class="t">초월스토리가 요청한 것은 '고연령 성과자'</div><div class="m">런칭 3주 전부터 고연령 성과자 영상 4편 + 성과 수강생 영상 4편. 타깃이 50~60대 비중이 높은 초보층이라 그렇습니다</div></li>
+    <li><span class="tag p0">3</span><div class="t">11월 초 촬영 · 12월 초 라이브 4+1회</div><div class="m">촬영일·라이브 5회를 비울 수 있는 사람이어야 합니다. 주말 포함</div></li>
+    <li><span class="tag p1">4</span><div class="t">콘텐츠를 혼자 만들 필요는 없다</div><div class="m">강의 기획·PPT·라이브 코칭은 루크가 붙입니다. 필요한 건 제작 능력보다 <b>서사와 카메라 앞에서의 신뢰</b></div></li>
+    <li><span class="tag p1">5</span><div class="t">2회 시도 후 종료 조건이 붙은 자리</div><div class="m">성과가 미흡하면 협업을 종료합니다. 강사 본인에게도 리스크가 있는 자리라는 뜻입니다</div></li>
+    <li><span class="tag p1">6</span><div class="t">보상은 2,200만~3,200만 (계산상 3,641만~4,855만)</div><div class="m">적은 돈이 아닙니다. 제안을 받는 쪽 입장에서도 <b>인생 계획이 흔들리는 금액</b>이라는 걸 전제해야 합니다</div></li>
+  </ul>
+</div>
+
+<h2>두 분을 같은 기준에 올려보면</h2>
+<div class="card wrapx">
+<table>
+<tr><th>기준</th><th>가을(정복녀) 대표님</th><th>뿌요 (최근영)</th></tr>
+<tr><td>나이·배경</td><td>40대 · 주부 → 대표</td><td>30대 중후반</td></tr>
+<tr><td>타깃(50~60대 초보)과의 거리</td><td><b>가깝다</b> — 주부에서 시작한 서사</td><td>멀다 — 세대가 한 칸 아래</td></tr>
+<tr><td>루크와의 관계</td><td>원크루 수강생(고객)</td><td>조직 안의 실무자 (교육실장·3PL 운영)</td></tr>
+<tr><td>성과 숫자 기록</td><td><span class="tag">기록에 없음</span></td><td>현재 수익 월 400만 미만 (9/11 상담)</td></tr>
+<tr><td>성과의 출처</td><td>본인 사업 <span class="tag">확인 필요</span></td><td>상당 부분이 <b>루크 쪽 용역·코칭 보수</b></td></tr>
+<tr><td>가르친 경험</td><td><span class="tag">기록에 없음</span></td><td>1:1 코칭·컨설팅 일 6건 수행 중 (강단 강의 이력은 없음)</td></tr>
+<tr><td>카메라·채널</td><td><span class="tag">기록에 없음</span></td><td>짠테크 유튜브 제작 중 (1~3화, 루크가 대본)</td></tr>
+<tr><td>11~12월 가용 시간</td><td><span class="tag">확인 필요</span></td><td><b>이미 꽉 차 있음</b> — 오전 스토어 3시간 + 코칭 10~12건 목표 + 발주 + 물류 안정화</td></tr>
+<tr><td>본인 의향</td><td><span class="tag">확인 필요</span></td><td><b>강사 준비를 미루기로 함</b> — 단기 수입 확보 우선 (9/11 상담)</td></tr>
+<tr><td>12월에 걸려 있는 것</td><td>없음</td><td><b>12/10 90일 결산 — 거취 결정</b></td></tr>
+</table>
+<div class="note">가을님 칸이 비어 있는 건 적합하지 않다는 뜻이 아니라, <b>아직 확인한 기록이 없다</b>는 뜻입니다. 플라우드에는 8/15 이후 가을·정복녀 이름의 녹음이 없습니다.</div>
+</div>
+
+<h2>가을 대표님 — 역할과 모양이 맞습니다</h2>
+<div class="card blue">
+  <ul class="list">
+    <li><div class="t">주부 → 대표라는 서사 자체가 상품이다</div><div class="m">50~60대 초보에게 가장 세게 작동하는 문장은 숫자가 아니라 <b>"나와 비슷한 사람이 해냈다"</b>입니다. 289만 원짜리 결정을 움직이는 건 이쪽입니다</div></li>
+    <li><div class="t">초월스토리가 요청한 '성과 수강생' 요건을 본인이 충족한다</div><div class="m">영상 4편을 따로 섭외할 필요 없이 강사가 그 역할을 겸합니다 — 촬영 리소스가 한 번에 줄어듭니다</div></li>
+    <li><div class="t">원크루를 통과했으니 커리큘럼 언어를 이미 공유한다</div><div class="m">루크가 강의 기획·PPT·라이브 코칭을 붙이는 구조에서, 같은 말을 쓰는 사람과 붙는 게 3주 안에 가능한 유일한 조건입니다</div></li>
+    <li><div class="t">성과의 출처가 본인 사업이다</div><div class="m">"이 방법으로 이렇게 됐다"가 성립합니다. 조직 내부에서 받은 보수가 성과로 보이면 라이브에서 가장 먼저 무너지는 지점이 이쪽입니다</div></li>
+  </ul>
+  <div class="note">다만 <b>확인된 성과 숫자가 아직 없습니다.</b> 아래 '확인 필요'를 채우기 전까지는 후보이지 확정이 아닙니다.</div>
+</div>
+
+<h2>뿌요 — 지금 올리면 네 가지가 걸립니다</h2>
+<div class="card red">
+  <ul class="list">
+    <li><span class="tag p0">1</span><div class="t">본인이 강사를 미루겠다고 말했다</div><div class="m">9/11 상담에서 <b>"장기 목표인 강사 준비는 잠시 미루고 단기 수입 확보에 집중"</b>으로 정리했습니다. 의향이 반대 방향인 사람을 2회 실패 시 종료 조건이 붙은 자리에 세우는 건 순서가 뒤집힌 것입니다</div></li>
+    <li><span class="tag p0">2</span><div class="t">12/10 거취 결정이 12월 초 라이브와 겹친다</div><div class="m">90일 결산으로 300만 달성 여부와 거취를 정하는 날입니다. <b>거취가 안 정해진 사람을 12월 상품의 얼굴로 세우면, 결산이 나쁘게 나올 때 상품까지 같이 흔들립니다</b></div></li>
+    <li><span class="tag p0">3</span><div class="t">시간이 이미 없다</div><div class="m">오전 9~12시 스토어 운영 + 코칭 일 10~12건 목표 + 금요일 발주 + 3PL 물류 안정화. 번아웃 관리가 이미 과제로 올라와 있는 상태에서 촬영·라이브 5회를 얹는 것입니다. <b>강사를 올리면 상담·물류 자리가 빕니다</b></div></li>
+    <li><span class="tag p1">4</span><div class="t">서사가 타깃과 어긋난다</div><div class="m">30대 중후반이고, 만들고 있는 채널은 <b>짠테크(절약)</b>입니다. 셀러 교육 타깃과 다른 결이라 자산으로 합산되지 않습니다. 또 본인이 자기 홍보 성격의 업무에 거부감이 있다고 말한 기록이 있어 라이브 판매석과 상성이 좋지 않습니다</div></li>
+  </ul>
+  <div class="note">뿌요가 부족하다는 뜻이 아닙니다. 코칭을 실제로 하루 6건 돌리는 사람은 흔하지 않고, 그건 <b>다른 자리의 강점</b>입니다 — 아래를 보세요.</div>
+</div>
+
+<h2>그래서 — 둘 중 하나를 고르는 문제가 아닙니다</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">이 런칭에는 자리가 두 개 있습니다. 같은 사람에게 둘을 다 맡기려다 선택이 막힌 것일 수 있습니다.</p>
+  <div class="wrapx"><table>
+  <tr><th>자리</th><th>필요한 것</th><th>맞는 사람</th></tr>
+  <tr><td><b>앞</b> — 라이브에서 289만을 파는 강사</td><td>서사 · 권위 · 카메라 신뢰 · 타깃과의 거리</td><td class="num">가을 대표님</td></tr>
+  <tr><td><b>뒤</b> — 들어온 30~40명을 받는 상담·운영</td><td>세션 표준화 · 응대 톤 · 처리량</td><td class="num">뿌요 (이미 하는 일)</td></tr>
+  </table></div>
+  <p class="note" style="margin-top:10px">뿌요를 앞으로 올리면 뒤가 비고, 그 자리를 또 채워야 합니다. 반대로 가을님을 앞에 세우면 <b>두 사람이 각자 잘하는 자리에 그대로 있습니다.</b> 2회 종료 조건이 붙은 자리에 조직 내부 인력을 올리지 않는 것도 리스크 관리로 맞습니다 — 실패하면 강사 한 명이 아니라 운영 인력까지 같이 잃습니다.</p>
+</div>
+
+<h2>권고 <small>조건부</small></h2>
+<div class="card accent">
+  <p style="font-size:17px;font-family:'Gowun Dodum',sans-serif;margin:0 0 8px"><b>가을 대표님으로 가되, 아래 네 가지를 확인한 다음에 확정하세요.</b></p>
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="d">이번 주</div><div class="t">성과 숫자를 받는다</div><div class="d">월 매출·순수익·시작 시점·판매 품목. 라이브에서 쓸 수 있는 숫자가 하나라도 나와야 강사가 성립합니다. 없으면 후보에서 내려야 합니다</div></li>
+    <li><div class="d">이번 주</div><div class="t">본인 의향과 11~12월 일정을 확인한다</div><div class="d">촬영 1일 + 라이브 5회(주말 포함)를 비울 수 있는지. 주부시라면 가족 일정이 실제 제약입니다 — 금액보다 이걸 먼저 묻는 게 맞습니다</div></li>
+    <li><div class="d">이번 주</div><div class="t">카메라 앞에 한 번 세워본다</div><div class="d">10/25 무료 라이브가 리허설입니다. 게스트로 10분만 붙여보면 3주 뒤 촬영에서 알게 될 것을 지금 알 수 있습니다</div></li>
+    <li class="big"><div class="d">계약 전</div><div class="t">실패했을 때 원크루 관계는 분리한다</div><div class="d">본인의 고객을 2회 종료 조건이 붙은 자리에 세우는 것입니다. <b>"강사 협업이 끝나도 원크루 관계는 그대로"</b>를 먼저 말로 못 박아야 합니다. 이걸 안 하면 실패 시 수강생 한 명과 평판을 같이 잃습니다</div></li>
+  </ol>
+</div>
+
+<h2>같이 짚어야 할 것</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">40대는 초월스토리가 말한 '고연령'이 아닐 수 있다</div><div class="m">타깃이 50~60대라면 고연령 성과자 영상 4편은 <b>별도로</b> 필요합니다. 원크루에 박태경·최은봉 대표님이 있지만 연령은 기록에 없습니다 — 강사와 별개로 영상 출연자 명단을 따로 만드는 게 맞습니다</li>
+    <li><div class="t">강사에게 제시할 금액을 먼저 확정하라</div><div class="m">제시값 2,200만~3,200만과 계산값 3,641만~4,855만이 1,400~1,600만 차이 납니다 (<a href="../chowol/">근거</a>). <b>비용 항목 목록을 못 박기 전에 사람에게 숫자를 말하면 안 됩니다</b> — 나중에 내리는 건 불가능합니다</div></li>
+    <li><div class="t">2개월 준비 기간 옵션을 쓸 수 있다</div><div class="m">회의에서 "역량이 부족하면 최소 2개월 준비 기간을 주면 프로그램 개발까지 지원"하기로 했습니다. 가을님이 숫자는 좋은데 전달이 약하다면, <b>12월을 밀고 2개월 붙이는 선택</b>이 열려 있습니다. 12월 날짜를 지키려고 사람을 억지로 맞출 필요는 없습니다</div></li>
+    <li><div class="t">뿌요 거취 결정은 이것과 별개로 이번 주에 닫아야 한다</div><div class="m">강사로 안 가더라도 역할·수익 구조는 여전히 미결입니다 (<a href="../maven/">10/6 회의</a>). 12/10 결산 전에 정리해 두면 그날 선택지가 넓어집니다</div></li>
+  </ul>
+</div>
+
+<h2>확인 필요 <small>가을 대표님 — 기록이 비어 있는 칸</small></h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">성함 표기</div><div class="m">'가을'이 활동명인지, '정복녀'가 본명인지. 영상·포스터·계약서에 들어갈 표기를 먼저 정해야 합니다</div></li>
+    <li><div class="t">원크루 진행 상황</div><div class="m">몇 회차까지 왔는지, 상담 기록이 어디에 있는지. 플라우드에 8/15 이후 녹음이 없습니다</div></li>
+    <li><div class="t">사업 내용과 성과</div><div class="m">업종·품목·시작 시점·월 매출·순수익. '대표님'의 사업체 형태(개인/법인)도</div></li>
+    <li><div class="t">말하는 사람인지</div><div class="m">강의·발표·라이브·영상 경험. 없어도 되지만 그러면 준비 기간이 필요합니다</div></li>
+    <li><div class="t">보유 채널</div><div class="m">유튜브·인스타·블로그 유무와 규모. 있으면 런칭 퍼널에 그대로 더해집니다</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거: 10/6 17:22 메이븐·초월스토리 회의 녹음(강사 조건·2회 종료·2개월 준비·고연령 성과자 영상 4편) · 9/11 상담 녹음 최근영(뿌요) 63분(월 400만 미만·시급 2만·코칭 일 6건→10~12건·강사 준비 보류·오전 9~12시 스토어·자기 홍보 거부감) · 9/17 [뿌요] 운영 최적화 노트(교육실장 직함·컨설팅 40분 표준) · 프로젝트 일정표(12/10 뿌요 90일 결산·거취 결정, 짠테크 유튜브 1~3화). <b>가을(정복녀) 대표님에 관한 내용은 10/7 루크 구두 2줄(40대 주부·원크루 대표)이 전부이며, 플라우드 2026-08-15 이후 녹음·기존 페이지에서 해당 이름을 찾지 못했습니다.</b> 위 '맞는 이유'는 그 두 줄에서 도출한 판단이며 확인된 사실이 아닙니다.</div>
 """
 
 # ---------------------------------------------------------------- 메이브님 공동 액션 플랜
@@ -2862,6 +2966,7 @@ def main():
     write(os.path.join(base, "invader", "index.html"), page("인베이더 종료 대비", INVADER))
     write(os.path.join(base, "maven", "index.html"), page("메이브님 공동 액션 플랜", MAVEN))
     write(os.path.join(base, "chowol", "index.html"), page("초월스토리 강사 협업", CHOWOL))
+    write(os.path.join(base, "pilot", "index.html"), page("파일럿 강사 결정", PILOT))
     write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
     write(os.path.join(base, "platform", "index.html"), page("강의 플랫폼 전략", PLATFORM))
