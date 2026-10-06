@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-07-cards-stock-rewrite",
+    "date": "2026-10-07",
+    "project": "루크 툴박스",
+    "title": "카드뉴스 글 다시 쓰기 — 재고 계산법",
+    "status": "완료",
+    "summary": "루크가 '읽어도 이해가 안 된다'고 해서 전면 재작성. 숫자가 건너뛰던 자리(본전 2만원이 어떻게 한 개 2,500원이 되는지)를 드러내고, 20개 사서 12개 팔고 8개 남은 한 사람 이야기로 이어지게 고침.",
+    "next": "예시 숫자를 루크가 상담에서 쓰는 실제 숫자로 바꿀지 확인.",
+    "deploy_url": "https://giantstoolbox.com/cards/stock-as-one",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>사진은 그대로 쓰고 글만 다시 그려 추가 크레딧은 들지 않았습니다.</p><p>폴더: ~/Desktop/luke-toolbox</p>"
+  },
+  {
     "id": "mlb-20261006-keyscope",
     "date": "2026-10-06",
     "project": "멘토루크 블로그",
