@@ -552,6 +552,7 @@ INDEX = """
   <a href="priority/"><b>우선순위</b><span>P0 → P3 · 보류 목록</span></a>
   <a href="people/"><b>사람별 현황</b><span>메이브님·디노·뿌요·지영</span></a>
   <a href="schedule/"><b>일정 도식</b><span>10월 타임라인 · 마일스톤</span></a>
+  <a href="invader/"><b>인베이더 종료 대비</b><span>10/6 들은 이야기 · 마지막 기수에 챙길 것</span></a>
   <a href="universe/"><b>사업 유니버스</b><span>지금 돌아가는 것 전부 — 지도</span></a>
   <a href="philosophy/"><b>삼각 파이프라인</b><span>원크루 · 일십백천 · 불씨 이론</span></a>
   <a href="platform/"><b>강의 플랫폼 전략</b><span>유입 · 락인 · 플레이어 3자 구도</span></a>
@@ -1121,6 +1122,85 @@ PLATFORM = """
 <div class="src" style="margin-top:14px">근거: 9/29 메이븐 회의 녹음(플랫폼 구상·인베이더 분석·수치) · 9/30 루크 구두(역할 배정: PD=모객, 본부장=락인·챌린지·카페·광고, 루크·메이브님=플레이어·강사 교육) · 7월 10억 전략 대화(계약 조항). 이름 표기는 녹음 기준(초이스토리 PD·종혁 본부장) — 실명 확인 필요</div>
 """
 
+
+# ---------------------------------------------------------------- 인베이더 종료 대비
+INVADER = """
+<h1>인베이더 종료 대비</h1>
+<p class="note">10/6 루크가 들은 이야기 기준입니다. <b>확정된 사실이 아니라 전해 들은 것</b>이고, 아래 판단은 그 전제 위에서 세운 대비안입니다. 뒤집히면 그때 지우면 됩니다.</p>
+
+<h2>들은 것 <small>10/6</small></h2>
+<div class="card red">
+  <ul class="list">
+    <li><div class="t">인베이더가 강의를 접을 것 같다</div><div class="m">전해 들은 이야기 · 시점·범위 확인 필요</div></li>
+    <li><div class="t">뷰셀(메이브님)은 이번 <b>4기가 마지막</b></div><div class="m">기수 일정 확인 필요</div></li>
+    <li><div class="t">루크는 이번 <b>6기가 마지막일 확률이 높다</b></div><div class="m">기수 일정 확인 필요</div></li>
+    <li><div class="t">이번 기수는 <b>광고비를 쓰지 않고 유튜브 채널에만 의존</b>해서 운영</div><div class="m">인베이더 쪽 방침</div></li>
+  </ul>
+</div>
+
+<h2>이미 있던 전조 <small>기록에서</small></h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">10/2 — 인베이더 관련 촬영이 한꺼번에 끊겼다</div><div class="m">돈벌쥐 PD 인터뷰에서 나온 이야기. 외부 채널 촬영이 전부 빠지면서 여러 사람이 생계 타격을 체감했고, 타이탄이 인베이더에서 분리된 것 같다는 말도 함께 나왔습니다 — 광고·제작비부터 줄인 흐름</div></li>
+    <li><div class="t">9/29 — 인베이더 없이 가는 플랫폼을 이미 설계 중</div><div class="m">메이브님과의 회의에서 3자 구도(모객·락인·플레이어)를 짜고 10/8 본부장 미팅까지 잡아둔 상태. <a href="../platform/">전략 페이지</a></div></li>
+    <li><div class="t">원칙에 이미 적혀 있던 것</div><div class="m">"인베이더를 통한 수취율 20%는 매출 엔진이 아니라 <b>리스트 확보 엔진</b>이다. 자체 런칭(50%)이 물량 엔진이고 직접 고가(90% 마진)가 마진 엔진이다"</div></li>
+  </ul>
+</div>
+
+<h2>그래서 무엇이 끊기는가</h2>
+<div class="card wrapx">
+<table>
+<tr><th>인베이더가 해주던 것</th><th>끊기면</th><th>대체</th></tr>
+<tr><td><b>신규 명단</b> — 광고로 사람을 모아 특강에 앉혀주던 것</td><td>가장 큰 손실. 매출보다 <b>리스트 유입</b>이 끊긴다</td><td>유튜브·카톡·카페 자체 리스트 + 신규 플랫폼 모객 축</td></tr>
+<tr><td><b>광고비 집행</b> — 돈을 대신 태워주던 자리</td><td>이번 기수부터 이미 없음(유튜브만)</td><td>자체 광고 상한 설정 · 1기 1,000만 선</td></tr>
+<tr><td><b>판 깔기</b> — 기수 운영·결제·고객 응대 틀</td><td>우리가 직접 짜야 함</td><td>신규 플랫폼 3자 구도(락인 축이 담당)</td></tr>
+<tr><td>수취율 20%</td><td>안 떼이는 게 이득</td><td>자체 런칭은 배분 1/3, 직접 판매는 거의 전부</td></tr>
+</table>
+<div class="note">핵심은 돈이 아니라 <b>사람이 들어오던 입구</b>가 닫힌다는 것입니다.</div>
+</div>
+
+<h2>이번 기수가 마지막이라면, 반드시 챙길 것 <small>순서대로</small></h2>
+<div class="card accent">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">수강생 명단을 우리 쪽으로 옮긴다</div><div class="d">인베이더 기수가 끝나면 그 명단은 남의 것입니다. 카톡 오픈채팅·네이버 카페·유튜브 멤버십 중 <b>최소 한 곳</b>에 들어오게 하는 동선을 이번 기수 안에 넣어야 합니다. 자료 배포·질의응답·사례집을 미끼로. 개인정보 수집은 동의 받고.</div></li>
+    <li><div class="t">마지막 기수를 증거로 남긴다</div><div class="d">신규 플랫폼 1기를 모집할 때 필요한 것은 말이 아니라 숫자입니다. 6기·4기 수강생의 성과·후기·비포애프터를 <b>지금</b> 모아두세요. 끝나고 나면 연락이 안 됩니다.</div></li>
+    <li><div class="t">PD·본부장 미팅을 앞당긴다</div><div class="d">10/5 초이스토리 PD · 10/8 종혁 본부장이 잡혀 있습니다. 인베이더가 접는다는 이야기는 이 미팅의 <b>명분이자 타이밍</b>입니다 — "그 자리가 비니 우리가 한다"가 설득 한 줄이 됩니다. 다만 들은 이야기이므로 단정해서 말하지는 마세요.</div></li>
+    <li class="big"><div class="t">강사·촬영 인력이 흩어지기 전에 잡는다</div><div class="d">10/2 녹음대로라면 인베이더 라인의 영상 PD·강사들이 이미 일감이 끊긴 상태입니다. 신규 플랫폼에 필요한 사람을 지금 데려오기 가장 싼 때입니다.</div></li>
+  </ol>
+</div>
+
+<h2>광고 없이 유튜브만으로 가면 <small>숫자가 어떻게 달라지나</small></h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">신청자 수는 준다 — 각오할 것</div><div class="m">광고로 밀어 넣던 인원이 빠집니다. 추석 특강 100명 신청 같은 규모는 기대하기 어렵습니다 (감소 폭은 예측 불가 · 확인 필요)</div></li>
+    <li><div class="t">대신 들어오는 사람의 질은 올라간다 — 루크 본인이 한 말</div><div class="m">"광고 보고 바로 결제했지만 영상도 충분히 안 본 수강생은 신뢰가 낮아 관리가 어렵다. 영상을 많이 보고 비교·연구를 거쳐 들어온 사람은 신뢰도가 높다" (10/2 녹음). 유튜브만 남으면 뒤쪽만 들어옵니다</div></li>
+    <li><div class="t">그러니 이번 기수는 '수'가 아니라 '전환'으로 본다</div><div class="m">신청자 수가 절반이 되어도 원크루 전환이 같으면 손해가 아닙니다. 애초에 목표가 1~2명(3,300~3,900만) 전환입니다</div></li>
+    <li><div class="t">영상 쪽에 더 실어야 한다</div><div class="m">유입이 유튜브 하나로 좁아지면 업로드 주기와 영상 설명란 동선이 그대로 매출선이 됩니다. <b>10월 말 무료 라이브 신청 링크</b>가 더 중요해졌습니다</div></li>
+  </ul>
+</div>
+
+<h2>대체 입구 세 개 <small>어디로 사람을 받을 것인가</small></h2>
+<div class="card">
+  <ul class="list">
+    <li><span class="tag p0">P0</span><div class="t">신규 강의 플랫폼 — 10/8 본부장 미팅</div><div class="m">인베이더 자리를 그대로 대신하는 구조. 모객(PD) · 락인(본부장) · 플레이어(루크·메이브님). 250만×20명 = 5,000만 · <a href="../platform/">전략</a></div></li>
+    <li><span class="tag p0">P0</span><div class="t">10월 말 무료 라이브 — 자체 리스트 만들기</div><div class="m">남의 명단이 아니라 내 명단을 만드는 유일한 직접 경로. 10/25(일) 19:00 언급 · 확정 여부 확인 필요 · <a href="../guides/free-live/">설명서</a></div></li>
+    <li><span class="tag p1">P1</span><div class="t">원크루 직접 판매</div><div class="m">기수 모집 없이도 문의 하나가 3,300만. 유튜브·블로그 검색 유입에서 바로 상담으로 가는 동선을 이번 달에 손보는 게 수지가 맞습니다</div></li>
+  </ul>
+</div>
+
+<h2>지금 확인해야 할 것</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">인베이더 종료가 사실인지, 어느 범위인지</div><div class="m">강의 사업만인지 전체인지 · 언제까지인지 · 누구에게서 들은 이야기인지</div></li>
+    <li><div class="t">6기·4기 일정</div><div class="m">모집 시작·종료, 강의 기간. 명단 확보 동선을 넣을 수 있는 마지막 시점이 언제인지</div></li>
+    <li><div class="t">계약 조건</div><div class="m">수강생 명단·콘텐츠·후기의 소유가 계약서에 어떻게 적혀 있는지. 명단을 우리 쪽으로 받는 것이 가능한 조건인지</div></li>
+    <li><div class="t">메이브님과 입을 맞출 것</div><div class="m">4기·6기를 같이 마지막으로 치른다면, 두 사람이 같은 동선으로 명단을 모아야 합치는 의미가 있습니다</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거: 10/6 루크 구두(인베이더 종료 전망·4기/6기·광고 없이 유튜브 의존 — 전해 들은 이야기, 미확정) · 10/2 돈벌쥐 PD 인터뷰 녹음(인베이더 촬영 중단, 타이탄 분리설, 광고 유입 수강생의 신뢰도) · 9/29 메이브님 회의 녹음(인베이더 실패 분석·3자 구도·10/8 미팅) · 프로젝트 원칙(수취율 20% = 리스트 엔진). 감소 폭·전환율 등 숫자는 예측이며 실적이 아닙니다.</div>
+"""
+
 # ---------------------------------------------------------------- 사업 유니버스 지도
 UNI_REGIONS = [
  {"id":"ch","no":"①","name":"채널·브랜딩","sub":"신뢰 → 유입","color":"#4fd1a5","ax":90,"ay":130,
@@ -1147,6 +1227,7 @@ UNI_REGIONS = [
    {"id":"kititi","n":"키티티 컨설팅","full":"키티티바이지영 컨설팅","st":"on","d":"윤지영 원장(성신여대 인근 메이크업 샵)의 브랜딩·확장 자문. 상표 출원 진행 중, 2월 샵 오픈 목표, 상담 사이트 운영. 월 고정 자문 + 매출 연동으로 유료 전환이 과제.","href":"../grants/","hl":"정부지원사업 정리"},
    {"id":"sudan","n":"셀러들의 수다","full":"셀러들의 수다 (신규 교육회사)","st":"idea","exp":1,"d":"메이브님(신정현)과 운영하려는 교육회사 — 교육에 3PL을 묶은 형태. 신규 법인 설립 vs 힐링디어스 상호 변경 후 이사 선임 사이에서 고민 중이고, 이사로 들이면 기존 재무가 보일 수 있어 신규 설립 쪽으로 기울어 있음.","from":"메이브님과의 법인 논의 (10/2)"},
    {"id":"own","n":"자체 강의 2027","full":"회사 자체 강의 (2027)","st":"idea","exp":1,"d":"내년에 회사 이름으로 직접 강의를 열고, 3PL 재고 판매와 연계하려는 구상.","from":"3PL 수익 구상 (9월)"},
+   {"id":"invader","n":"인베이더","full":"인베이더 (기수 강의 제휴)","st":"off","d":"지금까지 기수 강의로 신규 명단을 대 주던 제휴처. 수취율 20%는 매출 엔진이 아니라 리스트 확보 엔진이었습니다. 10/6에 '강의를 접을 것 같다'는 이야기를 들었고, 뷰셀은 4기·루크는 6기가 마지막일 확률이 높으며 이번 기수는 광고 없이 유튜브에만 의존해 돈다고 합니다. 모두 전해 들은 이야기로 미확정.","from":"10/6 루크 구두 (전해 들은 이야기)","href":"../invader/","hl":"종료 대비 페이지","exp":0},
    {"id":"callai","n":"전화 상담 AI","full":"전화 상담 AI","st":"idea","exp":1,"d":"'이거 괜찮은 겁니까' 유형의 계약 문의 전화가 매우 많고 녹음이 100건 넘게 있음(한 통 10~30분). 이 사례들을 분석해 해당 유형만이라도 AI가 답하게 만들려는 구상.","from":"상담 전화 자동화 논의 (9/17)"},
   ]},
  {"id":"pr","no":"③","name":"상품·유통","sub":"반복 → 회전","color":"#8fb0ff","ax":268,"ay":600,
@@ -1202,6 +1283,11 @@ UNI_EDGES = [
  ("vcell","consign","화장품 유입과 메이크업헬퍼가 같은 상품군"),
  ("blog","typer","사람처럼 치는 자동 입력 프로그램이 블로그를 돌림"),
  ("blog","yt","같은 녹음·강의 내용을 글로 다시 씀"),
+ ("invader","yt","이번 기수는 광고 없이 유튜브 채널로만 모객한다고 들음"),
+ ("invader","onecrew","인베이더 기수 수강생이 원크루 전환 후보 풀이었다"),
+ ("invader","vcell","뷰셀도 같은 라인 — 4기가 마지막이라고 들음"),
+ ("invader","plat","여기가 닫히는 자리를 신규 강의 플랫폼이 대신한다"),
+ ("invader","live","명단이 끊기면 자체 무료 라이브가 유일한 직접 입구"),
  ("onecrew","ilsip","일십백천 수료자가 원크루로 올라오는 사다리"),
  ("ilsip","kititi","키티티가 브랜딩 축 컨설팅의 실제 사례"),
  ("onecrew","consign","최은봉 대표(원크루) 건이 메이크업헬퍼 위탁"),
@@ -1348,6 +1434,7 @@ def universe_html():
   <span><i style="border:2px solid var(--muted);background:transparent"></i>테두리 = 세우는 중</span>
   <span><i style="border:2px dotted var(--muted);background:transparent"></i>점선 = 구상</span>
   <span><svg width="26" height="8" style="vertical-align:-1px"><line x1="1" y1="4" x2="25" y2="4" stroke="#ffcf8a" stroke-width="2" stroke-dasharray="4 4"/></svg> 노란 점선 = 가능성</span>
+  <span><i style="border:2px dotted #ff7b6e;background:transparent"></i>빨간 점선 = 종료 예정</span>
   <span>크고 고리가 번지는 별 = 최근 30일 대화에 많이 나온 것</span>
   <span id="uniTip"></span>
 </div>
@@ -1379,6 +1466,11 @@ def universe_html():
   </div>
   <div id="ufList"></div>
 </div></div>
+
+<div class="card red" style="margin-bottom:16px">
+  <div class="t">10/6 — 인베이더가 강의를 접을 것 같다는 이야기</div>
+  <div class="m">지도에 <b>인베이더</b> 별을 빨간 점선(종료 예정)으로 올렸습니다. 거기서 끊기는 줄이 어디로 가야 하는지와 마지막 기수에 챙길 것은 <a href="../invader/">인베이더 종료 대비</a>에 정리했습니다. 전해 들은 이야기로 아직 미확정입니다.</div>
+</div>
 
 <h2>최근 대화에 많이 나온 것 <small>플라우드 __BZWIN__</small></h2>
 <p class="note">녹음 <b>__BZN__건</b>(2분 이상 업무 녹음, 사적인 것 제외)의 요약 노트에서 각 사업이 몇 번 나왔는지 센 결과입니다. 많이 나온 별일수록 지도에서 <b>크고, 고리가 번지고, 거기서 나가는 줄이 밝고 빠르게</b> 흐릅니다.</p>
@@ -1465,6 +1557,7 @@ var MODE='2d', rotY=0, rotX=0, spin=0, zoom=1;
 var HOME={rotY:0.55, rotX:-0.22};
 
 var HEATR={0:1,1:1.10,2:1.34,3:1.62};
+var OFFC='#ff7b6e';
 function sizeNodes(){
   nodes.forEach(function(n){
     var hm=HEATR[n.heat||0];
@@ -1574,9 +1667,10 @@ nodes.forEach(function(n){
   var at={'r':n.r,'fill':n.c};
   if(n.st==='build'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'2'};}
   if(n.st==='idea'){at={'r':n.r,'fill':'#0c1a20','stroke':n.c,'stroke-width':'1.6','stroke-dasharray':'2 2.4'};}
+  if(n.st==='off'){at={'r':n.r,'fill':'#2a1113','stroke':'#ff7b6e','stroke-width':'2','stroke-dasharray':'1.5 3'};}
   if(n.id==='luke'){at={'r':n.r,'fill':'#ffe9b8','stroke':'#e3b04b','stroke-width':'2'};}
   if(n.mine){at={'r':n.r,'fill':'#0c1a20','stroke':'#ffffff','stroke-width':'2','stroke-dasharray':'3 3'};}
-  n.ring = el('circle',{'r':n.r,'fill':'none','stroke':n.c,'stroke-width':'1.6','opacity':'0'});
+  n.ring = el('circle',{'r':n.r,'fill':'none','stroke':(n.st==='off'?OFFC:n.c),'stroke-width':'1.6','opacity':'0'});
   n.ph = rnd();
   n.glow = el('circle',{'r':n.r*3.2,'fill':'url(#uGlow)','opacity':'.5'});
   n.halo = el('circle',{'r':n.r+7,'fill':n.c,'opacity':'0'});
@@ -1668,7 +1762,7 @@ function loop(){
 }
 draw(); if(!reduce) requestAnimationFrame(loop);
 
-var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2']};
+var ST={on:['돌아감','p0'],build:['세우는 중','p1'],idea:['구상','p2'],off:['종료 예정','p0']};
 var WD={1:'지금 당장',2:'이번 분기',3:'내년'};
 var sel=null, filt=null, showP=true;
 function apply(){
@@ -2553,6 +2647,7 @@ def main():
     write(os.path.join(base, "priority", "index.html"), page("우선순위", PRIORITY))
     write(os.path.join(base, "people", "index.html"), page("사람별 현황", PEOPLE))
     write(os.path.join(base, "schedule", "index.html"), page("일정 도식", SCHEDULE))
+    write(os.path.join(base, "invader", "index.html"), page("인베이더 종료 대비", INVADER))
     write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
     write(os.path.join(base, "platform", "index.html"), page("강의 플랫폼 전략", PLATFORM))
