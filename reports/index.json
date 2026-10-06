@@ -1,5 +1,18 @@
 [
   {
+    "id": "mlb-20261006-samples-saved",
+    "date": "2026-10-06",
+    "project": "멘토루크 블로그",
+    "title": "예시 글 3편 네이버 임시저장 완료",
+    "status": "완료",
+    "summary": "플라우드 상담으로 쓴 예시 글 3편을 네이버 블로그(nuguldoong) 임시저장함에 넣었습니다. 3편 모두 입력 일치율 100%이고, 발행은 하지 않았습니다.",
+    "next": "루크: 임시저장함에서 3편 읽어 보고 고칠 점 알려 주기 · 발행 전 상담 당사자 동의 확인",
+    "deploy_url": "https://blog.naver.com/nuguldoong?Redirect=Write",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<ul><li>① 스마트스토어 초보, 카테고리 자꾸 바꾸던 이유</li><li>② 사업 동기부여가 사라졌을 때</li><li>③ 소상공인 자금 관리, 무차입 사장님 이야기</li><li>임시저장 글 개수 8 → 11</li><li>사진은 없음(사진 폴더가 비어 있음)</li></ul>"
+  },
+  {
     "id": "2026-10-06-onecrew-site-welcome",
     "date": "2026-10-06",
     "project": "원크루 사이트",
