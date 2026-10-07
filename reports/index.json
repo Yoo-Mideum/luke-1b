@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-08-revisit-messages",
+    "date": "2026-10-08",
+    "project": "루크 툴박스",
+    "title": "과정 화면 재방문 메시지 12가지",
+    "status": "완료",
+    "summary": "일십백천과 원크루 화면에 다시 온 분께 올 때마다 다른 말이 나오도록 했습니다. 열두 가지를 순서대로 보여 주고, 모두 무료 1:1 상담으로 이어집니다.",
+    "next": "문구를 고치고 싶으면 한 파일만 바꾸면 됩니다.",
+    "deploy_url": "https://giantstoolbox.com/courses/onecrew",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>새로 뜨는 창을 만들지 않고 이미 있던 아래쪽 상담 막대의 글만 바꿨습니다. 검토 회의에서 휴대폰 화면이 겹친다는 지적이 있었기 때문입니다.</p>"
+  },
+  {
     "id": "2026-10-08-per-member-reading",
     "date": "2026-10-08",
     "project": "루크 툴박스",
