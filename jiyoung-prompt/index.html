@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>지영 원장 빌드업 페이지 — 프롬프트 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-07</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>지영 원장 빌드업 페이지 — 프롬프트</h1>
+<p class="note">키티티바이지영(윤지영 원장)용 수익모델 빌드업 페이지를 새 세션에서 만들 때 쓰실 프롬프트입니다. 아래 버튼으로 복사해서 새 클로드 코드 세션에 그대로 붙여넣으세요.</p>
+
+<h2>붙여넣기 전에 — 두 가지만</h2>
+<div class="card red">
+  <ul class="list">
+    <li><span class="tag p0">1</span><div class="t">luke-1b에 넣지 마세요. 새 저장소로 가세요</div><div class="m">luke-1b는 루크님 사업 전체가 담긴 페이지입니다. 지영 원장에게 링크를 주면 <b>인베이더·초월스토리·법인 정리·수익 배분까지 다 보입니다.</b> 저장소를 따로 만드셔야 합니다 — 프롬프트에 <b>kittiti-jiyoung</b>으로 넣어 뒀습니다. 저장소 생성과 Pages 켜기는 루크님이 직접 하셔야 합니다</div></li>
+    <li><span class="tag p0">2</span><div class="t">꿈 사진은 공개 페이지에 올리지 않는 쪽이 낫습니다</div><div class="m">"개인 소장용"과 <b>공개 URL에 게시</b>하는 것은 다릅니다. 매물 사진·자동차 사진·브랜드 이미지를 가져다 올리면 저작권 문제가 생길 수 있고, 저도 브랜드 로고나 특정 차량 디자인을 코드로 재현하지는 않습니다. 대신 <b>코드로 그린 원본 일러스트 + 실제 가격 숫자</b>로 가도록 프롬프트에 넣었습니다</div></li>
+  </ul>
+</div>
+
+<div class="card blue">
+  <p style="margin:0 0 8px"><b>그리고 이게 더 세게 작동할 겁니다</b></p>
+  <p style="margin:0">루크님 10억 페이지가 힘이 있는 건 사진이 아니라 <b>숫자와 날짜</b> 때문입니다. 지영 원장 페이지도 마찬가지로 — 성북구 고급 주택이 얼마고, 3층 건물이 얼마고, 차가 얼마인지 <b>실제 시세를 찾아 합계를 내고, 거기까지 필요한 연 순이익을 역산</b>하는 게 사진 열 장보다 셉니다. 프롬프트가 그렇게 시키도록 써 뒀습니다.</p>
+</div>
+
+<h2>프롬프트</h2>
+<div class="card">
+  <button class="cpy" data-t="p1" style="font:inherit;font-weight:700;padding:10px 16px;border-radius:10px;border:0;background:var(--ac,#5b8def);color:#fff;cursor:pointer;margin-bottom:10px">프롬프트 복사</button>
+  <pre id="p1" style="white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.65;margin:0;font-family:inherit">키티티바이지영(윤지영 원장)의 '수익모델 빌드업' 페이지를 만들어줘.
+내 '내 연봉 10억 만들기' 대시보드(github.com/Yoo-Mideum/luke-1b)와 같은 형식이고, 지영 원장에게 공유할 페이지야.
+
+[0] 저장소
+- 새 저장소 kittiti-jiyoung 에 만들어줘. 저장소 생성과 Pages 켜기는 내가 직접 할 테니 필요하면 알려줘.
+- luke-1b에는 절대 넣지 마. 내 다른 사업 내용이 지영 원장에게 보이면 안 돼.
+- clone해서 작업하고 git push로 배포해줘. 기기 인증(device code) 방식은 이 환경에서 막혀 있으니 시도하지 마.
+  push가 403이면 우회하지 말고 바로 알려줘. 내가 권한 열어줄게.
+- 배포 후 링크는 ?v=1 처럼 숫자를 붙여서 줘.
+
+[1] 페이지 규칙
+- self-contained HTML 한 파일. CSS와 JS는 인라인, 외부는 구글 폰트만.
+- 폴더 구조는 /항목명/index.html, 루트 index.html이 전체 목록 허브.
+- 모바일 우선 max-width 600px, Gowun Dodum + Noto Sans KR, prefers-color-scheme 다크모드.
+- 전부 build.py 하나에서 생성되게 해줘.
+- 코드 고칠 때 한 줄 핀포인트 수정 말고 파일 전체를 새로 써줘.
+- 커밋 메시지는 한글로, 바뀐 것을 목록으로.
+
+[2] 먼저 자료를 모아줘 — 플라우드
+Plaud MCP로 아래를 읽고 지영 원장 관련 사실을 뽑아줘.
+- list_files로 '지영', '키티티', '메이크업'을 각각 검색해줘. 제목만 매칭되고 page_size는 최소 10이야.
+- 이미 아는 파일 ID:
+  of_b4b445dd8d81e2e5131aa0e66145580c   지영이 확장 미팅 / 갈매 (2026-09-08, 134분) — 가장 중요
+  of_6a420befadc2996a3637c2a2c2817142   09-04 지영 뷰티 사업의 오프라인 및 디지털 현금흐름 구축 전략 회의 (20분)
+  of_0c2012402fb03a930015fd5f60266c06   09-26 상담: 지영 - 정부지원사업을 통한 사업 확장
+  of_d07e5712e0711ed74016d48d50f873da   9월 19일 박초희 교수님 - 지영이 레포트 피드백
+- get_note(file_id=...)로 읽어줘. 본문이 길면 서브에이전트에 맡겨서 요약만 받아와 — 내 컨텍스트를 아끼고 싶어.
+- 뽑을 것: 현재 매출과 객단가, 시술 종류별 비중, 고객 수와 재방문율, 확장 계획(샵 규모·인력·아카데미),
+  정부지원사업 진행 상황, 자금 계획과 부족분, 원장이 직접 말한 목표와 걱정, 결정된 것과 아직 미결인 것.
+- 녹음에 없는 건 지어내지 말고 '확인 필요'로 남겨줘.
+
+[3] 페이지 구성
+루트 허브 아래 이렇게 만들어줘.
+1. 수익모델 — 지금 돈이 어디서 오는가. 시술별 매출·객단가·회전율, 각 축이 어디서 막히는가, 다음 축 후보.
+2. 목표 — 세 가지 꿈을 숫자로.
+   가) 성북구 고급 주택
+   나) 3층 건물 '키티티바이지영' 메이크업샵 (원장 본인 소유 꼬마빌딩)
+   다) 맥라렌 스파이더 (정확한 모델명은 원장에게 확인 필요로 표시)
+   각각 실제 가격대를 검색해서 확인하고, 세 개 합계와 거기까지 가는 데 필요한 연 순이익을 역산해줘.
+   못 찾으면 '확인 필요'라고 적고 그럴듯하게 채우지 마.
+3. 경로 — 지금 매출에서 그 숫자까지 가는 단계. 1년 / 3년 / 5년으로 나누고,
+   각 단계에서 무엇이 바뀌어야 하는지(객단가, 좌석 수, 인력, 아카데미, 온라인)를 적어줘.
+4. 사업 유니버스 — 별자리 지도.
+   luke-1b의 /universe/ 와 같은 방식으로 만들어줘. SVG와 인라인 JS, 노드와 엣지, 3D 회전, 전체화면.
+   노드는 '지금 하는 것 / 준비 중 / 구상 중'으로 구분하고, 서로 어떻게 이어지는지 선으로 그려줘.
+   luke-1b 저장소의 build.py에 있는 universe_html() 함수를 참고해도 좋아.
+5. 일정 — 확정된 날짜만. 추정이면 '잠정'이라고 표시.
+6. 출처 — 어느 녹음·자료에서 나온 내용인지 작게.
+
+[4] 이미지 규칙 — 중요
+- 이 페이지는 공개 URL이야. 남의 사진(매물 사진, 자동차 사진, 브랜드 이미지)을 가져다 올리지 마.
+  개인 소장과 공개 게시는 다른 문제야.
+- 브랜드 로고나 특정 차량 디자인을 코드로 재현하지도 마.
+- 대신 이렇게 해줘.
+  · 분위기는 코드로 그린 원본 일러스트(SVG 또는 CSS)로. 예를 들어 빛이 켜진 창이 있는 집 실루엣,
+    3층 건물 단면도, 속도감을 주는 추상적인 선 같은 것.
+  · 꿈은 사진보다 숫자로 보여줘. 가격, 필요한 연수, 월 순이익 목표가 사진보다 훨씬 세게 작동해.
+  · 꼭 사진이 필요한 자리가 있으면 상업적 이용이 가능한 무료 이미지 출처만 알려줘. 내가 직접 넣을게.
+
+[5] 톤과 범위
+- 지영 원장이 직접 볼 페이지야. 내 수수료, 수익 배분, 내 다른 사업 이야기는 넣지 마.
+- 원장을 평가하거나 훈계하는 투로 쓰지 마. 숫자와 선택지를 보여주고 결정은 원장이 하게 해줘.
+- 주민번호, 계좌번호, 집 주소 같은 민감한 개인정보는 어디에도 쓰지 마.
+
+[6] 사실 확인
+- 숫자, 날짜, 가격, 법과 제도, 고유명사는 지어내지 말고 실제로 검색해서 확인한 것만 써줘.
+- 확인이 안 되면 그냥 '확인 필요'라고 적어. 그럴듯하게 채우지 마.
+- 링크는 실제로 열리는 것만. 검색어를 URL에 끼워넣은 가짜 링크는 금지.
+- 출처가 있으면 페이지 안에 작게 남겨줘.
+
+[7] 다 되면
+공유 링크 하나와 짧은 요약만 줘. 작업 중계는 필요 없어.
+내가 결정해야 할 게 있으면 그것만 짧게 물어봐.</pre>
+</div>
+
+<h2>원장에게 먼저 물어볼 것</h2>
+<div class="card gold">
+  <p style="margin:0 0 8px">프롬프트를 돌리기 전에 이 네 가지를 받아두시면 페이지가 훨씬 단단해집니다. 녹음에 없을 가능성이 높은 것들입니다.</p>
+  <ul class="list">
+    <li><div class="t">월 매출과 월 순이익, 그리고 본인이 가져가는 돈</div><div class="m">세 개가 다 다릅니다. 역산의 출발점이라 이게 없으면 목표 숫자가 공중에 뜹니다</div></li>
+    <li><div class="t">성북구 어디쯤, 몇 평대를 생각하는지</div><div class="m">'고급 주택'만으로는 가격을 못 찾습니다. 동네와 평형이 있어야 실거래가를 뒤질 수 있습니다</div></li>
+    <li><div class="t">꼬마빌딩은 사는 것인지 짓는 것인지</div><div class="m">매입과 신축은 금액이 완전히 다릅니다. 3층을 다 쓸 건지 일부는 임대할 건지도</div></li>
+    <li><div class="t">맥라렌 모델명</div><div class="m">'스파이더'는 오픈카 라인업 이름이라 모델에 따라 가격 차이가 큽니다</div></li>
+  </ul>
+  <div class="note">그리고 이 페이지를 만드는 목적도 한 번 정하고 가세요 — <b>원장을 설득하려는 것인지, 원장이 스스로 보면서 쓰는 것인지</b>에 따라 톤이 달라집니다. 전자면 '지금 이대로면 몇 년'이 들어가야 하고, 후자면 '이번 달에 뭘 바꾸면 되는지'가 앞에 와야 합니다.</div>
+</div>
+
+<div class="src" style="margin-top:14px">근거: 2026-10-07 루크 구두(지영 원장의 세 가지 목표 — 성북구 고급 주택, 3층 키티티바이지영 건물, 맥라렌) · 플라우드 녹음 제목 4건(2026-09-04, 09-08, 09-19, 09-26) · luke-1b 페이지 제작 규칙. <b>목표 가격대, 원장의 현재 매출, 모델명은 아직 확인되지 않았습니다.</b> 저작권 관련 판단은 공개 게시를 전제로 한 일반적인 주의이며 법률 자문이 아닙니다.</div>
+
+<script>
+document.querySelectorAll('.cpy').forEach(function(b){
+  b.addEventListener('click', function(){
+    var t = document.getElementById(b.getAttribute('data-t')).innerText;
+    navigator.clipboard.writeText(t).then(function(){
+      var o = b.textContent; b.textContent = '복사됨';
+      setTimeout(function(){ b.textContent = o; }, 1500);
+    });
+  });
+});
+</script>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-07 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
