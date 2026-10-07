@@ -662,6 +662,7 @@ INDEX = """
   <a href="invader/"><b>인베이더 종료 대비</b><span>10/6 들은 이야기 · 마지막 기수에 챙길 것</span></a>
   <a href="corp/"><b>힐링디어스 → 셀러들의 수다</b><span>경기 창고형 매장은 지금 · 서울 빌딩은 2027-03-16 이후</span></a>
   <a href="relocation/"><b>10/15 등기 — 등기부 확인 끝</b><span>중임은 완료 · 본점이전 + 상호 + 목적 + 수권주식</span></a>
+  <a href="credit/"><b>신용점수 — KCB 622 / NICE 750</b><span>농협 카드 거절 이유 · 꼬마빌딩 대출 심사와의 연결</span></a>
   <a href="crew-prompt/"><b>크루원 사업 구조화 — 프롬프트</b><span>기존 흐름에 얹는 짧은 버전 · 이름·충돌·노출만</span></a>
   <a href="jiyoung-prompt/"><b>지영 원장 빌드업 페이지 — 프롬프트</b><span>새 저장소로 만들 때 복사해 쓸 프롬프트</span></a>
   <a href="vault/"><b>셀프 등기 · 정관 찾기 · 서류 보관</b><span>법무사를 쓸지, 정관은 어디서 찾는지</span></a>
@@ -1974,6 +1975,95 @@ document.querySelectorAll('.cpy').forEach(function(b){
 });
 </script>
 """
+# ---------------------------------------------------------------- 신용점수 KCB NICE
+CREDIT = """
+<h1>신용점수 — KCB 622 / NICE 750</h1>
+<p class="note">낮은 편입니다. 다만 두 점수를 평균 내서 볼 게 아니라 <b>KCB 622 하나만 문제</b>입니다. NICE 750은 보통 수준이고, 농협 카드가 거절된 것도 KCB 쪽에서 걸린 것으로 보입니다.</p>
+
+<h2>지금 위치</h2>
+<div class="card red">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>구분</th><th>점수</th><th>등급 환산</th><th>위치</th></tr></thead>
+    <tbody>
+      <tr><td>NICE</td><td class="num">750</td><td>5등급 (750~804)</td><td>중신용 · 보통</td></tr>
+      <tr><td><b>KCB(올크레딧)</b></td><td class="num"><b>622</b></td><td><b>7등급 (530~629)</b></td><td><b>저신용 구간 진입</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0">금융위 등급 환산 기준으로 <b>7등급은 아래에서 약 14% 안에 들어가는 구간</b>입니다. NICE 750은 흔한 점수인데 KCB 622는 흔하지 않습니다. <b>128점 차이는 단순 기관 차이로 설명되는 폭이 아닙니다.</b></p>
+  <div class="note">참고 — NICE 750은 하필 5등급의 <b>맨 아래 칸(750점이 시작점)</b>입니다. 1점만 떨어지면 6등급으로 내려갑니다. 올랐다고 안심할 자리가 아닙니다.</div>
+</div>
+
+<h2>왜 128점이 벌어졌나</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">두 회사가 보는 항목의 <b>비중이 다릅니다.</b></p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>평가 항목</th><th>KCB</th><th>NICE</th></tr></thead>
+    <tbody>
+      <tr><td><b>신용거래형태</b> (어디서 어떤 식으로 빌렸나)</td><td class="num"><b>38%</b></td><td class="num">30%</td></tr>
+      <tr><td>부채수준</td><td class="num">24%</td><td class="num">26%</td></tr>
+      <tr><td>상환이력 (연체했나)</td><td class="num">21%</td><td class="num">31%</td></tr>
+      <tr><td>신용거래기간</td><td class="num">9%</td><td class="num">13.3%</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0"><b>해석은 하나로 모입니다.</b> NICE가 750으로 버티는 건 <b>연체가 없다는 뜻</b>입니다(상환이력 31%가 안 깎였으니까). 그런데 KCB가 622인 건 <b>빌린 방식이 안 좋다는 뜻</b>입니다 — KCB가 38%를 걸어둔 항목이 그겁니다.</p>
+  <ul class="list" style="margin-top:10px">
+    <li><div class="t">카드 현금서비스 · 카드론</div><div class="m">KCB가 가장 세게 깎는 항목입니다. 한 번 쓰면 금액이 작아도 거래 형태 자체가 기록됩니다</div></li>
+    <li><div class="t">2금융권 · 캐피탈 · 저축은행 대출</div><div class="m">같은 금액이어도 1금융권보다 불리하게 들어갑니다</div></li>
+    <li class="big"><div class="t">여러 곳에서 동시에 빌린 상태 (다중채무)</div><div class="m">건수가 많을수록 금액과 별개로 깎입니다</div></li>
+  </ul>
+  <div class="note">연체는 없으신 것으로 보입니다. 그래서 고칠 게 더 명확합니다 — <b>갚는 습관이 아니라 빌린 경로</b>를 정리하는 문제입니다.</div>
+</div>
+
+<h2>농협 카드 거절 — 왜 거절인지</h2>
+<div class="card">
+  <p style="margin:0 0 10px">카드 발급 자격은 카드사 재량이 아니라 <b>금융당국 모범규준으로 하한선이 정해져 있습니다.</b> 아래 둘을 다 넘겨야 합니다.</p>
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">월 가처분소득 50만 원 이상</div></li>
+    <li class="big"><div class="t">개인신용평점 <b>상위 누적구성비 93% 이하</b> 또는 장기연체가능성 0.65% 이하</div><div class="m">점수 몇 점이라는 식이 아니라 '전체에서 몇 번째냐'로 끊습니다</div></li>
+  </ol>
+  <p style="margin:12px 0 0"><b>KCB 622는 이 93% 선에 걸릴 가능성이 높습니다.</b> 7등급 이하가 전체의 약 14%니까, 7등급 중간쯤이면 상위 누적 93%를 넘어갑니다. 확정은 올크레딧에서 본인 비율을 직접 봐야 합니다.</p>
+  <p style="margin:10px 0 0">그리고 농협은 <b>NICE와 KCB를 둘 다 참고</b>하는 곳으로 알려져 있습니다. 두 점수가 벌어져 있으면 <b>낮은 쪽이 기준이 됩니다.</b> NICE 750만 보고 판단하면 계속 거절됩니다.</p>
+  <div class="note">하한선을 넘겨도 카드사가 따로 보는 항목이 11개 더 있습니다 — 소득 안정성, 직업 안정성, 재산, 금융거래 실적, 연체정보, <b>복수카드 사용</b>, <b>카드대출 과다</b>, <b>대출 다중채무</b>, <b>최근 신용카드 과다발급</b>, 국내인 여부, 연금 수급. 굵게 표시한 네 개가 KCB 622와 같은 원인을 가리킵니다.</div>
+</div>
+
+<h2>순서대로 이것만</h2>
+<div class="card blue">
+  <ol class="tl" style="margin-top:2px">
+    <li><div class="t">올크레딧(KCB)에 로그인해 <b>'상위 누적 비율'과 '하락 사유'</b>를 직접 확인</div><div class="m">점수만 보고 추측할 일이 아닙니다. KCB는 무엇 때문에 깎였는지 항목으로 알려줍니다. 이걸 보기 전에는 어디를 고칠지 정할 수 없습니다. <b>본인 조회는 점수에 영향 없습니다</b></div></li>
+    <li><div class="t">현금서비스 · 카드론이 남아 있으면 그것부터 정리</div><div class="m">KCB 38% 항목을 직접 건드립니다. 금액이 크지 않아도 효과가 가장 큽니다</div></li>
+    <li><div class="t">카드 재신청은 지금 하지 마세요</div><div class="m">심사 항목에 '최근 신용카드 과다발급'이 있습니다. 거절 직후 다른 카드사에 연달아 넣으면 그 자체가 불리하게 쌓입니다</div></li>
+    <li><div class="t">비금융정보(통신비 · 건강보험 · 국민연금 성실납부) 제출</div><div class="m">올크레딧과 나이스지키미에서 직접 넣습니다. 다만 <b>누구나 몇 점씩 오르는 건 아닙니다</b> — 개인차가 있고, 위 2번만큼 확실하지 않습니다. 공짜니까 해두는 정도</div></li>
+    <li class="big"><div class="t">두 점수를 같이 보되 <b>낮은 쪽을 내 점수로 두고</b> 관리</div><div class="m">NICE가 올라도 KCB가 7등급이면 KCB를 보는 금융사에서 계속 막힙니다. 국민·카카오뱅크·우리·케이뱅크가 KCB를 보는 쪽으로 알려져 있습니다</div></li>
+  </ol>
+</div>
+
+<h2>이게 사업 일정과 겹칩니다</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px">카드 한 장 문제로 끝나지 않습니다. <b>2년 안에 꼬마빌딩 매입</b>을 보고 계시고, 취득세 중과를 피하려면 2027-03-16 이후 잔금이어야 합니다. 그 시점에 담보대출 심사를 받습니다.</p>
+  <ul class="list">
+    <li><div class="t">법인 담보대출 심사는 <b>대표자 개인 신용도</b>를 봅니다</div><div class="m">특히 자본금 100만 원 · 매출 실적이 얇은 법인은 법인 재무로 심사가 안 되니 대표자 쪽을 더 봅니다. 은행이 보는 건 보통 ① 대표자 소득 ② 대표자 신용도 ③ 법인 당기순이익 세 가지입니다</div></li>
+    <li class="big"><div class="t">지금이 고칠 수 있는 유일한 구간입니다</div><div class="m">신용은 몇 달 단위로 움직입니다. 잔금 치를 때 올리려 하면 늦습니다. 2027년 봄까지 1년 반 — 지금 손대면 충분한 시간이고, 내년에 손대면 빠듯합니다</div></li>
+  </ul>
+  <div class="note">신정현 대표님과 지분을 나눠 '셀러들의 수다'로 가실 거라면, <b>공동 대표 구성 자체가 심사에 쓸 수 있는 카드</b>입니다. 두 사람 중 신용이 나은 쪽을 대표로 세우는 구조도 선택지에 있습니다. 지금 결정할 일은 아니지만 등기 설계할 때 기억해두시면 좋습니다.</div>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">올크레딧 상위 누적 비율 — 93% 안인지 밖인지</div><div class="m">거절 원인이 신용평점인지 다른 항목인지가 여기서 갈립니다</div></li>
+    <li><div class="t">현재 남아 있는 현금서비스 · 카드론 · 2금융권 대출 건수와 잔액</div></li>
+    <li><div class="t">법인 명의 대출·카드가 대표자 개인 신용에 얹혀 있는지</div><div class="m">대표자 연대보증으로 들어간 법인 채무는 개인 쪽에도 잡힙니다</div></li>
+    <li><div class="t">농협이 밝힌 구체적 거절 사유</div><div class="m">카드사에 요청하면 사유 구분을 알려줍니다. 신용평점 때문인지 소득 증빙 때문인지가 다릅니다</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거 · 2026-10-07 확인: 금융위 신용점수 등급 환산 기준(NICE 5등급 750~804 / 7등급 600~664, KCB 5등급 698~767 / 7등급 530~629, 7등급 이하 약 14%) · KCB·NICE 평가항목 반영비중(KCB 신용거래형태 38%·부채수준 24%·상환이력 21%·신용거래기간 9% / NICE 상환이력 31%·신용거래형태 30%·부채수준 26%·신용거래기간 13.3%)과 은행별 채택 평가사(국민·카카오뱅크·우리·케이뱅크 KCB, 신한 NICE, 농협·기업·토스 양쪽) — 뱅크샐러드 · 신용카드 발급 자격(월 가처분소득 50만원 이상 + 개인신용평점 상위 누적구성비 93% 이하 또는 장기연체가능성 0.65% 이하, 결제능력 심사 11개 항목) — BC카드 신용카드 업무처리 안내 · 비금융정보 제출 효과는 개인차가 있으며 일률적 가점이 아님 · 신설·소규모 법인 담보대출 심사에서 대표자 소득·신용도·법인 당기순이익을 본다는 점 — 한국경제 랜드밸류업. 일부 블로그가 카드 발급 최소선을 KCB 621·NICE 720으로 적고 있으나 <b>공식 기준이 아니어서 쓰지 않았습니다</b>. 본인 상위 누적 비율은 올크레딧에서 직접 확인이 필요합니다.</div>
+"""
+
 # ---------------------------------------------------------------- 힐링디어스 폐업 vs 유지
 CORP = """
 <h1>힐링디어스 → 셀러들의 수다</h1>
@@ -3729,6 +3819,7 @@ def main():
     write(os.path.join(base, "vault", "index.html"), page("셀프 등기 · 정관 찾기 · 서류 보관", VAULT))
     write(os.path.join(base, "jiyoung-prompt", "index.html"), page("지영 원장 빌드업 페이지 — 프롬프트", JYPROMPT))
     write(os.path.join(base, "crew-prompt", "index.html"), page("크루원 사업 구조화 페이지 — 프롬프트", CREWPROMPT))
+    write(os.path.join(base, "credit", "index.html"), page("신용점수 — KCB 622 / NICE 750", CREDIT))
     write(os.path.join(base, "corp", "index.html"), page("힐링디어스 → 셀러들의 수다", CORP))
     write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
