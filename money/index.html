@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>재정 정리 — 무엇부터 폈아야 하나 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-07</span></div>
+<script>window.LUKE_ROOT="../";</script>
+
+<h1>재정 정리 — 무엇부터 털어야 하나</h1>
+<p class="note">시트의 10월분을 그대로 계산했습니다. 시트가 적어둔 '이번달 총지출 ₩10,123,029'와 제 합산이 <b>1원 차이 없이 일치</b>합니다. 숫자는 신뢰할 수 있는 상태입니다.</p>
+
+<h2>먼저 — 가장 급한 신호</h2>
+<div class="card red">
+  <p style="margin:0 0 10px">대환 순서보다 이게 먼저입니다. <b>9월과 10월 사이에 카드 여유가 819만 원 줄었습니다.</b></p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th></th><th>9월 (09/02)</th><th>10월 (10/02)</th><th>변화</th></tr></thead>
+    <tbody>
+      <tr><td>카드 총이용금액</td><td class="num">2,918만</td><td class="num">3,583만</td><td class="num"><b>+665만</b></td></tr>
+      <tr><td>가능한도 합</td><td class="num">2,532만</td><td class="num">1,713만</td><td class="num"><b>-819만</b></td></tr>
+      <tr><td>롯데카드 총한도</td><td class="num">2,820만</td><td class="num">2,530만</td><td class="num"><b>-290만</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0"><b>롯데 한도가 290만 내려간 건 카드사가 먼저 움직였다는 뜻입니다.</b> 시트에도 '한도 하향 270만'이라고 적어두셨죠. 카드사가 한도를 내리는 건 보통 고객이 요청하지 않았을 때 위험 신호를 봤다는 신호입니다. 같은 달 농협 카드가 거절됐습니다. <b>따로 생긴 일이 아니라 한 흐름입니다.</b></p>
+  <div class="note">이 속도가 두 달 더 가면 1,713만의 여유도 사라집니다. 그러면 선택지가 아니라 상황이 결정권을 갖게 됩니다. <b>10월에 들어올 돈을 어디에 쓸지가 이 페이지의 전부입니다.</b></div>
+</div>
+
+<h2>지금 빚의 전체 모습</h2>
+<div class="card">
+  <p style="margin:0 0 10px"><b>① 원금성 대출</b> — 금리 높은 순</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th>잔액</th><th>금리</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><td>현대카드 장기카드대출</td><td class="num">2,166만</td><td class="num"><b>19.50%</b></td><td><b>1순위 — 가장 비싸고 가장 큼</b></td></tr>
+      <tr><td>신한저축은행 사잇돌2</td><td class="num">360만</td><td class="num"><b>17.30%</b></td><td><b>즉시 완제 — 작고 비쌈</b></td></tr>
+      <tr><td>하나 장기카드대출</td><td class="num">2,000만?</td><td class="num">16%</td><td><b>확인 필요 — 아래 참조</b></td></tr>
+      <tr><td>BNK 경남은행</td><td class="num">1,000만</td><td class="num">10.62%</td><td>유지 (5년 균등상환)</td></tr>
+      <tr><td>학자금대출</td><td class="num">416만</td><td class="num">5.79%</td><td><b>절대 먼저 갚지 마세요</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:14px 0 10px"><b>② 카드 이용금액</b> — 한도 소진율</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>카드</th><th>이용</th><th>한도</th><th>소진율</th></tr></thead>
+    <tbody>
+      <tr><td><b>롯데</b></td><td class="num">2,285만</td><td class="num">2,530만</td><td class="num"><b>90%</b></td></tr>
+      <tr><td>국민</td><td class="num">137만</td><td class="num">200만</td><td class="num"><b>68%</b></td></tr>
+      <tr><td>삼성</td><td class="num">226만</td><td class="num">340만</td><td class="num">66%</td></tr>
+      <tr><td>신한</td><td class="num">643만</td><td class="num">1,010만</td><td class="num">64%</td></tr>
+      <tr><td>농협</td><td class="num">110만</td><td class="num">200만</td><td class="num">55%</td></tr>
+      <tr><td>현대</td><td class="num">113만</td><td class="num">300만</td><td class="num">38%</td></tr>
+      <tr><td>하나</td><td class="num">69만</td><td class="num">780만</td><td class="num">9%</td></tr>
+      <tr><td><b>합계</b></td><td class="num"><b>3,583만</b></td><td class="num"><b>5,360만</b></td><td class="num"><b>67%</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:14px 0 0"><b>③ 가족</b> — 어머니 2,200~2,500만 (시트에 없음) · 아버지 1,000만 <b>완료</b></p>
+  <div class="note">합산하면 <b>금융권 7,525만 + 가족 약 2,350만 = 약 9,900만</b>입니다. 하나 장기카드대출 2,000만이 살아 있으면 <b>약 1억 1,900만</b>. 이 2,000만의 생사가 지금 가장 큰 미지수입니다.</div>
+</div>
+
+<h2>어제 보신 KCB 622가 여기서 설명됩니다</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">KCB가 38%를 걸어둔 '신용거래형태' 항목에, 지금 상태가 거의 교과서처럼 들어맞습니다.</p>
+  <ul class="list">
+    <li><div class="t">카드사 장기카드대출 2건 (현대 + 하나)</div><div class="m">KCB가 가장 세게 깎는 종류입니다. 금액도 4,100만대</div></li>
+    <li><div class="t">저축은행 대출 1건</div><div class="m">업권 자체가 불리하게 들어갑니다</div></li>
+    <li><div class="t">카드 7장 전체 이용률 67%, 롯데는 90%</div><div class="m">부채수준 24% 항목까지 같이 건드립니다</div></li>
+    <li class="big"><div class="t">금융사 7곳 이상에 걸친 다중채무</div><div class="m">금액과 별개로 건수만으로 깎입니다</div></li>
+  </ul>
+  <div class="note">반대로 보면 <b>NICE가 750을 유지하는 건 연체가 한 번도 없다는 뜻</b>입니다. 시트의 상환완료 칸이 거의 다 채워져 있는 게 증거입니다. 갚는 능력은 증명돼 있고, <b>구조만 비싼 상태</b>입니다. 그래서 고칠 수 있습니다.</div>
+</div>
+
+<h2>월 고정지출 1,012만 원 — 어디로 나가나</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th>월</th><th>비중</th></tr></thead>
+    <tbody>
+      <tr><td>롯데카드 결제</td><td class="num">240만</td><td class="num">24%</td></tr>
+      <tr><td><b>아우디</b></td><td class="num">115만</td><td class="num">11%</td></tr>
+      <tr><td><b>보험료</b></td><td class="num">110만</td><td class="num">11%</td></tr>
+      <tr><td>신한카드</td><td class="num">102만</td><td class="num">10%</td></tr>
+      <tr><td>현대카드 (원리금 포함)</td><td class="num">101만</td><td class="num">10%</td></tr>
+      <tr><td>월세 2건 (709호 44 + 테라 55)</td><td class="num">99만</td><td class="num">10%</td></tr>
+      <tr><td>관리비 2건 (테라 29 + 스칸센 28)</td><td class="num">58만</td><td class="num">6%</td></tr>
+      <tr><td>삼성카드</td><td class="num">56만</td><td class="num">6%</td></tr>
+      <tr><td>농협 · KB · 하나 · BNK</td><td class="num">85만</td><td class="num">8%</td></tr>
+      <tr><td>신한저축은행</td><td class="num">11만</td><td class="num">1%</td></tr>
+      <tr><td>학자금 4건</td><td class="num">10만</td><td class="num">1%</td></tr>
+      <tr><td>힐링 부가세</td><td class="num">26만</td><td class="num">3%</td></tr>
+      <tr><td><b>합계</b></td><td class="num"><b>1,012만</b></td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0">4개월 평균도 거의 같습니다 — 7월 1,378만 · 8월 924만 · 9월 738만 · 10월 1,012만, <b>평균 1,013만</b>. 월 1,000만이 기준선입니다.</p>
+  <div class="note">여기엔 <b>식비·주유·통신 같은 생활비가 빠져 있습니다.</b> 시트는 고정 결제만 담고 있으니, 실제 월 유출은 1,200만 안팎으로 보시는 게 안전합니다.</div>
+</div>
+
+<h2>대환 — 순서가 핵심입니다</h2>
+<div class="card red">
+  <p style="margin:0 0 10px"><b>지금 당장 대환 신청을 하면 거절될 가능성이 높습니다.</b> KCB 622로는 1금융권 대환 심사를 통과하기 어렵고, 농협 카드가 이미 거절됐습니다. 그래서 <b>대환 자격을 만드는 2개월이 대환보다 먼저</b>입니다.</p>
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">10월 — 신한저축은행 360만 완제</div><div class="m">17.3%에 잔액이 360만밖에 안 됩니다. <b>제2금융권 대출 1건이 통째로 사라집니다.</b> 비용 360만으로 KCB 38% 항목을 직접 건드리는 가장 싼 수단입니다. 월 11만도 같이 사라집니다</div></li>
+    <li><div class="t">10월 — 남는 628만을 전부 롯데에 상환</div><div class="m">90% → 약 56%. 카드 전체 이용률 67% → 55%. 한도 하향이 더 오는 걸 막는 게 이 단계의 목적입니다</div></li>
+    <li><div class="t">11월 — 다시 롯데, 그리고 올크레딧 재조회</div><div class="m">롯데 30%대, 전체 이용률 40%대. 이 시점에 KCB가 움직였는지 확인합니다. 신용은 보통 몇 달 단위로 반응합니다</div></li>
+    <li class="big"><div class="t">11~12월 — 현대카드 19.50% 2,166만을 대환 신청</div><div class="m">여기가 본 게임입니다. 2,166만을 10%로 옮기면 <b>연 200만 가까이 절약</b>됩니다. 아래 햇살론 항목 참고</div></li>
+  </ol>
+  <div class="note"><b>학자금 5.79%는 손대지 마세요.</b> 가장 싼 돈입니다. 월 10만밖에 안 나가는데 이걸 갚으면 19.5%짜리를 그만큼 더 오래 안고 가게 됩니다. 같은 이유로 BNK 10.62%도 지금은 유지입니다.</div>
+</div>
+
+<h2>햇살론 — 자격이 맞을 수 있습니다</h2>
+<div class="card blue">
+  <p style="margin:0 0 10px">2026년 개편된 햇살론 일반보증 조건을 확인했습니다. <b>신용점수 쪽 조건은 지금 상태가 오히려 맞습니다.</b></p>
+  <dl class="kv">
+    <dt>신용 조건</dt><dd>연소득 3,500만~4,500만이면 <b>개인신용평점 하위 20%(KCB 약 700점 이하)</b> — KCB 622는 충족. 연소득 3,500만 이하면 신용평점 무관</dd>
+    <dt>한도</dt><dd>최대 1,500만 원</dd>
+    <dt>금리</dt><dd>연 6.0~10.0%</dd>
+    <dt>중도상환수수료</dt><dd>면제</dd>
+    <dt>용도</dt><dd>고금리 대출 대환 가능</dd>
+  </dl>
+  <p style="margin:12px 0 0"><b>현대카드 19.50% 중 1,500만을 8%로 옮기면 연 170만 정도가 남습니다.</b> 금리 조건으로 보면 지금 가장 현실적인 카드입니다.</p>
+  <div class="note"><b>확인 필요 — 자격의 소득 쪽입니다.</b> 법인 대표가 햇살론 일반보증 대상에 들어가는지, 그리고 대표이사 급여를 어떻게 책정해 두셨는지에 따라 갈립니다. 이건 추측하면 안 되는 부분이라 <b>서민금융진흥원(1397)에 직접 확인</b>하시는 게 맞습니다. 사잇돌2를 이미 쓰고 계시니 상담 이력도 있을 겁니다.</div>
+</div>
+
+<h2>대출이 아닌데 더 급한 것 — 월 225만</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px">대환으로 아끼는 돈보다 <b>이 두 줄이 더 큽니다.</b> 합쳐서 월 225만, 전체 지출의 22%입니다.</p>
+  <ul class="list">
+    <li><div class="t">아우디 월 115만</div><div class="m">4년이면 5,500만입니다. 지금 19.5%짜리 대출을 안고 카드 한도가 조여드는 상태에서, 이 한 줄이 매달 대환 효과보다 큰 돈을 가져갑니다. 처분하거나 바꾸면 <b>즉시</b> 월 115만이 생깁니다. 대환은 심사를 통과해야 하지만 이건 결정만 하면 됩니다</div></li>
+    <li class="big"><div class="t">보험료 월 110만 — 확인이 필요합니다</div><div class="m">시트상 9월엔 이 줄이 0원이고, 2025년 5월 시트엔 10만 원이었는데 10월에 110만으로 올라 있습니다. 한 번 납부인지 매달인지, 무엇이 추가됐는지 확인하셔야 합니다. 매달 110만이면 재점검 대상입니다</div></li>
+  </ul>
+  <div class="note">공간도 같이 보실 만합니다 — 709호 44만 + 테라 55만 + 관리비 58만 = <b>월 157만</b>. 사업장을 이전하신 참이니, 세 군데가 지금도 다 필요한지 한 번 정리하기 좋은 시점입니다.</div>
+</div>
+
+<h2>들어올 돈으로 계산하면</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th></th><th>수입</th><th>고정지출</th><th>여유</th><th>쓸 곳</th></tr></thead>
+    <tbody>
+      <tr><td>10월</td><td class="num">2,000만</td><td class="num">1,012만</td><td class="num"><b>988만</b></td><td>저축은행 완제 360 + 롯데 628</td></tr>
+      <tr><td>11월</td><td class="num">2,000만</td><td class="num">1,012만</td><td class="num"><b>988만</b></td><td>롯데 잔여 + 올크레딧 재조회</td></tr>
+      <tr><td>12월</td><td class="num">2,000~3,000만</td><td class="num">1,012만</td><td class="num"><b>988~1,988만</b></td><td>현대카드 19.5% 공략</td></tr>
+      <tr><td><b>3개월 누적</b></td><td class="num">6,000~7,000만</td><td class="num">3,036만</td><td class="num"><b>2,964~3,964만</b></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0"><b>이 계산이 맞으면 연말에 금융권 부채가 7,525만 → 약 3,600~4,500만으로 내려갑니다.</b> 1년 반 뒤 꼬마빌딩 담보대출 심사를 생각하면 나쁘지 않은 궤도입니다.</p>
+  <div class="note"><b>다만 세 가지가 이 표를 흔듭니다.</b> ① 2,000만이 세전인지 세후인지, 법인 수령인지 개인 수령인지 — 개인으로 받으면 소득세·건강보험이 붙고 법인으로 받으면 개인 부채 상환에 바로 못 씁니다. ② 생활비가 빠져 있어 여유는 988만보다 작습니다. ③ <b>1월 부가세와 5월 종소세</b>가 이 표 밖에 있습니다. 시트에도 '12월에는 2번 납부'라고 적어두셨습니다.</div>
+</div>
+
+<h2>1달 안에 수익을 만들고 싶다 — 숫자 기준만</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">신정현 대표님 쪽 2,000만은 <b>'느낌'이라고 하셨습니다.</b> 그 돈이 늦어지거나 줄면 이 계획 전체가 멈춥니다. 그래서 자력으로 덮어야 하는 금액을 숫자로 두면 이렇습니다.</p>
+  <dl class="kv">
+    <dt>생존선</dt><dd>월 <b>1,012만</b> — 고정 결제만. 이걸 못 넘기면 카드로 메우게 되고 이용률이 다시 올라갑니다</dd>
+    <dt>현실선</dt><dd>월 <b>1,200만</b> — 생활비 포함</dd>
+    <dt>탈출선</dt><dd>월 <b>1,500만</b> — 고정비를 덮고 월 300~500만씩 원금을 깎는 속도</dd>
+  </dl>
+  <p style="margin:12px 0 0"><b>한 달 안에 현금이 되는 것과 안 되는 것은 성격이 다릅니다.</b> 이미 손에 있는 것 — 수강생 명단, 3PL 창고에 쌓인 재고, 진행 중인 컨설팅 — 은 한 달 안에 현금이 됩니다. 새로 만드는 것 — 구독 사업, 신규 플랫폼 — 은 아무리 빨라도 한 달로는 안 됩니다. <b>지금 필요한 건 신규가 아니라 회수입니다.</b></p>
+  <div class="note">구체적으로 어디서 얼마를 뽑을지는 숫자가 더 필요합니다 — 재고 금액, 재구매 가능한 수강생 수, 컨설팅 단가. 말씀해 주시면 월 1,500만이 가능한 조합인지 따로 계산해 드리겠습니다.</div>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">하나 장기카드대출 2,000만 — 살아 있나</div><div class="m">2025년 5월 시트에는 '하나 장기카드대출 2,000만 / 36개월 / 25년 4월 시작 / 16%'로 적혀 있는데, 10월 시트의 대출내역에는 없습니다. 하나카드 총한도는 430만 → 780만으로 오히려 늘었습니다. 상환 완료인지 시트 누락인지에 따라 <b>총부채가 2,000만 달라집니다.</b> 이게 1순위</div></li>
+    <li><div class="t">롯데 2,285만의 성격</div><div class="m">시트에 '미확정 금액 / 분할신청'이라고만 적혀 있습니다. 일시불인지 할부인지 리볼빙인지에 따라 수수료율이 전혀 다릅니다. 리볼빙이면 <b>현대카드 19.5%보다 비쌀 수 있어 1순위가 바뀝니다</b></div></li>
+    <li><div class="t">핀다 대출 — 시트에 '₩500.00'</div><div class="m">입력 오류로 보입니다. 실제 잔액 확인 필요</div></li>
+    <li><div class="t">보험료 월 110만의 내역</div><div class="m">9월 0원 → 10월 110만. 일시 납부인지 매달인지</div></li>
+    <li><div class="t">BNK 금리 — 6.64%인가 10.62%인가</div><div class="m">9월·8월 시트는 6.64%, 10월 시트는 10.62%로 적혀 있습니다. 8/4 연장 때 바뀐 것이라면 10.62%가 맞고, 그러면 우선순위가 학자금보다 위로 올라갑니다</div></li>
+    <li><div class="t">어머니 차용금 — 2,200만인지 2,500만인지, 상환 약속이 있는지</div><div class="m">시트에 아예 없습니다. 금리가 없으니 숫자상으로는 후순위지만, 금융 상환과 별도로 시점을 정해두시는 게 좋습니다</div></li>
+    <li><div class="t">신정현 대표님 입금 — 계약·일정·세전/세후, 법인 수령인지 개인 수령인지</div></li>
+    <li><div class="t">햇살론 일반보증에 법인 대표가 해당되는지 (서민금융진흥원 1397)</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거 · 재정 수치는 2026-10-07 공유된 루크 본인 재정 시트(10월·09월·08월·07월·2025년 5월 탭, 카드 이용금액은 10/02 기준)에서 직접 합산. 월 고정지출 합계 ₩10,123,029는 시트의 '이번달 총지출' 값과 일치. 어머니 차용금 2,200~2,500만과 아버지 1,000만 완제는 2026-10-07 루크 구두(시트 미반영). 신정현 대표님 경유 10~12월 입금은 루크 표현 그대로 '느낌' 단계로 확정 아님. · 2026-10-07 확인: 2026년 개편 햇살론 일반보증 — 연소득 3,500만 이하는 신용평점 무관, 3,500만~4,500만은 개인신용평점 하위 20%(KCB 약 700점 이하), 한도 최대 1,500만 원, 금리 연 6.0~10.0%, 중도상환수수료 면제, 고금리 대출 대환 용도 사용 가능 / 사잇돌2는 사업소득자 기준 사업 4개월 이상·연소득 600만 원 이상, 한도 최대 3,000만 원, 금리 연 8.9~19.9% — 폴리시노트 2026 서민금융 대개편 비교. 햇살론 일반보증에 <b>법인 대표가 해당되는지는 확인되지 않았습니다</b>. KCB·NICE 평가 비중과 카드 발급 기준은 <a href="../credit/">신용점수 페이지</a>의 근거와 같습니다.</div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-07 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>

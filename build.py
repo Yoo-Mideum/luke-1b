@@ -662,6 +662,7 @@ INDEX = """
   <a href="invader/"><b>인베이더 종료 대비</b><span>10/6 들은 이야기 · 마지막 기수에 챙길 것</span></a>
   <a href="corp/"><b>힐링디어스 → 셀러들의 수다</b><span>경기 창고형 매장은 지금 · 서울 빌딩은 2027-03-16 이후</span></a>
   <a href="relocation/"><b>10/15 등기 — 등기부 확인 끝</b><span>중임은 완료 · 본점이전 + 상호 + 목적 + 수권주식</span></a>
+  <a href="money/"><b>재정 정리 — 무엇부터 폈아야 하나</b><span>대환 우선순위 · 월 1,012만 구조 · 3개월 계탘</span></a>
   <a href="credit/"><b>신용점수 — KCB 622 / NICE 750</b><span>농협 카드 거절 이유 · 꼬마빌딩 대출 심사와의 연결</span></a>
   <a href="crew-prompt/"><b>크루원 사업 구조화 — 프롬프트</b><span>기존 흐름에 얹는 짧은 버전 · 이름·충돌·노출만</span></a>
   <a href="jiyoung-prompt/"><b>지영 원장 빌드업 페이지 — 프롬프트</b><span>새 저장소로 만들 때 복사해 쓸 프롬프트</span></a>
@@ -2062,6 +2063,183 @@ CREDIT = """
 </div>
 
 <div class="src" style="margin-top:14px">근거 · 2026-10-07 확인: 금융위 신용점수 등급 환산 기준(NICE 5등급 750~804 / 7등급 600~664, KCB 5등급 698~767 / 7등급 530~629, 7등급 이하 약 14%) · KCB·NICE 평가항목 반영비중(KCB 신용거래형태 38%·부채수준 24%·상환이력 21%·신용거래기간 9% / NICE 상환이력 31%·신용거래형태 30%·부채수준 26%·신용거래기간 13.3%)과 은행별 채택 평가사(국민·카카오뱅크·우리·케이뱅크 KCB, 신한 NICE, 농협·기업·토스 양쪽) — 뱅크샐러드 · 신용카드 발급 자격(월 가처분소득 50만원 이상 + 개인신용평점 상위 누적구성비 93% 이하 또는 장기연체가능성 0.65% 이하, 결제능력 심사 11개 항목) — BC카드 신용카드 업무처리 안내 · 비금융정보 제출 효과는 개인차가 있으며 일률적 가점이 아님 · 신설·소규모 법인 담보대출 심사에서 대표자 소득·신용도·법인 당기순이익을 본다는 점 — 한국경제 랜드밸류업. 일부 블로그가 카드 발급 최소선을 KCB 621·NICE 720으로 적고 있으나 <b>공식 기준이 아니어서 쓰지 않았습니다</b>. 본인 상위 누적 비율은 올크레딧에서 직접 확인이 필요합니다.</div>
+"""
+
+# ---------------------------------------------------------------- 재정 정리 대환 우선순위
+MONEY = """
+<h1>재정 정리 — 무엇부터 털어야 하나</h1>
+<p class="note">시트의 10월분을 그대로 계산했습니다. 시트가 적어둔 '이번달 총지출 ₩10,123,029'와 제 합산이 <b>1원 차이 없이 일치</b>합니다. 숫자는 신뢰할 수 있는 상태입니다.</p>
+
+<h2>먼저 — 가장 급한 신호</h2>
+<div class="card red">
+  <p style="margin:0 0 10px">대환 순서보다 이게 먼저입니다. <b>9월과 10월 사이에 카드 여유가 819만 원 줄었습니다.</b></p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th></th><th>9월 (09/02)</th><th>10월 (10/02)</th><th>변화</th></tr></thead>
+    <tbody>
+      <tr><td>카드 총이용금액</td><td class="num">2,918만</td><td class="num">3,583만</td><td class="num"><b>+665만</b></td></tr>
+      <tr><td>가능한도 합</td><td class="num">2,532만</td><td class="num">1,713만</td><td class="num"><b>-819만</b></td></tr>
+      <tr><td>롯데카드 총한도</td><td class="num">2,820만</td><td class="num">2,530만</td><td class="num"><b>-290만</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0"><b>롯데 한도가 290만 내려간 건 카드사가 먼저 움직였다는 뜻입니다.</b> 시트에도 '한도 하향 270만'이라고 적어두셨죠. 카드사가 한도를 내리는 건 보통 고객이 요청하지 않았을 때 위험 신호를 봤다는 신호입니다. 같은 달 농협 카드가 거절됐습니다. <b>따로 생긴 일이 아니라 한 흐름입니다.</b></p>
+  <div class="note">이 속도가 두 달 더 가면 1,713만의 여유도 사라집니다. 그러면 선택지가 아니라 상황이 결정권을 갖게 됩니다. <b>10월에 들어올 돈을 어디에 쓸지가 이 페이지의 전부입니다.</b></div>
+</div>
+
+<h2>지금 빚의 전체 모습</h2>
+<div class="card">
+  <p style="margin:0 0 10px"><b>① 원금성 대출</b> — 금리 높은 순</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th>잔액</th><th>금리</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><td>현대카드 장기카드대출</td><td class="num">2,166만</td><td class="num"><b>19.50%</b></td><td><b>1순위 — 가장 비싸고 가장 큼</b></td></tr>
+      <tr><td>신한저축은행 사잇돌2</td><td class="num">360만</td><td class="num"><b>17.30%</b></td><td><b>즉시 완제 — 작고 비쌈</b></td></tr>
+      <tr><td>하나 장기카드대출</td><td class="num">2,000만?</td><td class="num">16%</td><td><b>확인 필요 — 아래 참조</b></td></tr>
+      <tr><td>BNK 경남은행</td><td class="num">1,000만</td><td class="num">10.62%</td><td>유지 (5년 균등상환)</td></tr>
+      <tr><td>학자금대출</td><td class="num">416만</td><td class="num">5.79%</td><td><b>절대 먼저 갚지 마세요</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:14px 0 10px"><b>② 카드 이용금액</b> — 한도 소진율</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>카드</th><th>이용</th><th>한도</th><th>소진율</th></tr></thead>
+    <tbody>
+      <tr><td><b>롯데</b></td><td class="num">2,285만</td><td class="num">2,530만</td><td class="num"><b>90%</b></td></tr>
+      <tr><td>국민</td><td class="num">137만</td><td class="num">200만</td><td class="num"><b>68%</b></td></tr>
+      <tr><td>삼성</td><td class="num">226만</td><td class="num">340만</td><td class="num">66%</td></tr>
+      <tr><td>신한</td><td class="num">643만</td><td class="num">1,010만</td><td class="num">64%</td></tr>
+      <tr><td>농협</td><td class="num">110만</td><td class="num">200만</td><td class="num">55%</td></tr>
+      <tr><td>현대</td><td class="num">113만</td><td class="num">300만</td><td class="num">38%</td></tr>
+      <tr><td>하나</td><td class="num">69만</td><td class="num">780만</td><td class="num">9%</td></tr>
+      <tr><td><b>합계</b></td><td class="num"><b>3,583만</b></td><td class="num"><b>5,360만</b></td><td class="num"><b>67%</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:14px 0 0"><b>③ 가족</b> — 어머니 2,200~2,500만 (시트에 없음) · 아버지 1,000만 <b>완료</b></p>
+  <div class="note">합산하면 <b>금융권 7,525만 + 가족 약 2,350만 = 약 9,900만</b>입니다. 하나 장기카드대출 2,000만이 살아 있으면 <b>약 1억 1,900만</b>. 이 2,000만의 생사가 지금 가장 큰 미지수입니다.</div>
+</div>
+
+<h2>어제 보신 KCB 622가 여기서 설명됩니다</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">KCB가 38%를 걸어둔 '신용거래형태' 항목에, 지금 상태가 거의 교과서처럼 들어맞습니다.</p>
+  <ul class="list">
+    <li><div class="t">카드사 장기카드대출 2건 (현대 + 하나)</div><div class="m">KCB가 가장 세게 깎는 종류입니다. 금액도 4,100만대</div></li>
+    <li><div class="t">저축은행 대출 1건</div><div class="m">업권 자체가 불리하게 들어갑니다</div></li>
+    <li><div class="t">카드 7장 전체 이용률 67%, 롯데는 90%</div><div class="m">부채수준 24% 항목까지 같이 건드립니다</div></li>
+    <li class="big"><div class="t">금융사 7곳 이상에 걸친 다중채무</div><div class="m">금액과 별개로 건수만으로 깎입니다</div></li>
+  </ul>
+  <div class="note">반대로 보면 <b>NICE가 750을 유지하는 건 연체가 한 번도 없다는 뜻</b>입니다. 시트의 상환완료 칸이 거의 다 채워져 있는 게 증거입니다. 갚는 능력은 증명돼 있고, <b>구조만 비싼 상태</b>입니다. 그래서 고칠 수 있습니다.</div>
+</div>
+
+<h2>월 고정지출 1,012만 원 — 어디로 나가나</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th>월</th><th>비중</th></tr></thead>
+    <tbody>
+      <tr><td>롯데카드 결제</td><td class="num">240만</td><td class="num">24%</td></tr>
+      <tr><td><b>아우디</b></td><td class="num">115만</td><td class="num">11%</td></tr>
+      <tr><td><b>보험료</b></td><td class="num">110만</td><td class="num">11%</td></tr>
+      <tr><td>신한카드</td><td class="num">102만</td><td class="num">10%</td></tr>
+      <tr><td>현대카드 (원리금 포함)</td><td class="num">101만</td><td class="num">10%</td></tr>
+      <tr><td>월세 2건 (709호 44 + 테라 55)</td><td class="num">99만</td><td class="num">10%</td></tr>
+      <tr><td>관리비 2건 (테라 29 + 스칸센 28)</td><td class="num">58만</td><td class="num">6%</td></tr>
+      <tr><td>삼성카드</td><td class="num">56만</td><td class="num">6%</td></tr>
+      <tr><td>농협 · KB · 하나 · BNK</td><td class="num">85만</td><td class="num">8%</td></tr>
+      <tr><td>신한저축은행</td><td class="num">11만</td><td class="num">1%</td></tr>
+      <tr><td>학자금 4건</td><td class="num">10만</td><td class="num">1%</td></tr>
+      <tr><td>힐링 부가세</td><td class="num">26만</td><td class="num">3%</td></tr>
+      <tr><td><b>합계</b></td><td class="num"><b>1,012만</b></td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0">4개월 평균도 거의 같습니다 — 7월 1,378만 · 8월 924만 · 9월 738만 · 10월 1,012만, <b>평균 1,013만</b>. 월 1,000만이 기준선입니다.</p>
+  <div class="note">여기엔 <b>식비·주유·통신 같은 생활비가 빠져 있습니다.</b> 시트는 고정 결제만 담고 있으니, 실제 월 유출은 1,200만 안팎으로 보시는 게 안전합니다.</div>
+</div>
+
+<h2>대환 — 순서가 핵심입니다</h2>
+<div class="card red">
+  <p style="margin:0 0 10px"><b>지금 당장 대환 신청을 하면 거절될 가능성이 높습니다.</b> KCB 622로는 1금융권 대환 심사를 통과하기 어렵고, 농협 카드가 이미 거절됐습니다. 그래서 <b>대환 자격을 만드는 2개월이 대환보다 먼저</b>입니다.</p>
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">10월 — 신한저축은행 360만 완제</div><div class="m">17.3%에 잔액이 360만밖에 안 됩니다. <b>제2금융권 대출 1건이 통째로 사라집니다.</b> 비용 360만으로 KCB 38% 항목을 직접 건드리는 가장 싼 수단입니다. 월 11만도 같이 사라집니다</div></li>
+    <li><div class="t">10월 — 남는 628만을 전부 롯데에 상환</div><div class="m">90% → 약 56%. 카드 전체 이용률 67% → 55%. 한도 하향이 더 오는 걸 막는 게 이 단계의 목적입니다</div></li>
+    <li><div class="t">11월 — 다시 롯데, 그리고 올크레딧 재조회</div><div class="m">롯데 30%대, 전체 이용률 40%대. 이 시점에 KCB가 움직였는지 확인합니다. 신용은 보통 몇 달 단위로 반응합니다</div></li>
+    <li class="big"><div class="t">11~12월 — 현대카드 19.50% 2,166만을 대환 신청</div><div class="m">여기가 본 게임입니다. 2,166만을 10%로 옮기면 <b>연 200만 가까이 절약</b>됩니다. 아래 햇살론 항목 참고</div></li>
+  </ol>
+  <div class="note"><b>학자금 5.79%는 손대지 마세요.</b> 가장 싼 돈입니다. 월 10만밖에 안 나가는데 이걸 갚으면 19.5%짜리를 그만큼 더 오래 안고 가게 됩니다. 같은 이유로 BNK 10.62%도 지금은 유지입니다.</div>
+</div>
+
+<h2>햇살론 — 자격이 맞을 수 있습니다</h2>
+<div class="card blue">
+  <p style="margin:0 0 10px">2026년 개편된 햇살론 일반보증 조건을 확인했습니다. <b>신용점수 쪽 조건은 지금 상태가 오히려 맞습니다.</b></p>
+  <dl class="kv">
+    <dt>신용 조건</dt><dd>연소득 3,500만~4,500만이면 <b>개인신용평점 하위 20%(KCB 약 700점 이하)</b> — KCB 622는 충족. 연소득 3,500만 이하면 신용평점 무관</dd>
+    <dt>한도</dt><dd>최대 1,500만 원</dd>
+    <dt>금리</dt><dd>연 6.0~10.0%</dd>
+    <dt>중도상환수수료</dt><dd>면제</dd>
+    <dt>용도</dt><dd>고금리 대출 대환 가능</dd>
+  </dl>
+  <p style="margin:12px 0 0"><b>현대카드 19.50% 중 1,500만을 8%로 옮기면 연 170만 정도가 남습니다.</b> 금리 조건으로 보면 지금 가장 현실적인 카드입니다.</p>
+  <div class="note"><b>확인 필요 — 자격의 소득 쪽입니다.</b> 법인 대표가 햇살론 일반보증 대상에 들어가는지, 그리고 대표이사 급여를 어떻게 책정해 두셨는지에 따라 갈립니다. 이건 추측하면 안 되는 부분이라 <b>서민금융진흥원(1397)에 직접 확인</b>하시는 게 맞습니다. 사잇돌2를 이미 쓰고 계시니 상담 이력도 있을 겁니다.</div>
+</div>
+
+<h2>대출이 아닌데 더 급한 것 — 월 225만</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px">대환으로 아끼는 돈보다 <b>이 두 줄이 더 큽니다.</b> 합쳐서 월 225만, 전체 지출의 22%입니다.</p>
+  <ul class="list">
+    <li><div class="t">아우디 월 115만</div><div class="m">4년이면 5,500만입니다. 지금 19.5%짜리 대출을 안고 카드 한도가 조여드는 상태에서, 이 한 줄이 매달 대환 효과보다 큰 돈을 가져갑니다. 처분하거나 바꾸면 <b>즉시</b> 월 115만이 생깁니다. 대환은 심사를 통과해야 하지만 이건 결정만 하면 됩니다</div></li>
+    <li class="big"><div class="t">보험료 월 110만 — 확인이 필요합니다</div><div class="m">시트상 9월엔 이 줄이 0원이고, 2025년 5월 시트엔 10만 원이었는데 10월에 110만으로 올라 있습니다. 한 번 납부인지 매달인지, 무엇이 추가됐는지 확인하셔야 합니다. 매달 110만이면 재점검 대상입니다</div></li>
+  </ul>
+  <div class="note">공간도 같이 보실 만합니다 — 709호 44만 + 테라 55만 + 관리비 58만 = <b>월 157만</b>. 사업장을 이전하신 참이니, 세 군데가 지금도 다 필요한지 한 번 정리하기 좋은 시점입니다.</div>
+</div>
+
+<h2>들어올 돈으로 계산하면</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th></th><th>수입</th><th>고정지출</th><th>여유</th><th>쓸 곳</th></tr></thead>
+    <tbody>
+      <tr><td>10월</td><td class="num">2,000만</td><td class="num">1,012만</td><td class="num"><b>988만</b></td><td>저축은행 완제 360 + 롯데 628</td></tr>
+      <tr><td>11월</td><td class="num">2,000만</td><td class="num">1,012만</td><td class="num"><b>988만</b></td><td>롯데 잔여 + 올크레딧 재조회</td></tr>
+      <tr><td>12월</td><td class="num">2,000~3,000만</td><td class="num">1,012만</td><td class="num"><b>988~1,988만</b></td><td>현대카드 19.5% 공략</td></tr>
+      <tr><td><b>3개월 누적</b></td><td class="num">6,000~7,000만</td><td class="num">3,036만</td><td class="num"><b>2,964~3,964만</b></td><td></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:12px 0 0"><b>이 계산이 맞으면 연말에 금융권 부채가 7,525만 → 약 3,600~4,500만으로 내려갑니다.</b> 1년 반 뒤 꼬마빌딩 담보대출 심사를 생각하면 나쁘지 않은 궤도입니다.</p>
+  <div class="note"><b>다만 세 가지가 이 표를 흔듭니다.</b> ① 2,000만이 세전인지 세후인지, 법인 수령인지 개인 수령인지 — 개인으로 받으면 소득세·건강보험이 붙고 법인으로 받으면 개인 부채 상환에 바로 못 씁니다. ② 생활비가 빠져 있어 여유는 988만보다 작습니다. ③ <b>1월 부가세와 5월 종소세</b>가 이 표 밖에 있습니다. 시트에도 '12월에는 2번 납부'라고 적어두셨습니다.</div>
+</div>
+
+<h2>1달 안에 수익을 만들고 싶다 — 숫자 기준만</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">신정현 대표님 쪽 2,000만은 <b>'느낌'이라고 하셨습니다.</b> 그 돈이 늦어지거나 줄면 이 계획 전체가 멈춥니다. 그래서 자력으로 덮어야 하는 금액을 숫자로 두면 이렇습니다.</p>
+  <dl class="kv">
+    <dt>생존선</dt><dd>월 <b>1,012만</b> — 고정 결제만. 이걸 못 넘기면 카드로 메우게 되고 이용률이 다시 올라갑니다</dd>
+    <dt>현실선</dt><dd>월 <b>1,200만</b> — 생활비 포함</dd>
+    <dt>탈출선</dt><dd>월 <b>1,500만</b> — 고정비를 덮고 월 300~500만씩 원금을 깎는 속도</dd>
+  </dl>
+  <p style="margin:12px 0 0"><b>한 달 안에 현금이 되는 것과 안 되는 것은 성격이 다릅니다.</b> 이미 손에 있는 것 — 수강생 명단, 3PL 창고에 쌓인 재고, 진행 중인 컨설팅 — 은 한 달 안에 현금이 됩니다. 새로 만드는 것 — 구독 사업, 신규 플랫폼 — 은 아무리 빨라도 한 달로는 안 됩니다. <b>지금 필요한 건 신규가 아니라 회수입니다.</b></p>
+  <div class="note">구체적으로 어디서 얼마를 뽑을지는 숫자가 더 필요합니다 — 재고 금액, 재구매 가능한 수강생 수, 컨설팅 단가. 말씀해 주시면 월 1,500만이 가능한 조합인지 따로 계산해 드리겠습니다.</div>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">하나 장기카드대출 2,000만 — 살아 있나</div><div class="m">2025년 5월 시트에는 '하나 장기카드대출 2,000만 / 36개월 / 25년 4월 시작 / 16%'로 적혀 있는데, 10월 시트의 대출내역에는 없습니다. 하나카드 총한도는 430만 → 780만으로 오히려 늘었습니다. 상환 완료인지 시트 누락인지에 따라 <b>총부채가 2,000만 달라집니다.</b> 이게 1순위</div></li>
+    <li><div class="t">롯데 2,285만의 성격</div><div class="m">시트에 '미확정 금액 / 분할신청'이라고만 적혀 있습니다. 일시불인지 할부인지 리볼빙인지에 따라 수수료율이 전혀 다릅니다. 리볼빙이면 <b>현대카드 19.5%보다 비쌀 수 있어 1순위가 바뀝니다</b></div></li>
+    <li><div class="t">핀다 대출 — 시트에 '₩500.00'</div><div class="m">입력 오류로 보입니다. 실제 잔액 확인 필요</div></li>
+    <li><div class="t">보험료 월 110만의 내역</div><div class="m">9월 0원 → 10월 110만. 일시 납부인지 매달인지</div></li>
+    <li><div class="t">BNK 금리 — 6.64%인가 10.62%인가</div><div class="m">9월·8월 시트는 6.64%, 10월 시트는 10.62%로 적혀 있습니다. 8/4 연장 때 바뀐 것이라면 10.62%가 맞고, 그러면 우선순위가 학자금보다 위로 올라갑니다</div></li>
+    <li><div class="t">어머니 차용금 — 2,200만인지 2,500만인지, 상환 약속이 있는지</div><div class="m">시트에 아예 없습니다. 금리가 없으니 숫자상으로는 후순위지만, 금융 상환과 별도로 시점을 정해두시는 게 좋습니다</div></li>
+    <li><div class="t">신정현 대표님 입금 — 계약·일정·세전/세후, 법인 수령인지 개인 수령인지</div></li>
+    <li><div class="t">햇살론 일반보증에 법인 대표가 해당되는지 (서민금융진흥원 1397)</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거 · 재정 수치는 2026-10-07 공유된 루크 본인 재정 시트(10월·09월·08월·07월·2025년 5월 탭, 카드 이용금액은 10/02 기준)에서 직접 합산. 월 고정지출 합계 ₩10,123,029는 시트의 '이번달 총지출' 값과 일치. 어머니 차용금 2,200~2,500만과 아버지 1,000만 완제는 2026-10-07 루크 구두(시트 미반영). 신정현 대표님 경유 10~12월 입금은 루크 표현 그대로 '느낌' 단계로 확정 아님. · 2026-10-07 확인: 2026년 개편 햇살론 일반보증 — 연소득 3,500만 이하는 신용평점 무관, 3,500만~4,500만은 개인신용평점 하위 20%(KCB 약 700점 이하), 한도 최대 1,500만 원, 금리 연 6.0~10.0%, 중도상환수수료 면제, 고금리 대출 대환 용도 사용 가능 / 사잇돌2는 사업소득자 기준 사업 4개월 이상·연소득 600만 원 이상, 한도 최대 3,000만 원, 금리 연 8.9~19.9% — 폴리시노트 2026 서민금융 대개편 비교. 햇살론 일반보증에 <b>법인 대표가 해당되는지는 확인되지 않았습니다</b>. KCB·NICE 평가 비중과 카드 발급 기준은 <a href="../credit/">신용점수 페이지</a>의 근거와 같습니다.</div>
 """
 
 # ---------------------------------------------------------------- 힐링디어스 폐업 vs 유지
@@ -3820,6 +3998,7 @@ def main():
     write(os.path.join(base, "jiyoung-prompt", "index.html"), page("지영 원장 빌드업 페이지 — 프롬프트", JYPROMPT))
     write(os.path.join(base, "crew-prompt", "index.html"), page("크루원 사업 구조화 페이지 — 프롬프트", CREWPROMPT))
     write(os.path.join(base, "credit", "index.html"), page("신용점수 — KCB 622 / NICE 750", CREDIT))
+    write(os.path.join(base, "money", "index.html"), page("재정 정리 — 무엇부터 폈아야 하나", MONEY))
     write(os.path.join(base, "corp", "index.html"), page("힐링디어스 → 셀러들의 수다", CORP))
     write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
