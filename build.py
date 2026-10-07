@@ -662,6 +662,7 @@ INDEX = """
   <a href="invader/"><b>인베이더 종료 대비</b><span>10/6 들은 이야기 · 마지막 기수에 챙길 것</span></a>
   <a href="corp/"><b>힐링디어스 → 셀러들의 수다</b><span>경기 창고형 매장은 지금 · 서울 빌딩은 2027-03-16 이후</span></a>
   <a href="relocation/"><b>10/15 등기 — 등기부 확인 끝</b><span>중임은 완료 · 본점이전 + 상호 + 목적 + 수권주식</span></a>
+  <a href="crew-prompt/"><b>크루원 사업 구조화 — 범용 프롬프트</b><span>누구에게나 쓰는 2단 프롬프트 · 이름 충돌 규칙</span></a>
   <a href="jiyoung-prompt/"><b>지영 원장 빌드업 페이지 — 프롬프트</b><span>새 저장소로 만들 때 복사해 쓸 프롬프트</span></a>
   <a href="vault/"><b>셀프 등기 · 정관 찾기 · 서류 보관</b><span>법무사를 쓸지, 정관은 어디서 찾는지</span></a>
   <a href="iros/"><b>등기부 열람 — 클릭 순서</b><span>인터넷등기소에서 중임 기록 확인하기 (700원)</span></a>
@@ -1876,6 +1877,201 @@ Plaud MCP로 아래를 읽고 지영 원장 관련 사실을 뽑아줘.
 </div>
 
 <div class="src" style="margin-top:14px">근거: 2026-10-07 루크 구두(지영 원장의 세 가지 목표 — 성북구 고급 주택, 3층 키티티바이지영 건물, 맥라렌) · 플라우드 녹음 제목 4건(2026-09-04, 09-08, 09-19, 09-26) · luke-1b 페이지 제작 규칙. <b>목표 가격대, 원장의 현재 매출, 모델명은 아직 확인되지 않았습니다.</b> 저작권 관련 판단은 공개 게시를 전제로 한 일반적인 주의이며 법률 자문이 아닙니다.</div>
+
+<script>
+document.querySelectorAll('.cpy').forEach(function(b){
+  b.addEventListener('click', function(){
+    var t = document.getElementById(b.getAttribute('data-t')).innerText;
+    navigator.clipboard.writeText(t).then(function(){
+      var o = b.textContent; b.textContent = '복사됨';
+      setTimeout(function(){ b.textContent = o; }, 1500);
+    });
+  });
+});
+</script>
+"""
+
+# ---------------------------------------------------------------- 크루원 페이지 범용 프롬프트
+CREWPROMPT = """
+<h1>크루원 사업 구조화 페이지 — 범용 프롬프트</h1>
+<p class="note">원크루 크루원 누구에게나 쓸 수 있는 프롬프트 두 개입니다. <b>①번은 그 사람의 프로젝트 채팅</b>에서 돌려 페이지를 만들고 푸시하고, <b>②번은 원크루 사이트 채팅</b>에서 돌려 게시합니다. 맨 윗부분 네 줄만 바꿔 쓰시면 됩니다.</p>
+
+<h2>이름 규칙 — 충돌을 막는 핵심</h2>
+<div class="card red">
+  <p style="margin:0 0 10px">여러 세션이 각자 저장소와 폴더를 만들면 이름이 겹칩니다. 겹치면 저장소 생성이 실패하거나, 더 나쁘게는 <b>남의 폴더를 덮어씁니다.</b> 아래 규칙을 프롬프트에 넣어 뒀습니다.</p>
+  <div class="wrapx"><table>
+  <tr><th>무엇</th><th>규칙</th><th>예</th></tr>
+  <tr><td>슬러그</td><td>영문 소문자 + 하이픈, 사람을 식별할 수 있게</td><td class="num">kittiti-jiyoung<br>choi-eunbong</td></tr>
+  <tr><td>개별 저장소</td><td><b>onecrew-</b> + 슬러그</td><td class="num">onecrew-kittiti-jiyoung</td></tr>
+  <tr><td>원크루 사이트 안 폴더</td><td>/crew/ + 슬러그 /</td><td class="num">/crew/choi-eunbong/</td></tr>
+  <tr><td>금지</td><td colspan="2" class="num">site, page, new, test, temp, crew1 같은 일반 명사 단독</td></tr>
+  </table></div>
+  <div class="note">그리고 <b>만들기 전에 이미 있는지 확인</b>하도록 넣었습니다. 저장소는 깃허브에서, 폴더는 저장소를 clone해서 눈으로. 있으면 멈추고 루크님께 묻게 했습니다.</div>
+</div>
+
+<h2>① 크루원 프로젝트 채팅용</h2>
+<div class="card">
+  <button class="cpy" data-t="c1" style="font:inherit;font-weight:700;padding:10px 16px;border-radius:10px;border:0;background:var(--ac,#5b8def);color:#fff;cursor:pointer;margin-bottom:10px">프롬프트 복사</button>
+  <pre id="c1" style="white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.65;margin:0;font-family:inherit">[채워 넣기]
+크루원 이름: OOO
+슬러그: ooo-slug          (영문 소문자와 하이픈만. 사람을 알아볼 수 있게)
+저장소: onecrew-ooo-slug  (위 슬러그와 같게)
+플라우드 검색어: OOO, (상호명), (사업 키워드)
+
+위 사람의 '사업 구조화 페이지'를 만들어줘.
+루크의 '내 연봉 10억 만들기'(github.com/Yoo-Mideum/luke-1b)와 같은 형식이고, 본인에게 공유할 페이지야.
+
+[0] 이름 충돌 먼저 확인
+- 만들기 전에 Yoo-Mideum 계정에 같은 이름의 저장소가 이미 있는지 확인해줘.
+- 있으면 멈추고 나에게 물어봐. 덮어쓰지 마.
+- 슬러그는 위에 적은 것만 써. 네가 임의로 바꾸지 마.
+- 저장소 생성과 Pages 켜기는 내가 직접 할게. 필요하면 알려줘.
+
+[1] 배포 규칙
+- clone해서 작업하고 git push로 배포해줘.
+- 기기 인증(device code) 방식은 이 환경에서 막혀 있으니 시도하지 마.
+- push가 403이면 우회하지 말고 바로 알려줘. 내가 권한 열어줄게.
+- 작업 시작할 때와 push 전에 git pull --rebase 를 꼭 해줘. 다른 세션이 같은 저장소를 건드릴 수 있어.
+- 충돌이 나면 build.py만 수동으로 합치고 나머지 HTML은 다시 빌드해서 해결해줘.
+- 배포 후 링크는 ?v=1 처럼 숫자를 붙여서 줘.
+
+[2] 페이지 규칙
+- self-contained HTML 한 파일. CSS와 JS는 인라인, 외부는 구글 폰트만.
+- 폴더 구조는 /항목명/index.html, 루트 index.html이 전체 목록 허브.
+- 모바일 우선 max-width 600px, Gowun Dodum + Noto Sans KR, prefers-color-scheme 다크모드.
+- 전부 build.py 하나에서 생성되게 해줘.
+- 코드 고칠 때 한 줄 핀포인트 수정 말고 파일 전체를 새로 써줘.
+- 커밋 메시지는 한글로, 바뀐 것을 목록으로.
+
+[3] 먼저 자료를 모아줘
+- Plaud MCP의 list_files로 위 검색어를 각각 검색해줘. 제목만 매칭되고 page_size는 최소 10이야.
+- 관련 녹음을 get_note(file_id=...)로 읽어줘. 본문이 길면 서브에이전트에 맡겨서 요약만 받아와.
+- 노션 '루크 액션보드'와 이 프로젝트 채팅의 기존 상담 기록도 있으면 같이 참고해줘.
+- 뽑을 것:
+  · 지금 돈이 어디서 오는가 — 매출원별 금액, 객단가, 건수, 비중
+  · 각 매출원이 어디서 막히는가 — 시간, 인력, 재고, 유입 중 무엇이 한계인지
+  · 본인이 말한 목표 — 금액, 시점, 갖고 싶은 것, 되고 싶은 모습
+  · 본인이 말한 걱정과 망설임
+  · 이미 결정된 것과 아직 미결인 것
+  · 확정된 날짜가 있는 일
+- 녹음이나 기록에 없는 건 지어내지 말고 '확인 필요'로 남겨줘.
+
+[4] 페이지 구성
+루트 허브 아래 이렇게 만들어줘.
+1. 지금 — 현재 수익 구조. 매출원별 표, 각 축의 한계, 다음 축 후보.
+2. 목표 — 본인이 말한 목표를 숫자로. 금액과 시점, 거기까지 필요한 월 순이익을 역산.
+   가격이 필요한 목표(집, 차, 건물 등)는 실제 시세를 검색해서 확인하고, 못 찾으면 '확인 필요'.
+3. 경로 — 지금에서 목표까지 가는 단계. 1년 / 3년 / 5년으로 나누고 각 단계에서 무엇이 바뀌어야 하는지.
+4. 사업 유니버스 — 별자리 지도. luke-1b의 /universe/ 와 같은 방식(SVG + 인라인 JS, 노드와 엣지,
+   3D 회전, 전체화면). 노드는 '지금 하는 것 / 준비 중 / 구상 중'으로 구분하고 서로 어떻게 이어지는지 선으로.
+   luke-1b 저장소 build.py의 universe_html() 함수를 참고해도 좋아.
+5. 일정 — 확정된 날짜만. 추정이면 '잠정'이라고 표시.
+6. 출처 — 어느 녹음·기록에서 나온 내용인지 작게.
+
+[5] 이미지 규칙
+- 이 페이지는 공개 URL이야. 남의 사진(매물, 자동차, 브랜드 이미지)을 가져다 올리지 마.
+  개인 소장과 공개 게시는 다른 문제야.
+- 브랜드 로고나 특정 제품 디자인을 코드로 재현하지도 마.
+- 분위기는 코드로 그린 원본 일러스트(SVG 또는 CSS)로 해줘.
+- 목표는 사진보다 숫자로 보여줘. 가격, 필요한 연수, 월 순이익 목표가 사진보다 세게 작동해.
+- 꼭 사진이 필요하면 상업적 이용이 가능한 무료 이미지 출처만 알려줘. 내가 직접 넣을게.
+
+[6] 톤과 범위
+- 본인이 직접 볼 페이지야. 내 수수료, 수익 배분, 다른 크루원 이야기, 내 다른 사업은 넣지 마.
+- 평가하거나 훈계하는 투로 쓰지 마. 숫자와 선택지를 보여주고 결정은 본인이 하게 해줘.
+- 주민번호, 계좌번호, 집 주소, 전화번호 같은 개인정보는 어디에도 쓰지 마.
+- 다른 크루원의 이름이나 매출은 절대 넣지 마.
+
+[7] 사실 확인
+- 숫자, 날짜, 가격, 법과 제도, 고유명사는 지어내지 말고 실제로 검색해서 확인한 것만 써줘.
+- 확인이 안 되면 그냥 '확인 필요'라고 적어. 그럴듯하게 채우지 마.
+- 링크는 실제로 열리는 것만. 검색어를 URL에 끼워넣은 가짜 링크는 금지.
+- 출처가 있으면 페이지 안에 작게 남겨줘.
+
+[8] 원크루 사이트로 넘길 준비
+저장소 루트에 crew.json 파일을 하나 같이 만들어서 push해줘. 원크루 사이트 채팅이 이걸 읽어서 게시할 거야.
+형식:
+{
+  "slug": "위 슬러그",
+  "name": "크루원 이름",
+  "title": "페이지 제목",
+  "updated": "YYYY-MM-DD",
+  "repo": "onecrew-슬러그",
+  "url": "https://yoo-mideum.github.io/onecrew-슬러그/",
+  "pages": [
+    { "path": "now/", "title": "지금", "desc": "한 줄 설명" },
+    { "path": "goal/", "title": "목표", "desc": "한 줄 설명" }
+  ]
+}
+
+[9] 다 되면
+- 공유 링크 하나와 짧은 요약만 줘. 작업 중계는 필요 없어.
+- 마지막에 '원크루 사이트 채팅에 전달할 한 줄'을 따로 적어줘. 저장소 이름과 슬러그가 들어가야 해.
+- 내가 결정해야 할 게 있으면 그것만 짧게 물어봐.</pre>
+</div>
+
+<h2>② 원크루 사이트 채팅용</h2>
+<div class="card">
+  <p class="note" style="margin-top:0">①번이 끝나고 푸시된 뒤에, 원크루 사이트 만드는 코드 채팅에 이걸 주세요.</p>
+  <button class="cpy" data-t="c2" style="font:inherit;font-weight:700;padding:10px 16px;border-radius:10px;border:0;background:var(--ac,#5b8def);color:#fff;cursor:pointer;margin-bottom:10px">프롬프트 복사</button>
+  <pre id="c2" style="white-space:pre-wrap;word-break:break-word;font-size:13px;line-height:1.65;margin:0;font-family:inherit">[채워 넣기]
+크루원 이름: OOO
+슬러그: ooo-slug
+저장소: onecrew-ooo-slug
+
+위 크루원의 사업 구조화 페이지가 새로 푸시됐어. 원크루 사이트에 게시해줘.
+
+[0] 먼저 확인
+- 저장소 Yoo-Mideum/onecrew-ooo-slug 의 루트에 있는 crew.json 을 읽어줘.
+  거기에 slug, name, title, updated, repo, url, pages 가 들어 있어.
+- 원크루 사이트 저장소에 이미 같은 슬러그의 항목이나 폴더가 있는지 확인해줘.
+  있으면 새로 만들지 말고 내용만 갱신해줘. 중복으로 만들지 마.
+
+[1] 게시
+- 원크루 사이트의 기존 자료실 구조와 디자인을 그대로 따라줘. 새 규칙을 만들지 마.
+  먼저 기존 폴더를 열어보고 어떤 형식인지 확인한 다음에 맞춰줘.
+- 크루 목록에 이 사람을 추가하고, crew.json의 pages 를 하위 항목으로 걸어줘.
+- 링크는 crew.json의 url 을 쓰고, 실제로 열리는지 확인해줘.
+- 본인과 나만 보는 자리인지 전체 공개인지 모르겠으면 나에게 물어봐. 임의로 공개하지 마.
+
+[2] 배포 규칙
+- 작업 시작할 때와 push 전에 git pull --rebase 를 꼭 해줘. 다른 세션이 같은 저장소를 건드릴 수 있어.
+- 기기 인증(device code) 방식은 시도하지 마. push가 403이면 바로 알려줘.
+- 코드 고칠 때 한 줄 수정 말고 파일 전체를 새로 써줘.
+- 커밋 메시지는 한글로, 바뀐 것을 목록으로.
+- 배포 후 링크는 ?v=1 처럼 숫자를 붙여서 줘.
+
+[3] 지키지 말아야 할 것
+- 다른 크루원의 페이지나 목록을 건드리지 마.
+- 크루원끼리 서로의 매출이나 목표가 보이게 만들지 마.
+- 개인정보(주민번호, 계좌, 집 주소, 전화번호)는 어디에도 넣지 마.
+
+[4] 다 되면
+공유 링크 하나와 '무엇을 어디에 걸었는지' 한 줄만 줘.</pre>
+</div>
+
+<h2>쓰는 순서</h2>
+<div class="card accent">
+  <ol class="tl" style="margin-top:6px">
+    <li><div class="t">슬러그를 먼저 정한다</div><div class="d">사람 한 명당 하나. 한 번 정하면 저장소 이름, 폴더 이름, crew.json에 전부 같은 값이 들어갑니다</div></li>
+    <li><div class="t">저장소를 만들고 Pages를 켠다</div><div class="d">클로드 환경에서는 저장소 생성이 막혀 있어 루크님이 직접 하셔야 합니다. 공개, Pages는 main / root</div></li>
+    <li><div class="t">그 사람 프로젝트 채팅에서 ①번을 돌린다</div><div class="d">끝나면 공유 링크와 '원크루 사이트에 전달할 한 줄'이 나옵니다</div></li>
+    <li class="big"><div class="t">원크루 사이트 채팅에서 ②번을 돌린다</div><div class="d">crew.json을 읽어서 목록에 걸립니다</div></li>
+  </ol>
+  <div class="note">같은 사람의 페이지를 나중에 갱신할 때는 ①번을 다시 돌리고(저장소가 이미 있으니 clone해서 수정), ②번은 "갱신됐으니 목록 날짜만 고쳐줘"로 짧게 주시면 됩니다.</div>
+</div>
+
+<h2>남은 확인 필요</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">원크루 사이트 저장소 이름</div><div class="m">②번 프롬프트가 "기존 구조를 먼저 보고 따르라"고 되어 있어서 이름을 몰라도 돌아가지만, 적어두시면 더 빠릅니다</div></li>
+    <li><div class="t">crew.json 형식이 기존 자료실과 맞는지</div><div class="m">제가 제안한 형식입니다. 이미 쓰시는 규칙이 있으면 그쪽에 맞추는 게 낫습니다 — 첫 한 명에게 돌려보고 조정하세요</div></li>
+    <li><div class="t">크루원 페이지를 개별 저장소로 할지, 원크루 사이트 안에 넣을지</div><div class="m">개별 저장소는 사람별로 완전히 분리돼 안전하고, 사이트 안에 넣으면 관리가 한곳입니다. 지금은 <b>개별 저장소</b>로 썼습니다 — 크루원끼리 서로 안 보이는 게 중요해 보여서요</div></li>
+    <li><div class="t">공개 범위</div><div class="m">GitHub Pages는 주소를 아는 사람이면 누구나 봅니다. 로그인 뒤에 숨기려면 원크루 사이트 4단계(로그인·가입)가 먼저 끝나야 합니다</div></li>
+  </ul>
+</div>
+
+<div class="src" style="margin-top:14px">근거: 2026-10-07 루크 구두(개인 프로젝트 채팅에서 발행·푸시 → 원크루 사이트 제작 채팅에서 확인 후 게시하는 현재 흐름, 저장소·페이지 이름 충돌 주의) · luke-1b 페이지 제작·배포 규칙 · 기존 원크루 자료실 운영 기록(회차별 자료 게시, '배포해 줘' 요청 방식, 자동 배포 연결 대기). <b>원크루 사이트 저장소 이름과 기존 자료실 폴더 규칙은 확인하지 못해, ②번 프롬프트가 기존 구조를 먼저 읽고 따르도록 썼습니다. crew.json 형식은 제가 제안한 것으로 기존 규칙이 있으면 그쪽이 우선입니다.</b></div>
 
 <script>
 document.querySelectorAll('.cpy').forEach(function(b){
@@ -3644,6 +3840,7 @@ def main():
     write(os.path.join(base, "iros", "index.html"), page("등기부 열람 — 클릭 순서", IROS))
     write(os.path.join(base, "vault", "index.html"), page("셀프 등기 · 정관 찾기 · 서류 보관", VAULT))
     write(os.path.join(base, "jiyoung-prompt", "index.html"), page("지영 원장 빌드업 페이지 — 프롬프트", JYPROMPT))
+    write(os.path.join(base, "crew-prompt", "index.html"), page("크루원 사업 구조화 페이지 — 범용 프롬프트", CREWPROMPT))
     write(os.path.join(base, "corp", "index.html"), page("힐링디어스 → 셀러들의 수다", CORP))
     write(os.path.join(base, "universe", "index.html"), page("사업 유니버스", universe_html()))
     write(os.path.join(base, "philosophy", "index.html"), page("삼각 파이프라인", PHILOSOPHY))
