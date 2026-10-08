@@ -1327,7 +1327,8 @@ CHOWOL = """
     <dt>루크 수수료</dt><dd><b>PG 수수료를 제외한 전체 매출의 8% 고정</b></dd>
     <dt>강사 배분</dt><dd>광고비 등 <b>모든 비용을 뺀 순수익을 초월스토리 : 강사 5:5</b>. 회의에서 광고비 비율은 숫자로 나오지 않았습니다 — 앞서 적었던 '총매출의 8%'는 제 오독이었고 지웠습니다</dd>
     <dt>강사 몫 재분할</dt><dd><b>가을 대표님 6 : 루크 4</b> — 10/8 루크 구두. 기준은 초월스토리가 가을 대표님께 제시할 약 2,200만이고 그중 4를 루크님이 받습니다. <b>초월스토리는 모르는 별도 계약</b>이며, 10/6 회의 녹음에는 이 비율이 없습니다</dd>
-    <dt>PG 요율</dt><dd>회의에서 숫자 언급 없음 — 아래 표는 <b>3.5% 가정</b></dd>
+    <dt>PG 요율</dt><dd>회의에서 숫자 언급 없음 — <b>4% 가정</b>(10/8 루크)</dd>
+    <dt>광고비</dt><dd>회의에서 숫자 언급 없음. 강사 제시액 2,200만에서 역산하면 <b>약 4,500만, 매출의 44.6%</b>(ROAS 2.24) — 초월스토리 확인 필요</dd>
     <dt>상품</dt><dd><b>289만 원 단일 프로젝트</b>가 유력 — 과거 사례에서 구성 차이가 전환율에 큰 영향이 없었음</dd>
     <dt>강사에게 제시한 수익</dt><dd>2,200만 ~ 3,200만 원</dd>
     <dt>역제안</dt><dd>초월스토리가 영입한 신규 강사의 역량이 부족하면, <b>최소 2개월 준비 기간</b>을 주면 프로그램 개발까지 지원</dd>
@@ -1433,13 +1434,83 @@ CHOWOL = """
   <div class="note">그리고 가을 대표님은 원크루 크루원입니다. 루크님께 이미 큰 돈을 낸 사람의 첫 강사 수익에서 또 40%를 가져가는 구조는, <b>금액과 별개로 설명이 필요한 모양</b>이 됩니다. 물론 루크님이 기획·PPT·코칭을 전부 붙여 주는 대가이니 공짜로 가져가는 게 아닙니다 — <b>그 대가를 가을 대표님께서도 그렇게 이해하고 계신지</b>만 서면으로 남겨 두시면 됩니다. 나중에 "그게 그 돈이었나" 하는 대화가 가장 비쌉니다.</div>
 </div>
 
-<h2>그래서 10/22 전에 닫을 네 칸</h2>
+<h2>광고비 역산 — 약 4,500만, 매출의 45%</h2>
+<div class="card gold">
+  <p style="margin:0 0 10px">2,200만을 물어보신 이유가 이거였다고 하셔서, 루크님 숫자(280만 × 36명 = 1억 80만, PG 4%)로 끝까지 풀었습니다.</p>
+  <div class="wrapx"><table>
+  <tr><td>매출 (280만 × 36명)</td><td class="num">1억 80만</td></tr>
+  <tr><td>− PG 수수료 4%</td><td class="num">403만</td></tr>
+  <tr><td>= PG 제외 매출</td><td class="num">9,677만</td></tr>
+  <tr><td><b>− 루크 수수료 8%</b></td><td class="num"><b>774만</b></td></tr>
+  <tr><td>= 비용 빼기 전 남은 돈</td><td class="num">8,903만</td></tr>
+  <tr><td>− 강사 2,200만 + 채널 2,200만</td><td class="num">4,400만</td></tr>
+  <tr><td><b>= 남는 자리 = 광고비</b></td><td class="num"><b>약 4,500만</b></td></tr>
+  </table></div>
+  <p style="margin:12px 0 0"><b>매출의 44.6%입니다. ROAS로 치면 2.24.</b> 1억을 벌기 위해 4,500만을 태운다는 뜻이고, 36명을 데려오는 데 1인당 125만 — 280만 상품에서 획득비가 <b>44.6%</b>입니다. 고가 라이브 퍼널에서 불가능한 숫자는 아니지만 <b>여유가 거의 없습니다.</b></p>
+  <div class="note">검산도 맞습니다 — 광고비를 4,500만으로 두고 다시 내려오면 5:5 몫이 <b>2,201만</b>으로 나옵니다. 초월스토리가 말한 2,200만과 1만 원 차이입니다. <b>하단값 하나로 그쪽이 머릿속에 둔 광고 예산이 그대로 드러났습니다.</b></div>
+</div>
+
+<h2>광고비가 움직이면 누가 얼마나 흔들리나</h2>
+<div class="card">
+  <p style="margin:0 0 10px">36명을 고정하고 광고비만 바꿔봤습니다. 초월스토리 가정은 4,500만 줄입니다.</p>
+  <div class="wrapx"><table>
+  <tr><th>광고비</th><th>5:5 몫<br><small>초월이 말하는 금액</small></th><th>루크 4</th><th>가을 실수령<br><small>6:4 후</small></th><th>루크 합계<br><small>8% + 4</small></th></tr>
+  <tr><td>3,000만</td><td class="num">2,951만</td><td class="num">1,181만</td><td class="num">1,771만</td><td class="num">1,955만</td></tr>
+  <tr><td>4,000만</td><td class="num">2,451만</td><td class="num">981만</td><td class="num">1,471만</td><td class="num">1,755만</td></tr>
+  <tr><td><b>4,500만 (초월 가정)</b></td><td class="num"><b>2,201만</b></td><td class="num"><b>880만</b></td><td class="num"><b>1,321만</b></td><td class="num"><b>1,655만</b></td></tr>
+  <tr><td>5,000만</td><td class="num">1,951만</td><td class="num">781만</td><td class="num">1,171만</td><td class="num">1,555만</td></tr>
+  <tr><td>5,500만</td><td class="num">1,701만</td><td class="num">681만</td><td class="num">1,021만</td><td class="num">1,455만</td></tr>
+  </table></div>
+  <p style="margin:14px 0 8px"><b>광고비가 1,000만 더 나가면 이렇게 나눠집니다.</b></p>
+  <div class="wrapx"><table>
+  <tr><th></th><th>부담</th><th>비율</th><th>광고 집행 권한</th></tr>
+  <tr><td>초월스토리</td><td class="num">−500만</td><td class="num">50%</td><td>있음</td></tr>
+  <tr><td><b>가을 대표님</b></td><td class="num"><b>−300만</b></td><td class="num"><b>30%</b></td><td><b>없음</b></td></tr>
+  <tr><td>루크님</td><td class="num">−200만</td><td class="num">20%</td><td>없음</td></tr>
+  </table></div>
+  <div class="note"><b>루크님 자리는 구조적으로 단단합니다.</b> 8% 774만은 광고비가 어떻게 되든 그대로 들어옵니다. 광고비에 노출된 건 4를 받는 부분뿐이라 <b>전체 리스크의 20%만 지십니다.</b> 반대로 <b>가을 대표님은 30%를 지는데 광고에 아무 권한이 없습니다.</b> 이건 미리 말해 두셔야 할 부분입니다.</div>
+</div>
+
+<h2>손익분기 18명 — 이게 이 구조의 급소입니다</h2>
+<div class="card red">
+  <p style="margin:0 0 10px">광고비 4,500만을 먼저 태우고 나서 나눕니다. 그래서 인원이 줄 때 <b>누가 먼저 0이 되는지가 순서로 정해져 있습니다.</b></p>
+  <div class="wrapx"><table>
+  <tr><th>인원</th><th>매출</th><th>순수익</th><th>5:5 몫</th><th>가을 실수령</th><th>루크 합계</th></tr>
+  <tr><td>36명</td><td class="num">1억 80만</td><td class="num">4,403만</td><td class="num">2,201만</td><td class="num">1,321만</td><td class="num">1,655만</td></tr>
+  <tr><td>30명</td><td class="num">8,400만</td><td class="num">2,919만</td><td class="num">1,459만</td><td class="num">876만</td><td class="num">1,229만</td></tr>
+  <tr><td>24명</td><td class="num">6,720만</td><td class="num">1,435만</td><td class="num">718만</td><td class="num">431만</td><td class="num">803만</td></tr>
+  <tr><td><b>18명</b></td><td class="num">5,040만</td><td class="num"><b>0원</b></td><td class="num"><b>0원</b></td><td class="num"><b>0원</b></td><td class="num"><b>387만</b></td></tr>
+  <tr><td>12명</td><td class="num">3,360만</td><td class="num">−1,532만</td><td class="num">적자</td><td class="num">0원</td><td class="num">258만</td></tr>
+  </table></div>
+  <p style="margin:12px 0 0"><b>손익분기가 18명입니다.</b> 그 아래로는 강사도 채널도 0원이고 <b>루크님만 8%를 받습니다.</b> 그런데 같은 회의에서 루크님이 "얘는 진짜 3% 전환율만 하더라도"라고 하셨고, 과거 기록(DB 3,000개 → 라이브 유입 18~20% → 전환 3%)으로 계산하면 <b>16~18명</b> — <b>정확히 손익분기 지점</b>입니다.</p>
+  <div class="note"><b>초월스토리의 2,200만은 전환율 10%가 그대로 맞았을 때의 숫자이고, 과거 실적대로 가면 0원입니다. 가운데가 거의 없습니다.</b> 24명이어도 가을 대표님 실수령은 431만입니다. 이 구조에서 가장 큰 변수는 인원 자체가 아니라 <b>광고비를 먼저 태운다는 순서</b>입니다 — 광고비가 뒤에 있으면 손실을 나눠 지지만, 앞에 있으면 광고비가 다 채워진 뒤에야 사람 몫이 생깁니다.</div>
+</div>
+
+<h2>그래서 물어볼 것과 말할 것</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px"><b>초월스토리에</b></p>
+  <ul class="list">
+    <li><div class="t">광고비 4,500만이 맞나 — 본인 입으로 확인</div><div class="m">역산한 값이니 확인이 필요합니다. "2,200만이면 광고를 4,500만 정도 보시는 거죠?" 한 줄로 끝납니다</div></li>
+    <li><div class="t">광고비 상한을 정할 수 있나</div><div class="m">상한이 없으면 가을 대표님과 루크님 몫이 집행하는 쪽 판단에 그대로 노출됩니다. <b>상한선 한 줄이 정산 열람권보다 실질적입니다</b></div></li>
+    <li><div class="t">ROAS가 2.24 아래로 떨어지면 멈추는 기준이 있나</div><div class="m">지금은 '2회 후 종료'만 있고 <b>한 회차 안에서 멈추는 기준이 없습니다.</b> 그 안에서 광고비가 다 타면 아무도 못 받습니다</div></li>
+    <li class="big"><div class="t">이 예산을 전환율 10%로 짰나, 과거 3%로 짰나</div><div class="m">10%로 짰다면 4,500만은 낙관 가정 위에 세운 예산입니다. 3%였다면 애초에 이 예산이 나올 수 없습니다 — <b>어느 쪽이냐가 가을 대표님께 할 말을 결정합니다</b></div></li>
+  </ul>
+  <p style="margin:14px 0 10px"><b>가을 대표님께</b></p>
+  <ul class="list">
+    <li><div class="t">2,200만은 전환율 10%가 맞았을 때의 숫자</div><div class="m">36명이면 2,201만, 18명이면 0원입니다. 중간이 거의 없습니다</div></li>
+    <li class="big"><div class="t">광고비 리스크의 30%를 지는데 권한이 없다</div><div class="m">0원이 나온 뒤에 설명하는 것보다 지금 말하는 게 훨씬 쉽습니다. 그 자리에서 <b>루크님은 8%로 보호받고 가을 대표님은 안 그렇다는 사실</b>도 같이 드러나니, 먼저 꺼내시는 편이 낫습니다</div></li>
+  </ul>
+  <div class="note"><b>바닥을 깔아 두는 방법이 있습니다 — 최소 보장액.</b> 인원과 무관하게 강사에게 500만을 보장하고 그 이상은 5:5로 가는 식입니다. 광고 집행 권한이 초월스토리에 있으니 <b>바닥을 깔 책임도 그쪽에 있다</b>고 말할 근거가 됩니다. 가을 대표님이 첫 강사이고 성과자 영상 4편까지 겸하기로 돼 있으니 요구할 명분은 충분합니다. 이게 들어가면 6:4를 공개로 돌리기도 쉬워집니다 — <b>루크님이 가을 대표님 쪽 바닥을 받아내 준 사람이 되니까요.</b></div>
+</div>
+
+<h2>그래서 10/22 전에 닫을 다섯 칸</h2>
 <div class="card">
   <ul class="list">
     <li><span class="tag p0">1</span><div class="t">2,200만의 계산식 — 비용을 무엇으로 5,600만 잡았는지</div><div class="m">여기가 루크님 4의 크기를 결정합니다. 비용 가정이 과했다면 880만이 1,590만이 됩니다</div></li>
     <li><span class="tag p0">2</span><div class="t">8%를 초월스토리 비용으로 부담하는지 — 446만</div><div class="m">계약서 한 줄. 지금 '그렇게 해주셔도 됩니다'로 열려 있습니다</div></li>
     <li><span class="tag p0">3</span><div class="t">'다 차감'의 항목 목록</div><div class="m">광고비·PG·PD 인건비·제작비·CRM 중 무엇이 들어가고 누가 부담하는가. 5:5는 비율이고 <b>분모를 정하는 것이 실제 계약</b>입니다</div></li>
-    <li class="big"><span class="tag p0">4</span><div class="t">6:4를 숨길지, 공동 기획으로 공개할지</div><div class="m">금액 차이는 작고 리스크 차이는 큽니다. 10/22가 공개로 돌릴 수 있는 마지막 자리입니다 — 그 자리를 지나 계약서가 나오면 되돌리기 어렵습니다</div></li>
+    <li><span class="tag p0">4</span><div class="t">광고비 상한과 중단 기준 — 역산값 4,500만</div><div class="m">이게 없으면 위 표의 어느 줄에 앉게 될지를 집행하는 쪽이 정합니다. <b>가을 대표님 최소 보장액도 여기서 같이</b></div></li>
+    <li class="big"><span class="tag p0">5</span><div class="t">6:4를 숨길지, 공동 기획으로 공개할지</div><div class="m">금액 차이는 작고 리스크 차이는 큽니다. 10/22가 공개로 돌릴 수 있는 마지막 자리입니다 — 그 자리를 지나 계약서가 나오면 되돌리기 어렵습니다</div></li>
   </ul>
 </div>
 
