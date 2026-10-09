@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-09-studyhall-gate",
+    "date": "2026-10-09",
+    "project": "루크 툴박스",
+    "title": "챌린지 학습관 열림 확인 + 로그아웃 안내 고침",
+    "status": "완료",
+    "summary": "학습관은 이미 참가자 전원에게 열려 있었습니다. 다만 로그아웃 상태로 링크를 받은 분께는 로그인만 하면 된다는 안내가 없어, 막힌 이유를 둘로 나눠 각각 다른 버튼을 보여 주도록 고쳤습니다.",
+    "next": "없음",
+    "deploy_url": "https://giantstoolbox.com/challenge/study",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>이미 참가한 분이 다른 기기로 열었을 때 가장 헷갈리는 자리였습니다. 로그인 뒤에는 학습관으로 바로 돌아옵니다.</p>"
+  },
+  {
     "id": "2026-10-09-trend-to-listing",
     "date": "2026-10-09",
     "project": "루크 툴박스",
