@@ -79,6 +79,20 @@ a{color:var(--accent);text-decoration:none}
 .skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
 .skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
 .skiprow dd{margin:0;color:var(--muted)}
+.fb{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:0 0 9px;line-height:1.62}
+.fb b{color:var(--ink);font-weight:500}
+.ba2{margin:9px 0 0;font-size:13.5px;display:grid;gap:5px}
+.ba2 .b,.ba2 .a{padding:8px 10px;border-radius:8px;line-height:1.62}
+.ba2 .b{background:var(--red-soft)}
+.ba2 .a{background:var(--accent-soft)}
+.ba2 .b:before{content:"수정 전";display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;letter-spacing:.06em}
+.ba2 .a:before{content:"수정 후";display:block;font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:3px;letter-spacing:.06em}
+.en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:12.5px;color:var(--muted)}
+.why2{font-size:13.5px;margin-top:9px;line-height:1.68}
+.why2:before{content:"왜";display:inline-block;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
+.ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.ov dd{margin:0}
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
 .lu-pflow{animation:luDash 9s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
@@ -194,12 +208,30 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <script>window.LUKE_ROOT="../";</script>
 
 <h1>지영 설문지 발표 — 쪽마다 할 말</h1>
-<p class="note">「설문지 피드백 반영 및 수정본」 PDF 21쪽 기준. 흐름은 <b>① 받은 피드백 → ② 고친 것은 몇 쪽에 어떻게 → ③ 안 고친 것은 왜</b> 세 토막입니다. 교수님이 보시겠다고 한 것이 <b>공통적인 수정사항과 판단 기준</b>이라, ③에 가장 긴 시간을 둡니다.</p>
+<p class="note">이 페이지만 보고도 발표할 수 있게 <b>지적 원문 · 실제 문항 문구 · 고친 이유</b>를 다 넣었습니다. 흐름은 <b>① 받은 피드백 → ② 고친 것은 몇 쪽에 어떻게 → ③ 안 고친 것은 왜</b> 세 토막입니다.</p>
 
 <div class="card accent">
-  <h3>이 발표에서 반드시 남겨야 할 한 문장</h3>
+  <h3>반드시 남겨야 할 한 문장</h3>
   <p style="font-size:16px;margin:6px 0 0;font-family:'Gowun Dodum',sans-serif;line-height:1.6">원척도에 원래 있던 문제는 자료 없이 손대지 않았고,<br>제 번안에서 생긴 문제는 바로 고쳤습니다.</p>
-  <div class="note">③ 들어갈 때 한 번, 마무리에 한 번 — 두 번 말합니다. 앞뒤를 다 잊어도 이 문장만 남으면 됩니다.</div>
+  <div class="note">③ 들어갈 때 한 번, 마무리에 한 번 — 두 번 말합니다.</div>
+</div>
+
+<h2>먼저 외울 것 <small>연구가 뭐냐고 물으면 이것만</small></h2>
+<div class="card">
+  <dl class="ov">
+    <dt>제목</dt><dd><b>1인 헤어·메이크업 사업자의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향</b> : 플랫폼 활용의 매개효과 <span class="tag">가제</span></dd>
+    <dt>대상</dt><dd>네이버 스마트플레이스에 등록하고, 헤어 또는 메이크업을 주 시술로 <b>혼자</b> 운영하며, <b>운영 1년 이상</b>인 사업자</dd>
+    <dt>독립</dt><dd>디지털 마케팅 자기효능감 — 하위요인 2개 · <b>8문항 · 7점</b> · "~할 수 있다"</dd>
+    <dt>매개</dt><dd>플랫폼 활용 — 하위요인 2개 · <b>10문항 · 5점</b> · "~하는 데 도움이 된다"</dd>
+    <dt>종속</dt><dd>마케팅 성과 — 단일요인 · <b>4문항 · 5점</b> · "주변 샵과 비교해 ~가 늘었다"</dd>
+    <dt>통제</dt><dd>연령대 · 샵 운영 기간 · 스마트플레이스 등록 기간 &nbsp;|&nbsp; 조절변수 없음</dd>
+    <dt>AI부</dt><dd>AI 검색환경 6문항 — <b>측정 변수가 아니라 연구 배경</b>. 합산도 요인분석도 안 함</dd>
+    <dt>문항</dt><dd>선별 4 + 기본 6 + 8 + 10 + 4 + 6 = <b>총 38문항</b> (선별 뺀 본 설문은 34문항)</dd>
+  </dl>
+  <div class="emph" style="margin-top:11px"><b>척도 출처 세 개 — 이것도 물어볼 수 있습니다</b><br>
+  · 자기효능감 = Wang, Tseng, Wang &amp; Chu (2020) <b>IESES</b> 16문항 중 8문항<br>
+  · 플랫폼 활용 = Tajudeen, Jaafar &amp; Ainin (2018) 13문항 중 <b>2개 하위요인 10문항</b><br>
+  · 마케팅 성과 = Vorhies &amp; Morgan (2005) <b>Market Effectiveness</b> 4문항</div>
 </div>
 
 <h2>세 토막 <small>5분 기준</small></h2>
@@ -210,88 +242,177 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <div><b>1:30</b>③<br>안 고친 것 3건</div>
     <div><b>0:30</b>—<br>마무리</div>
   </div>
-  <div class="warn">②는 8건을 쪽 번호만 따라가며 빠르게 — 한 건에 15초입니다. 여기서 설명을 늘리면 ③이 날아갑니다.</div>
+  <div class="warn">②는 한 건에 15초입니다. 전·후만 읽고 넘기세요. 여기서 설명을 늘리면 ③이 날아갑니다.</div>
 </div>
 
-<h2>① 받은 피드백 <small>1:00 · 2쪽을 띄워 놓고</small></h2>
+<h2>① 받은 피드백 <small>1:00 · 2쪽</small></h2>
 <div class="card">
  <div class="pg">
   <div class="pgn"><b>2</b><span>1:00</span></div>
   <div class="pgb">
    <div class="say">받은 피드백은 모두 <b>9건</b>입니다. 성격으로 묶으면 네 갈래였습니다. 처리 방식이 갈리는 것을 나눠 10개 항목으로 정리했고, 결과는 <b>8건 수정, 3건 미수정</b>입니다.</div>
-   <div class="note" style="margin-top:10px">아래 네 갈래를 한 줄씩만 읽고 넘어갑니다. 표 10줄을 다 읽지 마세요.</div>
-   <dl class="skiprow" style="margin-top:8px;grid-template-columns:22px 1fr">
-     <dt>·</dt><dd><b>연구 범위</b> — 제목은 '1인 미용사업자'인데 실제 대상은 헤어·메이크업이라 범위가 어긋난다 <span class="tag">1건</span></dd>
-     <dt>·</dt><dd><b>척도 구조</b> — 하위요인이 3문항뿐이라 위태롭다 / 촬영 장비 문항은 성격이 다르다 / 두 문항이 겹친다 <span class="tag">3건</span></dd>
-     <dt>·</dt><dd><b>설문 설계</b> — 대상이 아닌 사람도 끝까지 답한 뒤 빠진다 / 운영 1년 미만은 최근 1년 성과를 못 판단한다 <span class="tag">2건</span></dd>
-     <dt>·</dt><dd><b>문항 표현</b> — MP4가 추상적 / MP2·MP3가 겹침 / AI2·AI6가 모호 / 주당 시간 구간이 겹침 <span class="tag">4건</span></dd>
-   </dl>
-   <div class="emph"><b>이어지는 한 마디</b> — "앞의 세 갈래는 대부분 고쳤고, 고치지 않은 세 건은 전부 두 번째 갈래인 <b>척도 구조</b>에서 나왔습니다. 이유는 뒤에서 말씀드리겠습니다."</div>
+  </div>
+ </div>
+ <div class="note" style="margin-top:12px">아래는 지적 원문입니다. 발표에서는 <b>굵은 부분만</b> 읽고 넘어가세요.</div>
+
+ <h3 style="margin-top:12px">갈래 1 · 연구 범위 <span class="tag">1건</span></h3>
+ <div class="fb">"제목은 1인 미용사업자로 넓게 표현되지만 <b>실제 대상은 헤어·메이크업 1인 사업자로 한정</b>되어 있습니다. 제목을 실제 대상에 맞게 구체화하거나 대상 범위를 조정하면 좋겠습니다."</div>
+
+ <h3>갈래 2 · 척도 구조 <span class="tag">3건</span> <span class="tag p1">여기서 미수정 2건</span></h3>
+ <div class="fb">"<b>3문항 중 한 문항이 삭제될 경우 문항 수가 부족해질 가능성</b>도 고려해 주세요."</div>
+ <div class="fb">"촬영 장비 사용은 <b>파일 관리·플랫폼 기능 설정과 성격이 다를 수 있습니다.</b> 예비조사에서 하나의 요인으로 묶이는지 확인하면 좋겠습니다."</div>
+ <div class="fb">"고객 응대와 고객 상담·응대 활동은 <b>유사하게 받아들여질 수 있습니다.</b> 서로 다른 하위요인에 포함되어 있으므로 예비조사에서 중복·변별성을 확인하고 표현 구분 또는 삭제 여부를 검토하면 좋겠습니다."</div>
+
+ <h3>갈래 3 · 설문 설계 <span class="tag">2건</span> <span class="tag p1">여기서 미수정 1건</span></h3>
+ <div class="fb">"<b>직원이 있거나 스마트플레이스 미등록 응답자도 끝까지 응답한 뒤 분석에서 제외된다.</b> → 설문 앞부분에 선별 문항으로 배치하고 해당 시 설문 종료"</div>
+ <div class="fb">"<b>운영·등록 기간이 1년 미만인 응답자는 최근 1년의 성과 변화를 판단하기 어려울 수 있습니다.</b> 대상의 최소 운영·등록 기간을 정하거나 비교 기준 기간을 조정할지 검토하면 좋겠습니다."</div>
+
+ <h3>갈래 4 · 문항 표현 <span class="tag">4건</span></h3>
+ <div class="fb">"<b>지역 내 샵이 차지하는 비중은 응답자가 판단하기에 추상적</b>일 수 있습니다. 시장점유율이라는 원척도의 의미를 유지하면서 쉽게 이해할 수 있는 표현으로 보완할 수 있는지 검토하면 좋겠습니다."</div>
+ <div class="fb">"<b>1인 샵은 매출 대부분이 단골에서 나올 수 있어 두 문항이 겹칠 수 있다.</b> → MP2를 '전체 매출', MP3를 '기존 고객 매출'로 변경"</div>
+ <div class="fb">"<b>'표시된 것'(샵 이름인지 리뷰 인용인지)과 '영향'(긍정·부정 방향)이 모호하다.</b> → 표시 형태와 영향의 방향을 구체적으로 명시"</div>
+ <div class="fb">"<b>'거의 없다'와 '1시간 미만'이 비슷하다.</b> → 두 구간 통합"</div>
+
+ <div class="emph"><b>①을 닫는 한 마디</b> — "앞의 세 갈래는 대부분 고쳤고, 고치지 않은 세 건은 전부 <b>척도 구조</b>와 <b>설문 설계</b>에서 나왔습니다. 이유는 뒤에서 말씀드리겠습니다."</div>
+</div>
+
+<h2>② 고친 것 — 몇 쪽에 어떻게 <small>2:00 · 3 → 4 → 5 → 6쪽</small></h2>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>3</b><span>0:15</span></div>
+  <div class="pgb">
+   <h3>수정 ① 제목을 실제 대상에 맞춤</h3>
+   <div class="fb">지적 — 제목은 '1인 미용사업자'인데 실제 대상은 헤어·메이크업뿐이라 네일·피부·속눈썹이 빠진다</div>
+   <div class="ba2">
+     <div class="b">1인 <b>미용사업자</b>의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향</div>
+     <div class="a">1인 <b>헤어·메이크업 사업자</b>의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향</div>
+   </div>
+   <div class="why2">선생님이 주신 선택지는 둘이었습니다. 대상을 넓히거나, 제목을 고치거나. <b>넓히면 업종을 통제변수로 넣어야 해서 표본이 더 필요</b>합니다. 제목을 고치면 측정도구를 하나도 안 건드립니다. 제목 변경은 지도교수님 승인이 필요해 <b>가제</b>로 적었습니다.</div>
   </div>
  </div>
 </div>
 
-<h2>② 고친 것 — 몇 쪽에 어떻게 <small>2:00 · 3 → 4 → 5 → 6쪽 순서로 넘기면서</small></h2>
-
 <div class="card">
  <div class="pg">
-  <div class="pgn"><b>3</b><span>0:30</span></div>
+  <div class="pgn"><b>3</b><span>0:15</span></div>
   <div class="pgb">
-   <h3>수정 ①② — 범위와 문항 수</h3>
-   <div class="say"><b>①</b> 제목을 「<b>1인 헤어·메이크업 사업자</b>」로 바꿨습니다. 대상을 넓히면 업종을 통제변수로 넣어야 해서 표본이 더 필요합니다. 제목을 고치면 측정도구를 하나도 안 건드립니다.<br><br>
-   <b>②</b> 자기효능감 '플랫폼 운영'을 <b>3문항에서 4문항으로</b> 늘렸습니다. 한 문항 빠지면 2문항이 되어 하위요인이 성립하지 않아서, 원척도 요인 2를 통째로 가져왔습니다.</div>
+   <h3>수정 ② 플랫폼 운영 3문항 → 4문항</h3>
+   <div class="fb">지적 — 3문항 중 하나가 삭제되면 문항 수가 부족해진다</div>
+   <div class="ba2">
+     <div class="b">IESES 요인 2(기술 활용) 4문항 중 <b>3문항만 선별</b> (6·8·9번). 7번은 "미용업에 과한 기술 수준"이라며 제외했었음</div>
+     <div class="a">요인 2의 <b>4문항 전체</b> 채택 (6·7·8·9번). 7번을 SE2로 되살림<br><span class="en">IESES 7번 "I can install and manipulate basic types of computer hardware to help my business"</span><br>→ "나는 샵 운영에 쓰는 기기를 설치하고 다룰 수 있다 (컴퓨터·태블릿·프린터 등)"</div>
+   </div>
+   <div class="why2">한 문항이 빠지면 2문항이 되어 하위요인이 성립하지 않습니다. <b>요인을 통째로 쓰면 여유가 생기고, 제가 임의로 골랐다는 지적도 함께 풀립니다.</b></div>
   </div>
  </div>
 </div>
 
 <div class="card">
  <div class="pg">
-  <div class="pgn"><b>4</b><span>0:30</span></div>
+  <div class="pgn"><b>4</b><span>0:15</span></div>
   <div class="pgb">
-   <h3>수정 ③④ — 마케팅 성과 문항 표현</h3>
-   <div class="say"><b>③</b> MP4의 '차지하는 비중'을 <b>"비슷한 샵들 전체를 100이라고 볼 때 우리 샵의 몫"</b>으로 바꾸고, 손님 기준이라고 괄호로 달았습니다. 무엇을 분모로 보고 답할지를 못 박은 것입니다.<br><br>
-   <b>④</b> MP2에 <b>'전체'</b>, MP3에 <b>'단골(기존) 고객'</b>을 넣어 구분했습니다. 원척도가 두 문항으로 나눠 둔 것이라 합치지는 않고 수식어만 붙였습니다.</div>
+   <h3>수정 ③ MP4 — 시장점유율의 비교 기준 명시</h3>
+   <div class="fb">지적 — '차지하는 비중'은 응답자가 판단하기에 추상적이다</div>
+   <div class="ba2">
+     <div class="b">우리 지역의 비슷한 샵들 중에서 우리 샵이 차지하는 <b>비중</b>이 커졌다</div>
+     <div class="a">우리 지역의 비슷한 샵들 <b>전체를 100이라고 볼 때</b>, 그중 우리 샵이 차지하는 <b>몫</b>이 커졌다<br><span style="font-size:12.5px;color:var(--muted)">(보조 설명) 우리 지역에서 헤어·메이크업을 받는 손님 전체 가운데 우리 샵에 오는 비율</span></div>
+   </div>
+   <div class="why2">원척도 <span class="en">"Market share growth relative to competitors"</span>의 점유율 의미는 두고, <b>무엇을 분모로 보고 답할지만 숫자로 못 박았습니다.</b> '비중'만으로는 매출 비중인지 손님 비중인지 알 수 없어 손님 기준임을 밝혔습니다.</div>
   </div>
  </div>
 </div>
 
 <div class="card">
  <div class="pg">
-  <div class="pgn"><b>5</b><span>0:35</span></div>
+  <div class="pgn"><b>4</b><span>0:15</span></div>
   <div class="pgb">
-   <h3>수정 ⑤⑥ — 설문 설계</h3>
+   <h3>수정 ④ MP2·MP3 — 전체 매출과 단골 매출 구분</h3>
+   <div class="fb">지적 — 1인 샵은 매출 대부분이 단골에서 나와 두 문항이 겹친다</div>
+   <div class="ba2">
+     <div class="b">MP2 매출이 늘었다 &nbsp;/&nbsp; MP3 단골 고객에게서 나오는 매출이 늘었다</div>
+     <div class="a">MP2 <b>샵 전체 매출</b>이 늘었다 &nbsp;/&nbsp; MP3 <b>단골(기존) 고객</b>에게서 나오는 매출이 늘었다</div>
+   </div>
+   <div class="why2">지적대로 1인 샵은 두 값이 거의 같을 수 있습니다. 다만 <b>원척도가 두 문항으로 나눠 둔 것</b>이라 합치지 않고 수식어만 붙였습니다. 원척도도 <span class="en">"Growth in sales revenue"</span>(전체)와 <span class="en">"Increasing sales to existing customers"</span>(기존 고객)로 나눠 둡니다. 두 문항의 상관이 지나치게 높으면 예비조사에서 다시 봅니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>5</b><span>0:20</span></div>
+  <div class="pgb">
+   <h3>수정 ⑤ 참여 대상 확인을 맨 앞으로</h3>
    <div class="note" style="margin-top:0">다른 분들도 바로 쓸 수 있는 부분 — '공통 수정사항'으로 불릴 가능성이 큼</div>
-   <div class="say"><b>⑤</b> 설문 맨 앞에 <b>참여 대상 확인 4문항</b>을 새로 넣고, 하나라도 '아니오'면 거기서 끝나게 했습니다. 대상이 아닌 분이 10분을 쓰는 일이 없어지고, 회수하고 버리는 설문지도 줄어듭니다.<br><br>
-   <b>⑥</b> 선별 네 번째 문항에 <b>'운영 1년 이상'</b>을 넣었습니다. 성과를 '최근 1년'으로 묻기 때문에 거기에 맞춘 것입니다.</div>
+   <div class="fb">지적 — 직원이 있거나 미등록인 분도 끝까지 응답한 뒤 분석에서 제외된다</div>
+   <div class="ba2">
+     <div class="b">Ⅰ부 기본사항 5번(직원 유무)·6번(등록 기간)에 섞여 있었고, 해당하지 않아도 <b>끝까지 응답한 뒤 분석에서 제외</b></div>
+     <div class="a">설문 맨 앞에 <b>「참여 대상 확인」 4문항 신설</b>. 하나라도 '아니오'면 그 자리에서 종료<br>S1 주 시술이 헤어 또는 메이크업인지 · S2 혼자 운영하는지 · S3 스마트플레이스 등록 여부 · S4 운영 1년 이상인지</div>
+   </div>
+   <div class="why2">대상이 아닌 분이 8~10분을 쓰는 일이 없어지고, 회수하고 버리는 설문지도 줄어듭니다. Ⅰ부에서는 <b>직원 유무 문항을 삭제</b>해 7문항이 6문항이 됐습니다.</div>
   </div>
  </div>
 </div>
 
 <div class="card">
  <div class="pg">
-  <div class="pgn"><b>6</b><span>0:25</span></div>
+  <div class="pgn"><b>5</b><span>0:15</span></div>
   <div class="pgb">
-   <h3>수정 ⑦⑧ — AI 문항과 보기 구간</h3>
-   <div class="say"><b>⑦</b> AI2는 <b>'우리 샵 이름이 나온 것'</b>으로 특정하고, AI6는 <b>'도움이 된다'</b>로 방향을 맞췄습니다. 보기가 '전혀 그렇지 않다~매우 그렇다'인데 문항이 '영향'을 물으면, 부정적 영향을 받은 분은 표시할 데가 없습니다.<br><br>
-   <b>⑧</b> 주당 홍보 시간에서 <b>'거의 없다'와 '1시간 미만'을 합쳤습니다.</b> 비는 칸은 '5~10시간'과 '10시간 이상'으로 위쪽을 쪼개는 데 썼습니다.</div>
+   <h3>수정 ⑥ 최소 운영 기간 1년</h3>
+   <div class="fb">지적 — 운영·등록 1년 미만은 최근 1년의 성과 변화를 판단하기 어렵다</div>
+   <div class="ba2">
+     <div class="b">운영 기간 제한 없음. Ⅰ부 보기에 '1년 미만' 포함. Ⅳ부는 "최근 1년"을 기준으로 질문</div>
+     <div class="a">선별 <b>S4에 "운영 1년 이상"</b> 추가. Ⅰ부 운영 기간 보기에서 '1년 미만' 삭제. <b>Ⅳ부의 "최근 1년" 기준은 그대로</b></div>
+   </div>
+   <div class="why2">두 선택지 중 <b>대상을 좁히는 쪽</b>을 골랐습니다. 비교 기간을 6개월로 줄이면 짧은 기간의 변화를 성과로 읽어야 합니다. <b>등록 기간은 안 잘랐습니다 — ③에서 설명합니다.</b></div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>6</b><span>0:15</span></div>
+  <div class="pgb">
+   <h3>수정 ⑦ AI2·AI6 — 묻는 대상과 방향을 분명히</h3>
+   <div class="fb">지적 — '표시된 것'(샵 이름인지 리뷰 인용인지)과 '영향'(긍정·부정 방향)이 모호하다</div>
+   <div class="ba2">
+     <div class="b">AI2 우리 샵이 그 AI 요약에 <b>표시된 것</b>을 보신 적이 있습니까?<br>AI6 AI 요약이 우리 샵 홍보에 <b>영향을 준다</b>고 느끼십니까? → ① 전혀 그렇지 않다 ~ ⑤ 매우 그렇다</div>
+     <div class="a">AI2 네이버에서 우리 지역 미용 업체를 검색했을 때, AI 요약 안에 <b>우리 샵 이름이 나온 것</b>을 보신 적이 있습니까?<br>AI6 AI 요약이 우리 샵을 알리는 데 <b>도움이 된다</b>고 느끼십니까? → ① 전혀 그렇지 않다 ~ ⑤ 매우 그렇다</div>
+   </div>
+   <div class="why2">AI2는 표시 형태를 <b>샵 이름 하나로 특정</b>했습니다. 리뷰 인용까지 포함하면 응답자마다 다른 걸 떠올립니다. AI6는 <b>보기가 '전혀 그렇지 않다~매우 그렇다'인데 문항이 '영향'을 물으면 부정적 영향을 받은 분은 표시할 데가 없습니다.</b> 문항과 보기의 방향을 맞춘 것입니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>6</b><span>0:10</span></div>
+  <div class="pgb">
+   <h3>수정 ⑧ 주당 홍보 시간 — 겹치는 구간 통합</h3>
+   <div class="fb">지적 — '거의 없다'와 '1시간 미만'이 비슷하다</div>
+   <div class="ba2">
+     <div class="b">① 거의 없다 ② 1시간 미만 ③ 1~3시간 ④ 3~5시간 ⑤ 5시간 이상</div>
+     <div class="a">① <b>1시간 미만</b> ② 1~3시간 ③ 3~5시간 ④ <b>5~10시간</b> ⑤ <b>10시간 이상</b></div>
+   </div>
+   <div class="why2">응답자가 구분할 수 없는 같은 구간이라 합쳤습니다. 비는 칸은 <b>위쪽을 쪼개는 데</b> 썼습니다 — 전업처럼 매달리는 분과 주 5시간 쓰는 분이 같은 칸에 들어가 있었습니다.</div>
   </div>
  </div>
 </div>
 
 <div class="card blue">
-  <h3>고친 결과가 실물로 보이는 쪽</h3>
-  <div class="note" style="margin-top:4px">②를 마치며 한 쪽만 열어 보여주면 설득력이 올라갑니다. <b>18쪽</b>을 권합니다.</div>
-  <dl class="skiprow" style="margin-top:8px">
-    <dt>11</dt><dd>자기효능감 8문항 — 늘어난 문항이 들어간 모습 (수정 ②)</dd>
-    <dt>14</dt><dd>선별 4문항 · 일반적 특성 6문항 — 7문항에서 6문항으로 (수정 ⑤)</dd>
-    <dt>18</dt><dd><b>실제 배포용 설문지 맨 앞</b> — '아니오 → 설문이 종료됩니다' 안내가 바로 보임</dd>
-    <dt>21</dt><dd>Ⅳ부 마케팅 성과 · Ⅴ부 AI — 수정 ③④⑦이 들어간 최종 문항</dd>
+  <h3>②를 닫으며 한 쪽만 — 18쪽</h3>
+  <div class="note" style="margin-top:4px">"앞의 수정이 실제 설문지에는 이렇게 들어갔습니다. 맨 앞 네 문항이 참여 대상 확인이고, '아니오'면 여기서 종료된다고 응답자에게 알립니다."</div>
+  <dl class="skiprow" style="margin-top:9px">
+    <dt>11</dt><dd>자기효능감 8문항 — 늘어난 SE2가 들어간 모습 (수정 ②)</dd>
+    <dt>14</dt><dd>선별 4문항 · 일반적 특성 6문항 (수정 ⑤)</dd>
+    <dt>18</dt><dd><b>실제 배포용 설문지 맨 앞</b> — '아니오 → 설문이 종료됩니다'</dd>
+    <dt>21</dt><dd>Ⅳ부 마케팅 성과 · Ⅴ부 AI — 수정 ③④⑦의 최종 문항</dd>
   </dl>
 </div>
 
-<h2>③ 안 고친 것 — 왜 <small>1:30 · 여기가 이 발표의 중심</small></h2>
+<h2>③ 안 고친 것 — 왜 <small>1:30 · 이 발표의 중심</small></h2>
 <div class="card gold">
-  <div class="note" style="margin-top:0">들어가는 말 — "세 건은 고치지 않았습니다. 지적이 틀려서가 아니라, <b>지금 고치면 오히려 문제가 생기거나 자료 없이는 판단할 수 없어서</b>입니다."</div>
+  <div class="note" style="margin-top:0">들어가는 말 — "세 건은 고치지 않았습니다. <b>지적이 틀려서가 아니라, 지금 고치면 오히려 문제가 생기거나 자료 없이는 판단할 수 없어서</b>입니다."</div>
 </div>
 
 <div class="card gold">
@@ -299,8 +420,15 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <div class="pgn q"><b>7</b><span>0:35</span></div>
   <div class="pgb">
    <h3>미수정 ① 촬영 장비 문항을 분리하지 않음</h3>
-   <div class="note" style="margin-top:0">지적: "촬영 장비는 파일 관리·기능 설정과 성격이 다르다"</div>
-   <div class="say">맞는 지적입니다. 그런데 <b>그 네 문항은 제가 묶은 게 아니라 원척도가 한 요인으로 묶어 둔 것</b>입니다. 자료를 한 건도 받지 않은 상태에서 제가 먼저 쪼개면 원척도의 요인구조를 근거 없이 바꾸는 일이 됩니다. 대신 말씀대로 예비조사에서 하나로 묶이는지 확인하고, 한 문항이 빠져도 버티도록 문항 수를 늘려 뒀습니다.</div>
+   <div class="fb">지적 — "촬영 장비 사용은 파일 관리·플랫폼 기능 설정과 성격이 다를 수 있습니다."</div>
+   <div class="note" style="margin-top:0"><b>문제가 된 네 문항 (Ⅱ부 플랫폼 운영 · 11쪽)</b></div>
+   <dl class="skiprow" style="margin-top:6px;grid-template-columns:34px 1fr">
+     <dt>SE1</dt><dd>나는 우리 샵의 사진·영상 파일을 정리하고 관리할 수 있다 <span class="en">IESES 6번</span></dd>
+     <dt>SE2</dt><dd>나는 샵 운영에 쓰는 기기를 설치하고 다룰 수 있다 <span class="en">IESES 7번</span></dd>
+     <dt>SE3</dt><dd><b>나는 우리 샵 홍보에 필요한 촬영 장비를 다룰 수 있다</b> <span class="en">IESES 8번 — 지적받은 문항</span></dd>
+     <dt>SE4</dt><dd>나는 온라인 플랫폼의 기능을 설정하고 사용할 수 있다 <span class="en">IESES 9번</span></dd>
+   </dl>
+   <div class="say">맞는 지적입니다. 그런데 <b>이 네 문항은 제가 묶은 게 아니라 원척도가 '요인 2 · 기술 활용'으로 묶어 둔 것</b>입니다. 자료를 한 건도 받지 않은 상태에서 제가 먼저 쪼개면 원척도의 요인구조를 근거 없이 바꾸는 일이 됩니다. 대신 말씀대로 <b>예비조사에서 하나로 묶이는지 확인</b>하고, SE3가 떨어져 나가도 3문항이 남도록 <b>문항 수를 4개로 늘려 뒀습니다.</b></div>
   </div>
  </div>
 </div>
@@ -310,9 +438,14 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <div class="pgn q"><b>7</b><span>0:35</span></div>
   <div class="pgb">
    <h3>미수정 ② 겹치는 두 문항을 그대로 둠</h3>
-   <div class="note" style="margin-top:0">지적: "고객 응대와 고객 상담·응대 활동이 비슷하게 읽힌다"</div>
-   <div class="say">이것도 맞습니다. 다만 <b>그 중복은 번안에서 생긴 게 아니라 원척도에 이미 있는 중복</b>입니다. 서로 달라 보이게 고치면 원문에 없는 구분을 제가 만들어 넣는 셈이고, 한쪽을 지우면 자료 없이 연구자 판단만으로 문항을 삭제하는 셈이 됩니다. 예비조사에서 교차적재와 상관을 보고 자료를 근거로 판단하겠습니다.</div>
-   <div class="emph"><b>이 두 문장을 또박또박</b><br>· "제가 묶은 게 아니라 원척도가 묶은 것"<br>· "번안에서 생긴 게 아니라 원척도에 있는 중복"<br>나머지는 흘려도 이 둘만 들리면 판단 기준이 전달됩니다.</div>
+   <div class="fb">지적 — "고객 응대와 고객 상담·응대 활동은 유사하게 받아들여질 수 있습니다. … 표현 구분 또는 삭제 여부를 검토하면 좋겠습니다."</div>
+   <div class="note" style="margin-top:0"><b>문제가 된 두 문항 (Ⅲ부 플랫폼 활용 · 12쪽)</b></div>
+   <dl class="skiprow" style="margin-top:6px;grid-template-columns:40px 1fr">
+     <dt>PU4</dt><dd>고객 응대를 하는 데 도움이 된다 — <b>마케팅</b> 하위요인<br><span class="en">SMM4 "It provides aids to deliver customer services"</span></dd>
+     <dt>PU7</dt><dd>고객 상담·응대 활동을 하는 데 도움이 된다 — <b>고객관계</b> 하위요인<br><span class="en">CR3 "Conduct customer service activities"</span></dd>
+   </dl>
+   <div class="say">이것도 맞습니다. 다만 영어 원문을 보시면 아시겠지만 <b>이 중복은 제 번안에서 생긴 게 아니라 원척도에 이미 있는 중복</b>입니다. 서로 달라 보이게 고치면 <b>원문에 없는 구분을 제가 만들어 넣는 셈</b>이고, 한쪽을 지우면 자료 없이 연구자 판단만으로 문항을 삭제하는 셈이 됩니다. 예비조사에서 <b>교차적재와 상관</b>을 보고 자료를 근거로 판단하겠습니다.</div>
+   <div class="emph"><b>이 두 문장을 또박또박</b><br>· "제가 묶은 게 아니라 원척도가 묶은 것"<br>· "번안에서 생긴 게 아니라 원척도에 있는 중복"</div>
   </div>
  </div>
 </div>
@@ -322,59 +455,73 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <div class="pgn q"><b>8</b><span>0:20</span></div>
   <div class="pgb">
    <h3>미수정 ③ 등록 기간은 자르지 않음</h3>
-   <div class="note" style="margin-top:0">지적: "최소 운영·등록 기간을 정하거나 비교 기간을 조정하라" — 운영 기간만 반영</div>
-   <div class="say">운영 기간은 1년 이상으로 잘랐지만 등록 기간은 안 잘랐습니다. 등록까지 1년으로 묶으면 <b>최근에 플랫폼을 시작한 분들이 빠지는데, 이 연구가 보려는 변화를 가장 크게 겪는 집단</b>입니다. 대신 등록 기간은 받아서 통제변수로 넣습니다. <b>잘라내는 것보다 통계적으로 통제하는 쪽이 정보를 덜 잃습니다.</b></div>
+   <div class="fb">지적 — "대상의 최소 운영·등록 기간을 정하거나 비교 기준 기간을 조정할지 검토하면 좋겠습니다." (운영 기간만 반영)</div>
+   <div class="say">운영 기간은 1년 이상으로 잘랐지만 등록 기간은 안 잘랐습니다. 등록까지 1년으로 묶으면 <b>스마트플레이스를 최근에 시작한 분들이 빠지는데, 이 연구가 보려는 변화를 가장 크게 겪는 집단</b>입니다. 대신 등록 기간은 Ⅰ부에서 받아 <b>통제변수로</b> 넣습니다. <b>잘라내는 것보다 통계적으로 통제하는 쪽이 정보를 덜 잃습니다.</b></div>
+   <div class="why2">다만 등록 6개월 미만이 많이 모이면 매개변수와 성과의 시간 순서가 어긋날 수 있어, <b>예비조사에서 등록 기간 분포를 보고 다시 여쭙겠다</b>고 문서에 적어 뒀습니다.</div>
   </div>
  </div>
 </div>
 
-<h2>마무리 <small>0:30 · 9쪽을 띄우고</small></h2>
+<h2>마무리 <small>0:30 · 9쪽</small></h2>
 <div class="card">
  <div class="pg">
   <div class="pgn"><b>9</b><span>0:30</span></div>
   <div class="pgb">
    <h3>사실 확인이 남은 것 + 판단 기준</h3>
+   <div class="note" style="margin-top:0">9쪽에 '확인한 것'과 '추정이라 확인이 남은 것'을 두 표로 나눠 뒀습니다</div>
+   <dl class="skiprow" style="margin-top:7px;grid-template-columns:18px 1fr">
+     <dt>·</dt><dd>네일·피부까지 넓히면 시술 단가·재방문 주기가 다르다 → 업종별 통계로 확인</dd>
+     <dt>·</dt><dd>1인 샵은 전체 매출과 단골 매출이 거의 같다 → 예비조사 상관계수로 확인</dd>
+     <dt>·</dt><dd>운영 1년이면 '최근 1년' 상대 비교에 답할 수 있다 → 예비조사 무응답 패턴으로 확인</dd>
+     <dt>·</dt><dd><b>IESES 신뢰도 α=.94는 적응 연구가 인용한 수치</b> → Wang 외(2020) 원문 대조 필요</dd>
+   </dl>
    <div class="say">마지막으로, 제가 추정으로 적은 네 가지는 따로 표로 뺐습니다. 예를 들어 자기효능감 척도의 신뢰도는 <b>원 개발 논문을 직접 못 보고 적응 연구가 인용한 수치를 본 것</b>이라, 본문에 쓰지 않고 '확인 필요'로만 남겼습니다.<br><br>
    정리하면 기준은 하나였습니다. <b>원척도에 원래 있던 건 자료 없이 손대지 않았고, 제 번안에서 생긴 건 바로 고쳤습니다.</b></div>
   </div>
  </div>
 </div>
 
-<h2>넘기는 쪽 <small>질문 오면 바로 펼칠 수 있게 위치만 외우기</small></h2>
+<h2>넘기는 쪽 <small>질문 오면 펼칠 위치</small></h2>
 <div class="card">
   <dl class="skiprow">
     <dt>1</dt><dd>표지</dd>
-    <dt>10</dt><dd><b>연구 개요·연구모형</b> — "연구가 뭐냐" 질문이 오면 여기</dd>
-    <dt>12</dt><dd><b>플랫폼 활용 10문항 + 원문 영어</b> — "척도 원문 봤냐" 질문이 오면 여기</dd>
+    <dt>10</dt><dd><b>연구 개요·연구모형</b> — "연구가 뭐냐" 질문</dd>
+    <dt>12</dt><dd><b>플랫폼 활용 10문항 + 영어 원문</b> — "척도 원문 봤냐" 질문</dd>
     <dt>13</dt><dd>마케팅 성과 4문항 · AI 6문항 (설명부)</dd>
     <dt>15</dt><dd><b>참고문헌 · 지도교수님께 여쭐 것</b> — 교수님 질문 대부분이 여기로 받힘</dd>
     <dt>16</dt><dd>부록 간지</dd>
     <dt>17</dt><dd>설문 안내문</dd>
-    <dt>19</dt><dd>Ⅱ부 온라인 홍보 자신감 8문항 (7점)</dd>
-    <dt>20</dt><dd>Ⅲ부 온라인 플랫폼 활용 10문항 (5점)</dd>
+    <dt>19</dt><dd>Ⅱ부 자신감 8문항 (7점)</dd>
+    <dt>20</dt><dd>Ⅲ부 플랫폼 활용 10문항 (5점)</dd>
   </dl>
 </div>
 
-<h2>나올 만한 질문 다섯</h2>
+<h2>나올 만한 질문 일곱</h2>
 <details class="qa"><summary>제목 바꾸는 건 지도교수님께 말씀드렸나요?</summary>
-<div class="a">아직입니다. <b>가제로 표기</b>했고 <b>15쪽</b> '여쭐 것' 1번에 올려 뒀습니다. 승인 안 나면 되돌리면 되고, 측정도구는 그대로라 되돌려도 설문지는 안 바뀝니다.</div></details>
+<div class="a">아직입니다. <b>가제로 표기</b>했고 <b>15쪽</b> '여쭐 것' 1번에 올려 뒀습니다. 승인이 안 나면 되돌리면 되고, 측정도구는 그대로라 되돌려도 설문지는 안 바뀝니다.</div></details>
 
 <details class="qa"><summary>겹친다는 그 두 문항, 그냥 하나 지우면 되지 않나요?</summary>
-<div class="a"><b>7쪽.</b> 그 중복은 원척도 단계의 중복입니다. 자료 없이 제 판단만으로 지우면 다른 문항도 같은 논리로 지울 수 있게 됩니다. 예비조사에서 교차적재와 상관을 보고 지우겠습니다.</div></details>
+<div class="a"><b>7쪽.</b> 원척도 단계의 중복입니다(<span class="en">SMM4 "It provides aids to deliver customer services"</span> / <span class="en">CR3 "Conduct customer service activities"</span>). 자료 없이 제 판단만으로 지우면 다른 문항도 같은 논리로 지울 수 있게 됩니다. 예비조사에서 <b>교차적재와 상관</b>을 보고 지우겠습니다.</div></details>
 
 <details class="qa"><summary>문항이 38개면 너무 많지 않나요?</summary>
-<div class="a">선별 4문항을 빼면 <b>본 설문은 34문항</b>입니다. 선별에서 걸리는 분은 4문항에서 끝납니다. 그래도 많다고 보시면 Ⅴ부 AI 6문항을 줄이는 안을 <b>15쪽</b>에 적어 뒀습니다.</div></details>
+<div class="a">선별 4문항을 빼면 <b>본 설문은 34문항</b>이고, 선별에서 걸리는 분은 4문항에서 끝납니다. 그래도 많다고 보시면 <b>Ⅴ부 AI 6문항을 줄이는 안</b>을 15쪽에 적어 뒀습니다. AI부는 측정 변수가 아니라 연구 배경이라 줄여도 모형에 영향이 없습니다.</div></details>
 
 <details class="qa"><summary>운영 1년 이상으로 자르면 표본이 모이나요?</summary>
-<div class="a">표본이 줄어드는 건 맞습니다. 다만 성과를 '최근 1년'으로 묻기 때문에 맞춘 것입니다. 이 맞바꿈도 <b>15쪽</b> 여쭐 것 2번에 올려 뒀습니다.</div></details>
+<div class="a">표본이 줄어드는 건 맞습니다. 다만 성과를 '최근 1년'으로 묻기 때문에 맞춘 것입니다. 비교 기간을 6개월로 줄이는 쪽도 있었지만 <b>측정도구에 손을 덜 대는 쪽</b>을 골랐습니다. 이 맞바꿈도 15쪽 여쭐 것 2번에 올려 뒀습니다.</div></details>
 
 <details class="qa"><summary>척도 원문은 어디서 확인했나요?</summary>
-<div class="a"><b>12쪽</b>에 문항마다 영어 원문을 나란히 실었습니다. 플랫폼 활용 13문항은 Qalati 외(2021) <i>Sustainability</i> 13(1), 75의 Appendix A, 자기효능감 16문항은 Torres-Miranda 외(2024) <i>Frontiers in Education</i> 9:1370490 TABLE 1에서 봤습니다. <b>원 개발 논문(Wang 외, 2020)은 아직 못 봐서 9쪽에 '확인 필요'로 적어 뒀습니다.</b></div></details>
+<div class="a"><b>12쪽</b>에 문항마다 영어 원문을 나란히 실었습니다. 플랫폼 활용 13문항은 <b>Qalati 외(2021) <i>Sustainability</i> 13(1), 75의 Appendix A</b>, 자기효능감 16문항은 <b>Torres-Miranda 외(2024) <i>Frontiers in Education</i> 9:1370490 TABLE 1</b>에서 봤습니다. <b>원 개발 논문(Wang 외, 2020)은 아직 못 봐서 9쪽에 '확인 필요'로 적어 뒀습니다.</b></div></details>
+
+<details class="qa"><summary>독립변수와 매개변수가 겹치지 않나요?</summary>
+<div class="a">Ⅱ부는 <b>"~할 수 있다"</b>(할 수 있다고 믿는 정도, 7점), Ⅲ부는 <b>"~하는 데 도움이 된다"</b>(플랫폼을 어떤 목적에 쓰는지, 5점)입니다. 묻는 대상도 응답 보기도 다릅니다. 예비조사에서 <b>판별타당도</b>로 확인합니다.</div></details>
+
+<details class="qa"><summary>AI 문항은 변수인가요?</summary>
+<div class="a">아닙니다. <b>연구 배경</b>이라 하나의 점수로 합산하지 않고 요인분석·신뢰도분석도 하지 않습니다. 빈도와 백분율로 표본 특성만 기술하고, <b>통제변수로도 조절변수로도 넣지 않습니다.</b></div></details>
 
 <h2>3분으로 줄여야 하면</h2>
 <div class="card blue">
   <div class="steps">
-    <div><b>0:30</b>①<br>피드백 네 갈래</div>
+    <div><b>0:30</b>①<br>네 갈래</div>
     <div><b>1:00</b>②<br>5쪽만</div>
     <div><b>1:10</b>③<br>7·8쪽</div>
     <div><b>0:20</b>마무리</div>
@@ -385,10 +532,10 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <h2>발표 직전 점검</h2>
 <div class="card">
   <ul class="list">
-    <li>PDF를 쪽 번호 보이게 띄우고, 넘길 순서 외우기 — 2 → 3 → 4 → 5 → 6 → 18 → 7 → 8 → 9</li>
+    <li>넘길 순서 외우기 — <b>2 → 3 → 4 → 5 → 6 → 18 → 7 → 8 → 9</b></li>
     <li>15쪽(여쭐 것)은 질문용으로 따로 열어 두기</li>
-    <li>②는 한 건 15초 — 설명하지 말고 "어디에 어떻게"만</li>
-    <li>숫자 세 개만 외우기 — <b>피드백 9건 · 수정 8 · 미수정 3</b></li>
+    <li>②는 한 건 15초 — 전·후만 읽고 넘기기</li>
+    <li>숫자 세 개 — <b>피드백 9건 · 수정 8 · 미수정 3</b></li>
     <li>③ 들어갈 때와 마무리에 같은 문장 — "원척도에 있던 건 손대지 않았고, 제 번안에서 생긴 건 고쳤습니다"</li>
   </ul>
 </div>
@@ -396,7 +543,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <div class="src">
   <b>근거</b>
   <ul>
-    <li>쪽 번호는 「윤지영_1인 헤어·메이크업 사업자의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향_설문지 수정본.pdf」 21쪽 본문에서 확인</li>
+    <li>지적 원문·문항 문구·쪽 번호는 「윤지영_1인 헤어·메이크업 사업자의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향_설문지 수정본.pdf」 21쪽 본문에서 그대로 옮김</li>
     <li>발표 시간(5분)은 수업 공지에 없어 <b>확인 필요</b> — 배분은 5분 가정값이고, 실제 시간이 다르면 비율만 유지하면 됩니다</li>
     <li>교수님 공지 원문: "토요일 수업에서는 제출한 내용을 바탕으로 공통적인 수정사항과 판단 기준을 함께 살펴보겠습니다."</li>
   </ul>
