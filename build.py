@@ -58,6 +58,26 @@ a{color:var(--accent);text-decoration:none}
 .lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
 .lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
 .lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.pg{display:flex;gap:11px;align-items:flex-start}
+.pg .pgn{flex:0 0 auto;width:52px;text-align:center;background:var(--accent);color:#fff;border-radius:12px;padding:7px 4px;font-family:"Gowun Dodum",sans-serif;line-height:1.15}
+.pg .pgn b{display:block;font-size:21px}
+.pg .pgn span{font-size:10px;opacity:.88;letter-spacing:.02em}
+.pg .pgn.q{background:var(--gold)}
+.pg .pgb{min-width:0;flex:1}
+.pg h3{margin-bottom:2px}
+.say{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:9px 0 0;font-size:14.5px;line-height:1.75}
+.say:before{content:"말할 것";display:block;font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;font-weight:700}
+.emph{font-size:13px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.emph b{color:var(--gold)}
+.tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.qa summary{cursor:pointer;font-size:14px;font-weight:500}
+.qa .a{font-size:13.5px;color:var(--muted);margin-top:9px}
+.qa .a b{color:var(--ink)}
+.skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
+.skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.skiprow dd{margin:0;color:var(--muted)}
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
 .lu-pflow{animation:luDash 9s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
@@ -703,6 +723,7 @@ INDEX = """
   <a href="credit/"><b>신용점수 — KCB 622 / NICE 750</b><span>농협 카드 거절 이유 · 꼬마빌딩 대출 심사와의 연결</span></a>
   <a href="crew-prompt/"><b>크루원 사업 구조화 — 프롬프트</b><span>기존 흐름에 얹는 짧은 버전 · 이름·충돌·노출만</span></a>
   <a href="jiyoung-prompt/"><b>지영 원장 빌드업 페이지 — 프롬프트</b><span>새 저장소로 만들 때 복사해 쓸 프롬프트</span></a>
+  <a href="jiyoung-survey/"><b>지영 설문지 발표 — 쪽마다 할 말</b><span>21쪽 중 7쪽만 · 판단 기준 한 문장</span></a>
   <a href="vault/"><b>셀프 등기 · 정관 찾기 · 서류 보관</b><span>법무사를 쓸지, 정관은 어디서 찾는지</span></a>
   <a href="registry-forms/"><b>등기 서류 — 다 만들어 뒀습니다</b><span>서류 8장 · 준비물·비용·동선 전부 · 대표이사 쟁점</span></a>
   <a href="registry-prep/"><b>등기 변경 — 준비물 체크리스트</b><span>금요일에 할 것 · 신정현 대표님 준비물 · 기한 10/15</span></a>
@@ -4901,6 +4922,189 @@ SOURCES = """
 </div>
 """
 
+# ---------------------------------------------------------------- 지영 설문지 발표
+SURVEYTALK = """
+<h1>지영 설문지 발표 — 쪽마다 할 말</h1>
+<p class="note">「설문지 피드백 반영 및 수정본」 PDF 21쪽 기준. 토요일 수업에서 교수님이 보시겠다고 한 것은 <b>공통적인 수정사항과 판단 기준</b>이라, 고친 것보다 <b>고치지 않은 것</b>에 시간을 더 씁니다.</p>
+
+<div class="card accent">
+  <h3>이 발표에서 반드시 남겨야 할 한 문장</h3>
+  <p style="font-size:16px;margin:6px 0 0;font-family:'Gowun Dodum',sans-serif;line-height:1.6">원척도에 원래 있던 문제는 자료 없이 손대지 않았고,<br>제 번안에서 생긴 문제는 바로 고쳤습니다.</p>
+  <div class="note">앞뒤를 다 잊어도 이 문장만 남으면 성공입니다. 2쪽에서 한 번, 마무리에서 한 번 — 두 번 말합니다.</div>
+</div>
+
+<h2>시간 배분 <small>5분 기준 · 21쪽 중 7쪽만 엽니다</small></h2>
+<div class="card">
+  <div class="steps">
+    <div><b>0:40</b>2쪽<br>전체 그림</div>
+    <div><b>0:40</b>3쪽<br>제목</div>
+    <div><b>0:50</b>5쪽<br>선별문항</div>
+    <div><b>1:30</b>7·8쪽<br>미수정</div>
+  </div>
+  <div class="steps">
+    <div><b>0:40</b>9쪽<br>확인 남은 것</div>
+    <div><b>0:30</b>18쪽<br>실제 설문지</div>
+    <div><b>0:20</b>—<br>마무리</div>
+  </div>
+  <div class="warn">7·8쪽에 1분 30초를 쓰는 게 이 발표의 전부입니다. 2쪽에서 표를 다 읽으면 여기가 밀립니다.</div>
+</div>
+
+<h2>쪽마다 할 말</h2>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>2</b><span>0:40</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>피드백 처리 결과</h3></div>
+   <div class="note" style="margin-top:0">표 한 장으로 전체를 보여주는 쪽</div>
+   <div class="say">받은 피드백은 9건입니다. 처리 방식이 갈리는 것을 나눠 10개 항목으로 정리했고, <b>8건은 고쳤고 3건은 고치지 않았습니다.</b> 고치지 않은 3건에 제 판단 기준이 들어 있어서, 오늘은 그쪽을 중심으로 말씀드리겠습니다.</div>
+   <div class="emph"><b>하지 말 것</b> — 표 10줄을 읽지 마세요. <b>'처리' 열</b>(수정·미수정)만 손으로 짚고 바로 넘깁니다. 여기서 1분 넘기면 뒤가 전부 밀립니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>3</b><span>0:40</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>수정 ① 제목을 실제 대상에 맞춤</h3></div>
+   <div class="note" style="margin-top:0">가장 알아듣기 쉬운 수정 — 몸풀기</div>
+   <div class="say">제목은 '1인 미용사업자'인데 실제 대상은 헤어·메이크업이라 네일·피부가 빠진다는 지적이었습니다. 길이 둘이었습니다. 대상을 넓히거나, 제목을 고치거나. <b>넓히면 업종을 통제변수로 넣어야 해서 표본이 더 필요합니다.</b> 제목을 고치면 측정도구를 하나도 안 건드립니다. 그래서 「1인 헤어·메이크업 사업자」로 바꿨고, 제목 변경은 지도교수님 승인이 필요해 가제로 적어 뒀습니다.</div>
+   <div class="emph"><b>핵심</b> — "측정도구를 안 건드리는 쪽을 골랐다". 뒤에 나올 미수정 논리와 같은 결입니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>5</b><span>0:50</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>수정 ⑤ 참여 대상 확인을 맨 앞으로</h3></div>
+   <div class="note" style="margin-top:0">다른 분들도 바로 쓸 수 있는 부분 — '공통 수정사항'으로 불릴 가능성이 큼</div>
+   <div class="say">직원이 있거나 스마트플레이스에 등록 안 한 분도 <b>끝까지 답한 뒤 분석에서 빠진다</b>는 지적이었습니다. 그래서 설문 맨 앞에 참여 대상 확인 4문항을 넣고, 하나라도 '아니오'면 거기서 끝나게 했습니다. 대상이 아닌 분이 10분을 쓰는 일이 없어지고, 회수하고 버리는 설문지도 줄어듭니다.</div>
+   <div class="emph"><b>묶어서 말하기</b> — 여기서 18쪽을 미리 띄워 두면 '아니오 → 종료' 안내가 바로 보입니다. 18쪽 차례에 다시 돌아올 필요가 없어집니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card gold">
+ <div class="pg">
+  <div class="pgn q"><b>7</b><span>1:00</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>미수정 ①② — 이 발표의 중심</h3></div>
+   <div class="note" style="margin-top:0">교수님이 보시겠다고 한 '판단 기준'이 바로 여기</div>
+   <div class="say">두 건은 고치지 않았습니다.<br><br>
+   첫째, 촬영 장비 문항이 파일 관리와 성격이 다르다는 지적인데, <b>그 네 문항은 제가 묶은 게 아니라 원척도가 한 요인으로 묶어 둔 것</b>입니다. 자료를 한 건도 받지 않은 상태에서 제가 먼저 쪼개면 원척도의 요인구조를 근거 없이 바꾸는 일이 됩니다. 대신 한 문항이 빠져도 버티도록 문항 수를 3개에서 4개로 늘렸습니다.<br><br>
+   둘째, 두 문항이 겹친다는 지적도 맞습니다. 그런데 <b>그 중복은 번안에서 생긴 게 아니라 원척도에 이미 있는 중복</b>입니다. 서로 달라 보이게 고치면 원문에 없는 구분을 제가 만들어 넣는 셈이 됩니다. 그래서 예비조사에서 교차적재를 보고 자료를 근거로 판단하겠습니다.</div>
+   <div class="emph"><b>이 두 문장을 또박또박</b><br>· "제가 묶은 게 아니라 원척도가 묶은 것"<br>· "번안에서 생긴 게 아니라 원척도에 있는 중복"<br>나머지는 흘려도 이 둘만 들리면 판단 기준이 전달됩니다.</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>8</b><span>0:30</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>미수정 ③ 등록 기간은 안 잘랐습니다</h3></div>
+   <div class="note" style="margin-top:0">한 건 안에서 일부만 반영한 사례</div>
+   <div class="say">운영 기간은 1년 이상으로 잘랐지만 등록 기간은 안 잘랐습니다. 등록까지 1년으로 묶으면 <b>최근에 플랫폼을 시작한 분들이 빠지는데, 이 연구가 보려는 변화를 가장 크게 겪는 집단</b>입니다. 대신 등록 기간은 받아서 통제변수로 넣습니다.</div>
+   <div class="emph"><b>핵심</b> — "잘라내는 것보다 통계적으로 통제하는 쪽이 정보를 덜 잃는다".</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>9</b><span>0:40</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>사실 확인이 끝난 것과 남은 것</h3></div>
+   <div class="note" style="margin-top:0">교수님이 좋게 보실 쪽 — 모르는 걸 모른다고 적어 둔 표</div>
+   <div class="say">제가 추정으로 적은 네 가지는 따로 표로 뺐습니다. 예를 들어 자기효능감 척도의 신뢰도는 <b>원 개발 논문을 직접 못 보고 적응 연구가 인용한 수치를 본 것</b>이라, 본문에 쓰지 않고 '확인 필요'로만 남겼습니다. 나머지도 예비조사 자료로 확인할 것과 원문으로 확인할 것을 나눠 적었습니다.</div>
+   <div class="emph"><b>덧붙이면 좋은 한 마디</b> — "확인 못 한 걸 확인한 것처럼 쓰지 않으려고 표를 따로 뒀습니다."</div>
+  </div>
+ </div>
+</div>
+
+<div class="card">
+ <div class="pg">
+  <div class="pgn"><b>18</b><span>0:30</span></div>
+  <div class="pgb">
+   <div class="hd"><h3>실제 배포용 설문지 — 참여 대상 확인</h3></div>
+   <div class="note" style="margin-top:0">말로 한 수정이 실물로 들어간 것을 보여주는 쪽</div>
+   <div class="say">앞에서 말씀드린 수정이 실제 설문지에는 이렇게 들어갔습니다. 맨 앞 네 문항이 참여 대상 확인이고, '아니오'면 여기서 종료된다고 응답자에게 알립니다.</div>
+   <div class="emph"><b>마무리 멘트</b> — "정리하면 기준은 하나였습니다. 원척도에 원래 있던 건 자료 없이 손대지 않았고, 제 번안에서 생긴 건 바로 고쳤습니다."</div>
+  </div>
+ </div>
+</div>
+
+<h2>넘기는 쪽 <small>질문 오면 바로 펼칠 수 있게 위치만 외우기</small></h2>
+<div class="card">
+  <dl class="skiprow">
+    <dt>1</dt><dd>표지</dd>
+    <dt>4</dt><dd>수정 ③④ — MP4 표현, MP2·MP3 전체/단골 매출 구분</dd>
+    <dt>6</dt><dd>수정 ⑦⑧ — AI2·AI6 표현, 주당 홍보 시간 구간</dd>
+    <dt>10</dt><dd><b>연구 개요·연구모형</b> — "연구가 뭐냐" 질문이 오면 여기</dd>
+    <dt>11</dt><dd>자기효능감 8문항 + 원문 영어</dd>
+    <dt>12</dt><dd><b>플랫폼 활용 10문항 + 원문 영어</b> — "척도 원문 봤냐" 질문이 오면 여기</dd>
+    <dt>13</dt><dd>마케팅 성과 4문항 · AI 6문항</dd>
+    <dt>14</dt><dd>선별 4문항 · 일반적 특성 6문항 · 응답 척도 정리</dd>
+    <dt>15</dt><dd><b>참고문헌 · 지도교수님께 여쭐 것</b> — 교수님 질문 대부분이 여기로 받힘</dd>
+    <dt>16</dt><dd>부록 간지</dd>
+    <dt>17</dt><dd>설문 안내문</dd>
+    <dt>19</dt><dd>Ⅱ부 온라인 홍보 자신감 8문항 (7점)</dd>
+    <dt>20</dt><dd>Ⅲ부 온라인 플랫폼 활용 10문항 (5점)</dd>
+    <dt>21</dt><dd>Ⅳ부 마케팅 성과 4문항 · Ⅴ부 AI 검색환경 6문항</dd>
+  </dl>
+</div>
+
+<h2>나올 만한 질문 다섯</h2>
+<details class="qa"><summary>제목 바꾸는 건 지도교수님께 말씀드렸나요?</summary>
+<div class="a">아직입니다. <b>가제로 표기</b>했고 <b>15쪽</b> '여쭐 것' 1번에 올려 뒀습니다. 승인 안 나면 되돌리면 되고, 측정도구는 그대로라 되돌려도 설문지는 안 바뀝니다.</div></details>
+
+<details class="qa"><summary>겹친다는 그 두 문항, 그냥 하나 지우면 되지 않나요?</summary>
+<div class="a"><b>7쪽.</b> 그 중복은 원척도 단계의 중복입니다. 자료 없이 제 판단만으로 지우면 다른 문항도 같은 논리로 지울 수 있게 됩니다. 예비조사에서 교차적재와 상관을 보고 지우겠습니다.</div></details>
+
+<details class="qa"><summary>문항이 38개면 너무 많지 않나요?</summary>
+<div class="a">선별 4문항을 빼면 <b>본 설문은 34문항</b>입니다. 선별에서 걸리는 분은 4문항에서 끝납니다. 그래도 많다고 보시면 Ⅴ부 AI 6문항을 줄이는 안을 <b>15쪽</b>에 적어 뒀습니다.</div></details>
+
+<details class="qa"><summary>운영 1년 이상으로 자르면 표본이 모이나요?</summary>
+<div class="a">표본이 줄어드는 건 맞습니다. 다만 성과를 '최근 1년'으로 묻기 때문에 맞춘 것입니다. 이 맞바꿈도 <b>15쪽</b> 여쭐 것 2번에 올려 뒀습니다.</div></details>
+
+<details class="qa"><summary>척도 원문은 어디서 확인했나요?</summary>
+<div class="a"><b>12쪽</b>에 문항마다 영어 원문을 나란히 실었습니다. 플랫폼 활용 13문항은 Qalati 외(2021) <i>Sustainability</i> 13(1), 75의 Appendix A, 자기효능감 16문항은 Torres-Miranda 외(2024) <i>Frontiers in Education</i> 9:1370490 TABLE 1에서 봤습니다. <b>원 개발 논문(Wang 외, 2020)은 아직 못 봐서 9쪽에 '확인 필요'로 적어 뒀습니다.</b></div></details>
+
+<h2>3분으로 줄여야 하면</h2>
+<div class="card blue">
+  <div class="steps">
+    <div><b>0:20</b>2쪽</div>
+    <div><b>0:40</b>5쪽</div>
+    <div><b>1:20</b>7쪽</div>
+    <div><b>0:20</b>9쪽</div>
+    <div><b>0:20</b>마무리</div>
+  </div>
+  <div class="note">3쪽(제목)·8쪽(등록 기간)·18쪽(실제 설문지)을 뺍니다. 7쪽은 어떤 경우에도 줄이지 않습니다.</div>
+</div>
+
+<h2>발표 직전 점검</h2>
+<div class="card">
+  <ul class="list">
+    <li>PDF를 쪽 번호 보이게 띄워 두기 — 2 · 3 · 5 · 7 · 8 · 9 · 18</li>
+    <li>15쪽(여쭐 것)은 질문용으로 따로 열어 두기</li>
+    <li>첫 문장과 마지막 문장은 같은 말로 — "원척도에 있던 건 손대지 않았고, 제 번안에서 생긴 건 고쳤습니다"</li>
+    <li>숫자 세 개만 외우기 — <b>피드백 9건 · 수정 8 · 미수정 3</b></li>
+  </ul>
+</div>
+
+<div class="src">
+  <b>근거</b>
+  <ul>
+    <li>쪽 번호는 「윤지영_1인 헤어·메이크업 사업자의 디지털 마케팅 자기효능감이 마케팅 성과에 미치는 영향_설문지 수정본.pdf」 21쪽 본문에서 확인</li>
+    <li>발표 시간(5분)은 수업 공지에 없어 <b>확인 필요</b> — 배분은 5분 가정값이고, 실제 시간이 다르면 비율만 유지하면 됩니다</li>
+    <li>교수님 공지 원문: "토요일 수업에서는 제출한 내용을 바탕으로 공통적인 수정사항과 판단 기준을 함께 살펴보겠습니다."</li>
+  </ul>
+</div>
+"""
+
 def write(path, html):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -4924,6 +5128,7 @@ def main():
     write(os.path.join(base, "park", "index.html"), page("박종혁 본부장 협업 — 평가", PARK))
     write(os.path.join(base, "vault", "index.html"), page("셀프 등기 · 정관 찾기 · 서류 보관", VAULT))
     write(os.path.join(base, "jiyoung-prompt", "index.html"), page("지영 원장 빌드업 페이지 — 프롬프트", JYPROMPT))
+    write(os.path.join(base, "jiyoung-survey", "index.html"), page("지영 설문지 발표 — 쪽마다 할 말", SURVEYTALK))
     write(os.path.join(base, "crew-prompt", "index.html"), page("크루원 사업 구조화 페이지 — 프롬프트", CREWPROMPT))
     write(os.path.join(base, "credit", "index.html"), page("신용점수 — KCB 622 / NICE 750", CREDIT))
     write(os.path.join(base, "money", "index.html"), page("재정 정리 — 무엇부터 털어야 하나", MONEY))
