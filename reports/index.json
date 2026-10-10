@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-10-onecrew-strategy-numbers-applied",
+    "date": "2026-10-10",
+    "project": "원크루 사이트",
+    "title": "성과 예시에 확인된 숫자를 넣음",
+    "status": "완료",
+    "summary": "검토표에서 확인해 주신 대로 수익화전략 성과 예시 28편에 숫자 칸을 넣었습니다. '맞습니다' 21편은 임시안 그대로, '고쳐 주세요' 7편은 적어 주신 대로 고쳤습니다. 법인 전환 자료는 사업자마다 달라 숫자를 적지 않는다고 적었습니다.",
+    "next": "고쳐 넣은 7편은 검토표에서 '아직 안 본 것'으로 다시 열어 두었습니다. 한 번 더 보시면 끝입니다.",
+    "deploy_url": "https://luke-onecrew.vercel.app/strategy",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>서른한 편 모두 실제 사이트에서 다시 확인했습니다.</p>"
+  },
+  {
     "id": "2026-10-10-onecrew-strategy-numbers-review",
     "date": "2026-10-10",
     "project": "원크루 사이트",
