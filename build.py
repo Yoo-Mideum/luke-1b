@@ -2658,12 +2658,12 @@ FORMS = """
   <tr><td>1</td><td><a href="https://docs.google.com/document/d/1X6D8BlA5qchLLfgK9ae7uyD3JUSD5jzknZI44YYTv4M/edit"><b>주주 전원의 서면결의서</b></a></td><td class="num">4장</td><td><b>개인</b> + 간인</td></tr>
   <tr><td>2</td><td><a href="https://docs.google.com/document/d/1vc-CA7dUbKG-XoLlJZu39L0mCDtYGfOjod959unsh9M/edit"><b>이사결정서 (본점이전)</b></a></td><td class="num">1장</td><td><b>법인</b></td></tr>
   <tr><td>3</td><td><a href="https://docs.google.com/document/d/1Kw2gcbSwQkHEV02ApnajJrWBYTCWv5MYnvcdM6EUbpA/edit"><b>주주명부</b></a></td><td class="num">1장</td><td><b>법인</b></td></tr>
-  <tr><td>4</td><td><a href="https://docs.google.com/document/d/1fVeIL6ApZ_255eJ34vcspLi9IaLNfc733lxUHHpQsLY/edit"><b>취임승낙서 — 신정현</b></a><small><br>사내이사</small></td><td class="num">1장</td><td>신정현 본인</td></tr>
+  <tr><td>4</td><td><a href="https://docs.google.com/document/d/1AdOznYRsfb9zblBe8LCjiIVWft3-q5fozYDwUbPoulA/edit"><b>신정현 님께 보낼 것</b></a><small><br>1쪽 취임승낙서 + 준비 안내<br><b>루크님은 출력 안 하셔도 됩니다</b></small></td><td class="num">—</td><td>신정현 본인</td></tr>
   <tr><td>5</td><td><a href="https://docs.google.com/document/d/1aFzYMIRD7iC9z7VlfhrJG03FfopTA3el8Ti25IhVS6A/edit"><b>취임승낙서 — 유믿음</b></a><small><br>대표이사</small></td><td class="num">1장</td><td><b>개인</b></td></tr>
   <tr><td>7</td><td><a href="https://docs.google.com/document/d/1juqQSdMT2BCvAVmp8Pq4ugkQZ5MXAZMvv2CjSLX4_Ss/edit"><b>전부개정 정관</b></a><small><br>목적 41개</small></td><td class="num">5장</td><td><b>법인</b> + 간인</td></tr>
   </table></div>
   <p style="margin:12px 0 0"><b>A4 세로, 배율 100%.</b> 각 2부씩 뽑아 두시면 도장이 번져도 다시 안 뽑습니다. 제출은 1부씩입니다.</p>
-  <div class="note"><b>같이 열어 둘 문서 둘</b> — <a href="https://docs.google.com/document/d/1qGTITR-dxkSQWbByY00-bG1UnQ5KdlD18Z2HTCP1p6s/edit"><b>9. 날인 위치 + 준비물</b></a>(들고만 보는 문서) · <a href="https://docs.google.com/document/d/1HStgazPdISVboIepxlCnqx_uqeIdcHs-nsgXQr6b3i0/edit"><b>10. 신정현 님께 보낼 메시지</b></a>(복사해서 전송)</div>
+  <div class="note"><b>같이 열어 둘 문서</b> — <a href="https://docs.google.com/document/d/1qGTITR-dxkSQWbByY00-bG1UnQ5KdlD18Z2HTCP1p6s/edit"><b>9. 날인 위치 + 준비물</b></a>(들고만 보는 문서). 그리고 <b>신정현 님께는 위 4번 링크 하나만</b> 보내시면 됩니다 — 승낙서와 안내가 한 문서에 들어 있고, 다른 서류는 보이지 않습니다.</div>
 </div>
 
 <h2>도장은 두 개뿐입니다</h2>
@@ -2848,7 +2848,7 @@ FORMS = """
 
 <h2>신정현 님이 준비하실 것 — 오늘 꼭 물어볼 한 가지</h2>
 <div class="card red">
-  <p style="margin:0 0 10px">4번 문서에 <b>그대로 복사해서 보낼 메시지</b>를 써 뒀습니다. 요청하는 건 세 가지입니다.</p>
+  <p style="margin:0 0 10px"><a href="https://docs.google.com/document/d/1AdOznYRsfb9zblBe8LCjiIVWft3-q5fozYDwUbPoulA/edit"><b>이 링크 하나만 신정현 님께 보내세요 →</b></a> 1쪽이 취임승낙서, 그 아래가 준비 안내입니다. <b>다른 서류는 들어 있지 않습니다.</b> 요청하는 건 세 가지입니다.</p>
   <ul class="list">
     <li><div class="t">취임승낙서 — 자필 성명 + 인감도장 날인</div><div class="m">내용은 이미 다 채워져 있습니다. 주민번호·주소까지</div></li>
     <li><div class="t">개인 인감증명서 1부</div><div class="m">주민센터 창구 600원. 본인·신분증. <b>무인발급기로는 안 나옵니다</b></div></li>
