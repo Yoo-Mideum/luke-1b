@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-11-onecrew-strategy-benchmark",
+    "date": "2026-10-11",
+    "project": "원크루 사이트",
+    "title": "15번 숫자를 한 달 기준으로 고침 · 18·24번은 판단 대기",
+    "status": "판단 대기",
+    "summary": "15번 성과 예시의 한 사람 몫을 '월 780만 원'으로 고쳐 올렸습니다. 18번과 24번은 '2배로'를 모든 숫자에 적용해 둔 상태라, 금액만 두 배인지 비율과 배수도 두 배인지 여쭈었습니다. 알려 주신 수강생 성과 기준은 기억해 두었습니다.",
+    "next": "18·24번: 금액만 두 배로 할지, 비율과 배수도 두 배로 둘지 정해 주시면 바로 고칩니다.",
+    "deploy_url": "https://luke-onecrew.vercel.app/strategy/design-the-game",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": ""
+  },
+  {
     "id": "2026-10-10-onecrew-strategy-numbers-applied",
     "date": "2026-10-10",
     "project": "원크루 사이트",
