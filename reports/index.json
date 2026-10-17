@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-10-17-dropshipping",
+    "date": "2026-10-17",
+    "project": "루크 툴박스",
+    "title": "드랍쉬핑 소개 화면",
+    "status": "완료",
+    "summary": "팔리고 나서 사는 장사가 무엇인지, 왜 돈이 빨리 도는지, 왜 그 자리에서 하는지를 한 화면에 풀었습니다. 가까이서 본 사람들이 먼저 한다는 대목도 넣었습니다.",
+    "next": "내부자 대목에 실제 한 줄 후기를 넣으면 더 세집니다.",
+    "deploy_url": "https://giantstoolbox.com/dropshipping",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>수수료와 정산 숫자는 자료마다 달라 단정하지 않고 방향만 적었습니다. 정확한 값은 공식 공지에서 확인하라는 줄을 화면에 넣었습니다.</p>"
+  },
+  {
     "id": "2026-10-16-onecrew-three-sessions",
     "date": "2026-10-16",
     "project": "원크루 사이트",
