@@ -178,6 +178,27 @@ td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;
 .steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
 .bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
 .bar i{display:block;height:100%;background:var(--accent)}
+:root{--f1:#6fbb9f;--f2:#3d9273;--f3:#1a6d54;--f4:#054d39}
+@media (prefers-color-scheme: dark){:root{--f1:#35775f;--f2:#43997d;--f3:#4cbc95;--f4:#62dcb0}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;padding:0 4px}
+.now{display:grid;grid-template-columns:76px 1fr;gap:8px 10px;font-size:14px;align-items:start}
+.now dt{font-size:11.5px;font-weight:700;letter-spacing:.02em;text-align:center;border-radius:999px;padding:3px 0}
+.now dd{margin:0}
+.now .ok{background:var(--accent-soft);color:var(--accent)}
+.now .go{background:var(--blue-soft);color:var(--blue)}
+.now .zero{background:var(--red-soft);color:var(--red)}
+.now .q{background:var(--gold-soft);color:var(--gold)}
+.ms{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.ms.on{border-left-color:var(--accent)}
+.ms h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ms h3 .when{font-size:12px;color:var(--muted);font-weight:400}
+.ms ul{list-style:none;padding:0;margin:8px 0 0}
+.ms li{font-size:14px;padding:4px 0 4px 22px;position:relative}
+.ms li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border:1.5px solid var(--line);border-radius:3px}
+.ms .one{margin-top:10px;font-size:13.5px;background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.ms .one b{color:var(--accent)}
 ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
 ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
 ul.list li.done .t{text-decoration:line-through;color:var(--muted)}

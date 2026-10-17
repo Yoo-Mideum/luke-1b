@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>지금 어디 있는가 — 과거·현재·미래 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.pg{display:flex;gap:11px;align-items:flex-start}
+.pg .pgn{flex:0 0 auto;width:52px;text-align:center;background:var(--accent);color:#fff;border-radius:12px;padding:7px 4px;font-family:"Gowun Dodum",sans-serif;line-height:1.15}
+.pg .pgn b{display:block;font-size:21px}
+.pg .pgn span{font-size:10px;opacity:.88;letter-spacing:.02em}
+.pg .pgn.q{background:var(--gold)}
+.pg .pgb{min-width:0;flex:1}
+.pg h3{margin-bottom:2px}
+.say{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:9px 0 0;font-size:14.5px;line-height:1.75}
+.say:before{content:"말할 것";display:block;font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;font-weight:700}
+.emph{font-size:13px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.emph b{color:var(--gold)}
+.tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.qa summary{cursor:pointer;font-size:14px;font-weight:500}
+.qa .a{font-size:13.5px;color:var(--muted);margin-top:9px}
+.qa .a b{color:var(--ink)}
+.skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
+.skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.skiprow dd{margin:0;color:var(--muted)}
+.fb{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:0 0 9px;line-height:1.62}
+.fb b{color:var(--ink);font-weight:500}
+.ba2{margin:9px 0 0;font-size:13.5px;display:grid;gap:5px}
+.ba2 .b,.ba2 .a{padding:8px 10px;border-radius:8px;line-height:1.62}
+.ba2 .b{background:var(--red-soft)}
+.ba2 .a{background:var(--accent-soft)}
+.ba2 .b:before{content:"수정 전";display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;letter-spacing:.06em}
+.ba2 .a:before{content:"수정 후";display:block;font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:3px;letter-spacing:.06em}
+.en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:12.5px;color:var(--muted)}
+.why2{font-size:13.5px;margin-top:9px;line-height:1.68}
+.why2:before{content:"왜";display:inline-block;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
+.ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.ov dd{margin:0}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+:root{--f1:#6fbb9f;--f2:#3d9273;--f3:#1a6d54;--f4:#054d39}
+@media (prefers-color-scheme: dark){:root{--f1:#35775f;--f2:#43997d;--f3:#4cbc95;--f4:#62dcb0}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;padding:0 4px}
+.now{display:grid;grid-template-columns:76px 1fr;gap:8px 10px;font-size:14px;align-items:start}
+.now dt{font-size:11.5px;font-weight:700;letter-spacing:.02em;text-align:center;border-radius:999px;padding:3px 0}
+.now dd{margin:0}
+.now .ok{background:var(--accent-soft);color:var(--accent)}
+.now .go{background:var(--blue-soft);color:var(--blue)}
+.now .zero{background:var(--red-soft);color:var(--red)}
+.now .q{background:var(--gold-soft);color:var(--gold)}
+.ms{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.ms.on{border-left-color:var(--accent)}
+.ms h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ms h3 .when{font-size:12px;color:var(--muted);font-weight:400}
+.ms ul{list-style:none;padding:0;margin:8px 0 0}
+.ms li{font-size:14px;padding:4px 0 4px 22px;position:relative}
+.ms li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border:1.5px solid var(--line);border-radius:3px}
+.ms .one{margin-top:10px;font-size:13.5px;background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.ms .one b{color:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-17</span></div>
+<script>window.LUKE_ROOT="../";</script>
+<div class="hero">
+  <h1>지금 어디 있는가</h1>
+  <div class="sub">과거 · 현재 · 미래 · 구간별로 얻어야 하는 결과</div>
+  <div class="goal">
+    <div><b>0명</b><span>카페 신규 유입 — 아직 시작 전</span></div>
+    <div><b>13주</b><span>분기 3,000명까지 남은 시간</span></div>
+    <div><b>6개</b><span>아직 가정값인 숫자</span></div>
+  </div>
+</div>
+
+<div class="card accent">
+  <p style="margin:0"><b>한 문장으로 된 현재 위치 — 모델은 다 그렸고, 실측값이 하나도 없습니다.</b></p>
+  <div class="note">계산은 끝났습니다. 21.6억도 7.14억도 1.72억도 전부 종이 위 숫자고, 그걸 사실로 만드는 첫 숫자는 <b>카페에 들어온 사람 수</b> 하나입니다. 오늘 그 값이 0입니다.</div>
+</div>
+
+<h2>과거 — 어디서 왔나</h2>
+<div class="card">
+  <ul class="tl">
+    <li><div class="d">~2021</div><div class="t">롯데택배 · 마켓컬리</div><div class="m">배달하며 스마트스토어 위탁판매를 시작. 이마트 한우에서 깨달은 것이 출발점</div></li>
+    <li><div class="d">2022.03</div><div class="t">법인 설립 — 힐링디어스(주)</div><div class="m">개인에서 법인으로</div></li>
+    <li><div class="d">~2026</div><div class="t">5년 · 수강생 3,000명</div><div class="m">50~60대 초보 중심. 유튜브 1만, 카톡 1천, 네이버 카페</div></li>
+    <li class="big"><div class="d">현재</div><div class="t">인베이더 종료 대비 · 메이븐 협력</div><div class="m">월 1,800만 정산이 지금의 현금줄</div></li>
+  </ul>
+  <div class="emph"><b>과거에서 가져갈 교훈 한 줄.</b> 지금까지 강의는 <b>남의 유통</b>을 타고 팔렸습니다. 인베이더가 끝난다는 건 그 통로가 닫힌다는 뜻이고, 식스 엔진 전체가 결국 <b>내 유입 · 내 판매처 · 내 심화</b>를 직접 짓는 일입니다. 그래서 엔진 1(카페)이 첫 칸입니다.</div>
+</div>
+
+<h2>현재 — 2026년 10월 17일의 정확한 좌표</h2>
+<div class="card">
+  <dl class="now">
+    <dt class="ok">확정</dt><dd>10월 메이븐 정산 1,800만 수령 · 법인 변경등기 법무사 위임 · 6기 문의 80명 · 초월스토리 분배 구조 합의(루크 8%)</dd>
+    <dt class="go">진행</dt><dd>10/20 라이브 → 10/25 6기 런칭 · 가을님 11월 초 촬영</dd>
+    <dt class="zero">0</dt><dd><b>카페 신규 유입 0명</b> · 도구공방 결제 미연결 · 전자책 0종 · 연애상담 상품 없음 · 개발자 계정 미등록</dd>
+    <dt class="q">가정</dt><dd>CAC 3,000원 · 전환율 10% · 객단가 180만 · 6:4 분모 · 메이븐 500명 분배 · 고가 단가 1,650만</dd>
+  </dl>
+  <div class="warn"><b>'0' 줄이 지금 가장 중요한 줄입니다.</b> 확정된 것들은 이미 번 돈이거나 끝난 일이고, 앞으로의 7.14억은 전부 저 0에서 시작합니다.</div>
+</div>
+
+<h2>미래 — 어디로 가나</h2>
+<div class="card">
+  <ul class="tl">
+    <li><div class="d">2026 Q4 · 쌓는 분기</div><div class="t">카페 3,000명을 모은다</div><div class="m">버는 건 메이븐 정산과 6기뿐. 이 분기는 수확이 아니라 <b>파종</b>입니다</div></li>
+    <li class="big"><div class="d">2027 Q1 · 첫 수확</div><div class="t">1월 자사 강의 300명 런칭</div><div class="m">루크 1.79억. 여기서 모델이 맞았는지 틀렸는지 판정됩니다</div></li>
+    <li><div class="d">2027 · 반복</div><div class="t">분기마다 광고 900만 → 3,000명 → 300명</div><div class="m">연 4회로 매출 21.6억, 루크 7.14억 (CAC·전환율이 가정대로일 때)</div></li>
+    <li><div class="d">그 위에</div><div class="t">기존 회원 500명에서 고가 5~15명</div><div class="m">1.72억~3.37억. 광고비 0원으로 버는 칸</div></li>
+  </ul>
+</div>
+
+<h2>돈이 어디서 나오는가 <small>기존 회원 500명 기준</small></h2>
+<figure class="fig">
+  <svg viewBox="0 0 400 220" role="img" aria-label="기존 회원 500명의 단계별 연 기여. 보유 500명 0원, 전자책 100명 300만원, 본 강의 40명 7,200만원, 심화 5명 8,250만원."><text x="10" y="16" font-size="11" fill="var(--muted)">단계 · 인원 · 1인당</text><text x="184" y="16" font-size="11" fill="var(--muted)">연 기여</text><line x1="174" y1="24" x2="174" y2="210" stroke="var(--line)" stroke-width="1"/><rect x="10" y="32" width="5" height="36" rx="2.5" fill="var(--f1)"/><text x="25" y="48" font-size="13" fill="var(--ink)" font-weight="700">보유 회원</text><text x="25" y="63" font-size="11.5" fill="var(--muted)">500명 · 0원</text><text x="191" y="55" font-size="12.5" fill="var(--ink)" font-weight="700">—</text><rect x="10" y="78" width="5" height="36" rx="2.5" fill="var(--f2)"/><text x="25" y="94" font-size="13" fill="var(--ink)" font-weight="700">전자책</text><text x="25" y="109" font-size="11.5" fill="var(--muted)">100명 · 3만원</text><rect x="184" y="89" width="6" height="14" rx="4" fill="var(--f2)"/><text x="197" y="101" font-size="12.5" fill="var(--ink)" font-weight="700">300만</text><rect x="10" y="124" width="5" height="36" rx="2.5" fill="var(--f3)"/><text x="25" y="140" font-size="13" fill="var(--ink)" font-weight="700">본 강의</text><text x="25" y="155" font-size="11.5" fill="var(--muted)">40명 · 180만원</text><rect x="184" y="135" width="133" height="14" rx="4" fill="var(--f3)"/><text x="324" y="147" font-size="12.5" fill="var(--ink)" font-weight="700">7,200만</text><rect x="10" y="170" width="5" height="36" rx="2.5" fill="var(--f4)"/><text x="25" y="186" font-size="13" fill="var(--ink)" font-weight="700">심화</text><text x="25" y="201" font-size="11.5" fill="var(--muted)">5명 · 1,650만원</text><rect x="184" y="181" width="152" height="14" rx="4" fill="var(--f4)"/><text x="343" y="193" font-size="12.5" fill="var(--ink)" font-weight="700">8,250만</text></svg>
+  <figcaption><b>인원은 줄고 금액은 커집니다.</b> 맨 아래 '심화'는 일십백천·원크루입니다. 5명이 100명보다 27배 많은 돈을 냅니다. 전자책을 파는 이유는 300만원이 아니라, 1,650만원을 낼 다섯 명을 찾아내기 위해서입니다. 전환율은 전부 가정값입니다.</figcaption>
+</figure>
+
+<h2>13주 — 분기까지 남은 시간</h2>
+<figure class="fig">
+  <svg viewBox="0 0 400 206" role="img" aria-label="카페 누적 유입 목표 궤적. 주 250명씩 13주에 3,250명. 현재 0주차 0명."><line x1="36" y1="162.0" x2="384" y2="162.0" stroke="var(--line)" stroke-width="1"/><text x="30" y="166.0" font-size="10.5" fill="var(--muted)" text-anchor="end">0</text><line x1="36" y1="121.4" x2="384" y2="121.4" stroke="var(--line)" stroke-width="1"/><text x="30" y="125.4" font-size="10.5" fill="var(--muted)" text-anchor="end">1,000</text><line x1="36" y1="80.8" x2="384" y2="80.8" stroke="var(--line)" stroke-width="1"/><text x="30" y="84.8" font-size="10.5" fill="var(--muted)" text-anchor="end">2,000</text><line x1="36" y1="40.2" x2="384" y2="40.2" stroke="var(--line)" stroke-width="1"/><text x="30" y="44.2" font-size="10.5" fill="var(--muted)" text-anchor="end">3,000</text><polyline points="36.0,162.0 62.8,151.8 89.5,141.7 116.3,131.5 143.1,121.4 169.8,111.2 196.6,101.1 223.4,90.9 250.2,80.8 276.9,70.6 303.7,60.5 330.5,50.3 357.2,40.2 384.0,30.0" fill="none" stroke="var(--f3)" stroke-width="2" stroke-linejoin="round"/><circle cx="62.8" cy="151.8" r="4.5" fill="var(--f4)" stroke="var(--card)" stroke-width="2"/><text x="62.8" y="140.8" font-size="11" fill="var(--ink)" text-anchor="middle" font-weight="700">1주</text><circle cx="143.1" cy="121.4" r="4.5" fill="var(--f4)" stroke="var(--card)" stroke-width="2"/><text x="143.1" y="110.4" font-size="11" fill="var(--ink)" text-anchor="middle" font-weight="700">1달</text><circle cx="384.0" cy="30.0" r="4.5" fill="var(--f4)" stroke="var(--card)" stroke-width="2"/><text x="384.0" y="19.0" font-size="11" fill="var(--ink)" text-anchor="end" font-weight="700">분기</text><circle cx="36.0" cy="162.0" r="5" fill="var(--red)"/><text x="47.0" y="178.0" font-size="11.5" fill="var(--red)" font-weight="700">지금 0명</text><text x="36" y="198" font-size="10.5" fill="var(--muted)">10/19</text><text x="143.1" y="198" font-size="10.5" fill="var(--muted)" text-anchor="middle">11/17</text><text x="384" y="198" font-size="10.5" fill="var(--muted)" text-anchor="end">2027/1/17</text></svg>
+  <figcaption>주 250명이 분기 3,000명 속도입니다. 한 주를 비우면 250명이 사라지고, 그만큼 1월 런칭 인원이 줄어듭니다. <b>빨간 점이 오늘입니다.</b></figcaption>
+</figure>
+
+<h2>구간별로 얻어야 하는 결과</h2>
+<div class="card">
+  <p style="margin:0 0 6px">각 구간에 <b>딱 하나</b>의 집중이 있습니다. 나머지는 그 하나를 떠받치는 것들입니다.</p>
+  <div class="note">네모는 끝났는지 아닌지 판정 가능한 것만 적었습니다. '검토한다' 같은 건 결과가 아닙니다.</div>
+</div>
+
+<div class="ms on">
+  <h3>1주 <span class="when">10/19 월 ~ 10/25 일</span></h3>
+  <ul>
+    <li>카페 신규 <b>250명</b></li>
+    <li>실측 CAC 한 개 — 쓴 광고비 ÷ 들어온 사람 수</li>
+    <li>6기 강의 런칭 완료 (10/25)</li>
+    <li>6:4의 분모 확정 — A안인가 B안인가 (<b>1,440만원</b> 차이)</li>
+    <li>종혁 본부장에게 과거 카페 월 4,000명 당시 광고비 확인</li>
+  </ul>
+  <div class="one"><b>이번 주의 하나 — 광고를 켜는 것.</b> 지금 0입니다. 다른 다섯이 다 밀려도 이건 월요일에 켜야 합니다. 분기 전체가 여기서 시작합니다.</div>
+</div>
+
+<div class="ms">
+  <h3>1달 <span class="when">~ 11/17</span></h3>
+  <ul>
+    <li>카페 누적 <b>1,000명</b> (4주 × 250)</li>
+    <li>도구공방 결제 가동 — 포트원 연결 완료</li>
+    <li>전자책 1종 발행 + <b>첫 결제 발생</b></li>
+    <li>가을님 촬영 완료 — 그 전에 손익분기 18명 사전 고지</li>
+    <li>CAC 4주 추세 확인 (오르는가 유지되는가)</li>
+    <li>11월 메이븐 정산 1,800만</li>
+  </ul>
+  <div class="one"><b>이번 달의 하나 — 첫 결제가 도는 것.</b> 금액은 상관없습니다. 3만원이라도 결제가 한 번 돌면 '팔 수 있는 구조'가 증명되고, 그때부터 광고를 늘릴 근거가 생깁니다.</div>
+</div>
+
+<div class="ms">
+  <h3>분기 <span class="when">~ 2027/1/17</span></h3>
+  <ul>
+    <li>카페 누적 <b>3,000명</b></li>
+    <li>1월 자사 강의 런칭 — <b>300명</b></li>
+    <li>12월 정산 2,300~2,800만 (메이븐 + 6기)</li>
+    <li>가을님 정산 500만 이상 = <b>23명</b></li>
+    <li>가정값 6개가 전부 실측값으로 바뀜</li>
+  </ul>
+  <div class="one"><b>이번 분기의 하나 — 1월 런칭 인원.</b> 누적 루크 수익 <b>2.27~2.32억</b>이 여기서 결정됩니다. 300명이면 1.79억, 150명이면 8,521만입니다.</div>
+</div>
+
+<div class="ms">
+  <h3>반기 <span class="when">~ 2027/4/17</span></h3>
+  <ul>
+    <li>2회차 런칭 완료 (4월) — 누적 <b>4.06~4.11억</b></li>
+    <li>카페 누적 6,400명</li>
+    <li>기존 500명에서 고가 <b>2명</b></li>
+    <li>여섯 엔진 중 <b>3개 이상</b>이 실제로 현금을 냄</li>
+  </ul>
+  <div class="one"><b>반기의 하나 — 반복이 되는가.</b> 1회는 운이고 2회는 시스템입니다. 2회차가 1회차의 70% 아래면 모델이 아니라 일회성 이벤트였던 겁니다.</div>
+</div>
+
+<div class="ms">
+  <h3>1년 <span class="when">~ 2027/10/17</span></h3>
+  <ul>
+    <li>분기 4회 완주 — 누적 <b>7.63~7.68억</b></li>
+    <li>카페 누적 12,000명 유입 / 구매자 1,200명</li>
+    <li>기존 회원 고가 <b>5~7명</b></li>
+    <li>상호변경 + 사무실 이전 등기 완료</li>
+  </ul>
+  <div class="one"><b>1년의 하나 — 광고를 끄면 멈추는가.</b> 멈춘다면 1년 동안 광고 대행사를 만든 것이고, 안 멈춘다면 자산을 만든 겁니다. 그 답은 <b>미전환 10,800명과 기존 500명이 광고 없이 얼마를 내는가</b>로 나옵니다.</div>
+</div>
+
+<h2>집중을 지키는 규칙 셋</h2>
+<div class="card gold">
+  <ul class="list">
+    <li><div class="t">1. 매일 09:00~09:30은 엔진 1</div><div class="m">요일과 무관. 목요일에도. 이걸 빼면 나머지 다섯 엔진의 모수가 사라집니다</div></li>
+    <li><div class="t">2. 구간마다 '하나'만 본다</div><div class="m">1주는 광고 켜기, 1달은 첫 결제, 분기는 런칭 인원. 나머지 항목이 밀려도 이 하나가 되면 그 구간은 성공입니다</div></li>
+    <li class="big"><div class="t">3. 2주 연속 70% 아래면 숫자를 내려 잡는다</div><div class="m">주 250명 대비. 희망 섞인 목표를 1월까지 들고 가면 그때 고치는 비용이 훨씬 큽니다</div></li>
+  </ul>
+</div>
+
+<div class="src">
+  <b>근거</b>
+  <ul>
+    <li>과거 이력(롯데택배·마켓컬리, 법인 설립 2022-03-16, 수강생 약 3,000명, 유튜브 1만·카톡 1천) — 루크님이 그동안 말씀하신 것</li>
+    <li>현재 '확정' 줄 — 10월 메이븐 1,800만 수령, 6기 문의 80명, 초월스토리 루크 8% 합의는 모두 루크님 말씀 또는 노션 [결정] 기록</li>
+    <li>카페 유입 0명·도구공방 미연결·전자책 0종 — 2026-10-17 기준 아직 시작 전이라는 전제. <b>이미 진행된 것이 있으면 알려주시면 고칩니다</b></li>
+    <li>누적 수익 2.27억 / 4.06억 / 7.63억 — 분기당 루크 1.79억(B안, 300명·객단가 180만)에 11~12월 확정분과 가을님 768만을 더한 값. 전부 가정값 위에 쌓은 숫자입니다</li>
+    <li>주 250명 = 분기 3,000명 ÷ 12주. 13주차 3,250명은 선형 환산값</li>
+    <li>색 램프는 순서형(ordinal) 기준으로 밝기 단조·단일 색상·표면 대비를 검증해 밝은·어두운 테마 각각 통과시킨 값입니다</li>
+  </ul>
+</div>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-17 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      if(!box.querySelector('.donelist')) return;
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
