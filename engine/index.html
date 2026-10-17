@@ -361,13 +361,22 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <div class="wrapx"><table>
   <tr><th></th><th>분기</th><th>연 4회</th></tr>
   <tr><td>광고비</td><td class="num">900만</td><td class="num">3,600만</td></tr>
-  <tr><td>신규 유입</td><td class="num">3,000명</td><td class="num">12,000명</td></tr>
-  <tr><td>전환 10%</td><td class="num">300명</td><td class="num">1,200명</td></tr>
+  <tr><td>신규 유입 <small>카페</small></td><td class="num">3,000명</td><td class="num">12,000명</td></tr>
+  <tr><td>구매자 <small>전환 10%</small></td><td class="num">300명</td><td class="num">1,200명</td></tr>
   <tr><td>매출</td><td class="num">5.4억</td><td class="num">21.6억</td></tr>
   <tr><td><b>루크 (B안)</b></td><td class="num">1.78억</td><td class="num"><b>7.14억</b></td></tr>
   </table></div>
   <div class="note">연 비용 9,000만 가정 (고정급 3,600 + PD 1,800 + 광고 3,600). B안 = 비용 차감 후 분배. A안이면 <b>6.56억</b>으로 5,760만원 낮습니다. 종혁 7.93억 / 정현 4.76억 (B안).</div>
   <div class="emph"><b>광고비가 매출의 1.7%, ROAS 60배입니다.</b> 이 숫자가 유지되면 모객이 병목이지 전환이 병목이 아닙니다 — 돈을 더 태우면 더 들어온다는 뜻이니까요.</div>
+</div>
+
+<div class="card">
+  <h3>숫자 두 개를 헷갈리지 않기</h3>
+  <div class="kv">
+    <dt>유입</dt><dd>광고로 <b>카페에 들어온 사람</b> — 분기 3,000명 / 연 <b>12,000명</b></dd>
+    <dt>구매자</dt><dd>그중 <b>본 강의를 산 사람</b> — 분기 300명 / 연 <b>1,200명</b> (전환 10%)</dd>
+  </div>
+  <div class="note">매출은 구매자 수로만 납니다. 유입은 구매자를 만드는 모수일 뿐이고, 사지 않은 10,800명은 카페에 남아 다음 분기 모수가 됩니다.</div>
 </div>
 
 <h2>미전환 재고 — 떠나지 않는 사람들</h2>
@@ -379,7 +388,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <tr><td>2분기</td><td class="num">300명</td><td class="num">68명</td><td class="num">368명</td><td>5,332명</td></tr>
   <tr><td>3분기</td><td class="num">300명</td><td class="num">133명</td><td class="num">433명</td><td>7,899명</td></tr>
   <tr><td>4분기</td><td class="num">300명</td><td class="num">198명</td><td class="num">498명</td><td>10,402명</td></tr>
-  <tr><td><b>연간</b></td><td colspan="2"></td><td class="num"><b>1,598명</b></td><td>카페 12,000명</td></tr>
+  <tr><td><b>연간</b></td><td colspan="2"></td><td class="num"><b>1,598명</b></td><td>누적 유입 12,000명</td></tr>
   </table></div>
   <div class="note">기존 미전환자의 분기 재전환율 2.5%로 계산. <b>이 2.5%는 클로드 가정값이고 근거가 없습니다</b> — 1분기 뒤 실측으로 바꿔야 합니다. 맞다면 연 1,200명이 아니라 1,598명이고, 뒤로 갈수록 광고 없이 버는 몫이 커집니다.</div>
   <div class="warn"><b>대신 피로도를 관리해야 합니다.</b> 같은 강의를 1년에 네 번 팔면 4분기쯤 카페 고참이 신규 유입자에게 "저거 지난 분기에도 했어"라고 말합니다. 기수제(6기·7기·8기)를 이미 쓰고 계시니 희소성은 그걸로 유지되지만, <b>기수마다 커리큘럼이나 혜택에 실제로 달라지는 칸</b>이 하나는 있어야 합니다.</div>
@@ -389,7 +398,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <div class="card red">
   <p style="margin:0 0 8px">위 숫자 전부가 <b>CAC 3,000원</b>과 <b>전환율 10%</b> 두 개에 매달려 있습니다. 둘 다 아직 실측 전입니다.</p>
   <div class="wrapx"><table>
-  <tr><th>CAC</th><th>분기 유입</th><th>전환 5%</th><th>전환 10%</th><th>전환 15%</th></tr>
+  <tr><th>CAC</th><th>분기 유입<br><small>카페 신규</small></th><th>전환 5%</th><th>전환 10%</th><th>전환 15%</th></tr>
   <tr><td><b>3,000원</b></td><td>3,000명</td><td class="num">150명</td><td class="num">300명</td><td class="num">450명</td></tr>
   <tr><td>4,500원</td><td>2,000명</td><td class="num">100명</td><td class="num">200명</td><td class="num">300명</td></tr>
   <tr><td>6,000원</td><td>1,500명</td><td class="num">75명</td><td class="num">150명</td><td class="num">225명</td></tr>
@@ -397,13 +406,13 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   </table></div>
   <p style="margin:12px 0 6px"><b>연간 루크 몫으로 환산하면</b></p>
   <div class="wrapx"><table>
-  <tr><th>CAC</th><th>전환</th><th>연 인원</th><th>연 매출</th><th>루크 (B안)</th></tr>
-  <tr><td>3,000원</td><td>10%</td><td>1,200명</td><td>21.6억</td><td class="num">7.14억</td></tr>
-  <tr><td>3,000원</td><td>5%</td><td>600명</td><td>10.8억</td><td class="num">3.41억</td></tr>
-  <tr><td>4,500원</td><td>10%</td><td>800명</td><td>14.4억</td><td class="num">4.65억</td></tr>
-  <tr><td>4,500원</td><td>5%</td><td>400명</td><td>7.2억</td><td class="num">2.16억</td></tr>
-  <tr><td>6,000원</td><td>10%</td><td>600명</td><td>10.8억</td><td class="num">3.41억</td></tr>
-  <tr><td>6,000원</td><td>5%</td><td>300명</td><td>5.4억</td><td class="num">1.54억</td></tr>
+  <tr><th>CAC</th><th>전환</th><th>연 유입<br><small>카페 신규</small></th><th>연 구매자</th><th>연 매출</th><th>루크 (B안)</th></tr>
+  <tr><td>3,000원</td><td>10%</td><td>12,000명</td><td><b>1,200명</b></td><td>21.6억</td><td class="num">7.14억</td></tr>
+  <tr><td>3,000원</td><td>5%</td><td>12,000명</td><td>600명</td><td>10.8억</td><td class="num">3.41억</td></tr>
+  <tr><td>4,500원</td><td>10%</td><td>8,000명</td><td>800명</td><td>14.4억</td><td class="num">4.65억</td></tr>
+  <tr><td>4,500원</td><td>5%</td><td>8,000명</td><td>400명</td><td>7.2억</td><td class="num">2.16억</td></tr>
+  <tr><td>6,000원</td><td>10%</td><td>6,000명</td><td>600명</td><td>10.8억</td><td class="num">3.41억</td></tr>
+  <tr><td>6,000원</td><td>5%</td><td>6,000명</td><td>300명</td><td>5.4억</td><td class="num">1.54억</td></tr>
   </table></div>
   <div class="emph"><b>1.54억에서 7.14억 사이. 4.6배 폭입니다.</b> 그래서 1분기가 끝나면 <b>딱 두 숫자만 재면 됩니다</b> — 실제로 쓴 광고비 ÷ 실제로 들어온 사람 수, 그리고 실제 구매 전환율. 그 둘이 나머지 세 분기를 확정합니다.</div>
   <div class="note">CAC는 보통 분기가 갈수록 오릅니다. 관심이 높은 사람부터 먼저 들어오고, 같은 소재를 반복하면 광고 피로가 쌓이기 때문입니다. 다만 종혁 본부장이 과거 카페 <b>월 4,000명</b>을 만든 실적이 있다고 하셨으니 월 1,000명은 그 1/4 수준이라 보수적인 목표입니다 — <b>그때 광고비를 물어보면 이 표의 첫 줄이 확정됩니다.</b></div>
