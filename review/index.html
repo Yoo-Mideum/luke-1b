@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>전략 재점검 — 남에게 가르친 것과 자기 회사 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.pg{display:flex;gap:11px;align-items:flex-start}
+.pg .pgn{flex:0 0 auto;width:52px;text-align:center;background:var(--accent);color:#fff;border-radius:12px;padding:7px 4px;font-family:"Gowun Dodum",sans-serif;line-height:1.15}
+.pg .pgn b{display:block;font-size:21px}
+.pg .pgn span{font-size:10px;opacity:.88;letter-spacing:.02em}
+.pg .pgn.q{background:var(--gold)}
+.pg .pgb{min-width:0;flex:1}
+.pg h3{margin-bottom:2px}
+.say{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:9px 0 0;font-size:14.5px;line-height:1.75}
+.say:before{content:"말할 것";display:block;font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;font-weight:700}
+.emph{font-size:13px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.emph b{color:var(--gold)}
+.tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.qa summary{cursor:pointer;font-size:14px;font-weight:500}
+.qa .a{font-size:13.5px;color:var(--muted);margin-top:9px}
+.qa .a b{color:var(--ink)}
+.skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
+.skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.skiprow dd{margin:0;color:var(--muted)}
+.fb{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:0 0 9px;line-height:1.62}
+.fb b{color:var(--ink);font-weight:500}
+.ba2{margin:9px 0 0;font-size:13.5px;display:grid;gap:5px}
+.ba2 .b,.ba2 .a{padding:8px 10px;border-radius:8px;line-height:1.62}
+.ba2 .b{background:var(--red-soft)}
+.ba2 .a{background:var(--accent-soft)}
+.ba2 .b:before{content:"수정 전";display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;letter-spacing:.06em}
+.ba2 .a:before{content:"수정 후";display:block;font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:3px;letter-spacing:.06em}
+.en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:12.5px;color:var(--muted)}
+.why2{font-size:13.5px;margin-top:9px;line-height:1.68}
+.why2:before{content:"왜";display:inline-block;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
+.ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.ov dd{margin:0}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+:root{--f1:#6fbb9f;--f2:#3d9273;--f3:#1a6d54;--f4:#054d39}
+@media (prefers-color-scheme: dark){:root{--f1:#35775f;--f2:#43997d;--f3:#4cbc95;--f4:#62dcb0}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;padding:0 4px}
+.now{display:grid;grid-template-columns:76px 1fr;gap:8px 10px;font-size:14px;align-items:start}
+.now dt{font-size:11.5px;font-weight:700;letter-spacing:.02em;text-align:center;border-radius:999px;padding:3px 0}
+.now dd{margin:0}
+.now .ok{background:var(--accent-soft);color:var(--accent)}
+.now .go{background:var(--blue-soft);color:var(--blue)}
+.now .zero{background:var(--red-soft);color:var(--red)}
+.now .q{background:var(--gold-soft);color:var(--gold)}
+.ms{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.ms.on{border-left-color:var(--accent)}
+.ms h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ms h3 .when{font-size:12px;color:var(--muted);font-weight:400}
+.ms ul{list-style:none;padding:0;margin:8px 0 0}
+.ms li{font-size:14px;padding:4px 0 4px 22px;position:relative}
+.ms li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border:1.5px solid var(--line);border-radius:3px}
+.ms .one{margin-top:10px;font-size:13.5px;background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.ms .one b{color:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-21</span></div>
+<script>window.LUKE_ROOT="../";</script>
+<div class="hero">
+  <h1>전략 재점검 — 남에게 가르친 것과 자기 회사</h1>
+  <div class="sub">플라우드 녹음 4건(신정현·뿌요·디노)에서 꺼낸 전략 정리와 전문가 6인 비평</div>
+  <div class="goal">
+    <div><b>16개</b><span>벌려 둔 전선 (기존 6 + 신규 10)</span></div>
+    <div><b>2배</b><span>광고비 900만 vs 1,800만 충돌</span></div>
+    <div><b>0개</b><span>손절 기준이 문서화된 엔진</span></div>
+    <div><b>3명</b><span>동시에 뽑겠다고 한 신규 인력</span></div>
+  </div>
+</div>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px">먼저 — 오늘이 그 수요일입니다</h3>
+  <p style="margin:0">10/19 신정현님 회의에 <b>"정혁 본부장 수요일 출근"</b>이 Action Item으로 올라가 있습니다. 오늘(10/21)이 그날이고, 아래 <b>충돌 1</b>이 그 자리에서 닫아야 할 1번 의제입니다. 그거 하나만 닫아도 이 페이지 값은 합니다.</p>
+</div>
+
+<h2>세 대화에서 나온 것</h2>
+
+<div class="card accent">
+  <h3 style="margin:0 0 6px">신정현 10-19 <span class="tag">68분</span></h3>
+  <p style="margin:0 0 8px"><b>확장.</b> 파트너 레벨에서 새 전선을 여는 회의였습니다.</p>
+  <ul class="list">
+    <li><div class="t">내수 + 역직구 플랫폼 2개 구축</div><div class="m">위너 시스템(카탈로그 매칭·최저가 우선 노출) · 플레이오토 연동 · 쇼피/아마존 단일 모체 계정</div></li>
+    <li><div class="t">물류 회전 프로모션</div><div class="m">출고 적은 요일(금요일) 건당 택배비 1,000원 지원</div></li>
+    <li><div class="t">오프라인 + 퀵커머스</div><div class="m">무인점포·샵인샵(올리브영 편의점화 벤치마킹) · 쿠팡이츠/배민 연계 2,000원 당일 직배송</div></li>
+    <li><div class="t">교육 린 전환</div><div class="m">주입식·밀착형 → VOD + 전자책 · 매주 월요일 무료 라이브 특강 + 과제 첨삭</div></li>
+    <li><div class="t">커뮤니티 개방</div><div class="m">통제형 → 오픈 단톡방, 자율 해결 원칙 · 주간/야간 질의응답 튜터 2명</div></li>
+    <li><div class="t">강사 라이선스</div><div class="m">콘텐츠 + 프로그램 제공하고 매출 10% 공유 또는 구독료</div></li>
+    <li><div class="t">조직</div><div class="m">책임자급 월 518만 수준 · 신규 수습 3개월 250만 → 정식 300만 · 유튜브 공고 · 지인 채용 지양 · '기말고사' 프레이밍</div></li>
+    <li><div class="t">장기</div><div class="m">무차입 성장 · 2년 집중 후 높은 밸류에이션 엑시트</div></li>
+  </ul>
+</div>
+
+<div class="card gold">
+  <h3 style="margin:0 0 6px">뿌요(최근영) 10-19 <span class="tag">3시간 38분</span></h3>
+  <p style="margin:0 0 8px"><b>절제.</b> 뿌요님 코칭인데, 회사 로드맵이 여기서 가장 구체적으로 나왔습니다.</p>
+  <ul class="list">
+    <li><div class="t">2027년 서울 이전 — 성신여대·보문</div><div class="m">현 거점은 물류/3PL 전용, 신규 공간은 사무·강의·커뮤니티 오픈스페이스로 이원화</div></li>
+    <li><div class="t">2027년 1월 대규모 강의 런칭</div><div class="m"><b>광고비 1,800만</b> · 수강생 300명(전환율 10%) · 카페 월 신규 1,000명 × 3개월 = 총 3,000명</div></li>
+    <li><div class="t">그 외 런칭</div><div class="m">인베이더 강의 40~80명 · 가을님 리셀 강의 11월 말 런칭 45명 목표</div></li>
+    <li><div class="t">카르텔 배분</div><div class="m">기획 6 : 강사·운영 4</div></li>
+    <li><div class="t">뿌요님께 준 원칙 — 이게 핵심입니다</div><div class="m">광고비는 대출이 아니라 순수익에서 재투자 · ROAS &lt; 1 지속 시 즉시 손절 · 생활비(200~300만)와 사업 계좌 분리 · 3개월 유지=최소 실력, 1년=안정성, 3년=업계 인정 · 수익 하락 시 즉각 비용 절감 프로토콜 · 허영심 통제</div></li>
+  </ul>
+</div>
+
+<div class="card blue">
+  <h3 style="margin:0 0 6px">디노(김수민) 09-28 · 10-06 <span class="tag">30분 + 21분</span></h3>
+  <p style="margin:0 0 8px"><b>린.</b> 사흘 전 제가 '점수'를 제안했던 그 개념이, 이미 루크님 입에서 나와 있었습니다.</p>
+  <ul class="list">
+    <li><div class="t">09-28 — 린 MVP 방법론을 직접 가르침</div><div class="m">7~10일 짧은 주기로 아이템 하나 · AI로 2~3일 만에 전자책/상품페이지 MVP · 10만원 소액 광고로 즉시 반응 테스트 · 재미 없거나 성과 없으면 미련 없이 버리고 다음 · 짧게 3~5개, 길어도 30개 이내에 성공 아이템 발견</div></li>
+    <li><div class="t">09-28 — 그리고 '점수'의 원형</div><div class="m">AI로 실행 가능한 수익 아이템 100개를 <b>상대평가 학점(S, A+ …)과 예상 수익</b>으로 정리하게 함</div></li>
+    <li><div class="t">10-06 — 단가가 이미 깨져 있음</div><div class="m">힉스필드 영상 <b>1건당 약 20만원</b> · 크레딧 1200 소진에 10~20만원 · "수익성 악화 확인됨"</div></li>
+    <li><div class="t">10-06 — 루틴 고정</div><div class="m">3일 학습-제작 사이클 · 토 평가 / 일 재기획 / 월·화 학습 / 수 발행 · 릴스 매일 1개</div></li>
+  </ul>
+</div>
+
+<h2>충돌 1 — 광고비가 두 버전으로 존재합니다</h2>
+<div class="card">
+  <div class="kv">
+    <dt>식스 엔진 페이지</dt><dd>분기 광고 <b>900만</b> → 3,000명 (CAC 3,000원)</dd>
+    <dt>뿌요 세션 10-19</dt><dd>2027년 1월 광고비 <b>1,800만</b> → 3,000명 (CAC 6,000원)</dd>
+  </div>
+  <p style="margin:10px 0 0">같은 3,000명인데 숫자가 두 배입니다. 둘 중 하나는 틀렸고, 어느 쪽이 틀렸느냐에 따라 전체 모델의 절반이 움직입니다.</p>
+</div>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px">두 가지 해석, 전혀 다른 결과</h3>
+  <ul class="list">
+    <li><div class="t">(가) 예산을 1,800만으로 늘린 것이다</div><div class="m">비용이 분기당 900만 늘어납니다. 연 3,600만. 견딜 만합니다.</div></li>
+    <li><div class="t">(나) 실제 CAC가 6,000원이다</div><div class="m">900만으로는 <b>1,500명밖에 안 모입니다.</b> 전환 10%면 150명. 매출 5.4억 → 2.7억. <b>반토막입니다.</b></div></li>
+  </ul>
+</div>
+
+<figure class="fig">
+<svg viewBox="0 0 400 108" role="img" aria-label="같은 광고비 900만원으로 CAC 3000원이면 3000명, CAC 6000원이면 1500명이 모인다">
+  <text x="2" y="13" font-size="12" font-weight="700" fill="var(--ink)">광고 900만 · CAC 3,000원</text>
+  <text x="398" y="13" font-size="11" fill="var(--muted)" text-anchor="end">3,000명 → 5.4억</text>
+  <rect x="2" y="19" width="396" height="22" rx="3" fill="var(--f4)"/>
+
+  <text x="2" y="69" font-size="12" font-weight="700" fill="var(--ink)">광고 900만 · CAC 6,000원</text>
+  <text x="398" y="69" font-size="11" fill="var(--muted)" text-anchor="end">1,500명 → 2.7억</text>
+  <rect x="2" y="75" width="198" height="22" rx="3" fill="var(--f2)"/>
+</svg>
+<figcaption>예산을 안 늘리고 CAC만 두 배가 되면 이렇게 됩니다. 1월 런칭 하나에서 2.7억이 왔다 갔다 합니다.</figcaption>
+</figure>
+
+<div class="warn">종혁 본부장님께 오늘 물어볼 한 문장: <b>"과거에 카페 회원 1명 모으는 데 실제로 얼마 들었습니까?"</b> 이 답이 3,000원이면 식스 엔진이 맞고, 6,000원이면 모든 페이지의 7.14억을 다시 써야 합니다.</div>
+
+<h2>충돌 2 — 가르친 것과 하는 것이 다릅니다</h2>
+<div class="card">
+  <p style="margin:0 0 10px">이게 이번 정리에서 가장 날카로운 지점입니다. 루크님이 뿌요님과 디노님께 준 원칙을, 루크님 회사에 그대로 대 봤습니다.</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th style="width:42%">남에게 한 말</th><th>자기 회사는</th></tr></thead>
+    <tbody>
+      <tr><td>"7~10일 안에 안 되면 버려라"<br><small>→ 디노</small></td><td>신규 전선 10개를 한 회의에서 동시에 염. 기존 6개 위에 얹힘. <b>어느 것도 폐기 기한이 없음</b></td></tr>
+      <tr><td>"ROAS &lt; 1 지속 시 즉시 손절"<br><small>→ 뿌요</small></td><td>6개 엔진 중 손절 기준이 문서화된 것 <b>0개</b></td></tr>
+      <tr><td>"광고비는 대출이 아니라 순수익에서"<br><small>→ 뿌요</small></td><td>1월 광고비 1,800만의 출처가 명시되지 않음 — <b>확인 필요</b></td></tr>
+      <tr><td>"3개월 유지해야 최소 실력"<br><small>→ 뿌요</small></td><td>메이븐 1,800만은 10월·11월 2개월. 12월은 "20일 라이브 보고 결정". <b>아직 3개월 기준 미달</b></td></tr>
+      <tr><td>"수익 하락 시 즉각 비용 절감"<br><small>→ 뿌요</small></td><td>매출 확정 전에 서울 이전 + 3명 채용이 먼저 섭니다</td></tr>
+      <tr><td>"성과 없으면 미련 없이 폐기"<br><small>→ 디노</small></td><td>디노님 영상 건은 10-06에 이미 "수익성 악화 확인". <b>본인 기준대로면 손절 신호였는데 비용 절감 최적화로 갔습니다</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="emph">이건 능력 문제가 아니라 <b>비대칭</b>입니다. 남의 사업은 린하게 보면서 자기 사업은 전부 살려두고 있습니다. 코치가 자기 코칭을 안 받는 전형적인 형태입니다.</div>
+</div>
+
+<h2>전문가 6인 비평</h2>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px"><span class="tag">CFO</span> 매출이 아니라 고정비가 먼저 섭니다</h3>
+  <p style="margin:0 0 8px">신규 고정비로 올라온 것을 세어 보면 — 실행 인재 250만(수습)→300만, 튜터 2명(금액 미정), 서울 사무실(임대료 미정), 책임자급 518만. <b>확정된 것만 월 250만, 미정이 셋입니다.</b></p>
+  <p style="margin:0 0 8px">11~12월 확보 예상이 4,100~4,600만입니다. 여기서 신규 고정비 3개월치가 빠지고, 1월 광고비 1,800만(또는 900만)이 또 빠집니다. <b>무차입 원칙이면 이 전부가 현금에서 나옵니다.</b></p>
+  <div class="emph">판정: 채용과 이전을 <b>1월 런칭 정산 이후로 미루십시오.</b> 매출이 선행하지 않은 고정비는 무차입 원칙과 정면으로 충돌합니다. 뿌요님께 "생활비와 사업 계좌를 분리하라"고 하신 것과 같은 말입니다.</div>
+</div>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px"><span class="tag">유통·물류</span> 위너 시스템은 고객끼리 마진을 깎게 만듭니다</h3>
+  <p style="margin:0 0 8px">내수 사이트에 "동일 상품 간 가격 흥정·비교 구매", 역직구에 "최저가 선정 판매자 우선 노출". 그런데 <b>그 판매자들이 전부 루크님 수강생입니다.</b></p>
+  <p style="margin:0 0 8px">쿠팡 위너가 작동하는 건 쿠팡이 트래픽을 독점하고 있어서입니다. 판매자는 마진을 깎아도 거래량이 늘어나 남습니다. <b>트래픽이 없는 위너 시스템은 마진만 깎고 거래는 안 늘립니다.</b> 수강생 입장에서는 돈 내고 배운 뒤 돈 내고 서로 싸우는 구조가 됩니다.</p>
+  <div class="emph">판정: 위너(최저가 경쟁) 말고 <b>카탈로그 통합 + 중복 상품 1인 독점 노출</b>로 뒤집으십시오. 같은 상품에 여러 수강생이 걸리면 가격이 아니라 <b>선착순·기여도·재고 보유</b>로 한 명을 세웁니다. 그러면 플랫폼이 마진을 지켜 주는 쪽이 되고, 그게 수강생이 돈 내고 쓸 이유가 됩니다.</div>
+  <div class="note">퀵커머스 2,000원 · 30~60분 배송은 별건입니다. 단가가 성립하는지만 따로 보십시오 — <b>확인 필요</b>.</div>
+</div>
+
+<div class="card accent">
+  <h3 style="margin:0 0 8px"><span class="tag">교육사업</span> 린 전환은 맞습니다. 단 층을 구분하십시오</h3>
+  <p style="margin:0 0 8px">"주입식·밀착형 → VOD + 전자책"은 <b>대중 강의층에서는 전적으로 옳습니다.</b> 그리고 이건 사흘 전 일십백천 판단과 충돌하지 않습니다. 린하게 바꾸자고 한 건 3만~180만 층이고, 990만 층이 아닙니다.</p>
+  <p style="margin:0 0 8px"><b>그리고 좋은 소식이 하나 있습니다.</b> 제가 "점수 선별기를 도구공방 앞단에 신설하라"고 했던 그 자리가, 이미 생겼습니다 — <b>매주 월요일 무료 라이브 + 과제 첨삭</b>입니다. 새 채널을 만들 필요가 없습니다. 월요일마다 점수를 재면 500명이 자동으로 분류됩니다.</p>
+  <p style="margin:0 0 8px">문항 설계도 이미 있습니다. 디노님께 시킨 <b>"아이템 100개를 상대평가 학점(S, A+)과 예상 수익으로 정리"</b>가 점수의 원형입니다.</p>
+  <div class="emph">판정: 점수를 새로 발명하지 마십시오. <b>디노님께 준 학점 체계 + 월요일 라이브</b> 두 개를 붙이면 끝납니다. 이번 주 안에 가능합니다.</div>
+</div>
+
+<div class="card gold">
+  <h3 style="margin:0 0 8px"><span class="tag">조직·HR</span> '기말고사'는 평가가 아니라 통보입니다</h3>
+  <p style="margin:0 0 8px">책임자급 518만에 걸맞은 성과를 내야 한다는 건 맞습니다. 문제는 <b>평가 기준이 사후에 생기고 있다는 것</b>입니다. 기말고사는 시험 범위를 먼저 알려줘야 기말고사입니다. 범위 없이 보는 시험은 평가가 아니라 통보고, 통보는 조직에서 신뢰를 깎습니다.</p>
+  <p style="margin:0 0 8px">수습 250만 → 정식 300만도, <b>무엇을 하면 300만이 되는지</b>가 공고에 없으면 좋은 사람이 안 옵니다. 회의에서 "탁월한 인재는 이미 자기 사업을 한다"고 하셨는데, 맞습니다. 그런 사람을 250만으로 데려오려면 <b>돈이 아닌 것</b>을 줘야 합니다 — 지분, 매출 연동, 또는 자기 브랜드를 키울 자리.</p>
+  <div class="emph">판정: 3명 동시 채용은 과합니다. <b>실행 인재 1명만 먼저</b> 뽑고, 튜터 2명은 커뮤니티를 열어 본 뒤 실제 질문량을 보고 결정하십시오. 질문이 안 오면 튜터는 0명이어도 됩니다.</div>
+</div>
+
+<div class="card blue">
+  <h3 style="margin:0 0 8px"><span class="tag">M&amp;A</span> 지금 구조로는 2년 뒤 밸류가 안 나옵니다</h3>
+  <p style="margin:0 0 8px">"2년 집중 후 높은 밸류에이션 엑시트"가 목표인데, 매출의 대부분이 <b>루크님 얼굴과 이름에 붙어 있습니다.</b> 멘토루크 브랜드, 1:1 컨설팅, 라이브, 상담. 인수자는 창업자가 빠지면 매출이 빠지는 사업에 배수를 낮게 매깁니다. 교육업은 특히 그렇습니다.</p>
+  <p style="margin:0 0 8px">또 <b>무차입 + 2년 엑시트는 서로 당깁니다.</b> 무차입은 성장 속도를 제한하고, 인수자는 성장률을 봅니다. 둘 다 가지려면 자본 대신 <b>남의 매출</b>을 붙여야 하는데, 그게 정확히 회의에 나온 <b>강사 라이선스(매출 10% 또는 구독료)</b>입니다.</p>
+  <div class="emph">판정: 엑시트를 진짜 할 거면 오늘부터 KPI를 하나 추가하십시오 — <b>"루크 없이 나온 매출 비중 %"</b>. 강사 라이선스 건수와 그 매출이 이 지표입니다. 회의에 아이디어로는 올라왔지만 숫자 목표가 없습니다. 2년 뒤 이 비중이 40%를 넘지 않으면 엑시트는 희망사항입니다.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin:0 0 8px"><span class="tag">코치</span> 디노님 건은 본인 기준대로면 이미 손절이었습니다</h3>
+  <p style="margin:0 0 8px">09-28에 "7~10일 안에 성과 없으면 미련 없이 버려라"라고 하셨습니다. 10-06에 영상 1건 20만원, "수익성 악화 확인". 릴스를 매일 1개 올리면 <b>월 30건 × 20만 = 600만원</b>입니다. 디노님 상황에서 월 600만 제작비는 성립하지 않습니다.</p>
+  <p style="margin:0 0 8px">그런데 10-06 회의는 손절이 아니라 <b>비용 절감 최적화</b>로 갔습니다. 모델 비교, 프롬프트 수정 규칙, MCP 연동. 전부 합리적이지만, 전부 <b>이 아이템을 살리는 방향</b>입니다. 본인이 준 규칙대로면 이건 폐기하고 100개 리스트의 2번으로 넘어갈 자리였습니다.</p>
+  <div class="emph">판정: 디노님께 <b>단가 상한을 먼저 주십시오</b> — "영상 1건 2만원 안에 안 들어오면 이 아이템은 버린다." 숫자가 없으면 최적화는 무한히 계속됩니다. 그리고 같은 질문을 루크님 엔진 6개에도 던지십시오.</div>
+</div>
+
+<h2>종합 판정</h2>
+<div class="card accent">
+  <p style="margin:0 0 10px"><b>방향은 맞고, 개수가 틀렸습니다.</b></p>
+  <ul class="list">
+    <li><div class="t">맞는 것</div><div class="m">교육 린 전환 · 커뮤니티 개방 · 강사 라이선스 · 무차입 · 물류를 자산으로 보는 시각</div></li>
+    <li><div class="t">틀린 것</div><div class="m">전선 개수(16개) · 위너 시스템의 방향 · 채용·이전 타이밍 · 손절 기준 부재</div></li>
+    <li><div class="t">모르는 것</div><div class="m">실제 CAC. 이거 하나가 7.14억이냐 3.5억이냐를 가릅니다</div></li>
+  </ul>
+  <div class="emph">루크님은 <b>남의 사업을 진단하는 능력은 이미 증명됐습니다.</b> 뿌요님께 준 재무 원칙, 디노님께 준 린 방법론 — 둘 다 정확합니다. 부족한 건 통찰이 아니라 <b>그 통찰을 자기 회사에 적용하는 규율</b>입니다. 그래서 이번 주에 새로 배울 건 없습니다. 이미 아는 걸 자기한테 쓰면 됩니다.</div>
+</div>
+
+<h2>이번 주에 할 일 다섯</h2>
+<div class="card accent">
+  <ol class="steps">
+    <li><b>오늘(10/21) 종혁 본부장님께 CAC 확정</b><br>"과거에 카페 회원 1명 모으는 데 실제로 얼마 들었습니까?" 3,000원이면 유지, 6,000원이면 전 페이지 수치 재작성.</li>
+    <li><b>엔진 6개에 손절 기준 한 줄씩</b><br>"언제까지 얼마가 안 나오면 끈다." 6줄이면 끝납니다. 뿌요님께 준 ROAS 규칙을 자기 것으로 가져오는 작업입니다.</li>
+    <li><b>신규 10개를 3개로 줄이기</b><br>남길 것 제안: 월요일 무료 라이브(점수 선별기 자리) · 강사 라이선스(엑시트 지표) · 역직구 1개. 나머지 7개는 1월 런칭 정산 후로.</li>
+    <li><b>채용 3명 → 1명</b><br>실행 인재만. 튜터는 커뮤니티 열고 질문량 보고 결정.</li>
+    <li><b>디노님께 단가 상한 통보</b><br>"영상 1건 N만원 안에 안 들어오면 버린다." 본인이 가르친 규칙을 본인 사람에게 적용.</li>
+  </ol>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">실제 CAC — 3,000원인가 6,000원인가</div><div class="m">가장 급한 한 가지</div></li>
+    <li><div class="t">1월 광고비 1,800만의 출처</div><div class="m">11~12월 순수익에서 나오는지, 아니면 다른 데서 당겨오는지</div></li>
+    <li><div class="t">튜터 2명 인건비 · 서울 사무실 임대료</div><div class="m">신규 고정비 총액이 이 둘 없이는 안 나옵니다</div></li>
+    <li><div class="t">책임자급 518만이 기존 인력인지 신규인지</div></li>
+    <li><div class="t">퀵커머스 2,000원 · 30~60분 배송의 실제 단가</div><div class="m">배달 플랫폼 수수료 포함 시 성립하는지</div></li>
+    <li><div class="t">디노님 영상 건의 손절 단가 기준</div><div class="m">아직 정해진 숫자가 없습니다</div></li>
+  </ul>
+</div>
+
+<p class="src">근거 — 플라우드 녹음 4건: 「신정현 10-19 이커머스 비즈니스 확장 및 교육 사업 고도화 전략 회의」(68분) · 「뿌요 10-19 코칭 세션: 비즈니스 정상화 및 온·오프라인 확장 로드맵」(3시간 38분) · 「09-28 디노(김수민)의 성장과 사업 방향성 재정립을 위한 멘토링」(30분) · 「김수민 2026-10-06」(21분). 숫자(광고비·인원·급여·단가)는 각 녹음 요약에 적힌 값 그대로이고, CAC 6,000원(=1,800만÷3,000명), 월 600만(=30건×20만), 전선 16개(기존 6 + 신규 10)는 그 값으로 제가 한 산수입니다. 기존 모델 수치는 <a href="../engine/">식스 엔진</a>, 990만 티어 판단은 <a href="../ilsip/">일십백천</a> 참조.</p>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-21 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      if(!box.querySelector('.donelist')) return;
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
