@@ -234,13 +234,13 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <div><b>10/21</b><span>근무 시작</span></div>
     <div><b>3개월</b><span>1차 기간</span></div>
     <div><b>3,000명</b><span>카페 신규 회원 — 성과 기준</span></div>
-    <div><b>7가지</b><span>아래에서 같이 정할 것</span></div>
+    <div><b>민트 6</b><span>수익 배분 (멘토루크 4)</span></div>
   </div>
 </div>
 
 <div class="card accent">
   <p style="margin:0 0 8px">민트님, 합류 축하드립니다. 10월 9일에 나눈 이야기를 조건 단위로 정리했습니다. <b>정해진 것</b>과 <b>아직 숫자가 안 정해진 것</b>을 나눠 적었습니다.</p>
-  <p style="margin:0">맨 아래에 <b>입력란</b>이 있습니다. 채우고 버튼을 누르시면 메일로 보내거나 내용을 복사하실 수 있습니다.</p>
+  <p style="margin:0">맨 아래 <b>입력란</b>에 인적사항과 계좌를 적어 주시고, 조건 중 다르게 보시는 부분이 있으면 같이 적어 주세요. 버튼을 누르면 메일로 보내거나 내용을 복사하실 수 있습니다.</p>
 </div>
 
 <h2>정해진 것</h2>
@@ -255,6 +255,12 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <dt>용역비 성격</dt><dd><b>선투자</b> — 3개월간은 수익 배분액에서 차감하지 않음. 4개월차부터 차감</dd>
     <dt>광고비</dt><dd>월 300만원 — 멘토루크 부담</dd>
     <dt>강의 런칭</dt><dd>2027년 1월 중 · <b>1월 16일은 제외</b></dd>
+    <dt>수익 배분</dt><dd><b>민트 6 : 멘토루크 4</b></dd>
+    <dt>배분 기준액</dt><dd>매출 − PG 수수료 − 광고비 − 외주 제작비<br><span class="note" style="display:inline-block;margin-top:4px">광고비·외주비를 멘토루크가 전액 부담하므로 이를 먼저 뺀 '수익'을 나눕니다</span></dd>
+    <dt>정산일</dt><dd>매월 말 산정 → 익월 22일 (용역비 지급일과 동일)</dd>
+    <dt>외주(PD) 한도</dt><dd>월 150만원</dd>
+    <dt>광고 집행</dt><dd>계약 개시 후 14일 이내 개시</dd>
+    <dt>1월 강의 객단가</dt><dd>180만원 기준</dd>
     <dt>겸업</dt><dd><b>제한 없음</b></dd>
     <dt>업무 방식</dt><dd>방법과 시간은 자율 · 주 1회 진행 공유</dd>
   </div>
@@ -319,61 +325,73 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <div class="note">광고비와 운영비를 법인이 부담하기 때문에 자산을 법인에 두는 구조입니다. 계정은 처음 만들 때부터 이렇게 세팅하는 게 나중에 번거롭지 않습니다.</div>
 </div>
 
-<h2 id="form">같이 정할 일곱 가지 — 입력란</h2>
+<h2>수익 배분 계산 예시</h2>
+<div class="card">
+  <p style="margin:0 0 10px">6:4가 어디에 적용되는지 숫자로 보여 드립니다. <b>가정</b> — 3개월간 수강생 60명 · 객단가 180만원</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th style="white-space:nowrap">금액</th></tr></thead>
+    <tbody>
+      <tr><td>매출 (60명 × 180만)</td><td style="white-space:nowrap">1억 800만</td></tr>
+      <tr><td>− PG 수수료 4%</td><td style="white-space:nowrap">−432만</td></tr>
+      <tr><td>− 광고비</td><td style="white-space:nowrap">−900만</td></tr>
+      <tr><td>− 외주 제작비</td><td style="white-space:nowrap">−450만</td></tr>
+      <tr><td><b>배분 기준액</b></td><td style="white-space:nowrap"><b>9,018만</b></td></tr>
+      <tr><td>민트 6 —</td><td style="white-space:nowrap"><b>5,411만</b></td></tr>
+      <tr><td>멘토루크 4 —</td><td style="white-space:nowrap"><b>3,607만</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="kv">
+    <dt>민트님 최종</dt><dd>5,411만 + 고정 용역비 900만 = <b>6,311만원</b></dd>
+  </div>
+</div>
+
+<h2>추후 별도로 정할 것</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">커머스 카테고리의 세부 품목과 운영 방식</div></li>
+    <li><div class="t">오프라인 매장 및 역직구 확장</div></li>
+    <li><div class="t">영상 제작 인력(PD) 채용 주체와 역할</div></li>
+    <li><div class="t">4개월차 이후의 보수·배분 조건</div></li>
+  </ul>
+  <div class="note">지금 정하지 않아도 계약은 성립합니다. 필요할 때 서면으로 더하면 됩니다.</div>
+</div>
+
+<h2 id="form">입력란</h2>
 <div class="card gold">
-  <p style="margin:0">아래를 채우고 맨 아래 버튼을 눌러 주세요. <b>입력 중인 내용은 이 브라우저에 자동 저장</b>되니 중간에 닫으셔도 괜찮습니다.</p>
+  <p style="margin:0">인적사항과 계좌를 적어 주시고, 위 조건 중 다르게 보시는 부분이 있으면 맨 아래에 적어 주세요. <b>입력 중인 내용은 이 브라우저에 자동 저장</b>되니 중간에 닫으셔도 괜찮습니다.</p>
 </div>
 
 <form id="f" class="card" onsubmit="return false">
 
-<h3>① 수익 배분의 방향</h3>
-<label class="opt"><input type="radio" name="q1" value="민트 6 : 멘토루크 4"> 민트 6 : 멘토루크 4</label>
-<label class="opt"><input type="radio" name="q1" value="멘토루크 6 : 민트 4"> 멘토루크 6 : 민트 4</label>
-<label class="opt"><input type="radio" name="q1" value="기타"> 기타 — 아래에 적어 주세요</label>
-<input class="inp" type="text" name="q1etc" placeholder="기타 선택 시 내용">
-
-<h3>② 배분의 기준 금액</h3>
-<label class="opt"><input type="radio" name="q2" value="A안 — PG 수수료만 뺀 매출 기준(비용은 멘토루크 부담)"> <b>A안</b> — PG 수수료만 뺀 매출을 기준으로 나눔 (광고·외주 비용은 멘토루크 부담)</label>
-<label class="opt"><input type="radio" name="q2" value="B안 — 매출에서 PG·광고비·외주비를 뺀 금액 기준"> <b>B안</b> — 매출에서 PG·광고비·외주비를 먼저 빼고 남은 금액을 나눔</label>
-<label class="opt"><input type="radio" name="q2" value="기타"> 기타 — 아래에 적어 주세요</label>
-<input class="inp" type="text" name="q2etc" placeholder="기타 선택 시 내용">
-
-<h3>③ 3개월 비용 총액</h3>
-<p class="hint">고정 용역비 + 광고비 + 외주비를 합한 3개월 총 예산</p>
-<input class="inp" type="text" name="q3" placeholder="예: 1,800만원">
-
-<h3>④ 외주(PD) 월 한도</h3>
-<p class="hint">월 얼마까지를 멘토루크가 부담할지</p>
-<input class="inp" type="text" name="q4" placeholder="예: 150만원">
-
-<h3>⑤ 광고 최초 집행일</h3>
-<p class="hint">성과 3개월의 기산일이 됩니다</p>
-<input class="inp" type="date" name="q5">
-
-<h3>⑥ 1월 강의 객단가</h3>
-<p class="hint">180만원대로 이야기했는데 확정값으로</p>
-<input class="inp" type="text" name="q6" placeholder="예: 180만원">
-
-<h3>⑦ 카페 모집 단가 참고치</h3>
-<p class="hint">이전에 월 4,000명 모으셨을 때의 광고 단가를 알려주시면, 월 300만원으로 월 1,000명이 현실적인 선인지 같이 계산해 보려 합니다</p>
-<input class="inp" type="text" name="q7" placeholder="예: 월 광고비 1,000만원 / 가입 1명당 2,500원">
-
-<h3>⑧ 강의 런칭 희망일 <small>1월 중 · 16일 제외</small></h3>
-<input class="inp" type="date" name="q8">
-
-<h3>확인해 주실 것</h3>
-<label class="opt"><input type="checkbox" name="c1"> 근무 시작일 <b>2026-10-21</b>이 맞습니다</label>
-<label class="opt"><input type="checkbox" name="c2"> 지급일 <b>11/20 · 12/22 · 1/22</b>가 맞습니다</label>
-<label class="opt"><input type="checkbox" name="c3"> 고정 용역비가 <b>3개월간 선투자, 4개월차부터 차감</b>인 점에 동의합니다</label>
-<label class="opt"><input type="checkbox" name="c4"> <b>배분 제외 범위</b>(기존 3PL·리셀·프로그램 매출)에 동의합니다</label>
-<label class="opt"><input type="checkbox" name="c5"> <b>계정·자산을 법인 명의</b>로 두는 것에 동의합니다</label>
-<label class="opt"><input type="checkbox" name="c6"> <b>겸업 제한 없음</b>을 확인했습니다</label>
+<h3>인적사항</h3>
+<input class="inp" type="text" name="addr" placeholder="주소">
+<input class="inp" type="text" name="birth" placeholder="생년월일 (예: 1985-03-12)">
+<input class="inp" type="text" name="tel" placeholder="연락처">
 
 <h3>지급 계좌</h3>
 <input class="inp" type="text" name="bank" placeholder="은행 / 계좌번호 / 예금주">
 
+<h3>확인해 주실 것</h3>
+<label class="opt"><input type="checkbox" name="c1"> 근무 시작일 <b>2026-10-21</b>이 맞습니다</label>
+<label class="opt"><input type="checkbox" name="c2"> 지급일 <b>11/20 · 12/22 · 1/22</b>가 맞습니다</label>
+<label class="opt"><input type="checkbox" name="c3"> 수익 배분 <b>민트 6 : 멘토루크 4</b>가 맞습니다</label>
+<label class="opt"><input type="checkbox" name="c4"> 배분 기준액이 <b>매출에서 PG·광고비·외주비를 뺀 금액</b>인 점에 동의합니다</label>
+<label class="opt"><input type="checkbox" name="c5"> 고정 용역비가 <b>3개월간 선투자, 4개월차부터 차감</b>인 점에 동의합니다</label>
+<label class="opt"><input type="checkbox" name="c6"> <b>배분 제외 범위</b>(기존 3PL·리셀·프로그램 매출)에 동의합니다</label>
+<label class="opt"><input type="checkbox" name="c7"> <b>계정·자산을 법인 명의</b>로 두는 것에 동의합니다</label>
+<label class="opt"><input type="checkbox" name="c8"> <b>겸업 제한 없음</b>을 확인했습니다</label>
+
+<h3>참고로 여쭙습니다 <small>계약 조건은 아닙니다</small></h3>
+<p class="hint">이전에 카페 월 4,000명 모으셨을 때의 광고 단가를 알려주시면, 월 300만원으로 월 1,000명이 현실적인 선인지 같이 계산해 보려 합니다</p>
+<input class="inp" type="text" name="cac" placeholder="예: 월 광고비 1,000만원 / 가입 1명당 2,500원">
+
+<h3>강의 런칭 희망일 <small>2027년 1월 중 · 16일 제외</small></h3>
+<input class="inp" type="date" name="launch">
+
 <h3>그 밖에 하실 말씀</h3>
-<p class="hint">틀린 부분, 생각과 다른 부분, 빠진 부분</p>
+<p class="hint">조건 중 다르게 보시는 부분, 빠진 부분, 그 밖의 의견</p>
 <textarea class="inp" name="memo" rows="5" placeholder="자유롭게 적어 주세요"></textarea>
 
 <div class="btns">
@@ -439,39 +457,36 @@ textarea.inp{resize:vertical}
   }
   function line(label,val){ return label+': '+(val?val:'(미입력)'); }
   function build(){
-    var q1=v('q1'); if(q1==='기타') q1='기타 — '+v('q1etc');
-    var q2=v('q2'); if(q2==='기타') q2='기타 — '+v('q2etc');
     var L=[];
-    L.push('멘토루크 × 민트 — 협업 조건 회신');
+    L.push('멘토루크 × 민트 — 계약 조건 확인 회신');
     L.push('작성일: '+new Date().toLocaleString('ko-KR'));
     L.push('');
-    L.push('[같이 정할 일곱 가지]');
-    L.push(line('① 수익 배분 방향',q1));
-    L.push(line('② 배분 기준 금액',q2));
-    L.push(line('③ 3개월 비용 총액',v('q3')));
-    L.push(line('④ 외주(PD) 월 한도',v('q4')));
-    L.push(line('⑤ 광고 최초 집행일',v('q5')));
-    L.push(line('⑥ 1월 강의 객단가',v('q6')));
-    L.push(line('⑦ 카페 모집 단가 참고치',v('q7')));
-    L.push(line('⑧ 강의 런칭 희망일',v('q8')));
+    L.push('[인적사항]');
+    L.push(line('주소',v('addr')));
+    L.push(line('생년월일',v('birth')));
+    L.push(line('연락처',v('tel')));
+    L.push(line('지급 계좌',v('bank')));
     L.push('');
     L.push('[확인 항목]');
     L.push(line('근무 시작일 2026-10-21',v('c1')));
     L.push(line('지급일 11/20 · 12/22 · 1/22',v('c2')));
-    L.push(line('선투자 후 4개월차 차감',v('c3')));
-    L.push(line('배분 제외 범위',v('c4')));
-    L.push(line('계정·자산 법인 명의',v('c5')));
-    L.push(line('겸업 제한 없음',v('c6')));
+    L.push(line('수익 배분 민트 6 : 멘토루크 4',v('c3')));
+    L.push(line('배분 기준액 = 매출 − PG − 광고비 − 외주비',v('c4')));
+    L.push(line('선투자 후 4개월차 차감',v('c5')));
+    L.push(line('배분 제외 범위',v('c6')));
+    L.push(line('계정·자산 법인 명의',v('c7')));
+    L.push(line('겸업 제한 없음',v('c8')));
     L.push('');
-    L.push(line('[지급 계좌]',v('bank')));
+    L.push(line('[참고] 과거 카페 모집 단가',v('cac')));
+    L.push(line('[참고] 강의 런칭 희망일',v('launch')));
     L.push('');
-    L.push('[그 밖에 하실 말씀]');
+    L.push('[다르게 보시는 부분 / 그 밖의 의견]');
     L.push(v('memo')||'(없음)');
     return L.join('\n');
   }
   var to=['fund.mid16','gmail.com'].join('@');
   document.getElementById('mailBtn').addEventListener('click',function(){
-    var sub='[협업 조건 회신] 민트 — 멘토루크';
+    var sub='[계약 조건 확인] 민트 — 멘토루크';
     location.href='mailto:'+to+'?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(build());
     S.textContent='메일 앱을 여는 중입니다. 마지막에 보내기를 눌러 주세요.';
   });
