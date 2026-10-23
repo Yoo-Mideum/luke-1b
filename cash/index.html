@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>11월 ~ 2월 — 들어올 돈과 나갈 돈 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.pg{display:flex;gap:11px;align-items:flex-start}
+.pg .pgn{flex:0 0 auto;width:52px;text-align:center;background:var(--accent);color:#fff;border-radius:12px;padding:7px 4px;font-family:"Gowun Dodum",sans-serif;line-height:1.15}
+.pg .pgn b{display:block;font-size:21px}
+.pg .pgn span{font-size:10px;opacity:.88;letter-spacing:.02em}
+.pg .pgn.q{background:var(--gold)}
+.pg .pgb{min-width:0;flex:1}
+.pg h3{margin-bottom:2px}
+.say{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:9px 0 0;font-size:14.5px;line-height:1.75}
+.say:before{content:"말할 것";display:block;font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;font-weight:700}
+.emph{font-size:13px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.emph b{color:var(--gold)}
+.tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.qa summary{cursor:pointer;font-size:14px;font-weight:500}
+.qa .a{font-size:13.5px;color:var(--muted);margin-top:9px}
+.qa .a b{color:var(--ink)}
+.skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
+.skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.skiprow dd{margin:0;color:var(--muted)}
+.fb{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:0 0 9px;line-height:1.62}
+.fb b{color:var(--ink);font-weight:500}
+.ba2{margin:9px 0 0;font-size:13.5px;display:grid;gap:5px}
+.ba2 .b,.ba2 .a{padding:8px 10px;border-radius:8px;line-height:1.62}
+.ba2 .b{background:var(--red-soft)}
+.ba2 .a{background:var(--accent-soft)}
+.ba2 .b:before{content:"수정 전";display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;letter-spacing:.06em}
+.ba2 .a:before{content:"수정 후";display:block;font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:3px;letter-spacing:.06em}
+.en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:12.5px;color:var(--muted)}
+.why2{font-size:13.5px;margin-top:9px;line-height:1.68}
+.why2:before{content:"왜";display:inline-block;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
+.ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.ov dd{margin:0}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+:root{--f1:#6fbb9f;--f2:#3d9273;--f3:#1a6d54;--f4:#054d39}
+@media (prefers-color-scheme: dark){:root{--f1:#35775f;--f2:#43997d;--f3:#4cbc95;--f4:#62dcb0}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;padding:0 4px}
+.now{display:grid;grid-template-columns:76px 1fr;gap:8px 10px;font-size:14px;align-items:start}
+.now dt{font-size:11.5px;font-weight:700;letter-spacing:.02em;text-align:center;border-radius:999px;padding:3px 0}
+.now dd{margin:0}
+.now .ok{background:var(--accent-soft);color:var(--accent)}
+.now .go{background:var(--blue-soft);color:var(--blue)}
+.now .zero{background:var(--red-soft);color:var(--red)}
+.now .q{background:var(--gold-soft);color:var(--gold)}
+.ms{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.ms.on{border-left-color:var(--accent)}
+.ms h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ms h3 .when{font-size:12px;color:var(--muted);font-weight:400}
+.ms ul{list-style:none;padding:0;margin:8px 0 0}
+.ms li{font-size:14px;padding:4px 0 4px 22px;position:relative}
+.ms li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border:1.5px solid var(--line);border-radius:3px}
+.ms .one{margin-top:10px;font-size:13.5px;background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.ms .one b{color:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-10-23</span></div>
+<script>window.LUKE_ROOT="../";</script>
+<div class="hero">
+  <h1>11월 ~ 2월 — 들어올 돈과 나갈 돈</h1>
+  <div class="sub">10/23 민트 회의로 런칭일이 확정되면서 수익 시점이 바뀌었습니다</div>
+  <div class="goal">
+    <div><b>0건</b><span>금액까지 확정된 수익</span></div>
+    <div><b>4,980만</b><span>11~1월 수입 (전부 가정값)</span></div>
+    <div><b>2,500~2,600만</b><span>같은 기간 민트 건 지출</span></div>
+    <div><b>2/22</b><span>민트 건 첫 수익이 들어오는 날</span></div>
+  </div>
+</div>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px">먼저 — "확정 수익"은 지금 하나도 없습니다</h3>
+  <p style="margin:0 0 8px">금액과 시점이 둘 다 확정된 수익은 <b>11월부터 2월까지 한 건도 없습니다.</b> 실제로 받으신 건 메이븐 10월분 하나뿐입니다.</p>
+  <p style="margin:0">아래는 전부 <b>예상</b>입니다. 그래서 항목마다 확정도를 표시했습니다. 숫자를 합산해서 "이만큼 번다"로 읽으시면 안 됩니다.</p>
+</div>
+
+<h2>한눈에</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th style="white-space:nowrap">월</th><th>수입</th><th style="white-space:nowrap">금액</th><th style="white-space:nowrap">확정도</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:nowrap">11월</td><td>메이븐 정산</td><td style="white-space:nowrap">1,800만</td><td style="white-space:nowrap">◐ 가정</td></tr>
+      <tr><td style="white-space:nowrap">11월</td><td>도구공방 첫 결제</td><td style="white-space:nowrap">소액</td><td style="white-space:nowrap">○ 미정</td></tr>
+      <tr><td style="white-space:nowrap">12월</td><td>메이븐 정산</td><td style="white-space:nowrap">1,800만</td><td style="white-space:nowrap">○ 가장 불확실</td></tr>
+      <tr><td style="white-space:nowrap">12월</td><td>6기 강의 정산</td><td style="white-space:nowrap">500~1,000만</td><td style="white-space:nowrap">◐ 10/25 결과</td></tr>
+      <tr><td style="white-space:nowrap">1월</td><td>가을님 초월스토리</td><td style="white-space:nowrap">500~768만</td><td style="white-space:nowrap">◐ 촬영 전</td></tr>
+      <tr><td style="white-space:nowrap">2월</td><td>민트 1/20 라이브 정산</td><td style="white-space:nowrap">아래 시나리오</td><td style="white-space:nowrap">○ 변동 큼</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="kv">
+    <dt>● 확정</dt><dd>계약·일정·금액이 전부 정해진 것 — <b>현재 0건</b></dd>
+    <dt>◐ 가정</dt><dd>일정은 섰지만 금액이 결과에 달린 것</dd>
+    <dt>○ 미정</dt><dd>전제가 흔들릴 수 있는 것</dd>
+  </div>
+</div>
+
+<h2>월별 순현금 — 1월에 마이너스로 내려갑니다</h2>
+<figure class="fig">
+<svg viewBox="0 0 400 132" role="img" aria-label="월별 순현금은 11월 플러스 900만, 12월 플러스 1750만, 1월 마이너스 270만">
+  <line x1="100" y1="14" x2="100" y2="122" stroke="var(--line)" stroke-width="1"/>
+
+  <text x="2" y="33" font-size="12" font-weight="700" fill="var(--ink)">11월</text>
+  <rect x="100" y="20" width="118" height="22" rx="3" fill="var(--f4)"/>
+  <text x="398" y="36" font-size="11" fill="var(--muted)" text-anchor="end">+900만</text>
+
+  <text x="2" y="69" font-size="12" font-weight="700" fill="var(--ink)">12월</text>
+  <rect x="100" y="56" width="230" height="22" rx="3" fill="var(--f4)"/>
+  <text x="398" y="72" font-size="11" fill="var(--muted)" text-anchor="end">+1,750만</text>
+
+  <text x="2" y="105" font-size="12" font-weight="700" fill="var(--ink)">1월</text>
+  <rect x="65" y="92" width="35" height="22" rx="3" fill="var(--red)"/>
+  <text x="398" y="108" font-size="11" fill="var(--muted)" text-anchor="end">−270만</text>
+</svg>
+<figcaption>수입에서 민트 건 지출을 뺀 값입니다. 2월은 변동 폭이 너무 커서 아래 표로 따로 뺐습니다.</figcaption>
+</figure>
+
+<div class="card gold">
+  <h3 style="margin:0 0 8px">여기가 진짜 위험한 지점입니다</h3>
+  <p style="margin:0 0 8px">11~1월 석 달을 합치면 <b>+2,380만</b>입니다. 버틸 만해 보입니다. 그런데 이 숫자의 <b>3,600만이 메이븐 정산</b>이고, 루크님이 직접 <b>"12월은 20일 라이브 보고 결정"</b>이라고 하셨습니다.</p>
+  <div class="emph">12월 메이븐 1,800만이 빠지면 석 달 순현금이 <b>+2,380만 → +580만</b>이 됩니다. 민트 건에 2,500만을 쓰면서 1월 20일까지 버텨야 하는데, 완충이 580만밖에 안 남습니다.</div>
+</div>
+
+<h2>수입 — 하나씩</h2>
+
+<div class="card">
+  <h3 style="margin:0 0 6px">11·12월 메이븐 정산 — 각 1,800만 <span class="tag">◐ 가정</span></h3>
+  <p style="margin:0 0 8px">10월분만 실제로 정산받으셨고, 11·12월 1,800만은 루크님 가정값입니다. 노션 11월 목표에도 "11월 메이븐 정산 1,800만"으로 올라가 있습니다.</p>
+  <div class="warn">노션에 <b>"메이븐과의 분배가 가장 큰 미확정"</b>이라고 본인이 적어 두셨습니다. 500명 회원을 공동으로 만드는 구조라면 월 1,800만 정산과의 관계를 먼저 정리하셔야 합니다. 이게 11·12월 수입의 72%입니다.</div>
+</div>
+
+<div class="card">
+  <h3 style="margin:0 0 6px">12월 6기 강의 정산 — 500~1,000만 <span class="tag">◐ 10/25</span></h3>
+  <p style="margin:0">모레(10/25) 6기 런칭 결과로 정해집니다. 이번 주에 숫자가 바뀌는 유일한 항목입니다.</p>
+</div>
+
+<div class="card">
+  <h3 style="margin:0 0 6px">1월 가을님 초월스토리 — 500~768만 <span class="tag">◐ 촬영 전</span></h3>
+  <p style="margin:0 0 8px">11월 초 촬영 → 12월 강의 → 1월 정산. 루크 몫은 PG 제외 매출의 8%입니다.</p>
+  <div class="kv">
+    <dt>23명 (6,500만)</dt><dd>499만 — 목표 500만 거의 달성</dd>
+    <dt>35명 (1억)</dt><dd>768만</dd>
+    <dt>52명 (1.5억)</dt><dd>1,152만</dd>
+  </div>
+  <div class="warn">정산 기준이 아직 안 닫혔습니다. <b>8%를 초월스토리가 부담하는지 5:5 분모에서 빼는지</b>에 따라 가을 대표님 몫이 446만 차이 납니다. 노션에 10/22 기한으로 올려두셨는데 아직 미완료입니다.</div>
+</div>
+
+<div class="card accent">
+  <h3 style="margin:0 0 6px">2월 민트 라이브 정산 <span class="tag">○ 변동 큼</span></h3>
+  <p style="margin:0 0 8px">10/23 회의에서 <b>라이브를 2027년 1월 20일(수)로 확정</b>했습니다. 2월 설 연휴 전후 소비력이 떨어지는 걸 피하려는 판단입니다.</p>
+  <div class="kv">
+    <dt>판매</dt><dd>2027-01-20 (수) 라이브</dd>
+    <dt>정산 산정</dt><dd>1월 말일 기준</dd>
+    <dt>지급</dt><dd><b>2027-02-22 (월)</b> — 계약서 제6조 ⑤</dd>
+  </div>
+  <div class="emph">즉 <b>민트 건에서 루크님께 돈이 들어오는 건 2월 22일이 처음입니다.</b> 11월·12월·1월 석 달은 나가기만 합니다.</div>
+</div>
+
+<h2>2월 시나리오 — 배분 비율이 안 닫혀 있습니다</h2>
+<div class="card">
+  <p style="margin:0 0 10px">객단가 180만 · PG 4% · 광고 900만 · 영상 800만 차감(B안) 기준입니다. 고정 용역비 900만은 선투자라 차감하지 않습니다.</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th style="white-space:nowrap">구매자</th><th style="white-space:nowrap">매출</th><th style="white-space:nowrap">루크 24%<br><small>정현님 포함 시</small></th><th style="white-space:nowrap">루크 40%<br><small>단독일 때</small></th></tr></thead>
+    <tbody>
+      <tr><td>0명</td><td>0</td><td>−900만</td><td>−900만</td></tr>
+      <tr><td>75명</td><td>1.35억</td><td>2,700만</td><td>4,500만</td></tr>
+      <tr><td>150명</td><td>2.70억</td><td>5,800만</td><td>9,700만</td></tr>
+      <tr><td>300명</td><td>5.40억</td><td>1.20억</td><td>2.01억</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="warn"><b>어느 칸을 봐야 하는지가 안 정해졌습니다.</b> 10/21에 "민트 6 : 나 4"로 확정하셨으니 루크님 쪽이 40%입니다. 그런데 식스 엔진 페이지에는 <b>"루크 36% · 종혁 40% · 정현 24%"</b>로 적혀 있습니다. 그 40% 안에서 정현님과 다시 6:4로 나누면 루크님은 <b>24%</b>가 됩니다. 300명 기준으로 <b>8,100만원</b> 차이입니다 — <b>확인 필요</b>.</div>
+</div>
+
+<h2>지출 — 민트 건</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th style="white-space:nowrap">금액</th><th>시점</th></tr></thead>
+    <tbody>
+      <tr><td>고정 용역비</td><td style="white-space:nowrap">900만</td><td>11/20(금) · 12/22(화) · 1/22(금) 각 300만</td></tr>
+      <tr><td>광고비</td><td style="white-space:nowrap">900만</td><td>11/6(금) 모집 광고 집행 시작 · 월 300만</td></tr>
+      <tr><td>영상 제작</td><td style="white-space:nowrap">700~800만</td><td>편당 100만 × 7~8편</td></tr>
+      <tr><td><b>합계</b></td><td style="white-space:nowrap"><b>2,500~2,600만</b></td><td>11월 ~ 1월</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+<h2>계약서를 두 군데 고쳐야 합니다</h2>
+<div class="card red">
+  <h3 style="margin:0 0 8px">① 외주비 한도가 실제와 안 맞습니다 <span class="tag">제8조 ②③</span></h3>
+  <div class="kv">
+    <dt>계약서</dt><dd>외주 월 150만 한도 → 3개월 450만 · 총 한도 2,250만</dd>
+    <dt>10/23 회의</dt><dd>영상 편당 100만 × 7~8편 = <b>700~800만</b></dd>
+    <dt>차이</dt><dd><b>250~350만</b> 초과 → 총 한도 2,500~2,600만으로 수정 필요</dd>
+  </div>
+  <div class="note">계약서 제8조 ③에 "초과 지출은 사전 서면 합의"라고 써 뒀으니 당장 문제는 아니지만, 서명 전에 숫자를 맞추는 게 낫습니다.</div>
+</div>
+<div class="card red">
+  <h3 style="margin:0 0 8px">② 런칭일이 확정됐습니다 <span class="tag">제9조</span></h3>
+  <div class="kv">
+    <dt>계약서</dt><dd>"2027년 1월 중 · 1월 16일 제외" · 12월 20일까지 확정</dd>
+    <dt>10/23 회의</dt><dd><b>2027년 1월 20일(수) 확정</b></dd>
+  </div>
+  <div class="note">이제 날짜가 정해졌으니 조문에 직접 박아 넣으면 됩니다.</div>
+</div>
+
+<h2>민트 건 일정 — 돈이 언제 움직이나</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">10/30 — 영상팀(김한준 PD 회사)·광고 대행사 세팅</div><div class="m">여기서 영상 단가가 최종 확정됩니다</div></li>
+    <li><div class="t">11/05(목) — 모집 영상 촬영</div></li>
+    <li><div class="t">11/06(금) ~ 11/20(금) — 모집 광고 집행</div><div class="m">광고비가 처음 나가는 날. 계약서 제2조 ②의 성과 기산일</div></li>
+    <li><div class="t">11/20(금) — 민트님 1회차 용역비 300만</div></li>
+    <li><div class="t">11/30(월) — 첫 본편 촬영</div></li>
+    <li><div class="t">12/05(토) — 첫 영상 업로드</div></li>
+    <li><div class="t">12/22(화) — 2회차 용역비 300만</div></li>
+    <li><div class="t">01/15(금) — 최종편 업로드</div></li>
+    <li><div class="t">01/20(수) — 라이브 · 강의 판매</div><div class="m">여기서 처음 매출이 발생합니다</div></li>
+    <li><div class="t">01/22(금) — 3회차 용역비 300만 (계약 기간 1/20 종료 후)</div></li>
+    <li><div class="t">02/22(월) — 1월 매출 정산 지급</div><div class="m">민트 건 첫 수익</div></li>
+  </ul>
+</div>
+
+<h2>그래서 지금 해야 할 것</h2>
+<div class="card accent">
+  <ul class="list">
+    <li><div class="t">1. 12월 메이븐 1,800만을 이번 주에 확인</div><div class="m">이게 빠지면 석 달 완충이 2,380만에서 580만으로 떨어집니다. "20일 라이브 보고 결정"을 언제까지 결정할지부터 정하십시오</div></li>
+    <li><div class="t">2. 민트 건 배분에서 정현님 몫이 있는지 확정</div><div class="m">300명 기준 8,100만원이 걸려 있습니다. 계약서는 민트 6 : 루크측 4까지만 정했고, 그 4를 누가 나누는지는 안 적혀 있습니다</div></li>
+    <li><div class="t">3. 초월스토리 8% 부담 주체 닫기</div><div class="m">10/22 기한 지났습니다. 가을님 촬영이 11월 초라 그 전에 끝내야 합니다</div></li>
+    <li><div class="t">4. 10/30 영상팀 미팅에서 총액 확정 후 계약서 제8조 수정</div></li>
+    <li><div class="t">5. 1월에 들어올 돈 하나를 더 만들기</div><div class="m">1월은 지금 구조상 순현금 마이너스입니다. 도구공방 전자책·툴박스 구독처럼 작아도 1월에 떨어지는 걸 하나 붙이십시오</div></li>
+  </ul>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">메이븐 11·12월 정산 1,800만의 근거</div><div class="m">10월분과 같은 조건인지, 500명 공동 자산과의 관계는 어떻게 되는지</div></li>
+    <li><div class="t">민트 건 배분 — 루크 40%인가 24%인가</div></li>
+    <li><div class="t">1월 강의 객단가 180만</div><div class="m">10/9 분석의 가정값. 6기 가격과 다를 수 있음</div></li>
+    <li><div class="t">광고비 월 300만을 11·12·1월 세 달 모두 집행하는지</div><div class="m">10/23 회의는 모집 광고(11/6~11/20)만 명시</div></li>
+    <li><div class="t">영상 편수 7편인지 8편인지 · 별도 광고 영상 추가 여부</div></li>
+    <li><div class="t">일십백천·원크루 11~2월 예정 건</div><div class="m">이 정리에 안 넣었습니다. 예정된 상담·결제가 있으면 알려주십시오</div></li>
+    <li><div class="t">3PL 대행료 등 반복 매출</div><div class="m">월 얼마가 꾸준히 들어오는지 숫자를 못 찾았습니다</div></li>
+  </ul>
+</div>
+
+<p class="src">근거 — 런칭일·일정·영상 단가: 플라우드 「민트 / 다마고치 10-23 회의」. 메이븐 1,800만·6기 500~1,000만·가을님 8% 구조: <a href="../engine/">식스 엔진</a>(10/9 분석 기준). 배분 민트 6 : 루크 4 및 정산일: <a href="../park-contract/">민트 1차 계약서</a>(10/21 확정). 메이븐 분배 미확정·초월스토리 8% 부담 주체: 루크 액션보드. 2월 시나리오는 객단가 180만·PG 4%·광고 900만·영상 800만 전제로 제가 계산한 값이며 객단가와 배분 비율이 모두 가정이라 실제와 다를 수 있습니다. 일자별 요일은 계산으로 확인했습니다.</p>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-10-23 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      if(!box.querySelector('.donelist')) return;
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
