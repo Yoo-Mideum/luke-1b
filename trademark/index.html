@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키티티바이지영 상표 출원 — 토탈샵 기준 설계안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbf7f8;--paper:#fff;--fg:#231c1f;--fg2:#5a4b51;--muted:#8f7d85;--rose:#c2306f;--rose-soft:#fbe4ee;--rose-line:#efc0d5;--ok:#1f7a4d;--ok-soft:#e6f4ec;--warn:#b4541b;--warn-soft:#fdeee2;--bad:#b42318;--bad-soft:#fde8e6;--line:#e8dde2}
+@media (prefers-color-scheme:dark){:root{--bg:#161114;--paper:#1f181c;--fg:#f3eaee;--fg2:#cdbdc5;--muted:#9c8a93;--rose:#f08ab5;--rose-soft:#3a1f2c;--rose-line:#5a2f44;--ok:#7fd6a4;--ok-soft:#173327;--warn:#f2a36b;--warn-soft:#3a2416;--bad:#ff8a7e;--bad-soft:#3d1a17;--line:#3a2f35}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans KR",-apple-system,"Apple SD Gothic Neo",sans-serif;font-size:16px;line-height:1.8;word-break:keep-all;padding:24px 16px 72px}
+.wrap{max-width:600px;margin:0 auto}
+header{border-bottom:2px solid var(--rose);padding-bottom:18px}
+.eyebrow{font-size:12px;letter-spacing:.2em;color:var(--rose);font-weight:700}
+h1{font-family:"Gowun Dodum",serif;font-size:26px;line-height:1.35;margin:8px 0 8px}
+.lede{color:var(--fg2);font-size:15.5px;margin:0}
+.meta{font-size:12.5px;color:var(--muted);margin-top:10px}
+section{margin-top:36px}
+h2{font-family:"Gowun Dodum",serif;font-size:21px;margin:0 0 12px;padding-left:12px;border-left:5px solid var(--rose);line-height:1.35}
+h3{font-size:15.5px;margin:18px 0 8px;color:var(--rose)}
+p{margin:0 0 12px}
+.key{background:var(--rose-soft);border:1px solid var(--rose-line);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:15.5px}
+.key b{color:var(--rose)}.key p:last-child{margin:0}
+.alert{background:var(--bad-soft);border:1px solid var(--bad);border-radius:10px;padding:14px 16px;margin:14px 0;font-size:15px}
+.alert b{color:var(--bad)}.alert p:last-child{margin:0}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--paper)}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:13.5px;line-height:1.55}
+th{text-align:left;background:var(--rose-soft);font-weight:700;padding:8px 10px;font-size:12.5px;border-bottom:1px solid var(--rose-line);vertical-align:bottom}
+td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top}
+td.b{font-weight:700}
+td.r,th.r{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+tr.total td{background:var(--rose-soft);font-weight:900;border-top:2px solid var(--rose)}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:99px;white-space:nowrap}
+.t-ok{background:var(--ok-soft);color:var(--ok)}.t-warn{background:var(--warn-soft);color:var(--warn)}.t-bad{background:var(--bad-soft);color:var(--bad)}.t-rose{background:var(--rose-soft);color:var(--rose)}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:10px 0}
+.card h4{margin:0 0 6px;font-size:15px;color:var(--rose)}
+.card ul{margin:0;padding-left:18px;font-size:14.5px}
+.card li{margin-bottom:4px}
+.card p{font-size:14.5px}
+ol{padding-left:20px;margin:6px 0 12px}li{margin-bottom:5px}
+.note{font-size:13px;color:var(--muted)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.kpi{background:var(--paper);border:1px solid var(--line);border-top:4px solid var(--rose);border-radius:10px;padding:10px 12px}
+.kpi.bad{border-top-color:var(--bad)}
+.kpi .v{font-size:22px;font-weight:900;line-height:1.2;font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted)}
+/* 유사군 지도 */
+.map{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:14px;margin:12px 0}
+.zone{border:2px dashed var(--bad);border-radius:10px;padding:12px;background:var(--bad-soft)}
+.zone .zt{font-size:12px;font-weight:900;color:var(--bad);letter-spacing:.05em}
+.zone .zs{font-size:12.5px;color:var(--fg2);margin:2px 0 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:2px 10px}
+.chip.hit{border-color:var(--bad);color:var(--bad);font-weight:700}
+.zone2{border:2px solid var(--ok);border-radius:10px;padding:12px;background:var(--ok-soft);margin-top:10px}
+.zone2 .zt{font-size:12px;font-weight:900;color:var(--ok);letter-spacing:.05em}
+.blockers{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.blk{font-size:12.5px;border-radius:8px;padding:8px 10px;background:var(--paper);border:1px solid var(--line);line-height:1.5}
+.blk b{display:block;font-size:13px}
+.steps{counter-reset:s;list-style:none;padding:0;margin:8px 0}
+.steps li{counter-increment:s;position:relative;padding:10px 12px 10px 48px;background:var(--paper);border:1px solid var(--line);border-radius:10px;margin-bottom:8px;font-size:14.5px;line-height:1.6}
+.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:26px;height:26px;border-radius:50%;background:var(--rose);color:#fff;font-weight:900;font-size:13px;display:flex;align-items:center;justify-content:center}
+.steps li b{color:var(--rose)}
+.src{font-size:12px;color:var(--muted);border-top:1px solid var(--line);margin-top:40px;padding-top:12px;line-height:1.7}
+.src a{color:var(--muted)}
+a{color:var(--rose)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="eyebrow">KITITI BY JIYOUNG · 상표</div>
+  <h1>키티티바이지영 상표 출원<br>토탈샵 기준 설계안</h1>
+  <p class="lede">키프리스에서 직접 검색해 본 결과, 같은 이름은 없지만 <b>헬로키티 계열이 미용 서비스 칸을 막고 있는 흔적</b>이 나왔습니다. 셀프 출원보다 변리사 판단을 먼저 받는 쪽으로 판단을 바꿉니다.</p>
+  <div class="meta">2026-10-29 · KIPRIS 직접 검색 기준 · 지정상품 이름 중 일부는 출원 화면에서 다시 확인 필요</div>
+</header>
+
+<section>
+  <h2>한 줄 결론</h2>
+  <div class="key">
+    <p><b>키프리스는 검색만 되는 곳</b>이고, 실제 출원은 <b>특허로(patent.go.kr)</b>에서 합니다.</p>
+    <p>‘키티티’·‘KITITI’와 같은 상표는 <b>0건</b>입니다. 하지만 토탈샵의 모든 서비스(헤어·메이크업·네일·속눈썹·피부)가 몰려 있는 <b>미용 서비스 한 칸(유사군 S128302)</b>에서, 2024년에 출원한 ‘키티네일스튜디오’가 <b>통째로 거절</b>됐습니다. 같은 칸에 산리오의 <b>HELLO KITTY</b>가 등록돼 있습니다.</p>
+    <p>그래서 이번엔 <b>셀프로 바로 내지 말고, 변리사 유사판단 → 대행 출원 + 우선심사</b>로 가는 게 맞습니다.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi"><div class="v">0건</div><div class="l">‘키티티 / KITITI’ 동일 상표</div></div>
+    <div class="kpi bad"><div class="v">3건</div><div class="l">44류 HELLO KITTY 등록 (산리오)</div></div>
+    <div class="kpi bad"><div class="v">부분거절</div><div class="l">키티네일스튜디오 — 미용 서비스 칸 전부</div></div>
+    <div class="kpi"><div class="v">약 51만 원</div><div class="l">44·41류 관납료 합계 (셀프 기준)</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>10월 1일 판단을 바꾸는 이유</h2>
+  <div class="alert">
+    <p><b>솔직하게:</b> 10/1에는 “44류만 보면 충분히 해볼 만하다”고 했지만, 그건 검색 전 판단이었습니다. 오늘 실제로 찾아보니 <b>‘KITTY’가 들어간 미용업 상표가 같은 업종에서 거절된 사례</b>가 있어서, 위험을 한 단계 높게 봐야 합니다.</p>
+  </div>
+  <p>그리고 일정 문제가 하나 더 있습니다. 10/1 노션 할 일(P0)은 <b>4주째 진행 중</b>, 10/16에 만든 ‘대행 견적 2곳’ 항목은 <b>오늘이 기한</b>인데 시작 전입니다. 한국은 먼저 낸 사람이 이기는 구조라 늦어질수록 손해입니다.</p>
+  <p>특히 토탈샵은 <b>1월 시공·간판 → 1월 말 프리오픈</b>입니다. 일반 심사(12~18개월)로 가면 간판을 단 뒤에 거절 통지를 받을 수 있습니다. <b>간판·인테리어 사인물에 이름을 박기 전에 결과를 보는 것</b>이 이번 출원의 진짜 목적입니다.</p>
+</section>
+
+<section>
+  <h2>키프리스 검색 결과</h2>
+  <div class="tw"><table>
+    <thead><tr><th>검색어</th><th>결과</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td class="b">키티티 (전체 류)</td><td>1건 — ‘페키티 티르시아’ 41류, 거절</td><td><span class="tag t-ok">무관</span></td></tr>
+      <tr><td class="b">KITITI (전체 류)</td><td>0건</td><td><span class="tag t-ok">깨끗</span></td></tr>
+      <tr><td class="b">키티 + 44류</td><td>2건 — 키티네일스튜디오(공고) · 키티스 랩(3류, 포기)</td><td><span class="tag t-bad">핵심 사례</span></td></tr>
+      <tr><td class="b">KITTY + 44류</td><td>6건 — 위 2건 + Kitty By Window(등록 2025.06.05) + HELLO KITTY 등록 3건(산리오: 2006·2015·2019)</td><td><span class="tag t-bad">인용 가능성</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">와일드카드(키티*) 검색은 키프리스 문법이 맞지 않아 결과가 0으로 나왔습니다. ‘키타티’처럼 소리만 비슷한 변형은 변리사 조사에서 같이 봐 달라고 하면 됩니다.</p>
+</section>
+
+<section>
+  <h2>왜 ‘한 칸’이 문제인가 — 유사군 지도</h2>
+  <p>상표 심사는 이름뿐 아니라 <b>유사군 코드</b>(비슷한 서비스끼리 묶은 칸)로 충돌을 봅니다. 토탈샵이 하는 일은 거의 다 한 칸에 들어갑니다.</p>
+  <div class="map">
+    <div class="zone">
+      <div class="zt">S128302 · 미용 서비스 칸</div>
+      <div class="zs">토탈샵 서비스가 거의 전부 여기에 있음</div>
+      <div class="chips">
+        <span class="chip hit">미용서비스업</span><span class="chip hit">미용원업</span><span class="chip hit">미용상담업</span><span class="chip hit">미용 관리업</span><span class="chip hit">네일샵서비스업</span><span class="chip hit">속눈썹 연장 서비스업</span><span class="chip hit">손발톱미용업</span><span class="chip">헤어·메이크업 계열</span>
+      </div>
+      <div class="blockers">
+        <div class="blk"><b>HELLO KITTY · 산리오</b>44류 등록 · 이 칸의 미용서비스업·미용원업·미용상담업 지정</div>
+        <div class="blk"><b>키티네일스튜디오</b>2024.04 출원 → 이 칸 지정상품 전부 부분거절</div>
+      </div>
+    </div>
+    <div class="zone2">
+      <div class="zt">S120503 · 미용 치료 칸</div>
+      <div class="chips" style="margin-top:6px"><span class="chip">미용 치료업</span><span class="chip">속눈썹용 미용 치료서비스업</span></div>
+      <p class="note" style="margin:8px 0 0">키티네일스튜디오는 이 칸만 살아남아 등록결정(2026.07.01)을 받았습니다.</p>
+    </div>
+  </div>
+  <p class="note">키티네일스튜디오의 거절결정서 원문은 키프리스에서 팝업이 열리지 않아 못 읽었습니다. <b>어떤 상표 때문에 거절됐는지는 확인 필요</b>입니다. HELLO KITTY가 같은 칸에 있는 건 확인했지만, 그게 인용상표였다고 단정하지는 않습니다. (출원번호 4020240068390 — 변리사에게 이 번호를 주면 바로 확인해 줍니다.)</p>
+</section>
+
+<section>
+  <h2>키티티는 다른가 — 냉정하게</h2>
+  <div class="card">
+    <h4>우리 쪽 논리 (의견서에 쓸 것)</h4>
+    <ul>
+      <li><b>키티네일스튜디오는 ‘KITTY’ 그 자체</b>에 ‘네일스튜디오’(설명어)를 붙인 것이라 핵심이 KITTY와 똑같았습니다. 키티티는 <b>3음절 조어</b>입니다.</li>
+      <li>영문 <b>KITITI는 철자부터 KITTY와 다릅니다</b>(K-I-T-I-T-I). 외관상 차이가 분명합니다.</li>
+      <li>‘바이지영’이 붙어 전체 인상이 ‘사람 이름을 건 샵’으로 읽힙니다.</li>
+      <li>같은 44류에 <b>Kitty By Window</b>가 HELLO KITTY와 함께 등록돼 있습니다. ‘KITTY + 다른 말’ 구조가 통과한 선례입니다. 단, <b>이 상표의 지정상품이 미용 칸인지는 확인 필요</b>입니다.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h4>약한 점 (심사관이 볼 것)</h4>
+    <ul>
+      <li>한글 ‘키티티’는 <b>앞 두 글자가 ‘키티’</b>와 같습니다. 짧은 상표는 앞부분을 무겁게 봅니다.</li>
+      <li>‘지영’은 흔한 이름이라 식별력은 ‘키티티’에서만 나옵니다. 심사관이 ‘키티티’만 떼어 비교할 수 있습니다.</li>
+      <li>HELLO KITTY는 저명상표라 일반 상표보다 넓게 보호받습니다.</li>
+      <li>‘만지다’에서 왔다는 어원은 소비자가 모르면 근거가 되지 않습니다.</li>
+    </ul>
+  </div>
+  <div class="key"><p><b>판단:</b> 이길 여지는 충분하지만 “그냥 내면 된다”는 수준은 아닙니다. 의견제출통지(거절 이유)가 올 가능성을 <b>처음부터 계산에 넣고</b> 가야 합니다. 그래서 의견서까지 맡길 수 있는 대행이 셀프보다 낫습니다.</p></div>
+</section>
+
+<section>
+  <h2>출원 설계 — 토탈샵 기준</h2>
+
+  <h3>1. 출원인</h3>
+  <p><b>윤지영 개인 명의</b>(사업자 대표). 나중에 토탈샵을 법인으로 바꾸면 그때 양도하면 됩니다.</p>
+
+  <h3>2. 표장 — 두 가지 중 선택</h3>
+  <div class="tw"><table>
+    <thead><tr><th>안</th><th>내용</th><th>장점</th><th>단점</th></tr></thead>
+    <tbody>
+      <tr><td class="b">A. 문자상표</td><td>키티티바이지영 / KITITI BY JIYOUNG 두 줄 병기</td><td>글씨체·로고가 바뀌어도 보호 범위가 넓음</td><td>‘키티’ 충돌 위험을 그대로 안고 감</td></tr>
+      <tr><td class="b">B. 로고 결합상표</td><td>토탈샵 로고 + 문자</td><td>외관 차이가 커져 유사 판단을 피할 여지가 큼</td><td>로고를 바꾸면 다시 내야 함 · 로고가 아직 확정 전이면 불가</td></tr>
+    </tbody>
+  </table></div>
+  <p style="margin-top:10px"><b>권장:</b> 변리사에게 A안 등록 가능성을 먼저 묻고, 위험이 높다고 하면 <b>A + B를 같이</b> 냅니다. 토탈샵 로고·간판 디자인이 1월 시공 전에 확정되므로, B안은 그 로고로 내면 됩니다.</p>
+
+  <h3>3. 상품류 — 44류 + 41류</h3>
+  <div class="tw"><table>
+    <thead><tr><th>류</th><th>왜</th><th>결정</th></tr></thead>
+    <tbody>
+      <tr><td class="b">44류</td><td>헤어·메이크업·웨딩·네일·속눈썹·피부 — 토탈샵 본업</td><td><span class="tag t-rose">필수</span></td></tr>
+      <tr><td class="b">41류</td><td>토탈샵에 붙일 소규모 아카데미, 메이크업 클래스(현재 15~20만 원 판매 중), 강연·VOD</td><td><span class="tag t-rose">권장</span></td></tr>
+      <tr><td class="b">3류·35류</td><td>화장품·판매 — 화장품은 다른 브랜드명으로 가기로 했으므로 제외</td><td><span class="tag t-ok">제외</span></td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>4. 지정상품 초안 (류당 10개 이내 = 가산료 없음)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>#</th><th>44류 지정상품</th><th>유사군</th><th>이름 확인</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>미용서비스업</td><td>S128302</td><td><span class="tag t-ok">키프리스 등록례</span></td></tr>
+      <tr><td>2</td><td>미용원업</td><td>S128302</td><td><span class="tag t-ok">키프리스 등록례</span></td></tr>
+      <tr><td>3</td><td>미용상담업</td><td>S128302</td><td><span class="tag t-ok">키프리스 등록례</span></td></tr>
+      <tr><td>4</td><td>미용 관리업</td><td>S128302</td><td><span class="tag t-ok">키프리스 출원례</span></td></tr>
+      <tr><td>5</td><td>네일샵서비스업</td><td>S128302</td><td><span class="tag t-ok">키프리스 출원례</span></td></tr>
+      <tr><td>6</td><td>속눈썹 연장 서비스업</td><td>S128302</td><td><span class="tag t-ok">키프리스 출원례</span></td></tr>
+      <tr><td>7</td><td>메이크업업 (또는 화장서비스업)</td><td>S128302 추정</td><td><span class="tag t-warn">확인 필요</span></td></tr>
+      <tr><td>8</td><td>헤어미용업 (또는 헤어스타일링업)</td><td>S128302 추정</td><td><span class="tag t-warn">확인 필요</span></td></tr>
+      <tr><td>9</td><td>피부관리업</td><td>확인 필요</td><td><span class="tag t-warn">확인 필요</span></td></tr>
+      <tr><td>10</td><td>미용 치료업</td><td>S120503</td><td><span class="tag t-ok">키프리스 등록례</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">‘키프리스 등록례/출원례’는 오늘 HELLO KITTY·키티네일스튜디오 상세 화면에서 실제로 본 이름입니다. 7~9번은 특허로 출원서의 ‘지정상품 검색’에서 <b>고시명칭 표시가 붙는 이름으로 골라야</b> 출원료가 6,000원 덜 붙습니다. 10번은 S128302가 막혀도 살아남을 수 있는 칸이라 일부러 넣었습니다.</p>
+  <p><b>41류</b>는 메이크업 교육업·미용 교육업·미용학원경영업 계열로 고르되, 이름은 출원 화면에서 고시명칭으로 확인합니다(확인 필요).</p>
+</section>
+
+<section>
+  <h2>비용</h2>
+  <div class="tw"><table>
+    <thead><tr><th>항목</th><th class="r">44류</th><th class="r">41류</th><th class="r">합계</th></tr></thead>
+    <tbody>
+      <tr><td>출원료 (전자출원·고시명칭·10개 이내)</td><td class="r">46,000</td><td class="r">46,000</td><td class="r">92,000</td></tr>
+      <tr><td>등록료 10년 (등록결정 후, 지방세 포함)</td><td class="r">210,120</td><td class="r">210,120</td><td class="r">420,240</td></tr>
+      <tr class="total"><td>관납료 합계</td><td class="r">256,120</td><td class="r">256,120</td><td class="r">512,240</td></tr>
+      <tr><td>우선심사 (선택 · 강력 권장)</td><td class="r">160,000</td><td class="r">—</td><td class="r">160,000</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">우선심사는 44류만 걸어도 됩니다. 간판에 걸리는 건 44류라서입니다. 대행 수수료는 업체마다 다르며, 한 곳의 공개 예시는 출원 6.6만 원 + 등록 성사 6.6만 원입니다. 의견제출통지 대응 비용은 별도이고 금액은 견적에서 확인 필요입니다.</p>
+</section>
+
+<section>
+  <h2>진행 순서</h2>
+  <ol class="steps">
+    <li><b>변리사 무료 유사판단 의뢰 (이번 주)</b><br>이 페이지와 키티네일스튜디오 출원번호 <b>4020240068390</b>을 그대로 보내고 세 가지만 묻습니다: ① 거절 인용상표가 무엇인가 ② 키티티바이지영 문자상표의 44류 등록 가능성 ③ 로고 결합상표로 바꾸면 달라지는가.</li>
+    <li><b>대행 견적 2곳 비교</b><br>출원료 + <b>의견서 대응 비용이 포함되는지</b>를 꼭 비교합니다. 이번 건은 의견서가 올 가능성이 있어 이 항목이 승부처입니다.</li>
+    <li><b>표장·류·지정상품 확정</b><br>A안 단독 또는 A+B, 44+41류, 위 지정상품 10개를 변리사 의견으로 다듬습니다.</li>
+    <li><b>출원 + 44류 우선심사 신청 (11월 중)</b><br>11월에 내면 우선심사 기준 대략 1~2월에 첫 결과를 볼 수 있습니다. 셀프로 낼 경우 특허로에서 지영 특허고객번호·공동인증서가 필요하고, 출원료는 접수 다음 날까지 내야 합니다.</li>
+    <li><b>간판·사인물 확정은 첫 심사 결과를 본 뒤</b><br>결과 전에 제작해야 하면, 로고 영문 KITITI를 크게 쓰는 쪽이 ‘KITTY’와 덜 겹칩니다.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>지영 원장에게 전할 말 (짧게)</h2>
+  <div class="card">
+    <p>“키티티라는 이름 자체는 아무도 안 가지고 있어요. 그런데 헬로키티 쪽이 미용업에 상표를 넓게 잡아 둬서, 비슷한 ‘키티’ 이름이 거절된 사례가 있었어요. 그래서 이번엔 변리사한테 먼저 확인받고 내고, 간판 달기 전에 결과를 보려고 우선심사를 걸게요. 비용은 두 개 류 기준 관납료 약 51만 원 + 우선심사 16만 원 + 대행 수수료예요.”</p>
+  </div>
+</section>
+
+<div class="src">
+  출처 · KIPRIS 국내 상표 검색(2026-10-29 직접 조회): 키티티 / KITITI / TN=[키티]*TC=[44] / TN=[KITTY]*TC=[44], 키티네일스튜디오(4020240068390) 상세·통합행정정보, HELLO KITTY(4020180157025) 지정상품 — <a href="https://www.kipris.or.kr/khome/main.do">kipris.or.kr</a><br>
+  수수료 · <a href="https://www.help-me.kr/blog/article/%EC%83%81%ED%91%9C%EC%B6%9C%EC%9B%90%EB%B9%84%EC%9A%A9%EC%96%BC%EB%A7%88%EB%82%98%EB%93%A4%EA%B9%8C%EC%9A%94/">헬프미 — 상표등록 비용(2026)</a> · <a href="https://www.help-me.kr/blog/article/%EC%83%81%ED%91%9C%EC%B6%9C%EC%9B%90%EB%B9%84%EC%9A%A9/">헬프미 — 출원 비용 예시</a><br>
+  이 페이지는 법률 자문이 아닙니다. 등록 가능성 판단은 변리사 의견을 따르세요.
+</div>
+
+</div>
+</body>
+</html>
