@@ -1,5 +1,19 @@
 [
   {
+    "id": "2026-10-29-4080cf8f",
+    "date": "2026-10-29",
+    "project": "키티티 토탈샵 오픈 준비",
+    "title": "토탈샵 전환 시 영업신고·사업자등록 변경사항 정리",
+    "status": "완료",
+    "summary": "업종·면허·변경신고·사업자 정정 체크리스트와 샵인샵 3경로 정리 페이지",
+    "next": "지영 원장 신고증·면허증 확인",
+    "deploy_url": "https://yoo-mideum.github.io/luke-1b/totalshop-license/?v=1",
+    "chat_url": "",
+    "source": "claude",
+    "detail": "<p>핵심 병목은 원장 본인 면허(업종 추가 시 해당 면허 필요, 법인·이중신고 불가). 원장에게 피부·네일 면허 없으면 3층은 샵인샵 별도 신고 필요</p>",
+    "notion_url": "https://app.notion.com/p/4080cf8fea04818cbaf9ce723dec593e"
+  },
+  {
     "id": "2026-10-27-recourse-open",
     "date": "2026-10-27",
     "project": "루크 툴박스",
