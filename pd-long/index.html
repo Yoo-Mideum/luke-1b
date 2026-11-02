@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>채널 운영 — 비용을 어떻게 잡나 — 내 연봉 10억 만들기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f4ef; --card:#ffffff; --ink:#1f2328; --muted:#6b7280; --line:#e6e2d8;
+  --accent:#0f6e56; --accent-soft:#dff3ea; --gold:#b7791f; --gold-soft:#fbf1dc;
+  --red:#b42318; --red-soft:#fde8e6; --blue:#1d4ed8; --blue-soft:#e3ebfd;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 6px 20px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#121414; --card:#1c1f21; --ink:#ececec; --muted:#9aa3ad; --line:#2d3235;
+    --accent:#4fd1a5; --accent-soft:#12312a; --gold:#e3b04b; --gold-soft:#3a2d12;
+    --red:#ff7b6e; --red-soft:#3d1a17; --blue:#8fb0ff; --blue-soft:#1b2a4d;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 6px 20px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Gowun Dodum",system-ui,-apple-system,sans-serif;line-height:1.6;font-size:16px}
+.wrap{max-width:600px;margin:0 auto;padding:20px 16px 64px}
+h1,h2,h3{font-family:"Gowun Dodum","Noto Sans KR",sans-serif;line-height:1.3;margin:0}
+h1{font-size:26px;letter-spacing:-.01em}
+h2{font-size:19px;margin:28px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--muted);font-weight:400}
+h3{font-size:16px;margin:0 0 6px}
+p{margin:0 0 10px}
+a{color:var(--accent);text-decoration:none}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:13px;color:var(--muted)}
+.top a{color:var(--muted)}
+.hero{background:linear-gradient(135deg,var(--accent) 0%,#134e3f 100%);color:#fff;border-radius:18px;padding:22px 20px;box-shadow:var(--shadow)}
+.hero h1{color:#fff}
+.hero .sub{opacity:.9;margin-top:6px;font-size:14px}
+.hero .goal{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.hero .goal div{background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;flex:1;min-width:130px}
+.hero .goal b{display:block;font-size:20px;font-family:"Gowun Dodum",sans-serif}
+.hero .goal span{font-size:12px;opacity:.9}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);margin-bottom:12px}
+.card.accent{border-color:var(--accent);background:var(--accent-soft)}
+.card.gold{border-color:var(--gold);background:var(--gold-soft)}
+.card.blue{border-color:var(--blue);background:var(--blue-soft)}
+.sky{background:radial-gradient(ellipse at 50% 16%,#17323a 0%,#0e1a22 52%,#080d12 100%);border:1px solid var(--line);border-radius:16px;padding:8px 4px 4px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+.sky svg{display:block;width:100%;height:auto}
+.legend{display:flex;gap:10px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-4px 0 14px 2px}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+@keyframes luPulse{0%,100%{opacity:.22;transform:scale(1)}50%{opacity:.5;transform:scale(1.16)}}
+@keyframes luTwinkle{0%,100%{opacity:.2}50%{opacity:.85}}
+@keyframes luDash{to{stroke-dashoffset:-56}}
+@keyframes luBreathe{0%,100%{opacity:.55}50%{opacity:1}}
+.lu-halo{transform-origin:180px 330px;animation:luPulse 4.6s ease-in-out infinite}
+.lu-star{animation:luTwinkle 3.4s ease-in-out infinite}
+.lu-flow{stroke-dasharray:5 9;animation:luDash 2.8s linear infinite}
+.pg{display:flex;gap:11px;align-items:flex-start}
+.pg .pgn{flex:0 0 auto;width:52px;text-align:center;background:var(--accent);color:#fff;border-radius:12px;padding:7px 4px;font-family:"Gowun Dodum",sans-serif;line-height:1.15}
+.pg .pgn b{display:block;font-size:21px}
+.pg .pgn span{font-size:10px;opacity:.88;letter-spacing:.02em}
+.pg .pgn.q{background:var(--gold)}
+.pg .pgb{min-width:0;flex:1}
+.pg h3{margin-bottom:2px}
+.say{background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:8px;padding:10px 12px;margin:9px 0 0;font-size:14.5px;line-height:1.75}
+.say:before{content:"말할 것";display:block;font-size:11px;letter-spacing:.08em;color:var(--accent);margin-bottom:4px;font-weight:700}
+.emph{font-size:13px;background:var(--gold-soft);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.emph b{color:var(--gold)}
+.tm{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.qa{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;box-shadow:var(--shadow)}
+.qa summary{cursor:pointer;font-size:14px;font-weight:500}
+.qa .a{font-size:13.5px;color:var(--muted);margin-top:9px}
+.qa .a b{color:var(--ink)}
+.skiprow{display:grid;grid-template-columns:52px 1fr;gap:6px 11px;font-size:13px;align-items:baseline}
+.skiprow dt{text-align:center;color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.skiprow dd{margin:0;color:var(--muted)}
+.fb{font-size:13px;color:var(--muted);border-left:2px solid var(--line);padding-left:10px;margin:0 0 9px;line-height:1.62}
+.fb b{color:var(--ink);font-weight:500}
+.ba2{margin:9px 0 0;font-size:13.5px;display:grid;gap:5px}
+.ba2 .b,.ba2 .a{padding:8px 10px;border-radius:8px;line-height:1.62}
+.ba2 .b{background:var(--red-soft)}
+.ba2 .a{background:var(--accent-soft)}
+.ba2 .b:before{content:"수정 전";display:block;font-size:10.5px;font-weight:700;color:var(--red);margin-bottom:3px;letter-spacing:.06em}
+.ba2 .a:before{content:"수정 후";display:block;font-size:10.5px;font-weight:700;color:var(--accent);margin-bottom:3px;letter-spacing:.06em}
+.en{font-family:Georgia,"Times New Roman",serif;font-style:italic;font-size:12.5px;color:var(--muted)}
+.why2{font-size:13.5px;margin-top:9px;line-height:1.68}
+.why2:before{content:"왜";display:inline-block;font-size:10.5px;font-weight:700;color:var(--gold);background:var(--gold-soft);border-radius:4px;padding:1px 6px;margin-right:6px;vertical-align:1px}
+.ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
+.ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
+.ov dd{margin:0}
+.lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
+.lu-pflow{animation:luDash 9s linear infinite}
+.lu-node{animation:luBreathe 3.8s ease-in-out infinite}
+.lu-lab{paint-order:stroke;stroke:#0a1016;stroke-width:3px;stroke-linejoin:round}
+.uni-hit{cursor:pointer}
+.uni-reg{transition:opacity .25s}
+.uni-nd.sel text{fill:#fff;font-weight:700}
+.uni-nd.sel circle{stroke:#fff}
+#uniPanel .tag{margin-right:6px}
+.uniBar{display:flex;gap:6px;flex-wrap:wrap;margin:-4px 0 10px}
+.uniBar button{font:inherit;font-size:13px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:var(--shadow)}
+.uniBar button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+body.uni-wide .wrap{max-width:1240px}
+body.uni-wide .uni-split{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+body.uni-wide .uni-right{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto}
+body.uni-wide #uniPanel{margin-bottom:0}
+body.uni-wide .uniPossGrid{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+@media (max-width:920px){body.uni-wide .wrap{max-width:600px}body.uni-wide .uni-split{display:block}body.uni-wide .uni-right{position:static;max-height:none}body.uni-wide .uniPossGrid{display:block}}
+body.uni-full{overflow:hidden}
+#uniStage.full{position:fixed;inset:0;z-index:9998;background:#070c11;display:block;margin:0}
+#uniStage.full .uni-left{position:absolute;inset:0}
+#uniStage.full .sky{position:absolute;inset:0;border:0;border-radius:0;margin:0;padding:0;box-shadow:none}
+#uniStage.full .sky svg{width:100%;height:100%}
+#uniStage.full .uniBar{position:absolute;top:10px;left:10px;right:10px;z-index:3;margin:0}
+#uniStage.full .legend{position:absolute;left:12px;z-index:3;margin:0;background:rgba(8,14,20,.74);padding:6px 10px;border-radius:12px;color:#c7d3dc;max-width:min(620px,72vw)}
+#uniStage.full #uniLeg{bottom:80px}
+#uniStage.full .uniLeg2{bottom:10px}
+#uniStage.full .legend a{color:#dfe9f0}
+#uniStage.full .uni-right{position:absolute;top:58px;right:12px;width:380px;max-height:calc(100% - 76px);overflow:auto;z-index:4}
+@media (max-width:760px){
+ #uniStage.full .uni-right{left:8px;right:8px;width:auto;top:auto;bottom:0;max-height:60%}
+ #uniStage.full .legend{display:none}
+ #uniStage.full .uniBar{gap:5px}
+ #uniStage.full .uniBar button{font-size:12px;padding:6px 10px}
+}
+.uniForm{position:fixed;inset:0;z-index:10000;background:rgba(4,8,12,.74);display:none;align-items:center;justify-content:center;padding:16px}
+.uniForm.on{display:flex}
+.uniForm .box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;max-width:470px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow)}
+.uniForm label{display:block;font-size:13px;color:var(--muted);margin:12px 0 4px}
+.uniForm input,.uniForm select,.uniForm textarea{width:100%;font:inherit;font-size:15px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.uniForm textarea{min-height:88px;resize:vertical}
+.uniForm .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.uniForm .row button{flex:1;min-width:120px;font:inherit;font-size:14px;padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.uniForm .row button.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:700}
+@media (prefers-reduced-motion: reduce){.lu-halo,.lu-star,.lu-flow,.lu-spoke,.lu-node,.lu-pflow{animation:none}}
+.card.red{border-color:var(--red);background:var(--red-soft)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+.nav a{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;color:var(--ink);box-shadow:var(--shadow)}
+.nav a b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:16px;margin-bottom:2px}
+.nav a span{font-size:13px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--ink);margin-right:4px;vertical-align:middle;white-space:nowrap}
+.tag.p0{background:var(--red-soft);color:var(--red)}
+.tag.p1{background:var(--gold-soft);color:var(--gold)}
+.tag.p2{background:var(--blue-soft);color:var(--blue)}
+.tag.p3{background:var(--line);color:var(--muted)}
+.tag.cash{background:var(--accent-soft);color:var(--accent)}
+.tag.done{background:var(--accent-soft);color:var(--accent)}
+ul.list{list-style:none;padding:0;margin:0}
+ul.list li{padding:10px 0;border-top:1px solid var(--line)}
+ul.list li:first-child{border-top:0;padding-top:0}
+ul.list li .t{font-weight:600}
+ul.list li .m{font-size:13px;color:var(--muted);margin-top:2px}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:14px}
+.kv dt{color:var(--muted)}
+.kv dd{margin:0}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:500;font-size:12px}
+td.num{text-align:right;white-space:nowrap;font-family:"Gowun Dodum",sans-serif;color:var(--accent);font-weight:700}
+.wrapx{overflow-x:auto}
+.note{font-size:13px;color:var(--muted);margin-top:8px}
+.warn{font-size:13px;background:var(--gold-soft);color:var(--ink);border-left:3px solid var(--gold);padding:8px 10px;border-radius:6px;margin-top:8px}
+.tl{position:relative;padding-left:18px;margin:0}
+.tl:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:var(--line)}
+.tl li{list-style:none;position:relative;padding:0 0 14px 0}
+.tl li:before{content:"";position:absolute;left:-17px;top:7px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+.tl li.big:before{background:var(--gold)}
+.tl .d{font-size:12px;color:var(--muted)}
+.tl .t{font-weight:600}
+.steps{display:flex;gap:6px;align-items:stretch;margin:8px 0}
+.steps div{flex:1;background:var(--accent-soft);border-radius:10px;padding:8px;font-size:12px;text-align:center}
+.steps div b{display:block;font-size:14px;font-family:"Gowun Dodum",sans-serif}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin:6px 0}
+.bar i{display:block;height:100%;background:var(--accent)}
+:root{--f1:#6fbb9f;--f2:#3d9273;--f3:#1a6d54;--f4:#054d39}
+@media (prefers-color-scheme: dark){:root{--f1:#35775f;--f2:#43997d;--f3:#4cbc95;--f4:#62dcb0}}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px;box-shadow:var(--shadow);margin-bottom:12px}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--muted);margin-top:8px;padding:0 4px}
+.now{display:grid;grid-template-columns:76px 1fr;gap:8px 10px;font-size:14px;align-items:start}
+.now dt{font-size:11.5px;font-weight:700;letter-spacing:.02em;text-align:center;border-radius:999px;padding:3px 0}
+.now dd{margin:0}
+.now .ok{background:var(--accent-soft);color:var(--accent)}
+.now .go{background:var(--blue-soft);color:var(--blue)}
+.now .zero{background:var(--red-soft);color:var(--red)}
+.now .q{background:var(--gold-soft);color:var(--gold)}
+.ms{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.ms.on{border-left-color:var(--accent)}
+.ms h3{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.ms h3 .when{font-size:12px;color:var(--muted);font-weight:400}
+.ms ul{list-style:none;padding:0;margin:8px 0 0}
+.ms li{font-size:14px;padding:4px 0 4px 22px;position:relative}
+.ms li:before{content:"";position:absolute;left:0;top:9px;width:12px;height:12px;border:1.5px solid var(--line);border-radius:3px}
+.ms .one{margin-top:10px;font-size:13.5px;background:var(--accent-soft);border-radius:8px;padding:8px 10px}
+.ms .one b{color:var(--accent)}
+ul.list li.chk{display:grid;grid-template-columns:24px 1fr;gap:8px;align-items:start}
+ul.list li.chk input{width:20px;height:20px;margin:3px 0 0;accent-color:var(--accent)}
+ul.list li.done .t{text-decoration:line-through;color:var(--muted)}
+ul.list li.done{opacity:.55}
+.nlink{font-size:12px;margin-left:6px;color:var(--blue)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.btn{font:inherit;font-size:13px;padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent)}
+details.donebox{margin-top:10px}
+details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
+.foot{margin-top:28px;font-size:12px;color:var(--muted);text-align:center}
+.src{font-size:12px;color:var(--muted)}
+.src ul{padding-left:16px;margin:6px 0}
+.today{font-family:"Gowun Dodum",sans-serif;font-size:14px;color:var(--muted)}
+.empty{font-size:14px;color:var(--muted)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.slots div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 6px;font-size:12px;text-align:center}
+.slots div b{display:block;font-family:"Gowun Dodum",sans-serif;font-size:13px;color:var(--accent)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;font-size:11px;text-align:center}
+.week div{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:6px 2px}
+.week div b{display:block;font-size:13px;font-family:"Gowun Dodum",sans-serif}
+.week div.on{border-color:var(--accent);background:var(--accent-soft)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-11-02</span></div>
+<script>window.LUKE_ROOT="../";</script>
+<div class="hero">
+  <h1>채널 운영 — 비용을 어떻게 잡나</h1>
+  <div class="sub">"유튜브 수익 6:4 + 강의 RS" 구상에 대한 검토 · 11/2 16시 통화 전</div>
+  <div class="goal">
+    <div><b>월 40~160만</b><span>회사가 4를 가져가 봐야 받는 돈</span></div>
+    <div><b>2가지</b><span>'유튜브 수익'에 섞여 있는 성격</span></div>
+    <div><b>1.16억</b><span>그 구조로 가면 PD 연 수령</span></div>
+    <div><b>1.54억</b><span>같은 해 루크님 몫</span></div>
+  </div>
+</div>
+
+<div class="card red">
+  <h3 style="margin:0 0 8px">먼저 — 6:4를 그대로 가시면 안 됩니다</h3>
+  <p style="margin:0 0 8px">"유튜브 운영 수익"에 <b>성격이 전혀 다른 두 가지</b>가 섞여 있습니다.</p>
+  <div class="kv">
+    <dt>애드센스</dt><dd>조회수로 나오는 돈. <b>작습니다.</b> 월 50만 뷰여도 100~200만</dd>
+    <dt>협찬·브랜디드</dt><dd>루크님 얼굴과 브랜드로 들어오는 돈. <b>건당 수백~수천만</b></dd>
+  </div>
+  <div class="emph">앞엣것은 6이 아니라 <b>PD 100%를 줘도 됩니다.</b> 뒤엣것은 <b>6이 과합니다.</b> 하나로 묶으면 둘 다 틀립니다.</div>
+</div>
+
+<h2>애드센스 — 4를 가져가는 게 손해입니다</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th style="white-space:nowrap">월 조회수</th><th style="white-space:nowrap">월 수익</th><th style="white-space:nowrap">회사 4</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:nowrap">20만 뷰</td><td style="white-space:nowrap">40~80만</td><td style="white-space:nowrap">16~32만</td></tr>
+      <tr><td style="white-space:nowrap">50만 뷰</td><td style="white-space:nowrap">100~200만</td><td style="white-space:nowrap">40~80만</td></tr>
+      <tr><td style="white-space:nowrap">100만 뷰</td><td style="white-space:nowrap">200~400만</td><td style="white-space:nowrap">80~160만</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p style="margin:10px 0 0">잘 돼도 회사 몫이 <b>월 몇십만원</b>입니다. 그 돈 받자고 PD가 조회수를 올릴 이유를 깎습니다.</p>
+  <div class="emph">애드센스는 <b>PD 100%</b>로 주십시오. 협상에서 내주는 게 아니라 <b>싸게 사는 동기부여</b>입니다. "조회수는 전부 PD님 겁니다"라고 말하면 그 한마디가 고정비 몇백만원어치 일을 합니다.</div>
+</div>
+
+<h2>수익원을 넷으로 쪼개십시오</h2>
+<div class="card">
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>수익원</th><th>누가 만드나</th><th style="white-space:nowrap">제안</th></tr></thead>
+    <tbody>
+      <tr><td style="white-space:nowrap">애드센스</td><td>PD (조회수)</td><td style="white-space:nowrap"><b>PD 100%</b></td></tr>
+      <tr><td style="white-space:nowrap">협찬·브랜디드</td><td>PD 영업 + 루크 얼굴</td><td style="white-space:nowrap"><b>PD 50 : 회사 50</b></td></tr>
+      <tr><td style="white-space:nowrap">강의·프로그램</td><td>루크 상품 + PD 유입</td><td style="white-space:nowrap"><b>구간별 정액</b></td></tr>
+      <tr><td style="white-space:nowrap">채널 운영 자체</td><td>PD 노동</td><td style="white-space:nowrap"><b>월 고정비</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">강의 매출에 비율을 걸면 민트 60 · 루크 24 · 메이븐 16 위에 또 얹혀서 매출이 커질수록 통제가 안 됩니다. 구간별 정액이어야 합니다.</div>
+</div>
+
+<h2>"비용을 어떻게 산정하나" — 앵커 두 개</h2>
+<div class="card">
+  <div class="pg">
+    <div class="pgn"><b>1</b><span>대체비용</span></div>
+    <div class="pgb">
+      <h3 style="margin:0 0 6px">같은 일을 외주로 사면 얼마인가</h3>
+      <p style="margin:0">김한준 안이 편당 100만이었습니다. 월 4편이면 400만. 거기에 기획·업로드·댓글·분석까지 붙으면 <b>월 500~600만</b>이 시장가입니다.</p>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="pg">
+    <div class="pgn"><b>2</b><span>기회비용</span></div>
+    <div class="pgb">
+      <h3 style="margin:0 0 6px">PD님이 그 시간에 다른 일을 하면 얼마를 버나</h3>
+      <p style="margin:0">TV조선 격주 금요일, 스키장협회 2박 3일 건들이 이미 있습니다. 그 단가가 바닥선입니다.</p>
+    </div>
+  </div>
+</div>
+<div class="card accent">
+  <p style="margin:0"><b>두 앵커 사이에서 월 300~400만을 고정으로 잡고, 나머지는 성과로 넘기십시오.</b> 시장가(500~600만)보다 낮게 고정을 잡는 대신 RS로 메우는 구조 — 이게 "같이 걸고 같이 먹는다"의 실제 모양입니다.</p>
+</div>
+
+<h2>그런데 숫자를 돌려보면 문제가 보입니다</h2>
+<div class="card red">
+  <p style="margin:0 0 10px">기수 4회 · 매출 2.16억/기수(전환 4%) · 고정 월 300만 · 구간 1,700만 가정으로 1년을 돌려봤습니다.</p>
+  <div class="wrapx">
+  <table>
+    <thead><tr><th>항목</th><th style="white-space:nowrap">연 금액</th></tr></thead>
+    <tbody>
+      <tr><td>PD 고정 (월 300만 × 12)</td><td style="white-space:nowrap">3,600만</td></tr>
+      <tr><td>PD 구간 RS (1,700만 × 4기)</td><td style="white-space:nowrap">6,800만</td></tr>
+      <tr><td>PD 애드센스 (월 100만 × 12)</td><td style="white-space:nowrap">1,200만</td></tr>
+      <tr><td><b>PD 합계</b></td><td style="white-space:nowrap"><b>1억 1,600만</b></td></tr>
+      <tr><td><b>같은 해 루크님 몫 (24%)</b></td><td style="white-space:nowrap"><b>1억 5,360만</b></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="emph">연 매출 8.6억을 만들어서 <b>PD가 1.16억, 루크님이 1.54억</b>입니다. 거의 비슷합니다. PD 단가가 비싸서가 아닙니다 — <b>루크님이 24%밖에 안 가져가기 때문</b>입니다.</div>
+</div>
+
+<div class="card gold">
+  <h3 style="margin:0 0 8px">그래서 오늘 장기 %를 확정하지 마십시오</h3>
+  <p style="margin:0 0 8px">민트님 계약은 <b>1기 런칭까지 3개월 + 자동연장</b>입니다. 2기부터는 민트님 60%도 재협상 대상입니다. 그런데 오늘 PD님과 장기 비율을 못박으면, <b>민트님과 다시 앉을 때 루크님이 움직일 폭이 없어집니다.</b></p>
+  <div class="emph">PD 몫이 들어갈 자리는 민트님 60%에서 나와야지, 루크님 24%에서 나오면 안 됩니다. 그 조정을 하려면 두 협상을 같이 봐야 합니다.</div>
+</div>
+
+<h2>오늘 하실 말 — 이 정도면 충분합니다</h2>
+<div class="card accent">
+  <ul class="list">
+    <li><div class="t">1. "장기로 채널을 같이 운영한다는 전제는 저도 같습니다"</div><div class="m">방향은 확실히 주십시오. 이게 PD님이 듣고 싶은 말입니다</div></li>
+    <li><div class="t">2. "구조는 월 고정 + 성과 RS로 가려 합니다"</div><div class="m">고정은 월 300~400만 선, 성과는 기수 매출 구간별 정액</div></li>
+    <li><div class="t">3. "유튜브 조회수 수익은 전부 PD님 가져가십시오"</div><div class="m">여기서 한 번 크게 주십시오. 비용은 작고 효과는 큽니다</div></li>
+    <li><div class="t">4. "협찬이 들어오면 반반으로 봅니다"</div><div class="m">숫자까지 확정하지 말고 방향만</div></li>
+    <li><div class="t">5. "정확한 비율은 1기 런칭 결과 보고 2월에 확정하시죠"</div><div class="m">민트님 재협상과 묶여 있다는 말까지는 안 하셔도 됩니다</div></li>
+  </ul>
+</div>
+
+<h2>그리고 반드시 — 세 줄</h2>
+<div class="card red">
+  <ul class="list">
+    <li><div class="t">채널·계정·상표는 법인 명의</div><div class="m">"스스로 월백" 전부. PD님은 운영 권한, 종료 시 7일 내 이관, 포트폴리오 사용권은 부여. <b>채널 만들 때 바로</b></div></li>
+    <li><div class="t">최소 산출량을 숫자로</div><div class="m">월 N편, 수요일 13시 회의 참석, 분석 리포트 월 1회. 없으면 "운영해준다"는 말만 남습니다</div></li>
+    <li><div class="t">기간은 1년, 분기 점검</div><div class="m">PD님이 바빠져서 월 1편만 올려도 비율은 계속 나갑니다. 끊을 수 있어야 합니다</div></li>
+  </ul>
+</div>
+
+<h2>확인 필요</h2>
+<div class="card">
+  <ul class="list">
+    <li><div class="t">PD님이 생각하는 보상 수준</div><div class="m">오늘 가장 먼저 들으실 것 — 숫자를 먼저 꺼내지 마십시오</div></li>
+    <li><div class="t">애드센스 실제 규모</div><div class="m">위 표는 RPM 2,000~4,000원 가정입니다. 기존 1만 채널 실적이 있으면 그걸로 바꾸면 됩니다</div></li>
+    <li><div class="t">협찬이 실제로 들어올 채널인지</div><div class="m">타깃 40대 초반 · 부업 카테고리면 협찬 단가가 높지 않을 수 있습니다</div></li>
+    <li><div class="t">2기부터 민트님 조건을 바꿀 수 있는지</div><div class="m">PD 장기 비율의 재원이 여기서 나와야 합니다</div></li>
+  </ul>
+</div>
+
+<p class="src">근거 — 수익 배분 민트 60 : 루크 24 : 메이븐 16, 광고 분기 3,000만: <a href="../cash/">11~2월 현금 흐름</a>. 편당 50~80만·매출 구간·월 제작비 700만·전환율 4% 실측: 플라우드 「10-28 회의: 유튜브 PD 협업 전환, RS·예산·계약 구조」. 브랜드 "스스로 월백"·채널 위임 범위와 수익 배분 미협의: 플라우드 「스스로월100 미팅」(10/30). 민트 계약 기간 3개월 + 자동연장: <a href="../park-contract/">민트 1차 계약서</a> 제2조. 애드센스 월 수익은 RPM 2,000~4,000원 가정으로 제가 계산한 <b>추정치</b>이고 실제 채널 실적이 아닙니다 — 기존 채널 수치가 있으면 바꿔야 합니다. PD 연 수령 1.16억과 루크 1.54억도 위 가정에 따른 계산값입니다. 기본 제안 구조는 <a href="../pd/">조윤호 PD 파트너십 설계</a>.</p>
+
+<div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
+<div class="btnrow"><button class="btn pri" onclick="luke1bCopy()">완료 목록 복사 → 클로드에 붙여넣기</button><button class="btn" onclick="luke1bClear()">체크 초기화</button></div>
+<div class="note">체크는 이 기기에만 저장됩니다. 클로드에게 알리려면 '복사' 눌러 채팅에 붙여넣으면 노션 완료 처리 + 페이지 갱신이 됩니다. 노션 ↗ 링크가 있는 항목은 노션에서 직접 완료로 바꿔도 다음 갱신 때 반영됩니다.</div></div>
+<div class="foot">내 연봉 10억 만들기 · 갱신 2026-11-02 · <a href="../sources/">출처·갱신 방법</a></div>
+</div>
+
+<script>
+(function(){
+  const KEY='luke1b-done';
+  const load=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}};
+  const save=o=>{try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}};
+  const state=load();
+  const slug=t=>t.replace(/\s+/g,' ').trim().slice(0,60);
+  function wire(li){
+    if(li.dataset.wired) return; li.dataset.wired='1';
+    const t=li.querySelector('.t'); if(!t) return;
+    const id=li.dataset.g||li.dataset.id||slug(t.textContent);
+    li.dataset.id=id; li.classList.add('chk');
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=!!state[id];
+    const body=document.createElement('div'); while(li.firstChild) body.appendChild(li.firstChild);
+    if(li.dataset.g){const g=document.createElement('a');g.href=(window.LUKE_ROOT||'./')+'guides/'+li.dataset.g+'/';g.className='nlink';g.textContent='설명서 →';body.querySelector('.t').appendChild(g);}
+    if(li.dataset.n){const a=document.createElement('a');a.href=li.dataset.n;a.target='_blank';a.className='nlink';a.textContent='노션 ↗';body.querySelector('.t').appendChild(a);}
+    li.appendChild(cb); li.appendChild(body);
+    const apply=()=>{li.classList.toggle('done',cb.checked)};
+    apply();
+    cb.addEventListener('change',()=>{ li.dataset.wired='1'; if(cb.checked) state[id]={t:t.textContent.replace('노션 ↗','').replace('설명서 →','').trim(),at:new Date().toISOString().slice(0,10)}; else delete state[id]; save(state); apply(); render(); });
+  }
+  function render(){
+    document.querySelectorAll('ul.list.tasks li, ul.list li[data-g], ul.list li[data-n]').forEach(wire);
+    document.querySelectorAll('.donebox').forEach(box=>{
+      if(!box.querySelector('.donelist')) return;
+      const items=Object.values(state).sort((a,b)=>a.at<b.at?1:-1);
+      box.querySelector('summary').textContent='내가 체크한 완료 '+items.length+'건 (이 기기에 저장)';
+      box.querySelector('.donelist').innerHTML=items.length?items.map(i=>'<li><span class="tag done">'+i.at.slice(5).replace('-','/')+'</span>'+i.t+'</li>').join(''):'<li class="empty">아직 없음</li>';
+    });
+  }
+  window.luke1bCopy=function(){
+    const items=Object.values(state).sort((a,b)=>a.at<b.at?-1:1);
+    const txt=items.length?('아래 항목 완료 처리했어. 노션 액션보드 상태 완료로 바꾸고 10억 페이지 갱신해줘.\n'+items.map(i=>'- ['+i.at+'] '+i.t).join('\n')):'완료 체크한 항목이 없습니다.';
+    (navigator.clipboard?navigator.clipboard.writeText(txt):Promise.reject()).then(()=>alert('복사됨. 클로드 채팅에 붙여넣으세요.')).catch(()=>prompt('복사해서 클로드에 붙여넣기',txt));
+  };
+  window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
+  document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+</body>
+</html>
