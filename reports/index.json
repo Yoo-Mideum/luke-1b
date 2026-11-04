@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-11-04-kititi-admin-code",
+    "date": "2026-11-04",
+    "project": "키티티 상담 사이트",
+    "title": "관리자 코드 임시 변경",
+    "status": "완료",
+    "summary": "관리자 코드를 루크가 정한 임시 코드로 바꿈. 예전 코드는 더 이상 안 됨",
+    "next": "정식 코드로 바꿀 때 알려 주기",
+    "deploy_url": "https://kititibyjiyoung.com",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": ""
+  },
+  {
     "id": "2026-11-04-kititi-v6-linkpage",
     "date": "2026-11-04",
     "project": "키티티 상담 사이트",
