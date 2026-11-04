@@ -5853,6 +5853,9 @@ def main():
     write(os.path.join(base, "pd-long", "index.html"), page("채널 운영 — 비용을 어떻게 잡나", PDLONG))
     write(os.path.join(base, "gaeul-contract", "index.html"), page("가을 대표님 계약서 — 괜찮은가", GAEULC))
     write(os.path.join(base, "pd-cost", "index.html"), page("PD 촬영비 — 민트님께 드릴 내용", PDCOST))
+    write(os.path.join(base, "meetings", "index.html"), page_shared("회의록", MEETHUB))
+    write(os.path.join(base, "min1030", "index.html"), page_shared("10/30 회의록", MIN1030))
+    write(os.path.join(base, "min1104", "index.html"), page_shared("11/4 회의록", MIN1104))
     write(os.path.join(base, "exit300", "index.html"), page("300억 엑시트 — 가능한가", EXIT300))
     for g in GUIDES:
         write(os.path.join(base, "guides", g["slug"], "index.html"), page(g["title"], guide_page_html(g), root="../../"))
