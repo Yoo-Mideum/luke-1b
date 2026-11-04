@@ -93,6 +93,60 @@ a{color:var(--accent);text-decoration:none}
 .ov{display:grid;grid-template-columns:70px 1fr;gap:7px 10px;font-size:13.5px}
 .ov dt{color:var(--muted);font-family:"Gowun Dodum",sans-serif}
 .ov dd{margin:0}
+/* ===== 회의록 밝은 테마 ===== */
+.mtg{--mA:#0ea5a4;--mB:#3b82f6;--mC:#f59e0b;--mD:#ec4899;--mE:#8b5cf6;
+     --sPD:#eef4ff;--sMT:#e7fbf7;--sLK:#fff6e6;--sNT:#fdf0f7}
+@media (prefers-color-scheme: dark){
+  .mtg{--sPD:#162238;--sMT:#0e2b2a;--sLK:#2e2410;--sNT:#2b1724}
+}
+.mtg .hero{background:linear-gradient(130deg,#12b2a6 0%,#3b82f6 58%,#8b5cf6 100%)}
+.mtg h2{position:relative;padding-left:14px}
+.mtg h2:before{content:"";position:absolute;left:0;top:.26em;bottom:.16em;width:5px;border-radius:3px;
+  background:linear-gradient(180deg,var(--mA),var(--mB))}
+.mtg .card{box-shadow:0 2px 4px rgba(0,0,0,.04),0 10px 28px rgba(0,0,0,.07)}
+.mtg table th{background:linear-gradient(180deg,var(--sMT),transparent)}
+
+/* 담당자 카드 */
+.who{border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-bottom:12px;background:var(--card);
+  box-shadow:0 2px 4px rgba(0,0,0,.04),0 10px 28px rgba(0,0,0,.07)}
+.who>.hd2{color:#fff;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.who>.hd2 b{font-family:"Gowun Dodum",sans-serif;font-size:17px}
+.who>.hd2 span{font-size:12px;opacity:.92;background:rgba(255,255,255,.2);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.who.pd>.hd2{background:linear-gradient(100deg,#3b82f6,#6366f1)}
+.who.mint>.hd2{background:linear-gradient(100deg,#0ea5a4,#14b8a6)}
+.who.luke>.hd2{background:linear-gradient(100deg,#f59e0b,#f97316)}
+.who.pd{background:var(--sPD)} .who.mint{background:var(--sMT)} .who.luke{background:var(--sLK)}
+.who .bd{padding:13px 15px}
+.who .bd .list li{border-bottom-color:rgba(128,128,128,.18)}
+
+/* 실시간 D-day */
+.dday{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;border-radius:999px;
+  padding:3px 10px;font-variant-numeric:tabular-nums;white-space:nowrap;background:var(--accent-soft);color:var(--accent)}
+.dday .cd{font-weight:500;opacity:.85}
+.dday.soon{background:var(--gold-soft);color:var(--gold)}
+.dday.urgent{background:var(--red-soft);color:var(--red)}
+.dday.past{background:var(--line);color:var(--muted)}
+.who .dday{background:rgba(255,255,255,.22);color:#fff}
+.who .dday.past{background:rgba(0,0,0,.18);color:rgba(255,255,255,.75)}
+.ddrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;
+  padding:10px 0;border-bottom:1px solid var(--line)}
+.ddrow:last-child{border-bottom:0}
+.ddrow .lab{min-width:0;flex:1}
+.ddrow .lab b{display:block;font-size:14.5px}
+.ddrow .lab span{font-size:12.5px;color:var(--muted)}
+
+/* 회의록 메뉴 */
+.mnav{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}
+.mnav a{font-size:13px;padding:7px 13px;border-radius:999px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.mnav a.on{background:linear-gradient(100deg,var(--mA,#0ea5a4),var(--mB,#3b82f6));border-color:transparent;color:#fff;font-weight:700}
+
+/* 인포그래픽 */
+.ig{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 12px 10px;
+  margin-bottom:12px;box-shadow:var(--shadow)}
+.ig svg{display:block;width:100%;height:auto}
+.ig .cap{font-size:12px;color:var(--muted);margin:8px 2px 0;line-height:1.55}
+
 .lu-spoke{stroke-dasharray:3 7;animation:luDash 5.2s linear infinite}
 .lu-pflow{animation:luDash 9s linear infinite}
 .lu-node{animation:luBreathe 3.8s ease-in-out infinite}
@@ -227,9 +281,12 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 <div class="wrap">
 <div class="top"><a href="../">← 내 연봉 10억 만들기</a><span>갱신 2026-11-04</span></div>
 <script>window.LUKE_ROOT="../";</script>
+<div class="mtg">
+<div class="mnav"><a href="../meetings/">전체 회의록</a><a href="../min1030/">10/30 3자</a><a class="on" href="../min1104/">11/4 3자</a></div>
+
 <div class="hero">
-  <h1>11/4 회의록 — 윤호 PD · 민트 · 루크</h1>
-  <div class="sub">2026-11-04(수) 12:01~12:50 · 줌 · 스스로 월백 / 다마고치 프로젝트</div>
+  <h1>11/4 회의록</h1>
+  <div class="sub">윤호 PD · 민트 · 루크 · 2026-11-04(수) 12:01~12:50 · 줌 · 스스로 월백 / 다마고치</div>
   <div class="goal">
     <div><b>11/10(화)</b><span>모집영상 촬영 1안</span></div>
     <div><b>2명</b><span>다마고치 출연자 확정</span></div>
@@ -238,35 +295,120 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   </div>
 </div>
 
+<h2>마감까지 <small>실시간</small></h2>
+<div class="card">
+  <div class="ddrow"><div class="lab"><b>PD 팀 미팅 회신 — 11/10 촬영 가능?</b><span>오늘 15~16시 · 윤호 PD</span></div><span class="dday" data-due="2026-11-04T16:00:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>촬영 장소 섭외</b><span>오늘 중 · 민트</span></div><span class="dday" data-due="2026-11-04T23:59:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>'스스로 월백' 채널 개설 + 공동작업자 연결</b><span>루크</span></div><span class="dday" data-due="2026-11-09T23:59:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>콘티 큰 틀 · 레퍼런스 샷 전달</b><span>이번 주 안 · 민트/루크 → PD</span></div><span class="dday" data-due="2026-11-08T23:59:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>모집영상 촬영 (1안)</b><span>11/10(화) 오후 1시 가정</span></div><span class="dday" data-due="2026-11-10T13:00:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>1차 가편 — 촬영일 +72시간</b><span>윤호 PD</span></div><span class="dday" data-due="2026-11-13T13:00:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>모집영상 업로드 — 촬영일 +9일</b><span>11/19 목표</span></div><span class="dday" data-due="2026-11-19T23:59:00+09:00"></span></div>
+  <div class="ddrow"><div class="lab"><b>다마고치 모집·선정 완료</b><span>11월 말</span></div><span class="dday" data-due="2026-11-30T23:59:00+09:00"></span></div>
+  <div class="note">한국 시간 기준으로 1초마다 다시 계산됩니다. 1안(11/10)이 어긋나면 2안 11/16~17로 전체가 6~7일씩 밀립니다.</div>
+</div>
+
 <h2>각자 해야 할 일</h2>
 
-<div class="card blue">
-  <h3 style="margin:0 0 8px">조윤호 PD</h3>
+<div class="who pd">
+  <div class="hd2"><b>조윤호 PD</b><span class="dday" data-due="2026-11-04T16:00:00+09:00"></span></div>
+  <div class="bd">
   <ul class="list">
     <li><div class="t">오늘(11/4) 3~4시 팀 미팅에서 11/10 촬영 가능 여부 확인</div><div class="m">확인 후 카톡방에 전달. "10일로 생각해놓고 미리 전달"하기로 합의</div></li>
-    <li><div class="t">면접관 역 출연자 4~5명 사전 컨택</div><div class="m">루크·민트 측이 "미리 컨택해주셨으면 좋겠다"고 요청. 페르소나는 다양할 필요 없고 질문의 대표성만 있으면 됨</div></li>
+    <li><div class="t">면접관 역 출연자 4~5명 사전 컨택</div><div class="m">"미리 컨택해주셨으면 좋겠다"는 요청. 페르소나는 다양할 필요 없고 질문의 대표성만 있으면 됨</div></li>
     <li><div class="t">세부 콘티 작성</div><div class="m">구성작가를 안 쓰기로 해서 PD가 직접. 큰 틀과 레퍼런스 샷을 받은 뒤 살을 붙이는 순서</div></li>
     <li><div class="t">편집·업로드 가능 일정 체크해서 회신</div><div class="m">목표는 촬영일 +72시간 내 1차 가편, 촬영일 +9일 내 업로드</div></li>
     <li><div class="t">촬영 장비 구성 체크</div><div class="m">장소가 정해지면. 카메라가 늘면 촬영 분량이 늘어나는 점을 우려</div></li>
   </ul>
+  </div>
 </div>
 
-<div class="card accent">
-  <h3 style="margin:0 0 8px">민트</h3>
+<div class="who mint">
+  <div class="hd2"><b>민트</b><span class="dday" data-due="2026-11-04T23:59:00+09:00"></span></div>
+  <div class="bd">
   <ul class="list">
     <li><div class="t">촬영 장소 섭외 — 오늘 중</div><div class="m">"장소 제가 한번 알아볼게요." 후보가 나오면 카톡방에 올려 의견 받기</div></li>
     <li><div class="t">콘티 큰 틀 + 레퍼런스 샷 작성해 PD께 전달</div><div class="m">"가볍게만 주셔도 된다"는 PD 요청. 빠르게 전달하기로</div></li>
     <li><div class="t">다마고치 모집 광고 집행 준비</div><div class="m">업로드 직후 시작. 예시로 11/18~27 구간을 언급</div></li>
   </ul>
+  </div>
 </div>
 
-<div class="card gold">
-  <h3 style="margin:0 0 8px">루크</h3>
+<div class="who luke">
+  <div class="hd2"><b>루크</b><span class="dday" data-due="2026-11-09T23:59:00+09:00"></span></div>
+  <div class="bd">
   <ul class="list">
-    <li><div class="t">'스스로 월백' 채널 신규 개설 + 셀러들의 수다에 공동작업자 연결</div><div class="m">프로젝트 영상은 스스로 월백에 올리고, 셀러들의 수다가 본진</div></li>
-    <li><div class="t">11/10 촬영 일정 확보</div><div class="m">수·목은 가능하면 피하고 싶다고 밝혔으나, 그때 아니면 안 되면 비울 수 있다고 함. 11/10은 화요일이라 해당 없음</div></li>
-    <li><div class="t">회의 내용 정리해서 공유</div><div class="m">회의 말미에 정리본을 올리기로 함</div></li>
+    <li><div class="t">'스스로 월백' 채널 신규 개설 + 셀러들의 수다에 공동작업자 연결</div><div class="m">프로젝트 영상은 스스로 월백에 올리고, 셀러들의 수다가 본진. <b>채널 소유 명의는 회의에서 미정</b></div></li>
+    <li><div class="t">11/10 촬영 일정 확보</div><div class="m">수·목은 가능하면 피하고 싶다고 밝혔으나 불가피하면 비울 수 있다고 함. 11/10은 화요일이라 해당 없음</div></li>
+    <li><div class="t">회의 내용 정리해서 공유</div><div class="m">회의 말미에 정리본을 올리기로 함 — 이 페이지</div></li>
   </ul>
+  </div>
+</div>
+
+<h2>전체 일정 한눈에</h2>
+<div class="ig">
+<svg viewBox="0 0 400 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="11월 4일부터 1월 중순까지 단계별 일정">
+  <defs>
+    <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#0ea5a4"/><stop offset="1" stop-color="#14b8a6"/></linearGradient>
+    <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#6366f1"/></linearGradient>
+    <linearGradient id="g3" x1="0" x2="1"><stop offset="0" stop-color="#f59e0b"/><stop offset="1" stop-color="#f97316"/></linearGradient>
+    <linearGradient id="g4" x1="0" x2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+  </defs>
+  <rect x="20" y="46" width="29" height="20" rx="5" fill="url(#g1)"/>
+  <rect x="51" y="46" width="44" height="20" rx="5" fill="url(#g2)"/>
+  <rect x="97" y="46" width="63" height="20" rx="5" fill="url(#g3)"/>
+  <rect x="162" y="46" width="218" height="20" rx="5" fill="url(#g4)"/>
+
+  <text x="20" y="40" font-size="9" fill="currentColor">11/4</text>
+  <text x="51" y="40" font-size="9" fill="currentColor">11/10</text>
+  <text x="97" y="40" font-size="9" fill="currentColor">11/19</text>
+  <text x="162" y="40" font-size="9" fill="currentColor">12/1</text>
+  <text x="380" y="40" font-size="9" text-anchor="end" fill="currentColor">1/15</text>
+
+  <line x1="20" y1="44" x2="20" y2="24" stroke="currentColor" stroke-width="1" opacity=".3"/>
+  <line x1="51" y1="44" x2="51" y2="24" stroke="currentColor" stroke-width="1" opacity=".3"/>
+  <line x1="97" y1="44" x2="97" y2="24" stroke="currentColor" stroke-width="1" opacity=".3"/>
+  <line x1="162" y1="44" x2="162" y2="24" stroke="currentColor" stroke-width="1" opacity=".3"/>
+
+  <text x="20" y="18" font-size="8.5" fill="currentColor" opacity=".75">오늘</text>
+  <text x="51" y="18" font-size="8.5" fill="currentColor" opacity=".75">촬영</text>
+  <text x="97" y="18" font-size="8.5" fill="currentColor" opacity=".75">업로드</text>
+  <text x="162" y="18" font-size="8.5" fill="currentColor" opacity=".75">선정 완료</text>
+
+  <text x="20" y="80" font-size="9.5" fill="currentColor">준비</text>
+  <text x="51" y="80" font-size="9.5" fill="currentColor">촬영·편집</text>
+  <text x="97" y="80" font-size="9.5" fill="currentColor">모집 광고</text>
+  <text x="162" y="80" font-size="9.5" fill="currentColor">다마고치 본편 5편 제작</text>
+
+  <text x="20" y="97" font-size="8.5" fill="currentColor" opacity=".65">장소·콘티·섭외</text>
+  <text x="97" y="97" font-size="8.5" fill="currentColor" opacity=".65">11/18~27 집행 예시</text>
+  <text x="162" y="97" font-size="8.5" fill="currentColor" opacity=".65">미팅 → 촬영 → 업로드 반복</text>
+  <text x="20" y="116" font-size="8.5" fill="currentColor" opacity=".55">※ 1안 11/10 기준. 2안(11/16~17)이면 전 구간 6~7일 밀림</text>
+</svg>
+<div class="cap">막대 길이는 실제 기간 비율입니다. 가장 긴 구간은 12월~1월 중순의 본편 제작이지만, 그 구간이 시작되려면 11월 말까지 다마고치 선정이 끝나야 합니다.</div>
+</div>
+
+<h2>채널 구조 — 오늘 가장 큰 결정</h2>
+<div class="ig">
+<svg viewBox="0 0 400 136" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="셀러들의 수다와 스스로 월백 채널 관계">
+  <rect x="8" y="30" width="168" height="62" rx="12" fill="none" stroke="#0ea5a4" stroke-width="1.6"/>
+  <text x="92" y="50" font-size="11" text-anchor="middle" fill="currentColor" font-weight="700">셀러들의 수다</text>
+  <text x="92" y="64" font-size="9" text-anchor="middle" fill="currentColor" opacity=".75">본진 · 구독자 보유</text>
+  <text x="92" y="78" font-size="9" text-anchor="middle" fill="currentColor" opacity=".75">조회 2,000 / 노출 3,000</text>
+
+  <rect x="224" y="30" width="168" height="62" rx="12" fill="none" stroke="#8b5cf6" stroke-width="1.6"/>
+  <text x="308" y="50" font-size="11" text-anchor="middle" fill="currentColor" font-weight="700">스스로 월백</text>
+  <text x="308" y="64" font-size="9" text-anchor="middle" fill="currentColor" opacity=".75">신규 · 다마고치 전용</text>
+  <text x="308" y="78" font-size="9" text-anchor="middle" fill="currentColor" opacity=".75">프로젝트 영상만 업로드</text>
+
+  <line x1="178" y1="61" x2="222" y2="61" stroke="currentColor" stroke-width="1.4" opacity=".55" stroke-dasharray="4 3"/>
+  <text x="200" y="54" font-size="8.5" text-anchor="middle" fill="currentColor" opacity=".8">공동작업자</text>
+  <text x="200" y="76" font-size="8.5" text-anchor="middle" fill="currentColor" opacity=".55">양쪽에 노출</text>
+
+  <text x="200" y="16" font-size="9.5" text-anchor="middle" fill="currentColor" opacity=".8">첫 영상은 광고로 노출을 구매 → CTA 반응이 알고리즘을 만든다</text>
+  <text x="200" y="112" font-size="9" text-anchor="middle" fill="currentColor" opacity=".7">신규 채널 단독 개설은 하지 않음 — 알고리즘이 붙으려면 영상 4편 이상 필요</text>
+  <text x="200" y="128" font-size="8.5" text-anchor="middle" fill="currentColor" opacity=".5">리스크: 들어왔을 때 구독자 수가 적으면 초반 이탈</text>
+</svg>
 </div>
 
 <h2>결정 사항</h2>
@@ -275,18 +417,18 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   <table>
     <thead><tr><th style="width:36%">안건</th><th>결론</th></tr></thead>
     <tbody>
-      <tr><td>신규 채널 단독 개설</td><td><b>하지 않음.</b> 셀러들의 수다를 본진으로 쓰고, 스스로 월백 채널을 따로 만들어 <b>공동작업자</b>로 연결</td></tr>
+      <tr><td>신규 채널 단독 개설</td><td><b>하지 않음.</b> 셀러들의 수다를 본진으로, 스스로 월백 채널을 따로 만들어 <b>공동작업자</b>로 연결</td></tr>
       <tr><td>다마고치 인원</td><td><b>최대 2명.</b> 3명은 변수가 곱으로 늘어 무리라고 판단</td></tr>
-      <tr><td>모집 공고 표기</td><td>인원 수를 공개하지 않고 "적합한 사람만" 선발로 표기. 지원자 수를 늘리기 위함</td></tr>
-      <tr><td>편수</td><td>본편 <b>5편</b> + 다마고치 모집영상 1편 = 실질 <b>6편</b></td></tr>
-      <tr><td>모집영상 촬영일</td><td><b>1안 11/10(화)</b> · 2안 11/16~17 · <b>11/13(금)은 불가</b>(PD 남양주 촬영)</td></tr>
+      <tr><td>모집 공고 표기</td><td>인원 수를 공개하지 않고 "적합한 사람만" 선발. 지원자를 늘리기 위함</td></tr>
+      <tr><td>편수</td><td>본편 <b>5편</b> + 모집영상 1편 = 실질 <b>6편</b></td></tr>
+      <tr><td>모집영상 촬영일</td><td><b>1안 11/10(화)</b> · 2안 11/16~17 · <b>11/13(금) 불가</b>(PD 남양주 촬영)</td></tr>
       <tr><td>모집영상 콘셉트</td><td><b>청문회·압박면접.</b> 빈 공간에 루크가 들어와 당황할 때 면접관들이 들어오는 구성</td></tr>
-      <tr><td>구성작가</td><td><b>쓰지 않음.</b> 내부에서 디벨롭하고 현장에서 연출로 방향만 잡기</td></tr>
-      <tr><td>제작 일정 기준</td><td>촬영일 +72시간 내 1차 가편 · 촬영일 +9일 내 업로드(11/10 촬영 시 <b>11/19</b>)</td></tr>
-      <tr><td>다마고치 모집·선정</td><td><b>11월 말까지</b> 1차 모집과 선정 완료, 선정자 컨택</td></tr>
-      <tr><td>본편 진행</td><td><b>12월 ~ 1월 중순</b>에 미팅·촬영·업로드</td></tr>
+      <tr><td>구성작가</td><td><b>쓰지 않음.</b> 내부에서 디벨롭하고 현장에서 연출로 방향만</td></tr>
+      <tr><td>제작 일정 기준</td><td>촬영일 +72시간 내 1차 가편 · 촬영일 +9일 내 업로드</td></tr>
+      <tr><td>다마고치 모집·선정</td><td><b>11월 말까지</b> 1차 모집·선정과 컨택</td></tr>
+      <tr><td>본편 진행</td><td><b>12월 ~ 1월 중순</b> 미팅·촬영·업로드</td></tr>
       <tr><td>출연자(엑스트라) 비용</td><td>시간당이 아니라 <b>1회차 기준 인당 15만원</b></td></tr>
-      <tr><td>소통 채널</td><td>PD의 오늘 3시 미팅 이후 <b>카톡방</b>으로</td></tr>
+      <tr><td>소통 채널</td><td>PD의 오늘 3시 미팅 이후 <b>카톡방</b></td></tr>
     </tbody>
   </table>
   </div>
@@ -296,45 +438,45 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 
 <div class="card">
   <h3 style="margin:0 0 8px">0. 시작 — 음성 문제와 줌 끊김</h3>
-  <p style="margin:0">12:01 시작. 초반에 민트 음성이 들리지 않아 몇 분 지연됐고, 윤호 PD는 조금 늦게 입장. 12:39경 <b>줌 무료 버전 40분 제한</b>으로 방이 종료돼 새 방을 열고 12:41~12:50에 이어서 진행. 그래서 녹음이 두 개로 나뉘어 있음.</p>
+  <p style="margin:0">12:01 시작. 초반에 민트 음성이 들리지 않아 몇 분 지연됐고 윤호 PD는 조금 늦게 입장. 12:39경 <b>줌 무료 버전 40분 제한</b>으로 방이 종료돼 새 방에서 12:41~12:50 이어서 진행. 녹음이 두 개로 나뉜 이유.</p>
 </div>
 
 <div class="card">
   <h3 style="margin:0 0 8px">1. 신규 채널을 팔 것인가 — 가장 길게 다룬 안건</h3>
-  <p style="margin:0 0 10px"><b>민트의 문제 제기.</b> 셀러들의 수다 채널은 구독자 수는 있지만 <b>알고리즘 최적화가 안 돼 있을 확률이 높다</b>고 봄. 그동안 라이브와 강의 운영 위주로 써서 홍보용 채널의 성격이 아니고, 유튜브 홈 화면 알고리즘이 타깃 연령·관심사에 맞춰져 있지 않아 보인다는 것.</p>
+  <p style="margin:0 0 10px"><b>민트의 문제 제기.</b> 셀러들의 수다는 구독자 수는 있지만 <b>알고리즘 최적화가 안 돼 있을 확률이 높다</b>고 봄. 그동안 라이브와 강의 운영 위주로 써서 홍보 채널 성격이 아니고, 홈 화면 알고리즘이 타깃 연령·관심사에 맞춰져 있지 않아 보인다는 것.</p>
   <ul class="list">
-    <li><div class="t">지표 — 세 사람이 화면을 같이 보며 확인</div><div class="m">최근 영상 조회수 약 <b>2,000</b>, 노출수 약 <b>3,000</b>에서 멈춰 있음. 마지막 업로드는 8일 전. 민트: <b>"알고리즘이 제대로 돌았으면 8일 전 영상이 최소 조회수 1,000은 나와야 한다."</b> 일부공개 영상이 다수이고, 반응한 사람들은 대부분 수강생</div></li>
-    <li><div class="t">채널의 내력 — 루크 설명</div><div class="m">원래 <b>동기부여·명언 채널</b>이었고 시청자 연령이 30~40대라 주제와 나이대가 맞아서 구매. 처음엔 본인 이름으로 브랜딩하려 했으나 방치했고, 강의를 다시 시작하면서 강의용으로 돌려 수강생을 넣어둠. "되도 안 되도 된다"는 입장</div></li>
+    <li><div class="t">지표 — 셋이 화면을 같이 보며 확인</div><div class="m">최근 영상 조회수 약 <b>2,000</b>, 노출수 약 <b>3,000</b>에서 정체. 마지막 업로드 8일 전. 민트: <b>"알고리즘이 제대로 돌았으면 8일 전 영상이 최소 조회수 1,000은 나와야 한다."</b> 일부공개 영상이 다수고 반응한 사람 대부분이 수강생</div></li>
+    <li><div class="t">채널의 내력 — 루크 설명</div><div class="m">원래 <b>동기부여·명언 채널</b>. 시청자가 30~40대라 주제와 나이대가 맞아 구매. 처음엔 본인 이름으로 브랜딩하려다 방치했고, 강의를 다시 시작하며 강의용으로 돌려 수강생을 넣어둠. "되도 안 되도 된다"</div></li>
     <li><div class="t">PD 의견 — 처음엔 신규 개설 쪽</div><div class="m">"기존 것에 영향을 받다 보니 아예 성장이 안 될 수도 있다. 잘 되는 것보다 <b>리스크를 생각하면 새로 만드는 게 낫겠다</b>"</div></li>
     <li><div class="t">민트의 반론 — 광고로 시작하면 차이가 작다</div><div class="m">"어차피 첫 영상은 광고를 돌릴 거고, 그건 <b>노출을 돈 주고 사는 것</b>이다. 신규든 셀수다든 산 노출을 다시 알고리즘으로 뿌리는 격이라, CTA에 반응만 해주면 두 채널 다 크게 상관없을 수 있다." 다만 <b>들어왔는데 구독자가 30명이면 초반 이탈</b>이 날 수 있다는 점은 우려</div></li>
-    <li><div class="t">인베이더 사례</div><div class="m">민트: 인베이더에서 채널을 새로 팠을 때 <b>알고리즘은 바로 타지 않고 영상이 최소 4개 정도 올라가야 그때부터 움직였다</b>. "너무 늦어버린다"</div></li>
-    <li><div class="t">PD가 낸 절충안</div><div class="m">기존 채널들에 영상을 시차를 두고 올려보고 반응 없으면 비공개 처리하는 식으로 <b>테스트</b>해보자는 제안. 민트도 "2~3일이면 지표가 나온다"며 동의 분위기</div></li>
-    <li><div class="t">최종 결론 — 공동작업자</div><div class="m">PD: "공동작업자로 가면 이 채널에 뭐가 올라오겠구나가 보이니까, <b>서브 채널을 같이 키운다는 느낌</b>으로 가는 게 괜찮겠다."<br>민트가 정리: <b>스스로 월백 채널을 하나 만들고 셀러들의 수다에 공동작업자로 걸어 프로젝트 영상을 올린다.</b> 스스로 월백은 다마고치 영상 전용, 셀러들의 수다는 본진으로 두고 루크 퍼스널 브랜딩과 회사 영상을 계속 테스트</div></li>
+    <li><div class="t">인베이더 사례</div><div class="m">민트: 인베이더에서 채널을 새로 팠을 때 <b>알고리즘은 바로 타지 않고 영상이 최소 4개는 올라가야 그때부터 움직였다</b>. "너무 늦어버린다"</div></li>
+    <li><div class="t">PD의 절충안</div><div class="m">기존 채널들에 영상을 시차를 두고 올려보고 반응 없으면 비공개 처리하는 <b>테스트</b> 제안. 민트도 "2~3일이면 지표가 나온다"며 동의</div></li>
+    <li><div class="t">최종 결론 — 공동작업자</div><div class="m">PD: "공동작업자로 가면 이 채널에 뭐가 올라오겠구나가 보이니까 <b>서브 채널을 같이 키운다는 느낌</b>으로 가는 게 괜찮겠다."<br>민트 정리: <b>스스로 월백 채널을 만들고 셀러들의 수다에 공동작업자로 걸어 프로젝트 영상을 올린다.</b> 스스로 월백은 다마고치 전용, 셀러들의 수다는 본진으로 두고 루크 퍼스널 브랜딩과 회사 영상을 계속 테스트</div></li>
   </ul>
 </div>
 
 <div class="card">
   <h3 style="margin:0 0 8px">2. 다마고치 인원 — 3명에서 2명으로</h3>
-  <p style="margin:0 0 10px"><b>PD:</b> 촬영 리소스 기준으로 <b>3명까지 가능</b>. 3명이면 그룹샷 담당 1명 + 개별 담당 2명, 거기에 루크 마킹까지 해서 <b>최소 3명 인력</b>, 카메라 한 대는 풀샷으로 거치. 출연 인물은 다마고치 3 + 루크 = 4명이 됨.</p>
+  <p style="margin:0 0 10px"><b>PD:</b> 촬영 리소스 기준 <b>3명까지 가능</b>. 3명이면 그룹샷 1명 + 개별 2명, 거기에 루크 마킹까지 <b>최소 3명 인력</b>, 카메라 한 대는 풀샷 거치. 출연 인물은 다마고치 3 + 루크 = 4명.</p>
   <p style="margin:0 0 10px"><b>민트의 제동.</b> "3명이면 변수가 곱하기로 늘어난다. 가장 이상적인 그림은 <b>전원이 기간 내 목표를 달성하고 그 이후 추이가 달라지는 것</b> — 스스로 월백이면 각자 100만원씩은 벌되 그 이상에서 차등이 나는 구조다. 그런데 루크님은 다른 수강생 케어와 강의 준비도 하셔야 해서 한 명 한 명에 리소스를 다 넣을 수 있을지 모르겠다."</p>
-  <div class="warn"><b>루크 수용.</b> "첫 번째라서 3명은 무리일 수 있겠다. 많아도 2명이어야 할 것 같고, 한 명이면 전담 마크가 가능해서 좋긴 하다. 저도 새로 오픈하는 것도 있고, PD님도 연말이라 일정이 많다고 하셨으니 <b>변수를 크게 만들기보다 많아도 2명으로 제한</b>하는 게 좋겠다."</div>
-  <p style="margin:10px 0 0"><b>PD 동의:</b> "두 명이 가장 좋을 것 같다. 흑백 느낌으로 가도 된다. 다양한 패턴을 보여주는 건 무리다." → <b>모집 시에는 인원을 밝히지 않고</b> 지원자를 많이 받은 뒤 케어 가능한 선에서 결정하는 방식으로.</p>
+  <div class="warn"><b>루크 수용.</b> "첫 번째라서 3명은 무리일 수 있겠다. 많아도 2명이어야 할 것 같고, 한 명이면 전담 마크가 가능해서 좋긴 하다. 저도 새로 오픈하는 것도 있고 PD님도 연말이라 일정이 많다고 하셨으니 <b>변수를 크게 만들기보다 많아도 2명으로 제한</b>하는 게 좋겠다."</div>
+  <p style="margin:10px 0 0"><b>PD 동의:</b> "두 명이 가장 좋을 것 같다. 흑백 느낌으로 가도 된다. 다양한 패턴을 보여주는 건 무리다." → <b>모집 시에는 인원을 밝히지 않고</b> 지원자를 많이 받은 뒤 케어 가능한 선에서 결정.</p>
 </div>
 
 <div class="card">
   <h3 style="margin:0 0 8px">3. 일정 — 11/10을 1안으로</h3>
   <ul class="list">
-    <li><div class="t">촬영 전 체크할 세 가지 (민트 정리)</div><div class="m">① 장소 ② 촬영 인력이 그 시간에 올 수 있는지 ③ 출연자 섭외가 그때까지 되는지. 콘티는 이번 주 안에 같이 짜면 되므로 일정과 무관</div></li>
-    <li><div class="t">각자 가능 일자</div><div class="m">루크 — 수·목만 빼주면 되고 불가피하면 비울 수 있음 / 민트 — 전부 가능 / PD — 화·수가 괜찮고 <b>11/10~11 사이</b>를 선호. <b>11/13(금)은 남양주 촬영</b>으로 불가</div></li>
-    <li><div class="t">확정</div><div class="m"><b>1안 11/10(화)</b>, 2안 11/16~17. PD가 오늘 3~4시 팀 미팅에서 확인 후 카톡방에 공유. "10일로 생각해놓고 미리 전달해도 되겠느냐"는 PD 질문에 민트가 동의</div></li>
-    <li><div class="t">제작 리드타임</div><div class="m">PD: 가편만 던지는 건 <b>2~3일이면 충분</b>. 다만 13일 촬영 세팅 때문에 정신이 없어 하루는 그쪽에 써야 함. "촬영하고 이틀 안에 1차 가편을 최대한 뽑아보겠다"<br>민트가 기준으로 정리: <b>촬영일 +72시간 내 1차 가편</b>, 피드백 반영 후 업로드까지 <b>촬영일 +9일</b></div></li>
-    <li><div class="t">역산</div><div class="m">11/10 촬영 → <b>11/18~19 업로드</b> → 광고 집행(예: 11/18~27) → <b>11월 말까지 다마고치 1차 모집·선정과 컨택</b> → <b>12월~1월 중순</b>에 다마고치 미팅·촬영·영상 업로드</div></li>
+    <li><div class="t">촬영 전 체크할 세 가지 (민트 정리)</div><div class="m">① 장소 ② 촬영 인력이 그 시간에 올 수 있는지 ③ 출연자 섭외가 그때까지 되는지. 콘티는 이번 주 안에 짜면 되므로 일정과 무관</div></li>
+    <li><div class="t">각자 가능 일자</div><div class="m">루크 — 수·목만 빼주면 되고 불가피하면 비울 수 있음 / 민트 — 전부 가능 / PD — 화·수가 괜찮고 <b>11/10~11 사이</b> 선호. <b>11/13(금)은 남양주 촬영</b>으로 불가</div></li>
+    <li><div class="t">확정</div><div class="m"><b>1안 11/10(화)</b>, 2안 11/16~17. PD가 오늘 3~4시 팀 미팅에서 확인 후 카톡방 공유. "10일로 생각해놓고 미리 전달해도 되겠느냐"는 질문에 민트 동의</div></li>
+    <li><div class="t">제작 리드타임</div><div class="m">PD: 가편만 던지는 건 <b>2~3일이면 충분</b>. 다만 13일 촬영 세팅 때문에 하루는 그쪽에 써야 함. "촬영하고 이틀 안에 1차 가편을 최대한 뽑아보겠다"<br>민트가 기준으로 정리: <b>촬영일 +72시간 내 1차 가편</b>, 피드백 반영 후 업로드까지 <b>촬영일 +9일</b></div></li>
+    <li><div class="t">역산</div><div class="m">11/10 촬영 → <b>11/18~19 업로드</b> → 광고 집행(예: 11/18~27) → <b>11월 말까지 1차 모집·선정과 컨택</b> → <b>12월~1월 중순</b> 본편 미팅·촬영·업로드</div></li>
   </ul>
 </div>
 
 <div class="card">
   <h3 style="margin:0 0 8px">4. 구성작가를 쓸 것인가 — 쓰지 않기로</h3>
-  <p style="margin:0 0 10px">PD가 주변 구성작가 기용 가능성을 열어두며 시작. 예능·스케치 코미디·숏폼 시나리오를 쓰던 분들이 있어 "재밌는 호흡"을 만들 수 있지 않을까 하는 취지.</p>
+  <p style="margin:0 0 10px">PD가 주변 구성작가 기용 가능성을 열며 시작. 예능·스케치 코미디·숏폼 시나리오를 쓰던 분들이 있어 "재밌는 호흡"을 만들 수 있지 않을까 하는 취지.</p>
   <ul class="list">
     <li><div class="t">비용</div><div class="m"><b>편당 20~30만원</b> 수준. 콘티를 짜주는 대가</div></li>
     <li><div class="t">민트 우려 1 — 커머스 이해</div><div class="m">"커머스에 대한 이해가 없으면 예능작가 식으로 해도 한계가 있다. <b>1편(모집·홍보 영상)에는 끼는 게 괜찮지만 그 이후 다마고치 프로젝트 영상에는 안 끼는 게 낫다</b>"</div></li>
@@ -350,15 +492,15 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <li><div class="t">콘셉트 — 청문회 / 압박면접</div><div class="m">"올해 청문회 느낌이었으면 재밌겠다"는 의견에서 출발. 아무것도 없는 빈 공간에 루크가 들어와 당황하고 있을 때 사람들이 들어와 청문회 형식으로 질문하는 그림</div></li>
     <li><div class="t">출연자 — 면접관 역 4~5명</div><div class="m">PD: "최소 4명은 있어야 할 것 같다." 원하는 이미지나 캐릭터를 미리 모아주면 섭외를 시도해보겠다고 함</div></li>
     <li><div class="t">캐릭터 설정</div><div class="m">"페르소나가 여러 개일 필요는 없다. <b>그 질문에 대한 대표성만 있으면 된다</b>"</div></li>
-    <li><div class="t">일정 우려</div><div class="m">"10일은 진짜 촉박하다"는 말이 나왔고, 16~17일이면 충분하다는 의견. 다만 PD가 "11일도 충분히 가능할 수 있다"고 해 1안을 유지하고 미리 컨택하기로</div></li>
-    <li><div class="t">비용</div><div class="m">"시간당 8~10만원 정도로 보면 되느냐"는 질문에 PD: 시간당보다는 <b>하루 1회차 기준</b>이 낫고 <b>인당 15만원</b> 정도. 보통 6~8시간, 길면 12시간 기준. 엑스트라 개념</div></li>
-    <li><div class="t">콘티 분담</div><div class="m">큰 틀과 레퍼런스 샷은 민트·루크 측이 가볍게 만들어 전달 → PD가 받아서 살을 붙여 세부 콘티 완성</div></li>
+    <li><div class="t">일정 우려</div><div class="m">"10일은 진짜 촉박하다"는 말이 나왔고 16~17일이면 충분하다는 의견. 다만 PD가 "11일도 충분히 가능할 수 있다"고 해 1안을 유지하고 미리 컨택하기로</div></li>
+    <li><div class="t">비용</div><div class="m">"시간당 8~10만원 정도로 보면 되느냐"는 질문에 PD: 시간당보다 <b>하루 1회차 기준</b>이 낫고 <b>인당 15만원</b> 정도. 보통 6~8시간, 길면 12시간 기준. 엑스트라 개념</div></li>
+    <li><div class="t">콘티 분담</div><div class="m">큰 틀과 레퍼런스 샷은 민트·루크 측이 가볍게 만들어 전달 → PD가 받아 살을 붙여 세부 콘티 완성</div></li>
   </ul>
 </div>
 
 <div class="card">
   <h3 style="margin:0 0 8px">6. 마무리</h3>
-  <p style="margin:0">루크는 "오늘은 청취자였다, 흐름은 다 이해했고 잘 준비하겠다"고 밝힘. 세부 콘티와 로케가 정해지면 다시 논의하기로 하고, PD의 3시 미팅 이후로는 <b>카톡방에서 소통</b>. PD가 별도로 연락드리겠다고 했고, 일정이 있을 수 있으니 카톡을 먼저 남겨달라고 요청.</p>
+  <p style="margin:0">루크는 "오늘은 청취자였다, 흐름은 다 이해했고 잘 준비하겠다"고 밝힘. 세부 콘티와 로케가 정해지면 다시 논의하기로 하고, PD의 3시 미팅 이후로는 <b>카톡방에서 소통</b>. PD가 별도로 연락드리겠다 했고, 일정이 있을 수 있으니 카톡을 먼저 남겨달라고 요청.</p>
 </div>
 
 <div class="card red">
@@ -367,7 +509,7 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
     <li><div class="t">촬영 장소</div><div class="m">민트가 오늘 중 알아보기로만 함</div></li>
     <li><div class="t">11/10 촬영 인력 확보 여부</div><div class="m">PD가 오늘 3~4시 미팅 후 회신. 여기서 1안·2안이 갈림</div></li>
     <li><div class="t">출연자 4~5명 섭외 가능 여부</div><div class="m">컨택 시작 단계</div></li>
-    <li><div class="t">모집영상 촬영 총비용</div><div class="m">엑스트라 인당 15만만 정해짐. 촬영 인력 인건비는 별도(11/2 통화 기준 인당 30~35만, 홍보영상 4명 약 120만)</div></li>
+    <li><div class="t">모집영상 촬영 총비용</div><div class="m">엑스트라 인당 15만만 정해짐. 촬영 인력 인건비는 별도 — 11/2 통화 기준 인당 30~35만, 홍보영상 4명 약 120만 (<a href="../pd-cost/">PD 촬영비 정리</a>)</div></li>
     <li><div class="t">다마고치 본편 5편의 회차별 구성</div><div class="m">기획 미확정</div></li>
     <li><div class="t">광고 예산</div><div class="m">집행 구간(11/18~27)만 예시로 언급</div></li>
     <li><div class="t">스스로 월백 채널의 소유 명의</div><div class="m">개설 주체가 회의에서 명시되지 않음 — <b>확인 필요</b></div></li>
@@ -375,11 +517,13 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
 </div>
 
 <div class="src">
-  근거 · 2026-11-04 플라우드 녹음 2건을 하나로 병합 — "11-04 기획 회의: 유튜브 신규 채널 개설 및 다마고치 프로젝트 일정"(12:01~12:39, 38분, 164세그먼트)과 "[윤호PD님/민트님/루크님] 2차 회의"(12:41~12:50, 9분, 44세그먼트) 전문 ·
-  같은 제목의 "1차 회의" 녹음은 14초 분량의 빈 파일이라 제외 ·
-  전사의 화자 구분이 일부 섞여 있어 발언 귀속은 문맥으로 판단했으며, 특히 민트와 루크의 발언이 한 세그먼트에 합쳐진 구간이 있음 ·
-  날짜·요일은 2026년 11월 기준으로 대조(11/10 화 · 11/13 금 · 11/16 월 · 11/17 화 · 11/19 목) ·
-  엑스트라 인당 15만, 구성작가 편당 20~30만은 녹취 원문 수치
+  근거 · 2026-11-04 플라우드 녹음 2건 병합 — "11-04 기획 회의: 유튜브 신규 채널 개설 및 다마고치 프로젝트 일정"(12:01~12:39, 38분, 164세그먼트)과 "[윤호PD님/민트님/루크님] 2차 회의"(12:41~12:50, 9분, 44세그먼트) 전문 ·
+  같은 제목의 "1차 회의" 녹음은 14초짜리 빈 파일이라 제외 ·
+  전사의 화자 구분이 일부 섞여 있어 발언 귀속은 문맥으로 판단 — 특히 민트와 루크 발언이 한 세그먼트에 합쳐진 구간이 있음 ·
+  날짜·요일은 2026년 11월 기준 대조(11/10 화 · 11/13 금 · 11/16 월 · 11/17 화 · 11/19 목) ·
+  엑스트라 인당 15만, 구성작가 편당 20~30만은 녹취 원문 수치 ·
+  D-day의 시각(촬영 13시 등)은 회의에서 확정되지 않아 가정값이며, 날짜만 녹취 기준
+</div>
 </div>
 
 <div class="card donebox-wrap"><details class="donebox"><summary>완료</summary><ul class="list donelist" style="margin-top:8px"></ul></details>
@@ -425,6 +569,33 @@ details.donebox summary{cursor:pointer;font-size:13px;color:var(--muted)}
   };
   window.luke1bClear=function(){ if(confirm('체크 기록을 모두 지울까요? (노션은 안 바뀜)')){for(const k in state)delete state[k];save(state);render();} };
   document.addEventListener('DOMContentLoaded',render); if(document.readyState!=='loading') render();
+})();
+</script>
+
+<script>
+(function(){
+  function kd(ms){return new Date(ms).toLocaleDateString('en-CA',{timeZone:'Asia/Seoul'});}
+  function pad(n){return n<10?'0'+n:''+n;}
+  function tick(){
+    var now=Date.now();
+    var els=document.querySelectorAll('[data-due]');
+    for(var i=0;i<els.length;i++){
+      var el=els[i], due=Date.parse(el.getAttribute('data-due'));
+      if(isNaN(due)) continue;
+      var dn=Math.round((Date.parse(kd(due)+'T00:00:00+09:00')-Date.parse(kd(now)+'T00:00:00+09:00'))/86400000);
+      var diff=due-now, a=Math.abs(diff);
+      var d=Math.floor(a/86400000), h=Math.floor(a%86400000/3600000), m=Math.floor(a%3600000/60000), sc=Math.floor(a%60000/1000);
+      el.classList.remove('soon','urgent','past');
+      var cd=(d?d+'일 ':'')+pad(h)+':'+pad(m)+':'+pad(sc);
+      if(diff<0){ el.classList.add('past');
+        el.innerHTML='<span>D+'+Math.abs(dn)+'</span><span class="cd">'+cd+' 지남</span>'; }
+      else{
+        if(dn<=0) el.classList.add('urgent'); else if(dn<=2) el.classList.add('soon');
+        el.innerHTML='<span>'+(dn===0?'D-DAY':'D-'+dn)+'</span><span class="cd">'+cd+' 남음</span>'; }
+    }
+  }
+  tick(); setInterval(tick,1000);
+  document.addEventListener('DOMContentLoaded',tick);
 })();
 </script>
 </body>
