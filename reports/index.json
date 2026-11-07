@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-11-07-kititi-geo",
+    "date": "2026-11-07",
+    "project": "키티티 상담 사이트",
+    "title": "검색·AI검색(GEO) 구조 재설계",
+    "status": "완료",
+    "summary": "웨딩·혼주 /wedding, 원장 /director, 메뉴·가격·FAQ /guide 새 페이지 + 홈 아래 글 소개, schema.org 그래프(BeautySalon·Person·Offer·FAQ·Breadcrumb), llms.txt, sitemap 4쪽, 옛 /chat 등은 홈으로 308. 생성 스크립트 scripts/build-seo.mjs."
+  },
+  {
     "id": "2026-11-07-kititi-stats-full",
     "date": "2026-11-07",
     "project": "키티티 상담 사이트",
