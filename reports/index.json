@@ -1,5 +1,18 @@
 [
   {
+    "id": "2026-11-14-lotteon-mirror",
+    "date": "2026-11-14",
+    "project": "롯데온 미러",
+    "title": "롯데온 미러 사이트(메인·마이롯데·주문내역 37건) 완성",
+    "status": "완료",
+    "summary": "실제 롯데ON 메인 캡처 + 마이롯데 첫 화면 + 주문/배송 조회(날짜순 37건) + 주문 상세(영수증·원본 캡처 모달). 로컬 HTML, index.html 더블클릭.",
+    "next": "루크 검토 후 팀원·수강생 공유. 마이롯데 첫 화면은 로그인 캡처 없이 구조대로 재구성 — 실제 화면과 다른 점 있으면 수정.",
+    "deploy_url": "",
+    "chat_url": "",
+    "source": "claude-code",
+    "detail": "<p>폴더: 바탕화면/[클로드 작업]/롯데온_미러 · 화면 4개(index/mypage/orders/order) · 데이터는 _src/orders_zip*.json → data/orders.js · 주문 화면에 수령인 개인정보 포함이라 외부 공개 금지</p>"
+  },
+  {
     "id": "2026-11-13-column-ten-habits",
     "date": "2026-11-13",
     "project": "원크루 사이트",
