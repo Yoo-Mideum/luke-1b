@@ -1,5 +1,14 @@
 [
   {
+    "id": "2026-11-15-autoreg-v251",
+    "date": "2026-11-15",
+    "project": "루크 툴박스",
+    "title": "자동등록 설치 파일 v251 — 릴리스 직접 받기 주소로 교체",
+    "status": "완료",
+    "summary": "자동등록 받기 단추를 저장소 파일 경로에서 깃허브 릴리스 v251 자산(Selsuda_AutoReg_Setup_v251.exe, 27MB) 직접 받기 주소로 바꿨다. 자동소싱은 v5.11 그대로 최신. 앞으로는 classFiles.ts 의 버전 상수(AUTOREG_VERSION·SOURCING_VERSION) 한 줄만 바꾸면 설치 화면·마이페이지가 따라온다. 실서버 링크 확인.",
+    "risk": "없음"
+  },
+  {
     "id": "2026-11-14-sourcing-v5-11",
     "date": "2026-11-14",
     "project": "루크 툴박스",
