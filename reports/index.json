@@ -1,5 +1,19 @@
 [
   {
+    "id": "2026-11-18-41c0cf8f",
+    "date": "2026-11-18",
+    "project": "키티티 토탈샵",
+    "title": "사업자 1개 플레이스 다중 등록 규정·사례 분석",
+    "status": "완료",
+    "summary": "플레이스 분리 등록 가능 여부·승인 전략·리스크 정리 페이지",
+    "next": "사실 확인 3개 후 네일 1개 테스트 신청",
+    "deploy_url": "https://claude.ai/artifact/LUF6mHoZmurkPK8WBdF7UT",
+    "chat_url": "",
+    "source": "claude",
+    "detail": "<p>원칙 1사업자 1업체(2022.11~), 예외 종된사업장. 사례는 간판+시술자리 사진 소명으로 승인</p>",
+    "notion_url": "https://app.notion.com/p/41c0cf8fea048159a034fc14ce8c0561"
+  },
+  {
     "id": "2026-11-18-w2-ledger-first",
     "date": "2026-11-18",
     "project": "루크 툴박스",
