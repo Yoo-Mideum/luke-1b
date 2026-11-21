@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-11-21-kititi-survey",
+    "date": "2026-11-21",
+    "project": "키티티 상담 사이트",
+    "title": "논문 설문 페이지 /survey/ 배포",
+    "status": "완료",
+    "summary": "받은 설문 HTML을 한 글자도 바꾸지 않고 /survey/index.html 로 배포(해시 일치), 검색 제외 헤더 추가, 사이트맵 제외. 390·360px에서 전체 흐름·선별 종료 확인, 가로 넘침 없음. 저장 주소·추첨 링크는 받으면 교체."
+  },
+  {
     "id": "2026-11-21-onecrew-live-countdown",
     "date": "2026-11-21",
     "project": "원크루 사이트",
