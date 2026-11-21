@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-11-21-kititi-survey-css",
+    "date": "2026-11-21",
+    "project": "키티티 상담 사이트",
+    "title": "설문 척도 선택 표시 CSS 수정",
+    "status": "완료",
+    "summary": "지정 CSS 블록만 교체(diff 확인), ENDPOINT 줄 내용 그대로(줄 번호만 129→133). 390·360px에서 Ⅰ·Ⅱ·Ⅲ 척도 탭 시 보라색 표시 확인, 콘솔 에러·가로 넘침 없음."
+  },
+  {
     "id": "2026-11-21-kititi-survey-endpoint",
     "date": "2026-11-21",
     "project": "키티티 상담 사이트",
