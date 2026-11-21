@@ -1,5 +1,13 @@
 [
   {
+    "id": "2026-11-21-kititi-survey-endpoint",
+    "date": "2026-11-21",
+    "project": "키티티 상담 사이트",
+    "title": "설문 응답 저장 주소 연결",
+    "status": "완료",
+    "summary": "survey/index.html 129행 ENDPOINT 한 줄만 교체(diff 확인), 배포본=로컬 일치, 페이지 200·콘솔 에러 없음. 시험 제출은 하지 않음."
+  },
+  {
     "id": "2026-11-21-onecrew-live-db",
     "date": "2026-11-21",
     "project": "원크루 사이트",
